@@ -29,7 +29,8 @@ devtools::install_github('mlampros/textTinyR')
 
 ```
 <br>
-
 Use the following link to report bugs/issues,
 <br><br>
+
+[https://github.com/mlampros/textTinyR/issues](https://github.com/mlampros/textTinyR/issues)
 
