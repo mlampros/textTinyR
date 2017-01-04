@@ -1,0 +1,2429 @@
+[
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/batch_tokenization.h",
+                "kind" : 2,
+                "line" : 31,
+                "name" : "BATCH_TOKEN",
+                "parent_name" : "",
+                "usr" : "c:@C@BATCH_TOKEN"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/batch_tokenization.h",
+                "kind" : 7,
+                "line" : 41,
+                "name" : "count_rows(std::string)",
+                "parent_name" : "BATCH_TOKEN",
+                "usr" : "c:@C@BATCH_TOKEN@F@count_rows#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/batch_tokenization.h",
+                "kind" : 7,
+                "line" : 61,
+                "name" : "save_string(std::string, std::string)",
+                "parent_name" : "BATCH_TOKEN",
+                "usr" : "c:@C@BATCH_TOKEN@F@save_string#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/batch_tokenization.h",
+                "kind" : 7,
+                "line" : 74,
+                "name" : "modulus(long long, int)",
+                "parent_name" : "BATCH_TOKEN",
+                "usr" : "c:@C@BATCH_TOKEN@F@modulus#K#I#"
+            },
+            {
+                "column" : 43,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/batch_tokenization.h",
+                "kind" : 7,
+                "line" : 83,
+                "name" : "batch_calculation(long long, int)",
+                "parent_name" : "BATCH_TOKEN",
+                "usr" : "c:@C@BATCH_TOKEN@F@batch_calculation#K#I#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/batch_tokenization.h",
+                "kind" : 7,
+                "line" : 114,
+                "name" : "TOKEN_batch(std::vector<std::string> &, std::vector<std::string>, std::string, std::string, int, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, int, double, int, int, int, bool, std::string)",
+                "parent_name" : "BATCH_TOKEN",
+                "usr" : "c:@C@BATCH_TOKEN@F@TOKEN_batch#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#S1_#S2_#S2_#I#S2_#b#b#b#b#b#b#b#S2_#b#I#S2_#I#I#I#I#S2_#I#d#I#I#I#b#S2_#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/batch_tokenization.h",
+                "kind" : 7,
+                "line" : 270,
+                "name" : "batch_2file(std::string, std::string, int, char, std::vector<std::string>, std::string, std::string, int, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, int, double, int, int, int, std::string, bool, std::string)",
+                "parent_name" : "BATCH_TOKEN",
+                "usr" : "c:@C@BATCH_TOKEN@F@batch_2file#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#C#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#S0_#I#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#I#d#I#I#I#S0_#b#S0_#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/batch_tokenization.h",
+        "file_last_write" : 1481809310
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 26,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 58,
+                "name" : "Path_2vector(std::string, std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@Path_2vector#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#"
+            },
+            {
+                "column" : 38,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 71,
+                "name" : "Frequency_distribution(std::vector<std::string> &, std::string, std::string, char)",
+                "parent_name" : "",
+                "usr" : "c:@F@Frequency_distribution#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#S2_#S2_#C#"
+            },
+            {
+                "column" : 51,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 86,
+                "name" : "Count_characters(std::vector<std::string>, std::string, std::string, char)",
+                "parent_name" : "",
+                "usr" : "c:@F@Count_characters#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#S1_#S1_#C#"
+            },
+            {
+                "column" : 72,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 101,
+                "name" : "Collocations_ngrams(std::vector<std::string>, std::string, std::string, char, std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@Collocations_ngrams#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#S1_#S1_#C#S1_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 116,
+                "name" : "Dice_similarity(std::string, std::string, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@Dice_similarity#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 128,
+                "name" : "Levenshtein_dist(std::string &, std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@F@Levenshtein_dist#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 140,
+                "name" : "Cosine_dist(std::string &, std::string &, std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@Cosine_dist#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#S1_#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 152,
+                "name" : "Dissimilarity_mat(std::vector<std::string>, int, std::string, std::string, double, bool, bool, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@Dissimilarity_mat#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#I#S1_#S1_#d#b#b#I#"
+            },
+            {
+                "column" : 59,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 166,
+                "name" : "Look_up_tbl(std::vector<std::string>, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@Look_up_tbl#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#I#"
+            },
+            {
+                "column" : 26,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 181,
+                "name" : "res_token(std::string, std::vector<std::string>, std::string, std::string, bool, char, int, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, std::string, std::string, int, double, int, int, int, bool, bool, std::string, std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@res_token#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#S0_#b#C#I#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#S0_#S0_#I#d#I#I#I#b#b#S0_#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 219,
+                "name" : "big_splitter_bytes(std::string, int, std::string, std::string, bool, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@big_splitter_bytes#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#S0_#S0_#b#b#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 232,
+                "name" : "big_parser(std::string, std::string, std::string, std::string, int, bool, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@big_parser#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#S0_#S0_#I#b#b#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 247,
+                "name" : "file_parser(std::string, std::string, std::string, std::string, int, bool, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@file_parser#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#S0_#S0_#I#b#b#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 262,
+                "name" : "convert_bytes(std::string, std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@convert_bytes#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 276,
+                "name" : "big_tokenize(std::string, std::string, int, std::vector<std::string>, std::string, std::string, char, int, int, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, std::string, int, double, int, int, int, bool, std::string, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@big_tokenize#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#S0_#C#I#I#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#S0_#I#d#I#I#I#b#S0_#b#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 307,
+                "name" : "vocabulary_counts_big_tokenize(std::string, std::string, int, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@vocabulary_counts_big_tokenize#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#b#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 320,
+                "name" : "vocabulary_counts(std::string, std::string, std::string, std::vector<std::string>, std::string, int, bool, bool, std::string, std::string, long long, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, int, double, int, int, int, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@vocabulary_counts#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#S0_#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#I#b#b#S0_#S0_#K#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#I#d#I#I#I#b#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 354,
+                "name" : "batch_2file(std::string, std::string, int, char, std::vector<std::string>, std::string, std::string, int, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, int, double, int, int, int, std::string, std::string, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@batch_2file#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#C#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#S0_#I#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#I#d#I#I#I#S0_#S0_#b#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 385,
+                "name" : "res_term_matrix(std::vector<std::string>, std::vector<std::string>, std::string, std::string, long long, bool, std::string, bool, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, int, double, int, int, int, bool, long long, std::string, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@res_term_matrix#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#S0_#S1_#S1_#K#b#S1_#b#S1_#b#b#b#b#b#b#b#S1_#b#I#S1_#I#I#I#I#S1_#I#d#I#I#I#b#K#S1_#b#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 431,
+                "name" : "Adj_Sparsity(arma::sp_mat, std::vector<std::string>, double, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@Adj_Sparsity#$@N@arma@C@SpMat>#d#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#d#b#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 446,
+                "name" : "Associations_Cpp(arma::rowvec, arma::rowvec, arma::vec, long long, std::vector<std::string>, std::vector<int>, long long, long long, std::string, bool, int, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@Associations_Cpp#$@N@arma@C@Row>#d#S0_#$@N@arma@C@Col>#d#K#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S3_#$@N@std@N@__1@C@vector>#I#$@N@std@N@__1@C@allocator>#I#K#K#S3_#b#I#b#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 509,
+                "name" : "Most_Freq_Terms(arma::sp_mat, std::vector<std::string>, long long, bool, int, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@Most_Freq_Terms#$@N@arma@C@SpMat>#d#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#K#b#I#b#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 532,
+                "name" : "sparsity_float(arma::sp_mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@sparsity_float#$@N@arma@C@SpMat>#d#"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 546,
+                "name" : "dense_2sparse_mat(arma::mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@dense_2sparse_mat#$@N@arma@C@Mat>#d#"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 561,
+                "name" : "sp_sums(arma::sp_mat, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@sp_sums#$@N@arma@C@SpMat>#d#b#"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 576,
+                "name" : "sp_means(arma::sp_mat, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@sp_means#$@N@arma@C@SpMat>#d#b#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 608,
+                "name" : "save_sparse_(arma::sp_mat, std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@save_sparse_#$@N@arma@C@SpMat>#d#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 619,
+                "name" : "load_sparse_(std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@load_sparse_#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 13,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 634,
+                "name" : "read_CHARS(std::string, long long, std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@read_CHARS#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#K#S0_#"
+            },
+            {
+                "column" : 26,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+                "kind" : 6,
+                "line" : 679,
+                "name" : "read_ROWS(std::string, std::string, char, long long)",
+                "parent_name" : "",
+                "usr" : "c:@F@read_ROWS#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#C#K#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/export_all_funcs.cpp",
+        "file_last_write" : 1481809766
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 3,
+                "line" : 35,
+                "name" : "static_and<>",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@N@detail@S@static_and>#p0"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 3,
+                "line" : 51,
+                "name" : "static_add<>",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@N@detail@S@static_add>#p0"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 66,
+                "name" : "rotl(uint32_t, int8_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@N@detail@F@rotl#i#C#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 71,
+                "name" : "rotl(uint64_t, int8_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@N@detail@F@rotl#l#C#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 76,
+                "name" : "fmix(uint32_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@N@detail@F@fmix#i#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 87,
+                "name" : "fmix(uint64_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@N@detail@F@fmix#l#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 2,
+                "line" : 103,
+                "name" : "murmur_hash<4>",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@C@murmur_hash>#Vl4"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 7,
+                "line" : 116,
+                "name" : "handle_block_4(uint32_t)",
+                "parent_name" : "murmur_hash<4>",
+                "usr" : "c:@N@meta@N@util@C@murmur_hash>#Vl4@F@handle_block_4#i#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 7,
+                "line" : 135,
+                "name" : "operator(const void *, std::size_t)",
+                "parent_name" : "murmur_hash<4>",
+                "usr" : "c:@N@meta@N@util@C@murmur_hash>#Vl4@F@operator()#*1v#l#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 2,
+                "line" : 196,
+                "name" : "murmur_hash<8>",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@C@murmur_hash>#Vl8"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 7,
+                "line" : 208,
+                "name" : "handle_block_16(const uint8_t *)",
+                "parent_name" : "murmur_hash<8>",
+                "usr" : "c:@N@meta@N@util@C@murmur_hash>#Vl8@F@handle_block_16#*1c#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 7,
+                "line" : 241,
+                "name" : "operator(const void *, std::size_t)",
+                "parent_name" : "murmur_hash<8>",
+                "usr" : "c:@N@meta@N@util@C@murmur_hash>#Vl8@F@operator()#*1v#l#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 2,
+                "line" : 341,
+                "name" : "is_contiguously_hashable<T>",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@ST>1#T@is_contiguously_hashable"
+            },
+            {
+                "column" : 1,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 392,
+                "name" : "hash_append(HashAlgorithm &, const T &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Thash_append#&t0.0#&1t0.1#"
+            },
+            {
+                "column" : 1,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 399,
+                "name" : "hash_append(HashAlgorithm &, T)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Thash_append#&t0.0#t0.1#"
+            },
+            {
+                "column" : 13,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 409,
+                "name" : "hash_append(HashAlgorithm &, std::nullptr_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>1#Thash_append#&t0.0#n#"
+            },
+            {
+                "column" : 1,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 452,
+                "name" : "hash_append(HashAlgorithm &, T (&)[N])",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>3#T#T#Nlhash_append#&t0.0#& #"
+            },
+            {
+                "column" : 1,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 460,
+                "name" : "hash_append(HashAlgorithm &, const std::pair<T, U> &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>3#T#T#Thash_append#&t0.0#&1>@N@std@N@__1@ST>2#T#T@pair2t0.1t0.2#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 2,
+                "line" : 473,
+                "name" : "generate<N, S>",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@N@detail@ST>2#Nl#pNl@generate"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 485,
+                "name" : "hash_tuple(HashAlgorithm &, const std::tuple<Ts...> &, sequence<S...>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@N@detail@FT@>3#T#pT#pNlhash_tuple#&t0.0#&1>@N@std@N@__1@CT>1#pT@tuple1p1Pt0.1#>@N@meta@N@util@N@detail@ST>1#pNl@sequence1p1#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 494,
+                "name" : "hash_append(HashAlgorithm &, const std::tuple<Ts...> &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#pThash_append#&t0.0#&1>@N@std@N@__1@CT>1#pT@tuple1p1Pt0.1#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 502,
+                "name" : "hash_append(HashAlgorithm &, const std::array<T, N> &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>3#T#T#Nlhash_append#&t0.0#&1>@N@std@N@__1@ST>2#T#Nl@array2t0.1#"
+            },
+            {
+                "column" : 1,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 510,
+                "name" : "hash_append(HashAlgorithm &, const std::basic_string<Char, Traits, Alloc> &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>4#T#T#T#Thash_append#&t0.0#&1>@N@std@N@__1@CT>3#T#T#T@basic_string3t0.1t0.2t0.3#"
+            },
+            {
+                "column" : 1,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 518,
+                "name" : "hash_append(HashAlgorithm &, const std::basic_string<Char, Traits, Alloc> &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>4#T#T#T#Thash_append#&t0.0#&1>@N@std@N@__1@CT>3#T#T#T@basic_string3t0.1t0.2t0.3#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 526,
+                "name" : "hash_append(HashAlgorithm &, const T1 &, const T2 &, const Ts &...)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>4#T#T#T#pThash_append#&t0.0#&1t0.1#&1t0.2#P&1t0.3#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 535,
+                "name" : "get_process_seed",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@N@detail@F@get_process_seed#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 2,
+                "line" : 548,
+                "name" : "hash<HashAlgorithm>",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@ST>1#T@hash"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+                "kind" : 6,
+                "line" : 553,
+                "name" : "operator(const T &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@ST>1#T@hash@FT@>1#Toperator()#&1t1.0#1"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/hash.h",
+        "file_last_write" : 1447982249
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 2,
+                "line" : 33,
+                "name" : "ngram_stemmer",
+                "parent_name" : "",
+                "usr" : "c:@C@ngram_stemmer"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 52,
+                "name" : "seq_ngrams(std::string, int)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@seq_ngrams#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#"
+            },
+            {
+                "column" : 9,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 86,
+                "name" : "modulus(int, int)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@modulus#I#I#"
+            },
+            {
+                "column" : 37,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 95,
+                "name" : "batch_calculation(int, int)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@batch_calculation#I#I#"
+            },
+            {
+                "column" : 22,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 126,
+                "name" : "batch_num(int, int)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@batch_num#I#I#"
+            },
+            {
+                "column" : 35,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 148,
+                "name" : "ngram_relative_freq(std::unordered_map<std::string, int>, int)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@ngram_relative_freq#$@N@std@N@__1@C@unordered_map>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#$@N@std@N@__1@S@hash>#C#S2_#S3_#$@N@std@N@__1@S@equal_to>#S1_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S1_#I#I#"
+            },
+            {
+                "column" : 11,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 207,
+                "name" : "round_rcpp(float, int)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@round_rcpp#f#I#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 216,
+                "name" : "ngram_sequential(std::vector<std::string>, std::vector<double>, double, int, int)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@ngram_sequential#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#$@N@std@N@__1@C@vector>#d#$@N@std@N@__1@C@allocator>#d#d#I#I#"
+            },
+            {
+                "column" : 50,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 306,
+                "name" : "batch_map(std::vector<std::string> &, std::unordered_map<std::string, int>, double, int, int)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@batch_map#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#$@N@std@N@__1@C@unordered_map>#S2_#I#$@N@std@N@__1@S@hash>#C#S3_#S4_#$@N@std@N@__1@S@equal_to>#S2_#$@N@std@N@__1@C@allocator>#$@N@std@N@__1@S@pair>#1S2_#I#d#I#I#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 352,
+                "name" : "frequency_seq_ngram(std::vector<std::string> &, int, double, int, int, int, bool)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@frequency_seq_ngram#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#I#d#I#I#I#b#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 511,
+                "name" : "CHAR_n_grams(std::string &, int, bool, bool)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@CHAR_n_grams#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#b#b#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+                "kind" : 7,
+                "line" : 522,
+                "name" : "n_gram_stemming_frequency(std::vector<std::string> &, int, bool)",
+                "parent_name" : "ngram_stemmer",
+                "usr" : "c:@C@ngram_stemmer@F@n_gram_stemming_frequency#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#I#b#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/ngram_stemmer.h",
+        "file_last_write" : 1481809839
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 29,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 37,
+                "name" : "stem(std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@F@stem#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 22,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 79,
+                "name" : "trim(std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@F@trim#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 34,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 94,
+                "name" : "getStartR1(const std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@getStartR1#&1$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 34,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 111,
+                "name" : "getStartR2(const std::string &, size_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@getStartR2#&1$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#l#"
+            },
+            {
+                "column" : 31,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 121,
+                "name" : "firstNonVowelAfterVowel(const std::string &, size_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@firstNonVowelAfterVowel#&1$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#l#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 133,
+                "name" : "changeY(std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@changeY#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 148,
+                "name" : "step0(std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@step0#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 173,
+                "name" : "step1A(std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@step1A#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 216,
+                "name" : "step1B(std::string &, size_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@step1B#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#l#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 251,
+                "name" : "step1C(std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@step1C#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 281,
+                "name" : "step2(std::string &, size_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@step2#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#l#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 340,
+                "name" : "step3(std::string &, size_t, size_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@step3#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#l#l#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 371,
+                "name" : "step4(std::string &, size_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@step4#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#l#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 411,
+                "name" : "step5(std::string &, size_t, size_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@step5#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#l#l#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 437,
+                "name" : "isShort(const std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@isShort#&1$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 451,
+                "name" : "special(std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@special#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 482,
+                "name" : "isVowelY(char)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@isVowelY#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 488,
+                "name" : "isVowel(char)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@isVowel#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 493,
+                "name" : "endsWith(meta::util::string_view, meta::util::string_view)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@endsWith#$@N@meta@N@util@C@basic_string_view>#C#$@N@std@N@__1@S@char_traits>#C#S0_#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 502,
+                "name" : "endsInDouble(const std::string &)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@endsInDouble#&1$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 517,
+                "name" : "replaceIfExists(std::string &, meta::util::string_view, meta::util::string_view, size_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@replaceIfExists#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@meta@N@util@C@basic_string_view>#C#S2_#S4_#l#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 537,
+                "name" : "isValidLIEnding(char)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@isValidLIEnding#C#"
+            },
+            {
+                "column" : 32,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+                "kind" : 6,
+                "line" : 543,
+                "name" : "containsVowel(const std::string &, size_t, size_t)",
+                "parent_name" : "",
+                "usr" : "c:@N@Porter2Stemmer@N@internal@F@containsVowel#&1$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#l#l#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.cpp",
+        "file_last_write" : 1477469629
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/porter2_stemmer.h",
+        "file_last_write" : 1477472682
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/sort_2dim_vecs.h",
+                "kind" : 2,
+                "line" : 27,
+                "name" : "STRUCT<T1, T2>",
+                "parent_name" : "",
+                "usr" : "c:@ST>2#T#T@STRUCT"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/sort_2dim_vecs.h",
+                "kind" : 2,
+                "line" : 41,
+                "name" : "SORT_template<T1, T2>",
+                "parent_name" : "",
+                "usr" : "c:@CT>2#T#T@SORT_template"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/sort_2dim_vecs.h",
+                "kind" : 7,
+                "line" : 57,
+                "name" : "STRUCT_SORT(const STRUCT<T1, T2> &, const STRUCT<T1, T2> &)",
+                "parent_name" : "SORT_template<T1, T2>",
+                "usr" : "c:@CT>2#T#T@SORT_template@F@STRUCT_SORT#&1>@ST>2#T#T@STRUCT2t0.0t0.1#S0_#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/sort_2dim_vecs.h",
+                "kind" : 7,
+                "line" : 88,
+                "name" : "operator(const STRUCT<T1, T2> &, const STRUCT<T1, T2> &)",
+                "parent_name" : "SORT_template<T1, T2>",
+                "usr" : "c:@CT>2#T#T@SORT_template@F@operator()#&1>@ST>2#T#T@STRUCT2t0.0t0.1#S0_#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/sort_2dim_vecs.h",
+                "kind" : 2,
+                "line" : 105,
+                "name" : "SORT_2DIMENSIONAL_VEC<T1, T2>",
+                "parent_name" : "",
+                "usr" : "c:@CT>2#T#T@SORT_2DIMENSIONAL_VEC"
+            },
+            {
+                "column" : 33,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/sort_2dim_vecs.h",
+                "kind" : 7,
+                "line" : 115,
+                "name" : "inner_sort_func_VEC(std::vector<T1>, std::vector<T2>, bool, bool, int)",
+                "parent_name" : "SORT_2DIMENSIONAL_VEC<T1, T2>",
+                "usr" : "c:@CT>2#T#T@SORT_2DIMENSIONAL_VEC@F@inner_sort_func_VEC#>@N@std@N@__1@CT>2#T#T@vector2t0.0>@N@std@N@__1@CT>1#T@allocator1S1_#>@N@std@N@__1@CT>2#T#T@vector2t0.1>@N@std@N@__1@CT>1#T@allocator1S4_#b#b#I#"
+            },
+            {
+                "column" : 33,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/sort_2dim_vecs.h",
+                "kind" : 7,
+                "line" : 149,
+                "name" : "inner_sort_func_MAP(std::unordered_map<T1, T2>, bool, bool)",
+                "parent_name" : "SORT_2DIMENSIONAL_VEC<T1, T2>",
+                "usr" : "c:@CT>2#T#T@SORT_2DIMENSIONAL_VEC@F@inner_sort_func_MAP#>@N@std@N@__1@CT>5#T#T#T#T#T@unordered_map5t0.0t0.1>@N@std@N@__1@ST>1#T@hash1S1_>@N@std@N@__1@ST>1#T@equal_to1S1_>@N@std@N@__1@CT>1#T@allocator1>@N@std@N@__1@ST>2#T#T@pair21S1_S2_#b#b#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/sort_2dim_vecs.h",
+        "file_last_write" : 1481809949
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 2,
+                "line" : 50,
+                "name" : "basic_string_view<Char, Traits>",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 76,
+                "name" : "basic_string_view<Char, Traits>(const std::basic_string<Char, Traits, Allocator> &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@FT@>1#Tbasic_string_view<Char, Traits>#&1>@N@std@N@__1@CT>3#T#T#T@basic_string3t0.0t0.1t1.0#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 96,
+                "name" : "begin",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@begin#1"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 101,
+                "name" : "end",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@end#1"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 106,
+                "name" : "cbegin",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@cbegin#1"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 111,
+                "name" : "cend",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@cend#1"
+            },
+            {
+                "column" : 28,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 116,
+                "name" : "rbegin",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@rbegin#1"
+            },
+            {
+                "column" : 28,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 121,
+                "name" : "rend",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@rend#1"
+            },
+            {
+                "column" : 28,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 126,
+                "name" : "crbegin",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@crbegin#1"
+            },
+            {
+                "column" : 28,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 131,
+                "name" : "crend",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@crend#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 136,
+                "name" : "size",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@size#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 141,
+                "name" : "length",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@length#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 146,
+                "name" : "max_size",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@max_size#1"
+            },
+            {
+                "column" : 20,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 151,
+                "name" : "empty",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@empty#1"
+            },
+            {
+                "column" : 31,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 156,
+                "name" : "operator[](size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@operator[]#l#1"
+            },
+            {
+                "column" : 21,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 161,
+                "name" : "at(size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@at#l#1"
+            },
+            {
+                "column" : 31,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 168,
+                "name" : "front",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@front#1"
+            },
+            {
+                "column" : 31,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 173,
+                "name" : "back",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@back#1"
+            },
+            {
+                "column" : 29,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 178,
+                "name" : "data",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@data#1"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 183,
+                "name" : "clear",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@clear#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 189,
+                "name" : "remove_prefix(size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@remove_prefix#l#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 195,
+                "name" : "remove_suffix(size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@remove_suffix#l#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 200,
+                "name" : "swap(basic_string_view<Char, Traits> &)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@swap#& #"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 208,
+                "name" : "operator basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-1-0>",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@FT@>1#Toperator basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-1-0>#1"
+            },
+            {
+                "column" : 48,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 214,
+                "name" : "to_string(const Allocator &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@FT@>1#Tto_string#&1t1.0#1"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 220,
+                "name" : "copy(Char *, size_type, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@copy#*t0.0#l#l#1"
+            },
+            {
+                "column" : 33,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 230,
+                "name" : "substr(size_type, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@substr#l#l#1"
+            },
+            {
+                "column" : 9,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 238,
+                "name" : "compare(basic_string_view<Char, Traits>)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@compare# #1"
+            },
+            {
+                "column" : 19,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 254,
+                "name" : "compare(size_type, size_type, basic_string_view<Char, Traits>)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@compare#l#l# #1"
+            },
+            {
+                "column" : 19,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 260,
+                "name" : "compare(size_type, size_type, basic_string_view<Char, Traits>, size_type, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@compare#l#l# #l#l#1"
+            },
+            {
+                "column" : 19,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 266,
+                "name" : "compare(const Char *)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@compare#*1t0.0#1"
+            },
+            {
+                "column" : 19,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 271,
+                "name" : "compare(size_type, size_type, const Char *)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@compare#l#l#*1t0.0#1"
+            },
+            {
+                "column" : 19,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 276,
+                "name" : "compare(size_type, size_type, const Char *, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@compare#l#l#*1t0.0#l#1"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 282,
+                "name" : "find(basic_string_view<Char, Traits>, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find# #l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 294,
+                "name" : "find(Char, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find#t0.0#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 299,
+                "name" : "find(const Char *, size_type, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find#*1t0.0#l#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 304,
+                "name" : "find(const Char *, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find#*1t0.0#l#1"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 309,
+                "name" : "rfind(basic_string_view<Char, Traits>, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@rfind# #l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 328,
+                "name" : "rfind(Char, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@rfind#t0.0#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 333,
+                "name" : "rfind(const Char *, size_type, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@rfind#*1t0.0#l#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 338,
+                "name" : "rfind(const Char *, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@rfind#*1t0.0#l#1"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 343,
+                "name" : "find_first_of(basic_string_view<Char, Traits>, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_first_of# #l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 356,
+                "name" : "find_first_of(Char, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_first_of#t0.0#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 361,
+                "name" : "find_first_of(const Char *, size_type, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_first_of#*1t0.0#l#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 367,
+                "name" : "find_first_of(const Char *, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_first_of#*1t0.0#l#1"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 372,
+                "name" : "find_last_of(basic_string_view<Char, Traits>, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_last_of# #l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 386,
+                "name" : "find_last_of(Char, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_last_of#t0.0#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 392,
+                "name" : "find_last_of(const Char *, size_type, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_last_of#*1t0.0#l#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 398,
+                "name" : "find_last_of(const Char *, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_last_of#*1t0.0#l#1"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 403,
+                "name" : "find_first_not_of(basic_string_view<Char, Traits>, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_first_not_of# #l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 419,
+                "name" : "find_first_not_of(Char, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_first_not_of#t0.0#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 425,
+                "name" : "find_first_not_of(const Char *, size_type, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_first_not_of#*1t0.0#l#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 431,
+                "name" : "find_first_not_of(const Char *, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_first_not_of#*1t0.0#l#1"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 437,
+                "name" : "find_last_not_of(basic_string_view<Char, Traits>, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_last_not_of# #l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 454,
+                "name" : "find_last_not_of(Char, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_last_not_of#t0.0#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 460,
+                "name" : "find_last_not_of(const Char *, size_type, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_last_not_of#*1t0.0#l#l#1"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 7,
+                "line" : 466,
+                "name" : "find_last_not_of(const Char *, size_type)",
+                "parent_name" : "basic_string_view<Char, Traits>",
+                "usr" : "c:@N@meta@N@util@CT>2#T#T@basic_string_view@F@find_last_not_of#*1t0.0#l#1"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 489,
+                "name" : "operator==(basic_string_view<Char, Traits>, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator==#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#S0_#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 497,
+                "name" : "operator==(basic_string_view<Char, Traits>, identity<basic_string_view<Char, Traits> >)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator==#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1# #"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 504,
+                "name" : "operator==(identity<basic_string_view<Char, Traits> >, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator==# #>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 511,
+                "name" : "operator!=(basic_string_view<Char, Traits>, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator!=#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#S0_#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 519,
+                "name" : "operator!=(basic_string_view<Char, Traits>, identity<basic_string_view<Char, Traits> >)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator!=#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1# #"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 526,
+                "name" : "operator!=(identity<basic_string_view<Char, Traits> >, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator!=# #>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 533,
+                "name" : "operator<(basic_string_view<Char, Traits>, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator<#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#S0_#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 540,
+                "name" : "operator<(basic_string_view<Char, Traits>, identity<basic_string_view<Char, Traits> >)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator<#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1# #"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 547,
+                "name" : "operator<(identity<basic_string_view<Char, Traits> >, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator<# #>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 554,
+                "name" : "operator>(basic_string_view<Char, Traits>, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator>#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#S0_#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 561,
+                "name" : "operator>(basic_string_view<Char, Traits>, identity<basic_string_view<Char, Traits> >)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator>#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1# #"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 568,
+                "name" : "operator>(identity<basic_string_view<Char, Traits> >, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator># #>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 575,
+                "name" : "operator<=(basic_string_view<Char, Traits>, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator<=#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#S0_#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 583,
+                "name" : "operator<=(basic_string_view<Char, Traits>, identity<basic_string_view<Char, Traits> >)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator<=#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1# #"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 590,
+                "name" : "operator<=(identity<basic_string_view<Char, Traits> >, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator<=# #>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 597,
+                "name" : "operator>=(basic_string_view<Char, Traits>, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator>=#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#S0_#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 605,
+                "name" : "operator>=(basic_string_view<Char, Traits>, identity<basic_string_view<Char, Traits> >)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator>=#>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1# #"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 612,
+                "name" : "operator>=(identity<basic_string_view<Char, Traits> >, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator>=# #>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.0t0.1#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 620,
+                "name" : "operator<<(std::basic_ostream<Char, Traits> &, basic_string_view<Char, Traits>)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>2#T#Toperator<<#&>@N@std@N@__1@CT>2#T#T@basic_ostream2t0.0t0.1#>@N@meta@N@util@CT>2#T#T@basic_string_view2S2_S3_#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 644,
+                "name" : "hash_append(HashAlgorithm &, const basic_string_view<Char, Traits> &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>3#T#T#Thash_append#&t0.0#&1>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.1t0.2#"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+                "kind" : 6,
+                "line" : 652,
+                "name" : "hash_append(HashAlgorithm &, const basic_string_view<Char, Traits> &)",
+                "parent_name" : "",
+                "usr" : "c:@N@meta@N@util@FT@>3#T#T#Thash_append#&t0.0#&1>@N@meta@N@util@CT>2#T#T@basic_string_view2t0.1t0.2#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/string_view.h",
+        "file_last_write" : 1477472719
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_associations.h",
+                "kind" : 2,
+                "line" : 25,
+                "name" : "associations<T>",
+                "parent_name" : "",
+                "usr" : "c:@ST>1#T@associations"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_associations.h",
+                "kind" : 2,
+                "line" : 35,
+                "name" : "associations_class",
+                "parent_name" : "",
+                "usr" : "c:@CT>1#T@associations_class"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_associations.h",
+                "kind" : 7,
+                "line" : 60,
+                "name" : "associations_mapping",
+                "parent_name" : "associations_class<T>",
+                "usr" : "c:@CT>1#T@associations_class@F@associations_mapping#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_associations.h",
+                "kind" : 7,
+                "line" : 78,
+                "name" : "correlation_assoc(long long, long long, long long)",
+                "parent_name" : "associations_class<T>",
+                "usr" : "c:@CT>1#T@associations_class@F@correlation_assoc#K#K#K#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_associations.h",
+                "kind" : 3,
+                "line" : 101,
+                "name" : "struct_map_assoc",
+                "parent_name" : "",
+                "usr" : "c:@CT>1#T@associations_class@S@struct_map_assoc"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_associations.h",
+                "kind" : 7,
+                "line" : 112,
+                "name" : "sort_by_correlation(const associations_class::struct_map_assoc &, const associations_class::struct_map_assoc &)",
+                "parent_name" : "associations_class<T>",
+                "usr" : "c:@CT>1#T@associations_class@F@sort_by_correlation#&1$@CT>1#T@associations_class@S@struct_map_assoc#S0_#S"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_associations.h",
+                "kind" : 7,
+                "line" : 121,
+                "name" : "correlation_assoc_single(long long, long long, std::vector<std::string>, long long, int)",
+                "parent_name" : "associations_class<T>",
+                "usr" : "c:@CT>1#T@associations_class@F@correlation_assoc_single#K#K#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#K#I#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_associations.h",
+                "kind" : 7,
+                "line" : 203,
+                "name" : "correlation_assoc_multiple(std::vector<int>, long long, std::vector<std::string>, long long, int, bool)",
+                "parent_name" : "associations_class<T>",
+                "usr" : "c:@CT>1#T@associations_class@F@correlation_assoc_multiple#$@N@std@N@__1@C@vector>#I#$@N@std@N@__1@C@allocator>#I#K#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S3_#K#I#b#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_associations.h",
+        "file_last_write" : 1481809984
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 2,
+                "line" : 32,
+                "name" : "term_matrix",
+                "parent_name" : "",
+                "usr" : "c:@C@term_matrix"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 62,
+                "name" : "dtm_token(std::string, std::vector<std::string>, std::string, std::string, bool, char, long long, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, std::string, std::string, int, double, int, int, int, bool, bool, std::string, std::string)",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@dtm_token#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#S0_#b#C#K#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#S0_#S0_#I#d#I#I#I#b#b#S0_#S0_#"
+            },
+            {
+                "column" : 18,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 91,
+                "name" : "batch_insertion(int, int, int)",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@batch_insertion#I#I#I#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 2,
+                "line" : 112,
+                "name" : "keep_idx<T>",
+                "parent_name" : "",
+                "usr" : "c:@C@term_matrix@ST>1#T@keep_idx"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 122,
+                "name" : "sort_by_norm(const keep_idx<double> &, const keep_idx<double> &)",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@sort_by_norm#&1$@C@term_matrix@S@keep_idx>#d#S0_#S"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 6,
+                "line" : 132,
+                "name" : "l1_l2_norm(int, std::vector<T>, std::string)",
+                "parent_name" : "",
+                "usr" : "c:@C@term_matrix@FT@>1#Tl1_l2_norm#I#>@N@std@N@__1@CT>2#T#T@vector2t0.0>@N@std@N@__1@CT>1#T@allocator1S1_#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 238,
+                "name" : "document_term_matrix(std::vector<std::string>, std::vector<std::string>, std::string, std::string, long long, std::string, bool, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, int, double, int, int, int, bool, long long, std::string, bool)",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@document_term_matrix#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#S0_#S1_#S1_#K#S1_#b#S1_#b#b#b#b#b#b#b#S1_#b#I#S1_#I#I#I#I#S1_#I#d#I#I#I#b#K#S1_#b#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 787,
+                "name" : "term_document_matrix(std::vector<std::string>, std::vector<std::string>, std::string, std::string, long long, std::string, bool, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, int, double, int, int, int, bool, long long, std::string, bool)",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@term_document_matrix#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#S0_#S1_#S1_#K#S1_#b#S1_#b#b#b#b#b#b#b#S1_#b#I#S1_#I#I#I#I#S1_#I#d#I#I#I#b#K#S1_#b#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 814,
+                "name" : "sparsity(int)",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@sparsity#I#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 3,
+                "line" : 834,
+                "name" : "adjusted_sp_mat",
+                "parent_name" : "",
+                "usr" : "c:@C@term_matrix@S@adjusted_sp_mat"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 847,
+                "name" : "adjust_sparsity(int, std::vector<std::string>, double, bool)",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@adjust_sparsity#I#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#d#b#"
+            },
+            {
+                "column" : 18,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 881,
+                "name" : "Sparse_Sums(int, bool)",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@Sparse_Sums#I#b#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 910,
+                "name" : "most_freq_terms(int, std::vector<std::string>, long long, bool, int)",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@most_freq_terms#I#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#K#b#I#"
+            },
+            {
+                "column" : 21,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 954,
+                "name" : "output_data_sparsity",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@output_data_sparsity#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 3,
+                "line" : 963,
+                "name" : "struct_term_matrix",
+                "parent_name" : "",
+                "usr" : "c:@C@term_matrix@S@struct_term_matrix"
+            },
+            {
+                "column" : 24,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+                "kind" : 7,
+                "line" : 981,
+                "name" : "output_data",
+                "parent_name" : "term_matrix",
+                "usr" : "c:@C@term_matrix@F@output_data#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/term_matrix.h",
+        "file_last_write" : 1481810112
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 2,
+                "line" : 32,
+                "name" : "big_files",
+                "parent_name" : "",
+                "usr" : "c:@C@big_files"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 49,
+                "name" : "MEM_splitter(std::string)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@MEM_splitter#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 65,
+                "name" : "bytes_converter(std::string, std::string)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@bytes_converter#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 91,
+                "name" : "SAVE_string(std::string, std::string)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@SAVE_string#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#"
+            },
+            {
+                "column" : 43,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 100,
+                "name" : "Batch_calculation(long long, int)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@Batch_calculation#K#I#"
+            },
+            {
+                "column" : 28,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 109,
+                "name" : "batch_num(long long, int)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@batch_num#K#I#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 133,
+                "name" : "bytes_splitter(std::string, int, std::string, std::string, bool, bool)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@bytes_splitter#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#S0_#S0_#b#b#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 259,
+                "name" : "batch_parser(std::string, std::string, std::string, std::string, int, bool, bool)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@batch_parser#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#S0_#S0_#I#b#b#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 405,
+                "name" : "wrapper_batches_parser(std::string, std::string, std::string, std::string, int, bool, bool)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@wrapper_batches_parser#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#S0_#S0_#I#b#b#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 447,
+                "name" : "res_TOKEN(std::string, std::vector<std::string>, std::string, std::string, bool, char, long long, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, std::string, std::string, int, double, int, int, int, bool, bool, std::string, std::string)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@res_TOKEN#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#S0_#b#C#K#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#S0_#S0_#I#d#I#I#I#b#b#S0_#S0_#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 648,
+                "name" : "vocabulary_counts_folder(std::string, std::string, int, bool)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@vocabulary_counts_folder#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#b#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 742,
+                "name" : "vocabulary_count_parser(std::string, std::string, std::string, std::vector<std::string>, std::string, int, bool, bool, std::string, std::string, long long, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, int, double, int, int, int, bool)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@vocabulary_count_parser#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#S0_#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#I#b#b#S0_#S0_#K#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#I#d#I#I#I#b#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 921,
+                "name" : "batch_tokenizer_bytes(std::string, std::string, int, int, std::vector<std::string>, std::string, std::string, char, int, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, std::string, int, double, int, int, int, bool, bool, std::string)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@batch_tokenizer_bytes#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#I#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#S0_#C#I#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#S0_#I#d#I#I#I#b#b#S0_#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+                "kind" : 7,
+                "line" : 1034,
+                "name" : "wrapper_batch_tokenizer_bytes(std::string, std::string, int, int, std::vector<std::string>, std::string, std::string, char, int, std::string, bool, bool, bool, bool, bool, bool, bool, std::string, bool, int, std::string, int, int, int, int, std::string, std::string, int, double, int, int, int, bool, std::string, bool)",
+                "parent_name" : "big_files",
+                "usr" : "c:@C@big_files@F@wrapper_batch_tokenizer_bytes#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#I#$@N@std@N@__1@C@vector>#S0_#$@N@std@N@__1@C@allocator>#S0_#S0_#S0_#C#I#S0_#b#b#b#b#b#b#b#S0_#b#I#S0_#I#I#I#I#S0_#S0_#I#d#I#I#I#b#S0_#b#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_big_files.h",
+        "file_last_write" : 1481810541
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 2,
+                "line" : 23,
+                "name" : "TOKEN_stats",
+                "parent_name" : "",
+                "usr" : "c:@C@TOKEN_stats"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 34,
+                "name" : "list_files(const std::string &, bool)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@list_files#&1$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#b#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 87,
+                "name" : "path_2vector(std::string, std::string, char)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@path_2vector#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#C#"
+            },
+            {
+                "column" : 42,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 134,
+                "name" : "frequency_distribution(std::vector<std::string> &, std::string, std::string, char)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@frequency_distribution#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#S2_#S2_#C#"
+            },
+            {
+                "column" : 55,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 189,
+                "name" : "count_characters(std::vector<std::string> &, std::string, std::string, char)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@count_characters#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#S2_#S2_#C#"
+            },
+            {
+                "column" : 76,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 246,
+                "name" : "collocations_ngrams(std::vector<std::string> &, std::string, std::string, char, std::string)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@collocations_ngrams#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#S2_#S2_#C#S2_#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 367,
+                "name" : "levenshtein_dist(std::string &, std::string &)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@levenshtein_dist#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 411,
+                "name" : "cosine_dist(std::string &, std::string &, std::string)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@cosine_dist#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#S1_#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 497,
+                "name" : "char_n_grams(std::string &, int, bool, bool)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@char_n_grams#&$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#b#b#"
+            },
+            {
+                "column" : 12,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 544,
+                "name" : "dice_similarity(std::string, std::string, int)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@dice_similarity#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#I#"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 589,
+                "name" : "dissimilarity_mat(std::vector<std::string> &, int, std::string, std::string, double, bool, bool, int)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@dissimilarity_mat#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#I#S2_#S2_#d#b#b#I#"
+            },
+            {
+                "column" : 63,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+                "kind" : 7,
+                "line" : 654,
+                "name" : "look_up_tbl(std::vector<std::string> &, int)",
+                "parent_name" : "TOKEN_stats",
+                "usr" : "c:@C@TOKEN_stats@F@look_up_tbl#&$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S2_#I#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/token_stats.h",
+        "file_last_write" : 1481812208
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 2,
+                "line" : 35,
+                "name" : "TOKEN",
+                "parent_name" : "",
+                "usr" : "c:@C@TOKEN"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 57,
+                "name" : "read_file(char, bool)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@read_file#C#b#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 91,
+                "name" : "LOCALE_FUNCTION(std::string, bool, std::string)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@LOCALE_FUNCTION#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#b#S0_#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 114,
+                "name" : "conv_to_lower(std::string)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@conv_to_lower#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 138,
+                "name" : "read_stopwords(std::vector<std::string>)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@read_stopwords#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 146,
+                "name" : "remove_all(std::string)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@remove_all#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 157,
+                "name" : "conv_to_upper(std::string)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@conv_to_upper#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 181,
+                "name" : "remove_punctuation",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@remove_punctuation#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 198,
+                "name" : "remove_numbers",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@remove_numbers#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 215,
+                "name" : "trim_token",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@trim_token#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 233,
+                "name" : "TOKENIZER(std::string, bool, int)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@TOKENIZER#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#b#I#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 277,
+                "name" : "remove_stopwords(int)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@remove_stopwords#I#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 345,
+                "name" : "keep_n_char(long long, int, int)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@keep_n_char#K#I#I#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 409,
+                "name" : "porter2_stemmer(int)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@porter2_stemmer#I#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 428,
+                "name" : "NGRAM_SEQ(int, double, int, int, int, bool)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@NGRAM_SEQ#I#d#I#I#I#b#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 437,
+                "name" : "NGRAM_OVERLAP(int, bool)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@NGRAM_OVERLAP#I#b#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 445,
+                "name" : "secondary_n_grams(std::vector<std::string>, int, std::string, int)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@secondary_n_grams#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#I#S1_#I#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 483,
+                "name" : "build_n_grams(int, int, std::string, int)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@build_n_grams#I#I#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#"
+            },
+            {
+                "column" : 18,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 503,
+                "name" : "SEQ(int, int, int)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@SEQ#I#I#I#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 536,
+                "name" : "secondary_skip_n_grams(std::vector<std::string>, int, int, std::string)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@secondary_skip_n_grams#$@N@std@N@__1@C@vector>#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#$@N@std@N@__1@C@allocator>#S1_#I#I#S1_#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 589,
+                "name" : "skip_n_grams(int, int, std::string, int)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@skip_n_grams#I#I#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 618,
+                "name" : "vocab_counts_save(std::string)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@vocab_counts_save#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 642,
+                "name" : "concatenate(std::string)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@concatenate#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 658,
+                "name" : "save_2file(std::string, std::string)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@save_2file#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 680,
+                "name" : "append_2file(std::string, std::string)",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@append_2file#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#S0_#"
+            },
+            {
+                "column" : 30,
+                "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+                "kind" : 7,
+                "line" : 700,
+                "name" : "_object_vector",
+                "parent_name" : "TOKEN",
+                "usr" : "c:@C@TOKEN@F@_object_vector#"
+            }
+        ],
+        "file" : "/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/src/tokenization.h",
+        "file_last_write" : 1481811886
+    }
+]

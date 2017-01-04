@@ -1,0 +1,21 @@
+{
+    "args" : [
+        "-I/usr/lib/rstudio/resources/libclang/builtin-headers/3.5",
+        "-I/usr/lib/rstudio/resources/libclang/builtin-headers/libc++/3.5",
+        "-I/home/lampros/R/x86_64-pc-linux-gnu-library/3.2/Rcpp/include",
+        "-I/home/lampros/R/x86_64-pc-linux-gnu-library/3.2/RcppArmadillo/include",
+        "-I/home/lampros/R/x86_64-pc-linux-gnu-library/3.2/BH/include",
+        "-std=c++11",
+        "-I/usr/share/R/include",
+        "-DNDEBUG",
+        "-I/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/inst/include/",
+        "-fopenmp",
+        "-DARMA_64BIT_WORD",
+        "-fpic",
+        "-fstack-protector",
+        "-D_FORTIFY_SOURCE=2"
+    ],
+    "hash" : "148354644014834514811483451481",
+    "is_cpp" : true,
+    "pch" : "Rcpp"
+}

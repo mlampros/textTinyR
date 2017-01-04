@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n# source(\"/home/lampros/Desktop/kaggle_gpu/add_GITHUB/VIGNETTE_textTinyR.R\")\n\n\nrmarkdown::render(input = \"/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/vignettes/functionality_of_textTinyR_package.Rmd\", \n                  \n                  output_file = \"/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/vignettes/functionality_of_textTinyR_package.html\")\n\n\nutils::browseURL(\"/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/vignettes/functionality_of_textTinyR_package.html\")\n",
+    "created" : 1483533524538.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1163771881",
+    "id" : "FB233927",
+    "lastKnownWriteTime" : 1483347197,
+    "last_content_update" : 1483347197,
+    "path" : "~/Desktop/kaggle_gpu/add_GITHUB/VIGNETTE_textTinyR.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
