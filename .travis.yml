@@ -29,15 +29,8 @@ before_install:
 install:
     - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
     - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
-script:
-    - mkdir build && cd build && cmake .. && cmake --build .
-
-
-
-
-
-
-   
+#script:
+#    - mkdir build && cd build && cmake .. && cmake --build . 
 
 r_packages:
   - devtools
