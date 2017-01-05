@@ -3,7 +3,8 @@ branches:
     only:
         - master
 language: r
-compiler: clang
+#compiler: clang
+#compiler: gcc
 sudo: true
 addons:
     apt:
@@ -23,7 +24,22 @@ addons:
             - clang-3.7
             - g++-5
             - gcc-5
-env: CMAKE_BUILD_TYPE=RELEASE
+            
+            
+#env: CMAKE_BUILD_TYPE=RELEASE
+
+os:
+  - linux
+
+compiler:
+  - gcc
+
+env:
+  global:
+    - R_BUILD_ARGS="--no-build-vignettes --no-manual"
+    - R_CHECK_ARGS="--no-build-vignettes --no-manual --as-cran"
+
+
 before_install:
     - sudo apt-get update -qq
     - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
