@@ -3,9 +3,11 @@
 language: r
 warnings_are_errors: false
 sudo: required
-cache: packages
 
-dist: precise               # specify 'precise' rather than 'trusty'
+dist: precise         # specify 'precise' rather than 'trusty'
+group: legacy
+
+cache: packages               
 
 os:
   - linux
