@@ -1,4 +1,9 @@
 
+[![Travis-CI Build Status](https://travis-ci.org/mlampros/textTinyR.svg?branch=master)](https://travis-ci.org/mlampros/textTinyR)
+[![codecov.io](https://codecov.io/github/mlampros/textTinyR/coverage.svg?branch=master)](https://codecov.io/github/mlampros/textTinyR?branch=master)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/mlampros/textTinyR?branch=master&svg=true)](https://ci.appveyor.com/project/mlampros/textTinyR/branch/master)
+
+
 ## textTinyR
 <br>
 
