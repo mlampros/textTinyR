@@ -12,7 +12,15 @@ The textTinyR package consists of text pre-processing functions for small or big
 * there is no support for chinese, japanese, korean, thai or languages with ambiguous word boundaries.
 * there is no support functions for utf-locale on windows, meaning only english character strings or files can be input and pre-processed.
 
-<br><br>
+<br>
+
+*update (06-01-2017):* On a Unix Operating System (OS) the boost library and especially the boost-locale are necessary,
+
+* **Debian OS** : sudo apt-get install libboost-all-dev
+* **Fedora OS** : yum install boost-devel
+* **Mac OS**    : brew install boost
+
+<br>
 
 To install the package from CRAN use, 
 
