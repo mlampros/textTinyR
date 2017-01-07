@@ -4,6 +4,7 @@
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/mlampros/textTinyR?branch=master&svg=true)](https://ci.appveyor.com/project/mlampros/textTinyR/branch/master)
 
 
+
 ## textTinyR
 <br>
 
