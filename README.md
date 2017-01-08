@@ -1,7 +1,9 @@
 
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/textTinyR)](http://cran.r-project.org/package=textTinyR)
 [![Travis-CI Build Status](https://travis-ci.org/mlampros/textTinyR.svg?branch=master)](https://travis-ci.org/mlampros/textTinyR)
 [![codecov.io](https://codecov.io/github/mlampros/textTinyR/coverage.svg?branch=master)](https://codecov.io/github/mlampros/textTinyR?branch=master)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/mlampros/textTinyR?branch=master&svg=true)](https://ci.appveyor.com/project/mlampros/textTinyR/branch/master)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/textTinyR?color=blue)](http://www.r-pkg.org/pkg/textTinyR)
 
 
 
