@@ -6,14 +6,30 @@ init:
         $ErrorActionPreference = "Stop"
         Invoke-WebRequest http://raw.github.com/krlmlr/r-appveyor/master/scripts/appveyor-tool.ps1 -OutFile "..\appveyor-tool.ps1"
         Import-Module '..\appveyor-tool.ps1'
-
 install:
   ps: Bootstrap
 
 # Adapt as necessary starting from here
 
 build_script:
-  - travis-tool.sh install_deps
+  - travis-tool.sh install_r devtools
+  - travis-tool.sh install_r roxygen2
+  - travis-tool.sh install_r testthat
+  - travis-tool.sh install_r knitr
+  - travis-tool.sh install_r rmarkdown
+  - travis-tool.sh install_r Rcpp
+  - travis-tool.sh install_r RcppArmadillo
+  - travis-tool.sh install_r covr
+  - travis-tool.sh install_r htmltools
+  - travis-tool.sh install_r Matrix
+  - travis-tool.sh install_r R6
+  - travis-tool.sh install_r data.table
+  - travis-tool.sh install_r utils
+  - travis-tool.sh install_r BH
+  - travis-tool.sh install_r knitr
+  - travis-tool.sh install_r rmarkdown
+  - travis-tool.sh install_r travis-tool.sh install_deps
+
 
 test_script:
   - travis-tool.sh run_tests
