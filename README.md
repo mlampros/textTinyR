@@ -17,7 +17,7 @@ The textTinyR package consists of text pre-processing functions for small or big
 
 <br>
 
-*update (06-01-2017):* On a Unix Operating System (OS) the boost library and especially the boost-locale are necessary,
+*update (06-01-2017):* On a Linux/Unix Operating System (OS) the boost library and especially the boost-locale are necessary,
 
 * **Debian OS** : sudo apt-get install libboost-all-dev
 * **Fedora OS** : yum install boost-devel
