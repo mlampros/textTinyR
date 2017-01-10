@@ -2052,6 +2052,30 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                       tmp_adj_mat = res_adj$sparse_matrix
 
                                       tmp_TERMS = res_adj$terms
+                                      
+                                      #-------------------------------------------------------
+                                      # save the row-, column-indices, counts, terms and dimensions of the sparse-matrix, specifically for the 'term_associations' method, to avoid any indexing errors
+                                      # especially if the sparse matrix includes zero-valued columns and the "tf_idf_exclude()" function is called
+                                      # in case of zero-valued columns the 'correlation_assoc_single' function in the 'term_associations.h' header file gives a warning anyway
+                                      
+                                      private$associat_TERMS = tmp_TERMS
+                                      private$associat_COL_IDX = res_adj$update_cols
+                                      private$associat_ROW_IDX = res_adj$update_rows
+                                      private$associat_COUNTS = res_adj$update_counts
+                                      
+                                      if (self$document_term_matrix) {
+                                        
+                                        private$associat_NROW_MATR = nrow(tmp_adj_mat)
+                                        private$associat_NCOL_MATR = ncol(tmp_adj_mat)
+                                      }
+                                      
+                                      if (!self$document_term_matrix) {
+                                        
+                                        private$associat_NROW_MATR = ncol(tmp_adj_mat)      # reverse for term-document-matrix
+                                        private$associat_NCOL_MATR = nrow(tmp_adj_mat)
+                                      }
+                                      
+                                      #-------------------------------------------------------
 
                                       if (private$TF_idf) {         # it is possible that after calculating the tf-idf some terms (along rows or columns) become zero-valued
 
@@ -2061,7 +2085,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                         tmp_TERMS = tmp_TERMS[as.vector(tmp_tf_idf_idx) + 1]
                                       }
-
+                                      
                                       if (self$document_term_matrix) {
 
                                         colnames(tmp_adj_mat) = tmp_TERMS
@@ -2074,13 +2098,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                         rownames(tmp_adj_mat) = tmp_TERMS
                                       }
 
-                                      private$tm_column_indices_adjust = res_adj$update_cols           # update the private variables in case that the associations-method or the most_frequent_terms method is called
-
-                                      private$tm_row_indices_adjust = res_adj$update_rows
-
-                                      private$tm_docs_counts_adjust = res_adj$update_counts
-
-                                      private$save_terms_adjust = tmp_TERMS
+                                      private$save_terms_adjust = tmp_TERMS                         # update the private variables for the most_frequent_terms method
 
                                       private$save_sparse_mat_adjust = tmp_adj_mat
 
@@ -2088,7 +2106,6 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                       return(tmp_adj_mat)
                                     },
-
 
 
                                     #---------------------------------
@@ -2110,18 +2127,20 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                       if (!private$flag_Adjust) {
 
                                         SAVE_TERMS = private$save_terms
-                                        SAVE_SP_MAT = private$save_sparse_mat
+                                        NROW_SP_MAT = nrow(private$save_sparse_mat)
+                                        NCOL_SP_MAT = ncol(private$save_sparse_mat)
                                         COL_IDX = private$tm_column_indices
                                         ROW_IDX = private$tm_row_indices
                                         COUNTS = private$tm_docs_counts}
 
                                       else {
-
-                                        SAVE_TERMS = private$save_terms_adjust
-                                        SAVE_SP_MAT = private$save_sparse_mat_adjust
-                                        COL_IDX = private$tm_column_indices_adjust
-                                        ROW_IDX = private$tm_row_indices_adjust
-                                        COUNTS = private$tm_docs_counts_adjust
+                                        
+                                        SAVE_TERMS = private$associat_TERMS
+                                        NROW_SP_MAT = private$associat_NROW_MATR
+                                        NCOL_SP_MAT = private$associat_NCOL_MATR
+                                        COL_IDX = private$associat_COL_IDX
+                                        ROW_IDX = private$associat_ROW_IDX
+                                        COUNTS = private$associat_COUNTS
                                       }
 
                                       single_trgt_idx = single_trgt_nam = list()
@@ -2158,17 +2177,17 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                       if (self$document_term_matrix) {
 
-                                        trgt_size = nrow(SAVE_SP_MAT)}
+                                        trgt_size = NROW_SP_MAT}
 
                                       else {
 
-                                        trgt_size = ncol(SAVE_SP_MAT)
+                                        trgt_size = NCOL_SP_MAT
                                       }
 
 
                                       if (length(single_trgt_idx) == 1) {
 
-                                        tmp_lst_r = Associations_Cpp(COL_IDX + 1, ROW_IDX, COUNTS, trgt_size, SAVE_TERMS,
+                                        tmp_lst_r = Associations_Cpp(as.vector(COL_IDX + 1), as.vector(ROW_IDX), as.vector(COUNTS), trgt_size, as.vector(SAVE_TERMS),
 
                                                                      mult_target_var = numeric(0), keepTerms = keep_terms, target_var = single_trgt_idx,
 
@@ -2176,7 +2195,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                       else {
 
-                                        tmp_lst_r = Associations_Cpp(COL_IDX + 1, ROW_IDX, COUNTS, trgt_size, SAVE_TERMS,
+                                        tmp_lst_r = Associations_Cpp(as.vector(COL_IDX + 1), as.vector(ROW_IDX), as.vector(COUNTS), trgt_size, as.vector(SAVE_TERMS),
 
                                                                      mult_target_var = single_trgt_idx, keepTerms = keep_terms, target_var = -1,
 
@@ -2214,7 +2233,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                       if (is.null(keep_terms)) keep_terms = 0
                                       if (threads < 1) stop("the number of threads should be greater or equal to 1")
                                       if (!is.logical(verbose)) stop("the verbose parameter should be either TRUE or FALSE")
-
+                                      
                                       if (!private$flag_Adjust) {
 
                                         SAVE_TERMS = private$save_terms
@@ -2236,6 +2255,18 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                   ),
 
                                   private = list(
+                                    
+                                    associat_TERMS = NULL,
+                                    
+                                    associat_COL_IDX = NULL,
+                                    
+                                    associat_ROW_IDX = NULL,
+                                    
+                                    associat_COUNTS = NULL,
+                                    
+                                    associat_NROW_MATR = NULL,
+                                    
+                                    associat_NCOL_MATR = NULL,
 
                                     save_terms = NULL,
 
@@ -2247,16 +2278,10 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                     tm_docs_counts = NULL,
 
-                                    tm_column_indices_adjust = NULL,
-
-                                    tm_row_indices_adjust = NULL,
-
-                                    tm_docs_counts_adjust = NULL,
-
                                     save_terms_adjust = NULL,
 
                                     save_sparse_mat_adjust = NULL,
-
+                                    
                                     normlz_tf = NULL,
 
                                     flag_Adjust = FALSE,
