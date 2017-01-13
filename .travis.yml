@@ -55,12 +55,12 @@ before_install:
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install cmake; fi
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install wget; fi
   #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install homebrew/science/armadillo; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.xz; fi # download, build, install the latest armadillo version
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; tar xf armadillo-7.600.2.tar.xz; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; cd armadillo-7.600.2/; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; cmake .; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; make; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; sudo make install; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.xz; fi # download, build, install the latest armadillo version
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then tar xf armadillo-7.600.2.tar.xz; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then cd armadillo-7.600.2/; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then cmake .; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then make; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then sudo make install; fi
 
   - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew install boost; fi
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew update; fi
