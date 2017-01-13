@@ -49,37 +49,37 @@ before_install:
   #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then sudo chown -R `whoami`:admin /usr/local/bin; fi       # http://stackoverflow.com/questions/26647412/homebrew-could-not-symlink-usr-local-bin-is-not-writable
   #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew update; fi
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew update; fi  
-  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew reinstall gcc --without-multilib; fi    # enable OpenMP
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew reinstall gcc --without-multilib; fi    # enable OpenMP
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew link --overwirte gcc; fi 
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew update; fi
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install cmake; fi
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install wget; fi
   #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install homebrew/science/armadillo; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.xz; fi # download, build, install the latest armadillo version
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then tar xf armadillo-7.600.2.tar.xz; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then cd armadillo-7.600.2/; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then cmake .; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then make; fi
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then sudo make install; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.xz; fi # download, build, install the latest armadillo version
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then tar xf armadillo-7.600.2.tar.xz; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then cd armadillo-7.600.2/; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then cmake .; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then make; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then sudo make install; fi
 
-  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then brew install boost; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install boost; fi
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew update; fi
 
 
 r_packages:
-  - devtools
-  - roxygen2
-  - testthat
-  - Rcpp
-  - RcppArmadillo
-  - covr
-  - Matrix
-  - R6
-  - data.table
-  - utils
-  - BH
-  - knitr
-  - rmarkdown
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; devtools; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; roxygen2; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; testthat; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; Rcpp; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; RcppArmadillo; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; covr; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; Matrix; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; R6; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; data.table; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; utils; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; BH; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; knitr; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; rmarkdown; fi
   
 
 after_success:
