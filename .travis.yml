@@ -8,11 +8,11 @@ branches:
         - master
 
 os:
-  #- linux
+  - linux
   - osx
 
 compiler:
-  #- gcc
+  - gcc
   - clang
 
 env:
