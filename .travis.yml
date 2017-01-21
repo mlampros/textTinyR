@@ -1,33 +1,19 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-# the 'addons' is based on : https://github.com/travis-ci/travis-ci/issues/6481
+
+language: r
+sudo: true
 
 branches:
     only:
         - master
-        
-language: r
-sudo: true
-addons:
-    apt:
-        sources:
-            - ubuntu-toolchain-r-test
-            - kalakris-cmake
-            #- llvm-toolchain-precise-3.7
-            - boost-latest
-        packages:
-            - cmake
-            - libboost1.55-dev
-            - libboost-filesystem1.55-dev
-            - libboost-locale1.55-dev
-            #- clang-3.7
-            #- g++-5
-            #- gcc-5
 
 os:
   - linux
+  #- osx
 
 compiler:
   - gcc
+  #- clang
 
 env:
   global:
@@ -37,25 +23,51 @@ env:
 
 
 before_install:
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq install gcc-4.8; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq install g++-4.8; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 90; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.8 90; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install libgfortran3; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install r-base-dev; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install libarmadillo-dev; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install libarmadillo2; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install libopenblas-dev; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install libblas-dev liblapack-dev; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install libarpack++2-dev; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install gfortran; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ln -s /usr/lib/x86_64-linux-gnu/libgfortran.so.3 /usr/lib/libgfortran.so; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
-    
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get update -qq; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get install -qq; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo add-apt-repository -y 'deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty-3.8 main'; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo add-apt-repository ppa:boost-latest/ppa -y; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get update -qq; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get install libboost1.55-dev libboost-filesystem1.55-dev libboost-locale1.55-dev; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get -qq install gcc-4.9; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get -qq install g++-4.9; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 90; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 90; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.9 90; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get install libarmadillo-dev libopenblas-dev libblas-dev libarpack++2-dev liblapack-dev; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get install libgfortran3 gfortran; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo ln -s /usr/lib/x86_64-linux-gnu/libgfortran.so.3 /usr/lib/libgfortran.so; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get install r-base-dev; fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get update; fi
+  
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]] && [[ "$CXX" == "clang++" ]]; then sudo apt-get install --allow-unauthenticated -qq clang-3.8 lldb-3.8; fi
+  - if [[ $TRAVIS_OS_NAME == 'linux' ]] && [[ "$CXX" == "clang++" ]]; then export CXX="clang++-3.8" CC="clang-3.8"; fi
+  
+  
+  
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then sudo chown -R `whoami`:admin /usr/local/bin; fi       # http://stackoverflow.com/questions/26647412/homebrew-could-not-symlink-usr-local-bin-is-not-writable
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew update; fi
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew update; fi  
+  #-------------------------------------------------------------------------------------------------------
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew reinstall gcc --without-multilib; fi    # enable OpenMP
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew link --overwirte gcc; fi 
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew update; fi
+  #---------------------------------------------------------------------------------------------------------
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install cmake; fi
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install wget; fi
+  #---------------------------------------------------------------------------------------------------------
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install homebrew/science/armadillo; fi
+  #---------------------------------------------------------------------------------------------------------
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then wget http://sourceforge.net/projects/arma/files/armadillo-7.600.2.tar.xz; fi # download, build, install the latest armadillo version
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then tar xf armadillo-7.600.2.tar.xz; fi
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then cd armadillo-7.600.2/; fi
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then cmake .; fi
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then make; fi
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then sudo make install; fi
+
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install boost; fi
+  #- if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew update; fi
 
 r_packages:
   - devtools
