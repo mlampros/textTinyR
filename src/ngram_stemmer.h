@@ -551,7 +551,7 @@ class ngram_stemmer {
           tmp_nested[tmp_vec[j]] = out[tmp_vec[j]];
         }
 
-        int idx_min = std::numeric_limits<int>::max();
+        int idx_min = std::numeric_limits<int>::max();          // maximum value for an 'int' is 2147483647 and for 'long long' 9223372036854775807 (in case that it must be modified)
 
         std::string tmp_char = VEC[i];
 

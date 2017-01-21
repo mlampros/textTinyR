@@ -134,7 +134,7 @@ class SORT_2DIMENSIONAL_VEC {
         struct_result[i] = tmp_struct;
       }
 
-      SORT_template<T1,T2> srt(sort, ascend);                     // composition inside class-method
+      SORT_template<T1,T2> srt(sort, ascend);                     // composition inside class-method using class 'SORT_template' 
 
       std::sort(struct_result.begin(), struct_result.end(), srt);
 
@@ -161,7 +161,7 @@ class SORT_2DIMENSIONAL_VEC {
         struct_result.push_back(tmp_struct);
       }
 
-      SORT_template<T1,T2> srt(sort, ascend);                     // composition inside class-method
+      SORT_template<T1,T2> srt(sort, ascend);                     // composition inside class-method using class 'SORT_template' 
 
       std::sort(struct_result.begin(), struct_result.end(), srt);
 

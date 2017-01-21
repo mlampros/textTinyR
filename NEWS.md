@@ -1,4 +1,9 @@
 
+## textTinyR 1.0.2
+
+I included detailed installation instructions for the Macintosh OSx
+I modified the source code to correct the boost-locale errors, which occurred during testing on Macintosh OSx
+
 
 ## textTinyR 1.0.1
 

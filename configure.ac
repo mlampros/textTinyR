@@ -75,7 +75,7 @@ else
 
 	AX_CHECK_LIBRARY([LOCALE], [boost/locale.hpp], [boost_locale], [LOCALE_LIBS="-lboost_locale"], 
 			 [AC_MSG_ERROR([Unable to find the boost-locale. In DEBIAN/UBUNTU: sudo apt-get install libboost-all-dev; sudo apt-get install libboost-locale-dev, FEDORA : yum install boost-devel,
-					OSX/brew : brew install boost])])
+					OSX/brew : detailed installation instructions can be found in the README file])])
 	AC_LANG_POP
 fi
 

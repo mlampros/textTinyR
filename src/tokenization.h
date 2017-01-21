@@ -137,75 +137,151 @@ class TOKEN {
       }
     }
 
-
+    
+    // exceptions for specific languages ( greek, russian, bulgarian, armenian ) due to error in Macintosh OSx [ use the windows function ]
+    
+    bool is_language(std::string tmp_locale) {
+      
+      std::vector<std::string> trg_vec = { "el_GR", "ru_RU", "bg_BG", "Hy-AM" };
+      
+      std::vector<std::string> tmp_vec;
+      
+      boost::split( tmp_vec, tmp_locale, boost::is_any_of("."), boost::token_compress_on );
+      
+      std::string current_lang = tmp_vec[0];
+      
+      bool flg_out = false;
+      
+      for (unsigned int i = 0; i < trg_vec.size(); i++) {
+        
+        if (current_lang == trg_vec[i]) {
+          
+          flg_out = true;
+        }
+      }
+      
+      return flg_out;
+    }
+    
+    
+    // secondary function for the 'conv_to_lower' and 'conv_to_upper' functions
+    // it's possible that the locale for the english language isn't only UTF-8
+    
+    std::string sec_func_conv(std::string tmp_str) {
+      
+      if (tmp_str == "") {
+        
+        return "";}
+      
+      else {
+        
+        std::vector<std::string> tmp_vec;
+        
+        boost::split( tmp_vec, tmp_str, boost::is_any_of("."), boost::token_compress_on );
+        
+        return tmp_vec[0];
+      }
+    }
+    
+    
     // convert to lower case (special case : LOCALE)
-
+    
     void conv_to_lower(std::string LOCALE_UTF = "") {
-
+      
       for (unsigned int i = 0; i < v.size(); i++) {
-
+        
         std::string tmp_v = v[i];
         
-        if (LOCALE_UTF == "" || LOCALE_UTF == "en.UTF-8") {
-
+        if (LOCALE_UTF == "" || sec_func_conv(LOCALE_UTF) == "en") {
+          
           std::transform(tmp_v.begin(), tmp_v.end(), tmp_v.begin(), ::tolower);}
-
+        
         else {
           
           #ifndef _WIN32
-
-            tmp_v = LOCALE_FUNCTION(tmp_v, true, LOCALE_UTF);
+          
+            #ifdef __APPLE__ 
+          
+              if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {        
             
+                tmp_v = BASE_STRING_win(tmp_v, true);}               // exception for specific languages
+          
+              else {
+            
+                tmp_v = LOCALE_FUNCTION(tmp_v, true, LOCALE_UTF);
+              }
+          
+            #else
+          
+              tmp_v = LOCALE_FUNCTION(tmp_v, true, LOCALE_UTF);
+          
+            #endif
+          
           #else
-            
+          
             tmp_v = BASE_STRING_win(tmp_v, true);
-            
+          
           #endif
         }
-
+        
         v[i] = tmp_v;
-
+        
         tmp_v.shrink_to_fit();
       }
     }
-
-
+    
+    
     // open language-specific-file of stop-words
-
+    
     void read_stopwords(std::vector<std::string> language) {
-
+      
       stop_words = language;
     }
-
-
+    
+    
     // removes all occurences of the specified 'any_character' in the string
-
+    
     void remove_all(std::string any_character = "123<>?.") {
-
+      
       for (unsigned int i = 0; i < v.size(); i++) {
-
+        
         v[i] = boost::remove_erase_if(v[i], boost::is_any_of(any_character));
       }
     }
-
-
+    
+    
     // convert to upper case  (special case : LOCALE)
-
+    
     void conv_to_upper(std::string LOCALE_UTF = "") {
-
+      
       for (unsigned int i = 0; i < v.size(); i++) {
-
+        
         std::string tmp_v = v[i];
-
-        if (LOCALE_UTF == "") {
-
+        
+        if (LOCALE_UTF == "" || sec_func_conv(LOCALE_UTF) == "en") {
+          
           std::transform(tmp_v.begin(), tmp_v.end(), tmp_v.begin(), ::toupper);}
-
+        
         else {
           
           #ifndef _WIN32
           
-            tmp_v = LOCALE_FUNCTION(tmp_v, false, LOCALE_UTF);
+            #ifdef __APPLE__ 
+          
+              if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {        
+            
+                tmp_v = BASE_STRING_win(tmp_v, false);}               // exception for specific languages
+          
+              else {
+            
+                tmp_v = LOCALE_FUNCTION(tmp_v, false, LOCALE_UTF);
+              }
+          
+            #else
+          
+              tmp_v = LOCALE_FUNCTION(tmp_v, false, LOCALE_UTF);
+          
+            #endif
           
           #else
           
@@ -213,14 +289,14 @@ class TOKEN {
           
           #endif
         }
-
+        
         v[i] = tmp_v;
-
+        
         tmp_v.shrink_to_fit();
       }
     }
-
-
+    
+    
     // remove punctuation       [ removes all special characters ]
 
     void remove_punctuation() {

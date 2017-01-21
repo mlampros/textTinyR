@@ -4737,7 +4737,7 @@ $as_echo "#define HAVE_LOCALE 1" >>confdefs.h
     LOCALE_LIBS="-lboost_locale"
 else
   as_fn_error $? "Unable to find the boost-locale. In DEBIAN/UBUNTU: sudo apt-get install libboost-all-dev; sudo apt-get install libboost-locale-dev, FEDORA : yum install boost-devel,
-					OSX/brew : brew install boost" "$LINENO" 5
+					OSX/brew : detailed installation instructions can be found in the README file" "$LINENO" 5
 fi
 
 	ac_ext=cpp
