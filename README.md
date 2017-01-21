@@ -60,7 +60,7 @@ Then the **formula** for the boost library should be modified using a text edito
 
 <br>
 
-The user should open the **boost.rb** formula and replace the following code chunk beginning from line 71,
+The user should open the **boost.rb** formula and replace the following code chunk beginning from (approx.) line 71,
 
 <br>
 
