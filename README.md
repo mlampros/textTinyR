@@ -127,7 +127,7 @@ Then he/she should open a new terminal (console) and type the following command,
 
 <br>
 
-**brew install /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/boost.rb -–build-from-source**
+**brew install /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/boost.rb --build-from-source**
 
 <br>
 
