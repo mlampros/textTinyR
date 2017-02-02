@@ -1,4 +1,9 @@
 
+## textTinyR 1.0.3
+
+I corrected the UBSAN-memory errors, which occured in the *adj_Sparsity()* function of the *term_matrix.h* header file (the errors happen, when passing empty vectors to the armadillo *batch_insertion()* function)
+
+
 ## textTinyR 1.0.2
 
 I included detailed installation instructions for the Macintosh OSx

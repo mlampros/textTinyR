@@ -10,7 +10,7 @@
  *
  * @Notes: document-term-matrix or term-document-matrix in sparse format
  *
- * @last_modified: December 2016
+ * @last_modified: January 2017
  *
  **/
 
@@ -822,82 +822,89 @@ class term_matrix {
       return res_perc;
     }
 
-    
+
 
     // adjust the sparsity of a term-matrix
     //
-    
+
     Rcpp::List adj_Sparsity(arma::rowvec column_indices, arma::rowvec row_indices, arma::vec docs_counts, std::vector<std::string> Terms, double sparsity_thresh = 1.0) {
-      
+
       std::unordered_map<long long, long long> map_col_indices;
-      
+
       for (unsigned long long i = 0; i < column_indices.n_elem; i++) {
-        
+
         map_col_indices[column_indices[i]]++;
       }
-      
-      arma::uvec unq_idx = arma::find_unique(row_indices); 
-      
+
+      arma::uvec unq_idx = arma::find_unique(row_indices);
+
       double unq_docs = unq_idx.n_elem;
-      
+
       std::vector<long long> all_indices;
-      
+
       std::vector<long long> new_col_indices;
-      
+
       long long increment = 0;
-      
+
       std::vector<std::string> adj_new_terms;
-      
+
       for (auto &kv : map_col_indices) {
-        
+
         double sparsity = 1.0 - kv.second / unq_docs;
-        
+
         if (sparsity < sparsity_thresh) {                     // the 'sparsity_thresh' excludes terms with sparsity equal to the value of sparsity_thresh
-          
+
           arma::uvec all_tmp_idx = arma::find(column_indices == kv.first);
-          
+
           adj_new_terms.resize(increment + 1);
-          
+
           adj_new_terms[increment] = Terms[kv.first];         // update the terms using the kv.first as index
-          
+
           arma::rowvec tmp_new_vec(all_tmp_idx.n_elem);
-          
+
           tmp_new_vec.fill(increment);
-          
+
           std::vector<long long> tmp_vec = arma::conv_to< std::vector<long long> >::from(all_tmp_idx);
-          
+
           std::vector<long long> new_vec = arma::conv_to< std::vector<long long> >::from(tmp_new_vec);
-          
+
           all_indices.insert(std::end(all_indices), std::begin(tmp_vec), std::end(tmp_vec));
-          
+
           new_col_indices.insert(std::end(new_col_indices), std::begin(new_vec), std::end(new_vec));
-          
+
           increment++;
         }
       }
-      
-      arma::rowvec new_COLS = arma::conv_to< arma::rowvec >::from(new_col_indices);
-      
-      arma::rowvec row1(all_indices.size());
-      
-      arma::vec cnt1(all_indices.size());
-      
-      for (unsigned long long j = 0; j < all_indices.size(); j++) {
-        
-        row1(j) = row_indices(all_indices[j]);
-        
-        cnt1(j) = docs_counts(all_indices[j]);
+
+      if (all_indices.empty() || new_col_indices.empty()) {
+
+        return(Rcpp::List::create( Rcpp::Named("empty_indices") = arma::datum::inf));}
+
+      else {
+
+        arma::rowvec new_COLS = arma::conv_to< arma::rowvec >::from(new_col_indices);
+
+        arma::rowvec row1(all_indices.size());
+
+        arma::vec cnt1(all_indices.size());
+
+        for (unsigned long long j = 0; j < all_indices.size(); j++) {
+
+          row1(j) = row_indices(all_indices[j]);
+
+          cnt1(j) = docs_counts(all_indices[j]);
+        }
+
+        arma::sp_mat sp_out = batch_insertion(row1, new_COLS, cnt1);
+
+        return(Rcpp::List::create( Rcpp::Named("sparse_matrix") = sp_out, Rcpp::Named("terms") = adj_new_terms, Rcpp::Named("update_cols") = new_COLS,
+
+                                   Rcpp::Named("update_rows") = row1, Rcpp::Named("update_counts") = cnt1));
       }
-      
-      arma::sp_mat sp_out = batch_insertion(row1, new_COLS, cnt1);
-      
-      return(Rcpp::List::create( Rcpp::Named("sparse_matrix") = sp_out, Rcpp::Named("terms") = adj_new_terms, Rcpp::Named("update_cols") = new_COLS, 
-                                 
-                                 Rcpp::Named("update_rows") = row1, Rcpp::Named("update_counts") = cnt1));
     }
-    
-    
-    
+
+
+
     // rowSums, colSums of a sparse matrix
     //
 
@@ -952,11 +959,11 @@ class term_matrix {
       std::vector<STRUCT<std::string, long long>> vec_freq = s2dv.inner_sort_func_VEC(Terms, sps1, false, false, threads);
 
       long long kt_iter = keepTerms == 0 ? vec_freq.size() : keepTerms;
-      
+
       long long tmp_vec_freq_size = vec_freq.size();
-      
+
       if (keepTerms > tmp_vec_freq_size) {
-        
+
         kt_iter = tmp_vec_freq_size;
       }
 

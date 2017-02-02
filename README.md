@@ -41,7 +41,7 @@ yum install boost-devel
 #### **Macintosh OSX/brew**
 
 
-The boost library will be installed on Macintosh OSx using the *Homebrew package manager*, 
+The boost library will be installed on the Macintosh OSx using the *Homebrew package manager*, 
 
 If the boost library is already installed using **brew install boost** then it must be removed using the following command, 
 
@@ -52,7 +52,7 @@ If the boost library is already installed using **brew install boost** then it m
 <br>
 
 
-Then the **formula** for the boost library should be modified using a text editor (TextEdit, TextMate, etc). The formula is saved in:
+Then the **formula** for the boost library should be modified using a text editor (TextEdit, TextMate, etc). The formula on a Macintosh OS Sierra is saved in:
 
 <br>
 
@@ -60,7 +60,7 @@ Then the **formula** for the boost library should be modified using a text edito
 
 <br>
 
-The user should open the **boost.rb** formula and replace the following code chunk beginning from line 71,
+The user should open the **boost.rb** formula and replace the following code chunk beginning from (approx.) line 71,
 
 <br>
 

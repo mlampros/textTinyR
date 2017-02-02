@@ -8,14 +8,11 @@
         "-std=c++11",
         "-I/usr/share/R/include",
         "-DNDEBUG",
-        "-I/home/lampros/Desktop/kaggle_gpu/add_GITHUB/textTinyR/inst/include/",
-        "-fopenmp",
-        "-DARMA_64BIT_WORD",
         "-fpic",
         "-fstack-protector",
         "-D_FORTIFY_SOURCE=2"
     ],
-    "hash" : "148354748714834514811483451481",
+    "hash" : "14849001691483451481",
     "is_cpp" : true,
     "pch" : "Rcpp"
 }

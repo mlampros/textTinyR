@@ -2047,34 +2047,34 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                       res_adj = Adj_Sparsity(private$tm_column_indices, private$tm_row_indices, private$tm_docs_counts, private$save_terms, sparsity_thresh)
 
-                                      if (length(res_adj$terms) == 0) stop(paste(c("a sparsity_thresh of", sparsity_thresh, "returns an empty sparse matrix. Consider increasing the threshold"), collapse = " "))
+                                      if (length(res_adj) == 1) stop(paste(c("a sparsity_thresh of", sparsity_thresh, "returns an empty sparse matrix. Consider increasing the threshold"), collapse = " "))
 
                                       tmp_adj_mat = res_adj$sparse_matrix
 
                                       tmp_TERMS = res_adj$terms
-                                      
+
                                       #-------------------------------------------------------
                                       # save the row-, column-indices, counts, terms and dimensions of the sparse-matrix, specifically for the 'term_associations' method, to avoid any indexing errors
                                       # especially if the sparse matrix includes zero-valued columns and the "tf_idf_exclude()" function is called
                                       # in case of zero-valued columns the 'correlation_assoc_single' function in the 'term_associations.h' header file gives a warning anyway
-                                      
+
                                       private$associat_TERMS = tmp_TERMS
                                       private$associat_COL_IDX = res_adj$update_cols
                                       private$associat_ROW_IDX = res_adj$update_rows
                                       private$associat_COUNTS = res_adj$update_counts
-                                      
+
                                       if (self$document_term_matrix) {
-                                        
+
                                         private$associat_NROW_MATR = nrow(tmp_adj_mat)
                                         private$associat_NCOL_MATR = ncol(tmp_adj_mat)
                                       }
-                                      
+
                                       if (!self$document_term_matrix) {
-                                        
+
                                         private$associat_NROW_MATR = ncol(tmp_adj_mat)      # reverse for term-document-matrix
                                         private$associat_NCOL_MATR = nrow(tmp_adj_mat)
                                       }
-                                      
+
                                       #-------------------------------------------------------
 
                                       if (private$TF_idf) {         # it is possible that after calculating the tf-idf some terms (along rows or columns) become zero-valued
@@ -2085,7 +2085,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                         tmp_TERMS = tmp_TERMS[as.vector(tmp_tf_idf_idx) + 1]
                                       }
-                                      
+
                                       if (self$document_term_matrix) {
 
                                         colnames(tmp_adj_mat) = tmp_TERMS
@@ -2134,7 +2134,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                         COUNTS = private$tm_docs_counts}
 
                                       else {
-                                        
+
                                         SAVE_TERMS = private$associat_TERMS
                                         NROW_SP_MAT = private$associat_NROW_MATR
                                         NCOL_SP_MAT = private$associat_NCOL_MATR
@@ -2233,7 +2233,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                       if (is.null(keep_terms)) keep_terms = 0
                                       if (threads < 1) stop("the number of threads should be greater or equal to 1")
                                       if (!is.logical(verbose)) stop("the verbose parameter should be either TRUE or FALSE")
-                                      
+
                                       if (!private$flag_Adjust) {
 
                                         SAVE_TERMS = private$save_terms
@@ -2255,17 +2255,17 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                   ),
 
                                   private = list(
-                                    
+
                                     associat_TERMS = NULL,
-                                    
+
                                     associat_COL_IDX = NULL,
-                                    
+
                                     associat_ROW_IDX = NULL,
-                                    
+
                                     associat_COUNTS = NULL,
-                                    
+
                                     associat_NROW_MATR = NULL,
-                                    
+
                                     associat_NCOL_MATR = NULL,
 
                                     save_terms = NULL,
@@ -2281,7 +2281,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                     save_terms_adjust = NULL,
 
                                     save_sparse_mat_adjust = NULL,
-                                    
+
                                     normlz_tf = NULL,
 
                                     flag_Adjust = FALSE,
