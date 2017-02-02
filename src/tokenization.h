@@ -10,7 +10,7 @@
  *
  * @Notes: the main class for tokenization and transformation of text files
  *
- * @last_modified: December 2016
+ * @last_modified: January 2017
  *
  **/
 
