@@ -1353,11 +1353,11 @@ res_txt = tokenize_transform_text(object = "/planets.txt",
                                   
                                   language = "english",
                                   
-                                  stemmer = "porter2_stemmer", 
-                                  
+                                  stemmer = "ngram_sequential",
+                                      
+                                  stemmer_ngram = 3,
+                                      
                                   threads = 1)
-
-
 
 
 ```
@@ -1365,7 +1365,7 @@ res_txt = tokenize_transform_text(object = "/planets.txt",
 
 <br>
 
-the output is a vector of *tokens* after the english stopwords were removed and the terms were stemmed (*porter2-stemming*),
+the output is a vector of *tokens* after the english stopwords were removed and the terms were stemmed (*ngram_sequential* of length 3),
 
 <br>
 
@@ -1374,13 +1374,13 @@ the output is a vector of *tokens* after the english stopwords were removed and 
 # example output :
 
 $token
-  [1] "term"            "planet"          "ancient"         "tie"           "histori"  ...
+  [1] "ter"          "planet"        "anci"         "ties"         "hist"  ...
 
-  [9] "religion"        "planet"          "solar"           "system"        "nake"     ....
+  [16] "early"        "cultu"        "divi"         "emissar"      "deit" ....
 
-  [17] "cultur"          "divin"           "emissari"        "deiti"         "scientif" ...  
+  [31] "object"       "2006"         "internatio"   "astro"        "union" ...  
 
-  [25] "percept"         "planet"          "chang"           "incorpor"      "number" .....
+  [46] "exclu"        "object"       "planet"        "mass"         "based"" ....
 .
 .
 .
@@ -1425,10 +1425,8 @@ res_dct = tokenize_transform_vec_docs(object = inp,
                                       
                                       language = "english",
                                       
-                                      stemmer = "ngram_sequential",
-                                      
-                                      stemmer_ngram = 3,
-                                      
+                                      stemmer = "porter2_stemmer", 
+                                  
                                       threads = 1)
 
 
@@ -1437,22 +1435,22 @@ res_dct = tokenize_transform_vec_docs(object = inp,
 
 <br>
 
-the output is a vector of *transformed documents* after the english stopwords were removed and the terms were stemmed (*ngram_sequential* of length 3),
+the output is a vector of *transformed documents* after the english stopwords were removed and the terms were stemmed (*porter2-stemming*),
 
 <br>
 
 ```{r, eval = F, echo = T}
 
 $token
-[1] "term planet anci ties hist astro scien mythol relig planet solar system naked eye ....."
+[1] "term planet ancient tie histori astrolog scienc mytholog religion planet solar ....."
 
-[2] "planet bodies discove 1950 remain \"plane modern definit celest bodies ceres ....."
+[2] "planetari bodi discov 1950 remain planet modern definit celesti bodi cere palla ....."
 
-[3] "plan thou ptol orbit earth defer epicy moti idea plan orbit sun sugges times ....."
+[3] "planet thought ptolemi orbit earth defer epicycl motion idea planet orbit sun ....."
 
-[4] "time care analy pre-telesco observat data collec tycho brahe johan kepler  ....."
+[4] "time care analysi pre-telescop observ data collect tycho brahe johann kepler  ....."
 
-[5] "plan genera divi main types large low-dens giant plan smal rocky terrestri ....."
+[5] "planet general divid main type larg lowdens giant planet smaller rocki terrestri ....."
 
 
 attr(,"class")
@@ -1487,10 +1485,8 @@ res_dct_tok = tokenize_transform_vec_docs(object = inp,
                                           
                                           language = "english",
                                           
-                                          stemmer = "ngram_sequential",
-                                          
-                                          stemmer_ngram = 3,
-                                          
+                                          stemmer = "porter2_stemmer", 
+                                  
                                           threads = 1)
 
 
@@ -1503,13 +1499,13 @@ res_dct_tok = tokenize_transform_vec_docs(object = inp,
 
 $token
 $token[[1]]
- [1] "term"       "planet"     "anci"       "ties"       "hist"       ..... 
+ [1] "term"        "planet"    "ancient"  "tie"   "histori"   ..... 
 
 $token[[2]]
- [1] "planet"       "bodies"       "discove"      "1950"               .....    
+ [1] "planetari"    "bodi"     "discov"   "1950"   "remain"   .....    
 
 $token[[3]]
- [1] "plan"      "thou"      "ptol"      "orbit"     "earth"           .....   
+ [1] "planet"       "thought"  "ptolemi"  "orbit"   "earth"   .....   
 
 
 attr(,"class")
@@ -1531,10 +1527,10 @@ A few words about the **utf_locale**, **remove_stopwords** and **stemmer** param
 <br>
 
 * The **stemmer** parameter can take as input one of the **porter2_stemmer**, **ngram_sequential** or **ngram_overlap**. 
-    + The [*porter2_stemmer*](https://github.com/smassung/porter2_stemmer) is a C++ implementation of the [snowball-porter2](http://snowball.tartarus.org/algorithms/english/stemmer.html) stemming algorithm. 
-    + On the other hand, *n-gram stemming* is *"language independent"* and supported by the **ngram_sequential** and **ngram_overlap** functions.
+    + The [*porter2_stemmer*](https://github.com/smassung/porter2_stemmer) is a C++ implementation of the [snowball-porter2](http://snowball.tartarus.org/algorithms/english/stemmer.html) stemming algorithm. The *porter2_stemmer* applies to all functions of the *textTinyR* package.
+    + On the other hand, *n-gram stemming* is *"language independent"* and supported by the **ngram_sequential** and **ngram_overlap** functions. The *n-gram stemming* applies to all functions except for the *sparse_term_matrix* and *tokenize_transform_vec_docs* functions of the *textTinyR* package.
         - [*ngram_overlap*](http://clef.isti.cnr.it/2007/working_notes/mcnameeCLEF2007.pdf) : The ngram_overlap stemming method is based on N-Gram Morphemes for Retrieval, Paul McNamee and James Mayfield
-        - [*ngram_sequential*](https://arxiv.org/pdf/1312.4824.pdf) : The ngram_sequential stemming method is a modified version based on Generation, Implementation and Appraisal of an N-gram based Stemming Algorithm, B. P. Pande, Pawan Tamta, H. S. Dhami
+        - [*ngram_sequential*](https://arxiv.org/pdf/1312.4824.pdf) : The ngram_sequential stemming method is a modified version based on Generation, Implementation and Appraisal of an N-gram based Stemming Algorithm, B. P. Pande, Pawan Tamta, H. S. Dhami.
 
 
 <br><br>

@@ -30,7 +30,7 @@
 #' @param stemmer a character string specifying the stemming method. One of the following \emph{porter2_stemmer}, \emph{ngram_sequential}, \emph{ngram_overlap}. See details for more information.
 #' @param min_n_gram an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.
 #' @param max_n_gram an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.
-#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.
+#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.
 #' @param skip_distance an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.
 #' @param n_gram_delimiter a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)
 #' @param concat_delimiter either NULL or a character string specifying the delimiter to use in order to concatenate the end-vector of character strings to a single character string (recommended in case that the end-vector should be saved to a file)
@@ -271,18 +271,14 @@ tokenize_transform_text = function(object = NULL, batches = NULL, read_file_deli
 #' \emph{somalia}, \emph{spanish}, \emph{swahili}, \emph{swedish}, \emph{turkish}, \emph{yoruba}, \emph{zulu}
 #' @param min_num_char an integer specifying the minimum number of characters to keep. If the \emph{min_num_char} is greater than 1 then character strings with more than 1 characters will be returned
 #' @param max_num_char an integer specifying the maximum number of characters to keep. The \emph{max_num_char} should be less than or equal to \emph{Inf} (in this function the Inf value translates to a word-length of 1000000000)
-#' @param stemmer a character string specifying the stemming method. One of the following \emph{porter2_stemmer}, \emph{ngram_sequential}, \emph{ngram_overlap}. See details for more information.
+#' @param stemmer a character string specifying the stemming method. Available method is the \emph{porter2_stemmer}. See details for more information.
 #' @param min_n_gram an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.
 #' @param max_n_gram an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.
-#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.
+#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.
 #' @param skip_distance an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.
 #' @param n_gram_delimiter a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)
 #' @param concat_delimiter either NULL or a character string specifying the delimiter to use in order to concatenate the end-vector of character strings to a single character string (recommended in case that the end-vector should be saved to a file)
 #' @param path_2folder a character string specifying the path to the folder where the file(s) will be saved
-#' @param stemmer_ngram a numeric value greater than 1. Applies to both \emph{ngram_sequential} and \emph{ngram_overlap} methods. In case of \emph{ngram_sequential} the first \emph{n} characters will be picked, whereas in the case of \emph{ngram_overlap} the overlapping stemmer_ngram characters will be build.
-#' @param stemmer_gamma a float number greater or equal to 0.0. Applies only to \emph{ngram_sequential}. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.
-#' @param stemmer_truncate a numeric value greater than 0. Applies only to \emph{ngram_sequential}. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.
-#' @param stemmer_batches a numeric value greater than 0. Applies only to \emph{ngram_sequential}. Splits the corpus into batches with the option to run the batches in multiple threads.
 #' @param threads an integer specifying the number of cores to run in parallel
 #' @param vocabulary_path_file either NULL or a character string specifying the output path to a file where the vocabulary should be saved once the text is tokenized
 #' @param verbose either TRUE or FALSE. If TRUE then information will be printed out
@@ -298,13 +294,6 @@ tokenize_transform_text = function(object = NULL, batches = NULL, read_file_deli
 #' Many character string pre-processing functions (such as the \emph{utf-locale} or the \emph{split-string} function ) are based on the \emph{boost} library ( \url{http://www.boost.org/} ).
 #'
 #' Stemming of the english language is done using the porter2-stemmer, for details see \url{https://github.com/smassung/porter2_stemmer}
-#'
-#' N-gram stemming is language independent and supported by the following two functions:
-#'
-#' \describe{
-#'  \item{ngram_overlap}{The \emph{ngram_overlap} stemming method is based on \emph{N-Gram Morphemes for Retrieval, Paul McNamee and James Mayfield}, \url{http://clef.isti.cnr.it/2007/working_notes/mcnameeCLEF2007.pdf}}
-#'  \item{ngram_sequential}{The \emph{ngram_sequential} stemming method is a modified version based on \emph{Generation, Implementation and Appraisal of an N-gram based Stemming Algorithm, B. P. Pande, Pawan Tamta, H. S. Dhami}, \url{https://arxiv.org/pdf/1312.4824.pdf}}
-#' }
 #'
 #' The list of stop-words in the available languages was downloaded from the following link, \url{https://github.com/6/stopwords-json}
 #'
@@ -324,9 +313,7 @@ tokenize_transform_vec_docs = function(object = NULL, as_token = FALSE, to_lower
 
                                        min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ",
 
-                                       concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, threads = 1,
-
-                                       vocabulary_path_file = NULL, verbose = FALSE) {
+                                       concat_delimiter = NULL, path_2folder = "", threads = 1, vocabulary_path_file = NULL, verbose = FALSE) {
 
 
   if (is.null(object)) stop("the object parameter should be a (non-NULL) character string")
@@ -366,16 +353,7 @@ tokenize_transform_vec_docs = function(object = NULL, as_token = FALSE, to_lower
   if (min_num_char >= max_num_char) stop("the max_num_char parameter should be greater than the min_num_char")
   if (max_num_char == Inf) max_num_char = 1000000000
   if (!is.null(stemmer)) {
-    if (!stemmer %in% c("porter2_stemmer", "ngram_sequential", "ngram_overlap")) stop("valid stemming methods are porter2_stemmer, ngram_sequential or ngram_overlap")
-    if (stemmer == "ngram_sequential") {
-      if (stemmer_ngram < 1) stop("the minimum value for the stemmer_ngram parameter should be 1")
-      if (stemmer_gamma < 0.0) stop("the minimum value for the stemmer_gamma parameter should be 0.0")
-      if (stemmer_truncate < 1) stop("the minimum value for the stemmer_truncate parameter should be 1")
-      if (stemmer_batches < 1) stop("the minimum value for the stemmer_batches parameter should be 1")
-    }
-    if (stemmer == "ngram_overlap") {
-      if (stemmer_ngram < 1) stop("the minimum value for the stemmer_ngram parameter should be 1")
-    }
+    if (!stemmer %in% c("porter2_stemmer")) stop("valid stemming method is porter2_stemmer")
   }
   if (is.null(stemmer)) stemmer = "NULL"
   if (min_n_gram < 1) stop("the min_n_gram parameter should be greater than 0")
@@ -446,9 +424,9 @@ tokenize_transform_vec_docs = function(object = NULL, as_token = FALSE, to_lower
 
                           min_num_char = min_num_char, stemmer = stemmer, min_n_gram = min_n_gram, max_n_gram = max_n_gram, skip_n_gram = skip_n_gram, skip_distance = skip_distance,
 
-                          n_gram_delimiter = n_gram_delimiter, concat_delimiter = concat_delimiter, path_2file = path_2folder, stemmer_ngram = stemmer_ngram, stemmer_gamma = stemmer_gamma,
+                          n_gram_delimiter = n_gram_delimiter, concat_delimiter = concat_delimiter, path_2file = path_2folder, stemmer_ngram = 4, stemmer_gamma = 0.0,                         # add constant values for stemming other than porter_2stemmer [ n-gram stemming applies to a whole corpus and not to single sub-vectors of documents ]
 
-                          stemmer_truncate = stemmer_truncate, stemmer_batches = stemmer_batches, threads = threads, verbose = verbose, vocabulary_path = vocabulary_path_file )}
+                          stemmer_truncate = 3, stemmer_batches = 1, threads = threads, verbose = verbose, vocabulary_path = vocabulary_path_file )}
 
   else {
 
@@ -460,12 +438,17 @@ tokenize_transform_vec_docs = function(object = NULL, as_token = FALSE, to_lower
 
                            min_num_char = min_num_char, stemmer = stemmer, min_n_gram = min_n_gram, max_n_gram = max_n_gram, skip_n_gram = skip_n_gram, skip_distance = skip_distance,
 
-                           n_gram_delimiter = n_gram_delimiter, concat_delimiter = concat_delimiter, path_2file = path_2folder, stemmer_ngram = stemmer_ngram, stemmer_gamma = stemmer_gamma,
+                           n_gram_delimiter = n_gram_delimiter, concat_delimiter = concat_delimiter, path_2file = path_2folder, stemmer_ngram = 4, stemmer_gamma = 0.0,                         # add constant values for stemming other than porter_2stemmer [ n-gram stemming applies to a whole corpus and not to single sub-vectors of documents ]
 
-                           stemmer_truncate = stemmer_truncate, stemmer_batches = stemmer_batches, threads = threads, verbose = verbose, vocabulary_path = vocabulary_path_file )
+                           stemmer_truncate = 3, stemmer_batches = 1, threads = threads, verbose = verbose, vocabulary_path = vocabulary_path_file )
   }
 
   gc();
+
+  if (path_2folder != "") {
+
+    res = paste(c("the data is saved in FOLDER : '", path_2folder, "' and FILE : 'output_token_single_file.txt'"), collapse = '')
+  }
 
   token_structure = structure(list(token = res), class = "tokenization and transformation")
 
@@ -574,7 +557,7 @@ utf_locale = function(language = "english") {
 #' @param stemmer a character string specifying the stemming method. One of the following \emph{porter2_stemmer}, \emph{ngram_sequential}, \emph{ngram_overlap}. See details for more information.
 #' @param min_n_gram an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.
 #' @param max_n_gram an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.
-#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.
+#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.
 #' @param skip_distance an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.
 #' @param n_gram_delimiter a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)
 #' @param concat_delimiter either NULL or a character string specifying the delimiter to use in order to concatenate the end-vector of character strings to a single character string (recommended in case that the end-vector should be saved to a file)
@@ -599,6 +582,8 @@ utf_locale = function(language = "english") {
 #' the \emph{big_text_tokenizer} function tokenizes and transforms the text files of a folder and saves those files to either a folder or a single file. There is also the option to save a frequency vocabulary of those transformed tokens to a file.
 #'
 #' the \emph{vocabulary_accumulator} function takes the resulted vocabulary files of the \emph{big_text_tokenizer} and returns the vocabulary sums sorted in decreasing order. The parameter \emph{max_num_chars} limits the number of the corpus using the number of characters of each word.
+#'
+#' The \emph{ngram_sequential} or \emph{ngram_overlap} stemming method applies to each single batch and not to the whole corpus of the text file. Thus, it is possible that the stems of the same words for randomly selected batches might differ.
 #'
 #' @docType class
 #' @importFrom R6 R6Class
@@ -972,7 +957,7 @@ big_tokenize_transform <- R6::R6Class("big_tokenize_transform",
 #' @param stemmer a character string specifying the stemming method. One of the following \emph{porter2_stemmer}, \emph{ngram_sequential}, \emph{ngram_overlap}
 #' @param min_n_gram an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.
 #' @param max_n_gram an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.
-#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.
+#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.
 #' @param skip_distance an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.
 #' @param n_gram_delimiter a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)
 #' @param stemmer_ngram a numeric value greater than 1. Applies to both \emph{ngram_sequential} and \emph{ngram_overlap} methods. In case of \emph{ngram_sequential} the first stemmer_ngram characters will be picked, whereas in the case of \emph{ngram_overlap} the overlapping stemmer_ngram characters will be build.
@@ -1694,16 +1679,12 @@ cosine_distance = function(sentence1, sentence2, split_separator = " ") {
 #' \emph{somalia}, \emph{spanish}, \emph{swahili}, \emph{swedish}, \emph{turkish}, \emph{yoruba}, \emph{zulu}
 #' @param min_num_char an integer specifying the minimum number of characters to keep. If the \emph{min_num_char} is greater than 1 then character strings with more than 1 characters will be returned
 #' @param max_num_char an integer specifying the maximum number of characters to keep. The \emph{max_num_char} should be less than or equal to \emph{Inf} (in this function the Inf value translates to a word-length of 1000000000)
-#' @param stemmer a character string specifying the stemming method. One of the following \emph{porter2_stemmer}, \emph{ngram_sequential}, \emph{ngram_overlap}. See details for more information.
+#' @param stemmer a character string specifying the stemming method. Available method is the \emph{porter2_stemmer}. See details for more information.
 #' @param min_n_gram an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.
 #' @param max_n_gram an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.
-#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.
+#' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.
 #' @param skip_distance an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.
 #' @param n_gram_delimiter a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)
-#' @param stemmer_ngram a numeric value greater than 1. Applies to both \emph{ngram_sequential} and \emph{ngram_overlap} methods. In case of \emph{ngram_sequential} the first stemmer_ngram characters will be picked, whereas in the case of \emph{ngram_overlap} the overlapping stemmer_ngram characters will be build.
-#' @param stemmer_gamma a float number greater or equal to 0.0. Applies only to \emph{ngram_sequential}. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.
-#' @param stemmer_truncate a numeric value greater than 0. Applies only to \emph{ngram_sequential}. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.
-#' @param stemmer_batches a numeric value greater than 0. Applies only to \emph{ngram_sequential}. Splits the corpus into batches with the option to run the batches in multiple threads.
 #' @param print_every_rows a numeric value greater than 1 specifying the print intervals. Frequent output in the R session can slow down the function in case of big files.
 #' @param normalize either NULL or one of 'l1' or 'l2' normalization.
 #' @param tf_idf either TRUE or FALSE. If TRUE then the term-frequency-inverse-document-frequency will be returned
@@ -1723,6 +1704,8 @@ cosine_distance = function(sentence1, sentence2, split_separator = " ") {
 #'
 #' the \emph{most_frequent_terms} function returns the most frequent terms of the corpus using the output of the sparse matrix. The user has the option to keep a specific number of terms from the output table using the \emph{keep_terms} parameter.
 #'
+#' Stemming of the english language is done using the porter2-stemmer, for details see \url{https://github.com/smassung/porter2_stemmer}
+#'
 #' @docType class
 #' @importFrom R6 R6Class
 #' @import Matrix
@@ -1734,7 +1717,7 @@ cosine_distance = function(sentence1, sentence2, split_separator = " ") {
 #'
 #'  \item{\code{--------------}}{}
 #'
-#'  \item{\code{Term_Matrix(sort_terms = FALSE, to_lower = FALSE, to_upper = FALSE, utf_locale = "", remove_char = "", remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE, remove_numbers = FALSE, trim_token = FALSE, split_string = FALSE, split_separator = " .,;:()?!", remove_stopwords = FALSE, language = "english", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, print_every_rows = 1000, normalize = NULL, tf_idf = FALSE, threads = 1, verbose = FALSE)}}{}
+#'  \item{\code{Term_Matrix(sort_terms = FALSE, to_lower = FALSE, to_upper = FALSE, utf_locale = "", remove_char = "", remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE, remove_numbers = FALSE, trim_token = FALSE, split_string = FALSE, split_separator = " .,;:()?!", remove_stopwords = FALSE, language = "english", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", print_every_rows = 1000, normalize = NULL, tf_idf = FALSE, threads = 1, verbose = FALSE)}}{}
 #'
 #'  \item{\code{--------------}}{}
 #'
@@ -1845,9 +1828,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                                            min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ",
 
-                                                           stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, print_every_rows = 1000, normalize = NULL, tf_idf = FALSE,
-
-                                                           threads = 1, verbose = FALSE) {
+                                                           print_every_rows = 1000, normalize = NULL, tf_idf = FALSE, threads = 1, verbose = FALSE) {
 
                                       if (!is.logical(sort_terms)) stop("the sort_terms parameter should be either TRUE or FALSE")
                                       if (!is.logical(to_lower)) stop("the to_lower parameter should be either TRUE or FALSE")
@@ -1882,16 +1863,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                       if (min_num_char >= max_num_char) stop("the max_num_char parameter should be greater than the min_num_char")
                                       if (max_num_char == Inf) max_num_char = 1000000000
                                       if (!is.null(stemmer)) {
-                                        if (!stemmer %in% c("porter2_stemmer", "ngram_sequential", "ngram_overlap")) stop("valid stemming methods are porter2_stemmer, ngram_sequential or ngram_overlap")
-                                        if (stemmer == "ngram_sequential") {
-                                          if (stemmer_ngram < 1) stop("the minimum value for the stemmer_ngram parameter should be 1")
-                                          if (stemmer_gamma < 0.0) stop("the minimum value for the stemmer_gamma parameter should be 0.0")
-                                          if (stemmer_truncate < 1) stop("the minimum value for the stemmer_truncate parameter should be 1")
-                                          if (stemmer_batches < 1) stop("the minimum value for the stemmer_batches parameter should be 1")
-                                        }
-                                        if (stemmer == "ngram_overlap") {
-                                          if (stemmer_ngram < 1) stop("the minimum value for the stemmer_ngram parameter should be 1")
-                                        }
+                                        if (!stemmer %in% c("porter2_stemmer")) stop("valid stemming method is porter2_stemmer")
                                       }
 
                                       if (is.null(stemmer)) stemmer = "NULL"
@@ -1968,15 +1940,17 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                         tmp_2docfile = self$file_data
                                       }
 
+                                      stemmer_ngram_CONST = 4; stemmer_gamma_CONST = 0.0; stemmer_truncate_CONST = 3; stemmer_batches_CONST = 1;     # add constant values for stemming other than porter_2stemmer [ n-gram stemming applies to a whole corpus and not to single sub-vectors of documents ]
+
                                       tmp_res = res_term_matrix(vector_corpus = tmp_VEC, language_stop_words, language, utf_locale, max_num_char, self$document_term_matrix, path_2documents_file = tmp_2docfile, sort_terms, remove_char,
 
                                                                 cpp_to_lower = to_lower, cpp_to_upper = to_upper, cpp_remove_punctuation = remove_punctuation_string, remove_punctuation_vector, cpp_remove_numbers = remove_numbers,
 
                                                                 cpp_trim_token = trim_token, cpp_tokenization_function = split_string, cpp_string_separator = split_separator, cpp_remove_stopwords = remove_stopwords, min_num_char,
 
-                                                                stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose,
+                                                                stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram_CONST, stemmer_gamma_CONST, stemmer_truncate_CONST, stemmer_batches_CONST,
 
-                                                                print_every_rows, normalize, tf_idf)
+                                                                threads, verbose, print_every_rows, normalize, tf_idf)
 
                                       private$tm_column_indices = as.vector(tmp_res$cols)
 
@@ -1995,7 +1969,11 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                           warning("empty character strings present in the column names they will be replaced with proper characters", call. = F)
                                         }
 
-                                        private$save_terms = make.names(private$save_terms)
+                                        mak_nams = enc2utf8(private$save_terms)           # UTF-8 encoding of terms of matrix
+
+                                        private$save_terms = make.names(mak_nams)
+
+                                        #private$save_terms = make.names(private$save_terms)
 
                                         colnames(res_mat) = private$save_terms
 
@@ -2017,7 +1995,11 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                           warning("empty character strings present in the row names they will be replaced with proper name characters", call. = F)
                                         }
 
-                                        private$save_terms = make.names(private$save_terms)
+                                        mak_nams = enc2utf8(private$save_terms)         # UTF-8 encoding of terms of matrix
+
+                                        private$save_terms = make.names(mak_nams)
+
+                                        #private$save_terms = make.names(private$save_terms)
 
                                         rownames(res_mat) = private$save_terms
 

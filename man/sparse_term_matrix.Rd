@@ -53,25 +53,17 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 
 \item{max_num_char}{an integer specifying the maximum number of characters to keep. The \emph{max_num_char} should be less than or equal to \emph{Inf} (in this function the Inf value translates to a word-length of 1000000000)}
 
-\item{stemmer}{a character string specifying the stemming method. One of the following \emph{porter2_stemmer}, \emph{ngram_sequential}, \emph{ngram_overlap}. See details for more information.}
+\item{stemmer}{a character string specifying the stemming method. Available method is the \emph{porter2_stemmer}. See details for more information.}
 
 \item{min_n_gram}{an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.}
 
 \item{max_n_gram}{an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.}
 
-\item{skip_n_gram}{an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.}
+\item{skip_n_gram}{an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.}
 
 \item{skip_distance}{an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.}
 
 \item{n_gram_delimiter}{a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)}
-
-\item{stemmer_ngram}{a numeric value greater than 1. Applies to both \emph{ngram_sequential} and \emph{ngram_overlap} methods. In case of \emph{ngram_sequential} the first stemmer_ngram characters will be picked, whereas in the case of \emph{ngram_overlap} the overlapping stemmer_ngram characters will be build.}
-
-\item{stemmer_gamma}{a float number greater or equal to 0.0. Applies only to \emph{ngram_sequential}. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.}
-
-\item{stemmer_truncate}{a numeric value greater than 0. Applies only to \emph{ngram_sequential}. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.}
-
-\item{stemmer_batches}{a numeric value greater than 0. Applies only to \emph{ngram_sequential}. Splits the corpus into batches with the option to run the batches in multiple threads.}
 
 \item{print_every_rows}{a numeric value greater than 1 specifying the print intervals. Frequent output in the R session can slow down the function in case of big files.}
 
@@ -100,6 +92,8 @@ the \emph{Term_Matrix_Adjust} function removes sparse terms from a sparse matrix
 the \emph{term_associations} function finds the associations between the given terms (Terms argument) and all the other terms in the corpus by calculating their correlation. There is also the option to keep a specific number of terms from the output table using the \emph{keep_terms} parameter.
 
 the \emph{most_frequent_terms} function returns the most frequent terms of the corpus using the output of the sparse matrix. The user has the option to keep a specific number of terms from the output table using the \emph{keep_terms} parameter.
+
+Stemming of the english language is done using the porter2-stemmer, for details see \url{https://github.com/smassung/porter2_stemmer}
 }
 \section{Methods}{
 
@@ -109,7 +103,7 @@ the \emph{most_frequent_terms} function returns the most frequent terms of the c
 
  \item{\code{--------------}}{}
 
- \item{\code{Term_Matrix(sort_terms = FALSE, to_lower = FALSE, to_upper = FALSE, utf_locale = "", remove_char = "", remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE, remove_numbers = FALSE, trim_token = FALSE, split_string = FALSE, split_separator = " .,;:()?!", remove_stopwords = FALSE, language = "english", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", stemmer_ngram = 4, stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, print_every_rows = 1000, normalize = NULL, tf_idf = FALSE, threads = 1, verbose = FALSE)}}{}
+ \item{\code{Term_Matrix(sort_terms = FALSE, to_lower = FALSE, to_upper = FALSE, utf_locale = "", remove_char = "", remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE, remove_numbers = FALSE, trim_token = FALSE, split_string = FALSE, split_separator = " .,;:()?!", remove_stopwords = FALSE, language = "english", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", print_every_rows = 1000, normalize = NULL, tf_idf = FALSE, threads = 1, verbose = FALSE)}}{}
 
  \item{\code{--------------}}{}
 

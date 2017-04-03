@@ -10,7 +10,7 @@
  *
  * @Notes: the main class for tokenization and transformation of text files
  *
- * @last_modified: January 2017
+ * @last_modified: April 2017
  *
  **/
 
@@ -109,194 +109,194 @@ class TOKEN {
       }
     }
     #endif
-    
-    
+
+
     // work-around for the boost-locale header in windows [ gcc (v. 4.6.3) in RTools (v. 3.3) is probably not built with locale support ]
     // see http://stackoverflow.com/questions/31670839/how-do-i-read-a-windows-1252-file-using-rcpp
     //
-    
+
     std::string BASE_STRING_win(std::string y, bool TO_lower = false) {
-      
+
       SEXP x = Rcpp::wrap(y);
-      
+
       y.shrink_to_fit();
-      
+
       Rcpp::Environment base_env("package:base");
-      
+
       if (TO_lower) {
-        
+
         Rcpp::Function conv_str_lower = base_env["tolower"];
-        
+
         return Rcpp::as<std::string>(conv_str_lower(x));}
-      
+
       else {
-        
+
         Rcpp::Function conv_str_upper = base_env["toupper"];
-        
+
         return Rcpp::as<std::string>(conv_str_upper(x));
       }
     }
 
-    
+
     // exceptions for specific languages ( greek, russian, bulgarian, armenian ) due to error in Macintosh OSx [ use the windows function ]
-    
+
     bool is_language(std::string tmp_locale) {
-      
+
       std::vector<std::string> trg_vec = { "el_GR", "ru_RU", "bg_BG", "Hy-AM" };
-      
+
       std::vector<std::string> tmp_vec;
-      
+
       boost::split( tmp_vec, tmp_locale, boost::is_any_of("."), boost::token_compress_on );
-      
+
       std::string current_lang = tmp_vec[0];
-      
+
       bool flg_out = false;
-      
+
       for (unsigned int i = 0; i < trg_vec.size(); i++) {
-        
+
         if (current_lang == trg_vec[i]) {
-          
+
           flg_out = true;
         }
       }
-      
+
       return flg_out;
     }
-    
-    
+
+
     // secondary function for the 'conv_to_lower' and 'conv_to_upper' functions
     // it's possible that the locale for the english language isn't only UTF-8
-    
+
     std::string sec_func_conv(std::string tmp_str) {
-      
+
       if (tmp_str == "") {
-        
+
         return "";}
-      
+
       else {
-        
+
         std::vector<std::string> tmp_vec;
-        
+
         boost::split( tmp_vec, tmp_str, boost::is_any_of("."), boost::token_compress_on );
-        
+
         return tmp_vec[0];
       }
     }
-    
-    
+
+
     // convert to lower case (special case : LOCALE)
-    
+
     void conv_to_lower(std::string LOCALE_UTF = "") {
-      
+
       for (unsigned int i = 0; i < v.size(); i++) {
-        
+
         std::string tmp_v = v[i];
-        
+
         if (LOCALE_UTF == "" || sec_func_conv(LOCALE_UTF) == "en") {
-          
+
           std::transform(tmp_v.begin(), tmp_v.end(), tmp_v.begin(), ::tolower);}
-        
+
         else {
-          
+
           #ifndef _WIN32
-          
-            #ifdef __APPLE__ 
-          
-              if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {        
-            
+
+            #ifdef __APPLE__
+
+              if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {
+
                 tmp_v = BASE_STRING_win(tmp_v, true);}               // exception for specific languages
-          
+
               else {
-            
+
                 tmp_v = LOCALE_FUNCTION(tmp_v, true, LOCALE_UTF);
               }
-          
+
             #else
-          
+
               tmp_v = LOCALE_FUNCTION(tmp_v, true, LOCALE_UTF);
-          
+
             #endif
-          
+
           #else
-          
+
             tmp_v = BASE_STRING_win(tmp_v, true);
-          
+
           #endif
         }
-        
+
         v[i] = tmp_v;
-        
+
         tmp_v.shrink_to_fit();
       }
     }
-    
-    
+
+
     // open language-specific-file of stop-words
-    
+
     void read_stopwords(std::vector<std::string> language) {
-      
+
       stop_words = language;
     }
-    
-    
+
+
     // removes all occurences of the specified 'any_character' in the string
-    
+
     void remove_all(std::string any_character = "123<>?.") {
-      
+
       for (unsigned int i = 0; i < v.size(); i++) {
-        
+
         v[i] = boost::remove_erase_if(v[i], boost::is_any_of(any_character));
       }
     }
-    
-    
+
+
     // convert to upper case  (special case : LOCALE)
-    
+
     void conv_to_upper(std::string LOCALE_UTF = "") {
-      
+
       for (unsigned int i = 0; i < v.size(); i++) {
-        
+
         std::string tmp_v = v[i];
-        
+
         if (LOCALE_UTF == "" || sec_func_conv(LOCALE_UTF) == "en") {
-          
+
           std::transform(tmp_v.begin(), tmp_v.end(), tmp_v.begin(), ::toupper);}
-        
+
         else {
-          
+
           #ifndef _WIN32
-          
-            #ifdef __APPLE__ 
-          
-              if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {        
-            
+
+            #ifdef __APPLE__
+
+              if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {
+
                 tmp_v = BASE_STRING_win(tmp_v, false);}               // exception for specific languages
-          
+
               else {
-            
+
                 tmp_v = LOCALE_FUNCTION(tmp_v, false, LOCALE_UTF);
               }
-          
+
             #else
-          
+
               tmp_v = LOCALE_FUNCTION(tmp_v, false, LOCALE_UTF);
-          
+
             #endif
-          
+
           #else
-          
+
             tmp_v = BASE_STRING_win(tmp_v, false);
-          
+
           #endif
         }
-        
+
         v[i] = tmp_v;
-        
+
         tmp_v.shrink_to_fit();
       }
     }
-    
-    
+
+
     // remove punctuation       [ removes all special characters ]
 
     void remove_punctuation() {
@@ -571,6 +571,11 @@ class TOKEN {
 
       int vec_size = vec.size() - n_gram + 1;
 
+      if (vec_size < 0) {                            // bug : textTinyR 1.0.5 version
+
+        vec_size = 0;
+      }
+
       std::vector<std::string> out(vec_size);
 
       #ifdef _OPENMP
@@ -601,7 +606,7 @@ class TOKEN {
 
     // build n-grams using an std::vector
 
-    void build_n_grams(int min_n_gram = 2, int max_n_gram = 2,std::string n_gram_delimiter = "_", int threads = 1) {
+    void build_n_grams(int min_n_gram = 2, int max_n_gram = 2, std::string n_gram_delimiter = "_", int threads = 1) {
 
       std::vector<std::string> insert_n_grams;
 
@@ -798,7 +803,7 @@ class TOKEN {
     // http://stackoverflow.com/questions/6932409/writting-a-string-to-the-end-of-a-file-c
     //
 
-    void append_2file(std::string folder, std::string path_extend = "output_token_single_file.txt") {
+    void append_2file(std::string folder, std::string CONCAT, bool tokenize_vector = false, std::string path_extend = "output_token_single_file.txt") {
 
       std::string tmp_file = folder + path_extend;
 
@@ -806,7 +811,14 @@ class TOKEN {
 
       out.open(tmp_file, std::ios::app);
 
-      out << v[0];
+      if (tokenize_vector) {
+
+        out << CONCAT + v[0];}           // is needed if the append_2file() function is called inside a for-loop [ SEE export_all_funcs.cpp -> 'res_token_vector' AND 'res_token_list' ]
+
+      else {
+
+        out << v[0];
+      }
 
       v.clear();
 

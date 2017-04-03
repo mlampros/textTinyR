@@ -229,6 +229,7 @@ std::vector<std::string> res_token_vector(std::vector<std::string> &VEC, std::ve
 
                                                         bool verbose = false, std::string vocabulary_path = "") {
 
+
   #ifdef _OPENMP
   omp_set_num_threads(threads);
   #endif
@@ -237,10 +238,14 @@ std::vector<std::string> res_token_vector(std::vector<std::string> &VEC, std::ve
 
   std::vector<std::string> res_vec(VEC.size());
 
+  bool FLAG_write_file = path_2file == "" ? false : true;
+
   #ifdef _OPENMP
   #pragma omp parallel for schedule(static)
   #endif
   for (unsigned long long f = 0; f < VEC.size(); f++) {
+
+    //std::cout << f << std::endl;
 
     std::vector<std::string> tmp_vec = bgf.res_TOKEN(VEC[f], language, language_spec, LOCALE_UTF, false, '\t', max_num_char, remove_char, cpp_to_lower, cpp_to_upper,
 
@@ -250,7 +255,7 @@ std::vector<std::string> res_token_vector(std::vector<std::string> &VEC, std::ve
 
                                                      n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches,
 
-                                                     1, false, false, "output_token.txt", vocabulary_path);
+                                                     1, false, FLAG_write_file, "output_token.txt", vocabulary_path, true);
 
     res_vec[f] = boost::algorithm::join(tmp_vec, " ");      // returns a vector of strings
   }
@@ -286,6 +291,8 @@ std::vector<std::vector<std::string> > res_token_list(std::vector<std::string> &
 
   std::vector<std::vector<std::string> > res_vec(VEC.size());
 
+  bool FLAG_write_file = path_2file == "" ? false : true;
+
   #ifdef _OPENMP
   #pragma omp parallel for schedule(static)
   #endif
@@ -299,7 +306,7 @@ std::vector<std::vector<std::string> > res_token_list(std::vector<std::string> &
 
                                                      n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches,
 
-                                                     1, false, false, "output_token.txt", vocabulary_path);
+                                                     1, false, FLAG_write_file, "output_token.txt", vocabulary_path, true);
 
     res_vec[f] = tmp_vec;                                     // returns a list of character vectors
   }

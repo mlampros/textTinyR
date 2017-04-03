@@ -12,9 +12,8 @@ tokenize_transform_vec_docs(object = NULL, as_token = FALSE,
   language = "english", min_num_char = 1, max_num_char = Inf,
   stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1,
   skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL,
-  path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0,
-  stemmer_truncate = 3, stemmer_batches = 1, threads = 1,
-  vocabulary_path_file = NULL, verbose = FALSE)
+  path_2folder = "", threads = 1, vocabulary_path_file = NULL,
+  verbose = FALSE)
 }
 \arguments{
 \item{object}{a character string vector of documents}
@@ -55,13 +54,13 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 
 \item{max_num_char}{an integer specifying the maximum number of characters to keep. The \emph{max_num_char} should be less than or equal to \emph{Inf} (in this function the Inf value translates to a word-length of 1000000000)}
 
-\item{stemmer}{a character string specifying the stemming method. One of the following \emph{porter2_stemmer}, \emph{ngram_sequential}, \emph{ngram_overlap}. See details for more information.}
+\item{stemmer}{a character string specifying the stemming method. Available method is the \emph{porter2_stemmer}. See details for more information.}
 
 \item{min_n_gram}{an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.}
 
 \item{max_n_gram}{an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.}
 
-\item{skip_n_gram}{an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.}
+\item{skip_n_gram}{an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.}
 
 \item{skip_distance}{an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.}
 
@@ -70,14 +69,6 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 \item{concat_delimiter}{either NULL or a character string specifying the delimiter to use in order to concatenate the end-vector of character strings to a single character string (recommended in case that the end-vector should be saved to a file)}
 
 \item{path_2folder}{a character string specifying the path to the folder where the file(s) will be saved}
-
-\item{stemmer_ngram}{a numeric value greater than 1. Applies to both \emph{ngram_sequential} and \emph{ngram_overlap} methods. In case of \emph{ngram_sequential} the first \emph{n} characters will be picked, whereas in the case of \emph{ngram_overlap} the overlapping stemmer_ngram characters will be build.}
-
-\item{stemmer_gamma}{a float number greater or equal to 0.0. Applies only to \emph{ngram_sequential}. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.}
-
-\item{stemmer_truncate}{a numeric value greater than 0. Applies only to \emph{ngram_sequential}. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.}
-
-\item{stemmer_batches}{a numeric value greater than 0. Applies only to \emph{ngram_sequential}. Splits the corpus into batches with the option to run the batches in multiple threads.}
 
 \item{threads}{an integer specifying the number of cores to run in parallel}
 
@@ -99,13 +90,6 @@ The \emph{skip-grams} are a generalization of n-grams in which the components (t
 Many character string pre-processing functions (such as the \emph{utf-locale} or the \emph{split-string} function ) are based on the \emph{boost} library ( \url{http://www.boost.org/} ).
 
 Stemming of the english language is done using the porter2-stemmer, for details see \url{https://github.com/smassung/porter2_stemmer}
-
-N-gram stemming is language independent and supported by the following two functions:
-
-\describe{
- \item{ngram_overlap}{The \emph{ngram_overlap} stemming method is based on \emph{N-Gram Morphemes for Retrieval, Paul McNamee and James Mayfield}, \url{http://clef.isti.cnr.it/2007/working_notes/mcnameeCLEF2007.pdf}}
- \item{ngram_sequential}{The \emph{ngram_sequential} stemming method is a modified version based on \emph{Generation, Implementation and Appraisal of an N-gram based Stemming Algorithm, B. P. Pande, Pawan Tamta, H. S. Dhami}, \url{https://arxiv.org/pdf/1312.4824.pdf}}
-}
 
 The list of stop-words in the available languages was downloaded from the following link, \url{https://github.com/6/stopwords-json}
 }

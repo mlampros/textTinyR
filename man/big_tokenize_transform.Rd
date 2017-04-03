@@ -69,7 +69,7 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 
 \item{max_n_gram}{an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.}
 
-\item{skip_n_gram}{an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1.}
+\item{skip_n_gram}{an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.}
 
 \item{skip_distance}{an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.}
 
@@ -110,6 +110,8 @@ the \emph{big_text_parser} function parses text files from an input folder and s
 the \emph{big_text_tokenizer} function tokenizes and transforms the text files of a folder and saves those files to either a folder or a single file. There is also the option to save a frequency vocabulary of those transformed tokens to a file.
 
 the \emph{vocabulary_accumulator} function takes the resulted vocabulary files of the \emph{big_text_tokenizer} and returns the vocabulary sums sorted in decreasing order. The parameter \emph{max_num_chars} limits the number of the corpus using the number of characters of each word.
+
+The \emph{ngram_sequential} or \emph{ngram_overlap} stemming method applies to each single batch and not to the whole corpus of the text file. Thus, it is possible that the stems of the same words for randomly selected batches might differ.
 }
 \section{Methods}{
 

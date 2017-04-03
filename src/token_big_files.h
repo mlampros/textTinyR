@@ -456,7 +456,7 @@ class big_files {
 
                                        std::string path_2file = "", int stemmer_ngram = 4, double stemmer_gamma = 0.0, int stemmer_truncate = 3, int stemmer_batches = 1, int threads = 1,
 
-                                       bool verbose = false, bool save_2single_file = false, std::string path_extend = "output_token.txt", std::string vocabulary_path = "") {
+                                       bool verbose = false, bool save_2single_file = false, std::string path_extend = "output_token.txt", std::string vocabulary_path = "", bool tokenize_vector = false) {
       TOKEN t(x);
 
       if (verbose) { Rcpp::Rcout << "" << std::endl; }
@@ -605,16 +605,20 @@ class big_files {
 
         if (verbose) { Rcpp::Rcout << "the pre-processed data will be saved in a single file in: " << path_2file << std::endl; }
 
-        if (concat_delimiter == "NULL") {
+        std::string tmp_concat = concat_delimiter == "NULL" ? " " : concat_delimiter;
 
-          t.concatenate(" ");}
+        t.concatenate(tmp_concat);
 
-        else {
+        // if (concat_delimiter == "NULL") {
+        //
+        //   t.concatenate(" ");}
+        //
+        // else {
+        //
+        //   t.concatenate(concat_delimiter);
+        // }
 
-          t.concatenate(concat_delimiter);
-        }
-
-        t.append_2file(path_2file);
+        t.append_2file(path_2file, tmp_concat, tokenize_vector);
       }
 
       else {

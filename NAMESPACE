@@ -1,4 +1,4 @@
-useDynLib(textTinyR)
+useDynLib(textTinyR, .registration = TRUE)
 importFrom(Rcpp, evalCpp)
 
 export(big_tokenize_transform)
