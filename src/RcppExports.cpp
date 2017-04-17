@@ -6,657 +6,782 @@
 
 using namespace Rcpp;
 
-// Path_2vector
-std::vector<std::string> Path_2vector(std::string path_2folder, std::string path_2file);
-RcppExport SEXP textTinyR_Path_2vector(SEXP path_2folderSEXP, SEXP path_2fileSEXP) {
+// diate_erode
+arma::mat diate_erode(arma::mat image, arma::rowvec Filter, int method, int threads);
+RcppExport SEXP OpenImageR_diate_erode(SEXP imageSEXP, SEXP FilterSEXP, SEXP methodSEXP, SEXP threadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type path_2folder(path_2folderSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2file(path_2fileSEXP);
-    rcpp_result_gen = Rcpp::wrap(Path_2vector(path_2folder, path_2file));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Frequency_distribution
-std::unordered_map<std::string, int> Frequency_distribution(std::vector<std::string>& x, std::string path_2folder, std::string path_2file, char file_delimiter);
-RcppExport SEXP textTinyR_Frequency_distribution(SEXP xSEXP, SEXP path_2folderSEXP, SEXP path_2fileSEXP, SEXP file_delimiterSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string>& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2folder(path_2folderSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2file(path_2fileSEXP);
-    Rcpp::traits::input_parameter< char >::type file_delimiter(file_delimiterSEXP);
-    rcpp_result_gen = Rcpp::wrap(Frequency_distribution(x, path_2folder, path_2file, file_delimiter));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Count_characters
-std::unordered_map<int, std::vector<std::string>> Count_characters(std::vector<std::string> x, std::string path_2folder, std::string path_2file, char file_delimiter);
-RcppExport SEXP textTinyR_Count_characters(SEXP xSEXP, SEXP path_2folderSEXP, SEXP path_2fileSEXP, SEXP file_delimiterSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2folder(path_2folderSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2file(path_2fileSEXP);
-    Rcpp::traits::input_parameter< char >::type file_delimiter(file_delimiterSEXP);
-    rcpp_result_gen = Rcpp::wrap(Count_characters(x, path_2folder, path_2file, file_delimiter));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Collocations_ngrams
-std::unordered_map<std::string, std::unordered_map<std::string, int> > Collocations_ngrams(std::vector<std::string> x, std::string path_2folder, std::string path_2file, char file_delimiter, std::string n_gram_delimiter);
-RcppExport SEXP textTinyR_Collocations_ngrams(SEXP xSEXP, SEXP path_2folderSEXP, SEXP path_2fileSEXP, SEXP file_delimiterSEXP, SEXP n_gram_delimiterSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2folder(path_2folderSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2file(path_2fileSEXP);
-    Rcpp::traits::input_parameter< char >::type file_delimiter(file_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    rcpp_result_gen = Rcpp::wrap(Collocations_ngrams(x, path_2folder, path_2file, file_delimiter, n_gram_delimiter));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Dice_similarity
-double Dice_similarity(std::string x, std::string y, int n_grams);
-RcppExport SEXP textTinyR_Dice_similarity(SEXP xSEXP, SEXP ySEXP, SEXP n_gramsSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::string >::type y(ySEXP);
-    Rcpp::traits::input_parameter< int >::type n_grams(n_gramsSEXP);
-    rcpp_result_gen = Rcpp::wrap(Dice_similarity(x, y, n_grams));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Levenshtein_dist
-double Levenshtein_dist(std::string& s, std::string& t);
-RcppExport SEXP textTinyR_Levenshtein_dist(SEXP sSEXP, SEXP tSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string& >::type s(sSEXP);
-    Rcpp::traits::input_parameter< std::string& >::type t(tSEXP);
-    rcpp_result_gen = Rcpp::wrap(Levenshtein_dist(s, t));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Cosine_dist
-double Cosine_dist(std::string& x, std::string& y, std::string split_separator);
-RcppExport SEXP textTinyR_Cosine_dist(SEXP xSEXP, SEXP ySEXP, SEXP split_separatorSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string& >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::string& >::type y(ySEXP);
-    Rcpp::traits::input_parameter< std::string >::type split_separator(split_separatorSEXP);
-    rcpp_result_gen = Rcpp::wrap(Cosine_dist(x, y, split_separator));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Dissimilarity_mat
-arma::mat Dissimilarity_mat(std::vector<std::string> words, int dice_n_gram, std::string method, std::string split_separator, double dice_thresh, bool upper, bool diagonal, int threads);
-RcppExport SEXP textTinyR_Dissimilarity_mat(SEXP wordsSEXP, SEXP dice_n_gramSEXP, SEXP methodSEXP, SEXP split_separatorSEXP, SEXP dice_threshSEXP, SEXP upperSEXP, SEXP diagonalSEXP, SEXP threadsSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type words(wordsSEXP);
-    Rcpp::traits::input_parameter< int >::type dice_n_gram(dice_n_gramSEXP);
-    Rcpp::traits::input_parameter< std::string >::type method(methodSEXP);
-    Rcpp::traits::input_parameter< std::string >::type split_separator(split_separatorSEXP);
-    Rcpp::traits::input_parameter< double >::type dice_thresh(dice_threshSEXP);
-    Rcpp::traits::input_parameter< bool >::type upper(upperSEXP);
-    Rcpp::traits::input_parameter< bool >::type diagonal(diagonalSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< arma::rowvec >::type Filter(FilterSEXP);
+    Rcpp::traits::input_parameter< int >::type method(methodSEXP);
     Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    rcpp_result_gen = Rcpp::wrap(Dissimilarity_mat(words, dice_n_gram, method, split_separator, dice_thresh, upper, diagonal, threads));
+    rcpp_result_gen = Rcpp::wrap(diate_erode(image, Filter, method, threads));
     return rcpp_result_gen;
 END_RCPP
 }
-// Look_up_tbl
-std::unordered_map<std::string, std::vector<std::string>> Look_up_tbl(std::vector<std::string> VEC, int n_grams);
-RcppExport SEXP textTinyR_Look_up_tbl(SEXP VECSEXP, SEXP n_gramsSEXP) {
+// diate_erode_cube
+arma::cube diate_erode_cube(arma::cube image, arma::rowvec Filter, int method, int threads);
+RcppExport SEXP OpenImageR_diate_erode_cube(SEXP imageSEXP, SEXP FilterSEXP, SEXP methodSEXP, SEXP threadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type VEC(VECSEXP);
-    Rcpp::traits::input_parameter< int >::type n_grams(n_gramsSEXP);
-    rcpp_result_gen = Rcpp::wrap(Look_up_tbl(VEC, n_grams));
+    Rcpp::traits::input_parameter< arma::cube >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< arma::rowvec >::type Filter(FilterSEXP);
+    Rcpp::traits::input_parameter< int >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(diate_erode_cube(image, Filter, method, threads));
     return rcpp_result_gen;
 END_RCPP
 }
-// res_token
-std::vector<std::string> res_token(std::string x, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, bool FLAG_path, char read_file_delimiter, int max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, std::string concat_delimiter, std::string path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, bool save_2single_file, std::string path_extend, std::string vocabulary_path);
-RcppExport SEXP textTinyR_res_token(SEXP xSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP FLAG_pathSEXP, SEXP read_file_delimiterSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP path_2fileSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP save_2single_fileSEXP, SEXP path_extendSEXP, SEXP vocabulary_pathSEXP) {
+// rgb_2gray
+arma::mat rgb_2gray(arma::cube RGB_image);
+RcppExport SEXP OpenImageR_rgb_2gray(SEXP RGB_imageSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type language(languageSEXP);
-    Rcpp::traits::input_parameter< std::string >::type language_spec(language_specSEXP);
-    Rcpp::traits::input_parameter< std::string >::type LOCALE_UTF(LOCALE_UTFSEXP);
-    Rcpp::traits::input_parameter< bool >::type FLAG_path(FLAG_pathSEXP);
-    Rcpp::traits::input_parameter< char >::type read_file_delimiter(read_file_delimiterSEXP);
-    Rcpp::traits::input_parameter< int >::type max_num_char(max_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type remove_char(remove_charSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_lower(cpp_to_lowerSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_upper(cpp_to_upperSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_punctuation(cpp_remove_punctuationSEXP);
-    Rcpp::traits::input_parameter< bool >::type remove_punctuation_vector(remove_punctuation_vectorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_numbers(cpp_remove_numbersSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_trim_token(cpp_trim_tokenSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_tokenization_function(cpp_tokenization_functionSEXP);
-    Rcpp::traits::input_parameter< std::string >::type cpp_string_separator(cpp_string_separatorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_stopwords(cpp_remove_stopwordsSEXP);
-    Rcpp::traits::input_parameter< int >::type min_num_char(min_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type stemmer(stemmerSEXP);
-    Rcpp::traits::input_parameter< int >::type min_n_gram(min_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type max_n_gram(max_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type concat_delimiter(concat_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2file(path_2fileSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
-    Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    Rcpp::traits::input_parameter< bool >::type save_2single_file(save_2single_fileSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_extend(path_extendSEXP);
-    Rcpp::traits::input_parameter< std::string >::type vocabulary_path(vocabulary_pathSEXP);
-    rcpp_result_gen = Rcpp::wrap(res_token(x, language, language_spec, LOCALE_UTF, FLAG_path, read_file_delimiter, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, save_2single_file, path_extend, vocabulary_path));
+    Rcpp::traits::input_parameter< arma::cube >::type RGB_image(RGB_imageSEXP);
+    rcpp_result_gen = Rcpp::wrap(rgb_2gray(RGB_image));
     return rcpp_result_gen;
 END_RCPP
 }
-// res_token_vector
-std::vector<std::string> res_token_vector(std::vector<std::string>& VEC, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, int max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, std::string concat_delimiter, std::string path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, std::string vocabulary_path);
-RcppExport SEXP textTinyR_res_token_vector(SEXP VECSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP path_2fileSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP vocabulary_pathSEXP) {
+// hog_cpp
+arma::rowvec hog_cpp(arma::mat image, int n_divs, int n_bins);
+RcppExport SEXP OpenImageR_hog_cpp(SEXP imageSEXP, SEXP n_divsSEXP, SEXP n_binsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string>& >::type VEC(VECSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type language(languageSEXP);
-    Rcpp::traits::input_parameter< std::string >::type language_spec(language_specSEXP);
-    Rcpp::traits::input_parameter< std::string >::type LOCALE_UTF(LOCALE_UTFSEXP);
-    Rcpp::traits::input_parameter< int >::type max_num_char(max_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type remove_char(remove_charSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_lower(cpp_to_lowerSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_upper(cpp_to_upperSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_punctuation(cpp_remove_punctuationSEXP);
-    Rcpp::traits::input_parameter< bool >::type remove_punctuation_vector(remove_punctuation_vectorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_numbers(cpp_remove_numbersSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_trim_token(cpp_trim_tokenSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_tokenization_function(cpp_tokenization_functionSEXP);
-    Rcpp::traits::input_parameter< std::string >::type cpp_string_separator(cpp_string_separatorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_stopwords(cpp_remove_stopwordsSEXP);
-    Rcpp::traits::input_parameter< int >::type min_num_char(min_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type stemmer(stemmerSEXP);
-    Rcpp::traits::input_parameter< int >::type min_n_gram(min_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type max_n_gram(max_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type concat_delimiter(concat_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2file(path_2fileSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
-    Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    Rcpp::traits::input_parameter< std::string >::type vocabulary_path(vocabulary_pathSEXP);
-    rcpp_result_gen = Rcpp::wrap(res_token_vector(VEC, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, vocabulary_path));
+    Rcpp::traits::input_parameter< arma::mat >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< int >::type n_divs(n_divsSEXP);
+    Rcpp::traits::input_parameter< int >::type n_bins(n_binsSEXP);
+    rcpp_result_gen = Rcpp::wrap(hog_cpp(image, n_divs, n_bins));
     return rcpp_result_gen;
 END_RCPP
 }
-// res_token_list
-std::vector<std::vector<std::string> > res_token_list(std::vector<std::string>& VEC, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, int max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, std::string concat_delimiter, std::string path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, std::string vocabulary_path);
-RcppExport SEXP textTinyR_res_token_list(SEXP VECSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP path_2fileSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP vocabulary_pathSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string>& >::type VEC(VECSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type language(languageSEXP);
-    Rcpp::traits::input_parameter< std::string >::type language_spec(language_specSEXP);
-    Rcpp::traits::input_parameter< std::string >::type LOCALE_UTF(LOCALE_UTFSEXP);
-    Rcpp::traits::input_parameter< int >::type max_num_char(max_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type remove_char(remove_charSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_lower(cpp_to_lowerSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_upper(cpp_to_upperSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_punctuation(cpp_remove_punctuationSEXP);
-    Rcpp::traits::input_parameter< bool >::type remove_punctuation_vector(remove_punctuation_vectorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_numbers(cpp_remove_numbersSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_trim_token(cpp_trim_tokenSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_tokenization_function(cpp_tokenization_functionSEXP);
-    Rcpp::traits::input_parameter< std::string >::type cpp_string_separator(cpp_string_separatorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_stopwords(cpp_remove_stopwordsSEXP);
-    Rcpp::traits::input_parameter< int >::type min_num_char(min_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type stemmer(stemmerSEXP);
-    Rcpp::traits::input_parameter< int >::type min_n_gram(min_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type max_n_gram(max_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type concat_delimiter(concat_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2file(path_2fileSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
-    Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    Rcpp::traits::input_parameter< std::string >::type vocabulary_path(vocabulary_pathSEXP);
-    rcpp_result_gen = Rcpp::wrap(res_token_list(VEC, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, vocabulary_path));
-    return rcpp_result_gen;
-END_RCPP
-}
-// big_splitter_bytes
-void big_splitter_bytes(std::string input_path, int batches, std::string end_query, std::string OUTPUT_PATH, bool trimmed_line, bool verbose);
-RcppExport SEXP textTinyR_big_splitter_bytes(SEXP input_pathSEXP, SEXP batchesSEXP, SEXP end_querySEXP, SEXP OUTPUT_PATHSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type input_path(input_pathSEXP);
-    Rcpp::traits::input_parameter< int >::type batches(batchesSEXP);
-    Rcpp::traits::input_parameter< std::string >::type end_query(end_querySEXP);
-    Rcpp::traits::input_parameter< std::string >::type OUTPUT_PATH(OUTPUT_PATHSEXP);
-    Rcpp::traits::input_parameter< bool >::type trimmed_line(trimmed_lineSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    big_splitter_bytes(input_path, batches, end_query, OUTPUT_PATH, trimmed_line, verbose);
-    return R_NilValue;
-END_RCPP
-}
-// big_parser
-void big_parser(std::string input_path_folder, std::string start_query, std::string end_query, std::string output_path_folder, int min_lines, bool trimmed_line, bool verbose);
-RcppExport SEXP textTinyR_big_parser(SEXP input_path_folderSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP output_path_folderSEXP, SEXP min_linesSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type input_path_folder(input_path_folderSEXP);
-    Rcpp::traits::input_parameter< std::string >::type start_query(start_querySEXP);
-    Rcpp::traits::input_parameter< std::string >::type end_query(end_querySEXP);
-    Rcpp::traits::input_parameter< std::string >::type output_path_folder(output_path_folderSEXP);
-    Rcpp::traits::input_parameter< int >::type min_lines(min_linesSEXP);
-    Rcpp::traits::input_parameter< bool >::type trimmed_line(trimmed_lineSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    big_parser(input_path_folder, start_query, end_query, output_path_folder, min_lines, trimmed_line, verbose);
-    return R_NilValue;
-END_RCPP
-}
-// file_parser
-void file_parser(std::string input_path_file, std::string start_query, std::string end_query, std::string output_path_file, int min_lines, bool trimmed_line, bool verbose);
-RcppExport SEXP textTinyR_file_parser(SEXP input_path_fileSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP output_path_fileSEXP, SEXP min_linesSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type input_path_file(input_path_fileSEXP);
-    Rcpp::traits::input_parameter< std::string >::type start_query(start_querySEXP);
-    Rcpp::traits::input_parameter< std::string >::type end_query(end_querySEXP);
-    Rcpp::traits::input_parameter< std::string >::type output_path_file(output_path_fileSEXP);
-    Rcpp::traits::input_parameter< int >::type min_lines(min_linesSEXP);
-    Rcpp::traits::input_parameter< bool >::type trimmed_line(trimmed_lineSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    file_parser(input_path_file, start_query, end_query, output_path_file, min_lines, trimmed_line, verbose);
-    return R_NilValue;
-END_RCPP
-}
-// convert_bytes
-double convert_bytes(std::string input_path_file, std::string unit);
-RcppExport SEXP textTinyR_convert_bytes(SEXP input_path_fileSEXP, SEXP unitSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type input_path_file(input_path_fileSEXP);
-    Rcpp::traits::input_parameter< std::string >::type unit(unitSEXP);
-    rcpp_result_gen = Rcpp::wrap(convert_bytes(input_path_file, unit));
-    return rcpp_result_gen;
-END_RCPP
-}
-// big_tokenize
-void big_tokenize(std::string input_path_folder, std::string output_path_folder, int batches, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, char read_file_delimiter, int max_num_char, int increment_batch_no, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, std::string concat_delimiter, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool save_2single_file, std::string vocabulary_folder, bool verbose);
-RcppExport SEXP textTinyR_big_tokenize(SEXP input_path_folderSEXP, SEXP output_path_folderSEXP, SEXP batchesSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP read_file_delimiterSEXP, SEXP max_num_charSEXP, SEXP increment_batch_noSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP save_2single_fileSEXP, SEXP vocabulary_folderSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type input_path_folder(input_path_folderSEXP);
-    Rcpp::traits::input_parameter< std::string >::type output_path_folder(output_path_folderSEXP);
-    Rcpp::traits::input_parameter< int >::type batches(batchesSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type language(languageSEXP);
-    Rcpp::traits::input_parameter< std::string >::type language_spec(language_specSEXP);
-    Rcpp::traits::input_parameter< std::string >::type LOCALE_UTF(LOCALE_UTFSEXP);
-    Rcpp::traits::input_parameter< char >::type read_file_delimiter(read_file_delimiterSEXP);
-    Rcpp::traits::input_parameter< int >::type max_num_char(max_num_charSEXP);
-    Rcpp::traits::input_parameter< int >::type increment_batch_no(increment_batch_noSEXP);
-    Rcpp::traits::input_parameter< std::string >::type remove_char(remove_charSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_lower(cpp_to_lowerSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_upper(cpp_to_upperSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_punctuation(cpp_remove_punctuationSEXP);
-    Rcpp::traits::input_parameter< bool >::type remove_punctuation_vector(remove_punctuation_vectorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_numbers(cpp_remove_numbersSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_trim_token(cpp_trim_tokenSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_tokenization_function(cpp_tokenization_functionSEXP);
-    Rcpp::traits::input_parameter< std::string >::type cpp_string_separator(cpp_string_separatorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_stopwords(cpp_remove_stopwordsSEXP);
-    Rcpp::traits::input_parameter< int >::type min_num_char(min_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type stemmer(stemmerSEXP);
-    Rcpp::traits::input_parameter< int >::type min_n_gram(min_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type max_n_gram(max_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type concat_delimiter(concat_delimiterSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
-    Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    Rcpp::traits::input_parameter< bool >::type save_2single_file(save_2single_fileSEXP);
-    Rcpp::traits::input_parameter< std::string >::type vocabulary_folder(vocabulary_folderSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    big_tokenize(input_path_folder, output_path_folder, batches, language, language_spec, LOCALE_UTF, read_file_delimiter, max_num_char, increment_batch_no, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, save_2single_file, vocabulary_folder, verbose);
-    return R_NilValue;
-END_RCPP
-}
-// vocabulary_counts_big_tokenize
-void vocabulary_counts_big_tokenize(std::string input_path_folder, std::string output_path_file, int max_num_chars, bool verbose);
-RcppExport SEXP textTinyR_vocabulary_counts_big_tokenize(SEXP input_path_folderSEXP, SEXP output_path_fileSEXP, SEXP max_num_charsSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type input_path_folder(input_path_folderSEXP);
-    Rcpp::traits::input_parameter< std::string >::type output_path_file(output_path_fileSEXP);
-    Rcpp::traits::input_parameter< int >::type max_num_chars(max_num_charsSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    vocabulary_counts_big_tokenize(input_path_folder, output_path_file, max_num_chars, verbose);
-    return R_NilValue;
-END_RCPP
-}
-// vocabulary_counts
-void vocabulary_counts(std::string input_path_file, std::string start_query, std::string end_query, std::vector<std::string> language, std::string output_path_file, int min_lines, bool trimmed_line, bool query_transform, std::string language_spec, std::string LOCALE_UTF, long long max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose);
-RcppExport SEXP textTinyR_vocabulary_counts(SEXP input_path_fileSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP languageSEXP, SEXP output_path_fileSEXP, SEXP min_linesSEXP, SEXP trimmed_lineSEXP, SEXP query_transformSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type input_path_file(input_path_fileSEXP);
-    Rcpp::traits::input_parameter< std::string >::type start_query(start_querySEXP);
-    Rcpp::traits::input_parameter< std::string >::type end_query(end_querySEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type language(languageSEXP);
-    Rcpp::traits::input_parameter< std::string >::type output_path_file(output_path_fileSEXP);
-    Rcpp::traits::input_parameter< int >::type min_lines(min_linesSEXP);
-    Rcpp::traits::input_parameter< bool >::type trimmed_line(trimmed_lineSEXP);
-    Rcpp::traits::input_parameter< bool >::type query_transform(query_transformSEXP);
-    Rcpp::traits::input_parameter< std::string >::type language_spec(language_specSEXP);
-    Rcpp::traits::input_parameter< std::string >::type LOCALE_UTF(LOCALE_UTFSEXP);
-    Rcpp::traits::input_parameter< long long >::type max_num_char(max_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type remove_char(remove_charSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_lower(cpp_to_lowerSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_upper(cpp_to_upperSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_punctuation(cpp_remove_punctuationSEXP);
-    Rcpp::traits::input_parameter< bool >::type remove_punctuation_vector(remove_punctuation_vectorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_numbers(cpp_remove_numbersSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_trim_token(cpp_trim_tokenSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_tokenization_function(cpp_tokenization_functionSEXP);
-    Rcpp::traits::input_parameter< std::string >::type cpp_string_separator(cpp_string_separatorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_stopwords(cpp_remove_stopwordsSEXP);
-    Rcpp::traits::input_parameter< int >::type min_num_char(min_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type stemmer(stemmerSEXP);
-    Rcpp::traits::input_parameter< int >::type min_n_gram(min_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type max_n_gram(max_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
-    Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    vocabulary_counts(input_path_file, start_query, end_query, language, output_path_file, min_lines, trimmed_line, query_transform, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose);
-    return R_NilValue;
-END_RCPP
-}
-// batch_2file
-void batch_2file(std::string INPUT_FILE, std::string OUTPUT_PATH, int batches, char read_file_delimiter, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, int max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, std::string concat_delimiter, std::string vocabulary_path, bool verbose);
-RcppExport SEXP textTinyR_batch_2file(SEXP INPUT_FILESEXP, SEXP OUTPUT_PATHSEXP, SEXP batchesSEXP, SEXP read_file_delimiterSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP concat_delimiterSEXP, SEXP vocabulary_pathSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type INPUT_FILE(INPUT_FILESEXP);
-    Rcpp::traits::input_parameter< std::string >::type OUTPUT_PATH(OUTPUT_PATHSEXP);
-    Rcpp::traits::input_parameter< int >::type batches(batchesSEXP);
-    Rcpp::traits::input_parameter< char >::type read_file_delimiter(read_file_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type language(languageSEXP);
-    Rcpp::traits::input_parameter< std::string >::type language_spec(language_specSEXP);
-    Rcpp::traits::input_parameter< std::string >::type LOCALE_UTF(LOCALE_UTFSEXP);
-    Rcpp::traits::input_parameter< int >::type max_num_char(max_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type remove_char(remove_charSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_lower(cpp_to_lowerSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_upper(cpp_to_upperSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_punctuation(cpp_remove_punctuationSEXP);
-    Rcpp::traits::input_parameter< bool >::type remove_punctuation_vector(remove_punctuation_vectorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_numbers(cpp_remove_numbersSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_trim_token(cpp_trim_tokenSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_tokenization_function(cpp_tokenization_functionSEXP);
-    Rcpp::traits::input_parameter< std::string >::type cpp_string_separator(cpp_string_separatorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_stopwords(cpp_remove_stopwordsSEXP);
-    Rcpp::traits::input_parameter< int >::type min_num_char(min_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type stemmer(stemmerSEXP);
-    Rcpp::traits::input_parameter< int >::type min_n_gram(min_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type max_n_gram(max_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
-    Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    Rcpp::traits::input_parameter< std::string >::type concat_delimiter(concat_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type vocabulary_path(vocabulary_pathSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    batch_2file(INPUT_FILE, OUTPUT_PATH, batches, read_file_delimiter, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, concat_delimiter, vocabulary_path, verbose);
-    return R_NilValue;
-END_RCPP
-}
-// res_term_matrix
-Rcpp::List res_term_matrix(std::vector<std::string> vector_corpus, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, long long max_num_char, bool document_term_matrix, std::string path_2documents_file, bool sort_columns, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, long long print_every_rows, std::string normalize_tf, bool tf_idf);
-RcppExport SEXP textTinyR_res_term_matrix(SEXP vector_corpusSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP document_term_matrixSEXP, SEXP path_2documents_fileSEXP, SEXP sort_columnsSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP print_every_rowsSEXP, SEXP normalize_tfSEXP, SEXP tf_idfSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type vector_corpus(vector_corpusSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type language(languageSEXP);
-    Rcpp::traits::input_parameter< std::string >::type language_spec(language_specSEXP);
-    Rcpp::traits::input_parameter< std::string >::type LOCALE_UTF(LOCALE_UTFSEXP);
-    Rcpp::traits::input_parameter< long long >::type max_num_char(max_num_charSEXP);
-    Rcpp::traits::input_parameter< bool >::type document_term_matrix(document_term_matrixSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2documents_file(path_2documents_fileSEXP);
-    Rcpp::traits::input_parameter< bool >::type sort_columns(sort_columnsSEXP);
-    Rcpp::traits::input_parameter< std::string >::type remove_char(remove_charSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_lower(cpp_to_lowerSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_to_upper(cpp_to_upperSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_punctuation(cpp_remove_punctuationSEXP);
-    Rcpp::traits::input_parameter< bool >::type remove_punctuation_vector(remove_punctuation_vectorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_numbers(cpp_remove_numbersSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_trim_token(cpp_trim_tokenSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_tokenization_function(cpp_tokenization_functionSEXP);
-    Rcpp::traits::input_parameter< std::string >::type cpp_string_separator(cpp_string_separatorSEXP);
-    Rcpp::traits::input_parameter< bool >::type cpp_remove_stopwords(cpp_remove_stopwordsSEXP);
-    Rcpp::traits::input_parameter< int >::type min_num_char(min_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type stemmer(stemmerSEXP);
-    Rcpp::traits::input_parameter< int >::type min_n_gram(min_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type max_n_gram(max_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
-    Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
-    Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    Rcpp::traits::input_parameter< long long >::type print_every_rows(print_every_rowsSEXP);
-    Rcpp::traits::input_parameter< std::string >::type normalize_tf(normalize_tfSEXP);
-    Rcpp::traits::input_parameter< bool >::type tf_idf(tf_idfSEXP);
-    rcpp_result_gen = Rcpp::wrap(res_term_matrix(vector_corpus, language, language_spec, LOCALE_UTF, max_num_char, document_term_matrix, path_2documents_file, sort_columns, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, print_every_rows, normalize_tf, tf_idf));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Adj_Sparsity
-Rcpp::List Adj_Sparsity(arma::rowvec column_indices, arma::rowvec row_indices, arma::vec docs_counts, std::vector<std::string> Terms, double sparsity_thresh);
-RcppExport SEXP textTinyR_Adj_Sparsity(SEXP column_indicesSEXP, SEXP row_indicesSEXP, SEXP docs_countsSEXP, SEXP TermsSEXP, SEXP sparsity_threshSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::rowvec >::type column_indices(column_indicesSEXP);
-    Rcpp::traits::input_parameter< arma::rowvec >::type row_indices(row_indicesSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type docs_counts(docs_countsSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type Terms(TermsSEXP);
-    Rcpp::traits::input_parameter< double >::type sparsity_thresh(sparsity_threshSEXP);
-    rcpp_result_gen = Rcpp::wrap(Adj_Sparsity(column_indices, row_indices, docs_counts, Terms, sparsity_thresh));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Associations_Cpp
-Rcpp::List Associations_Cpp(arma::rowvec column_indices_, arma::rowvec row_indices_, arma::vec docs_counts_, long long target_size, std::vector<std::string> Terms, std::vector<int> mult_target_var, long long keepTerms, long long target_var, std::string normalize_TF, bool tf_IDF, int threads, bool verbose);
-RcppExport SEXP textTinyR_Associations_Cpp(SEXP column_indices_SEXP, SEXP row_indices_SEXP, SEXP docs_counts_SEXP, SEXP target_sizeSEXP, SEXP TermsSEXP, SEXP mult_target_varSEXP, SEXP keepTermsSEXP, SEXP target_varSEXP, SEXP normalize_TFSEXP, SEXP tf_IDFSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::rowvec >::type column_indices_(column_indices_SEXP);
-    Rcpp::traits::input_parameter< arma::rowvec >::type row_indices_(row_indices_SEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type docs_counts_(docs_counts_SEXP);
-    Rcpp::traits::input_parameter< long long >::type target_size(target_sizeSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type Terms(TermsSEXP);
-    Rcpp::traits::input_parameter< std::vector<int> >::type mult_target_var(mult_target_varSEXP);
-    Rcpp::traits::input_parameter< long long >::type keepTerms(keepTermsSEXP);
-    Rcpp::traits::input_parameter< long long >::type target_var(target_varSEXP);
-    Rcpp::traits::input_parameter< std::string >::type normalize_TF(normalize_TFSEXP);
-    Rcpp::traits::input_parameter< bool >::type tf_IDF(tf_IDFSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(Associations_Cpp(column_indices_, row_indices_, docs_counts_, target_size, Terms, mult_target_var, keepTerms, target_var, normalize_TF, tf_IDF, threads, verbose));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Most_Freq_Terms
-Rcpp::List Most_Freq_Terms(arma::sp_mat sparse_data, std::vector<std::string> Terms, long long keepTerms, bool flag_dtm, int threads, bool verbose);
-RcppExport SEXP textTinyR_Most_Freq_Terms(SEXP sparse_dataSEXP, SEXP TermsSEXP, SEXP keepTermsSEXP, SEXP flag_dtmSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::sp_mat >::type sparse_data(sparse_dataSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type Terms(TermsSEXP);
-    Rcpp::traits::input_parameter< long long >::type keepTerms(keepTermsSEXP);
-    Rcpp::traits::input_parameter< bool >::type flag_dtm(flag_dtmSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
-    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(Most_Freq_Terms(sparse_data, Terms, keepTerms, flag_dtm, threads, verbose));
-    return rcpp_result_gen;
-END_RCPP
-}
-// sparsity_float
-void sparsity_float(arma::sp_mat data);
-RcppExport SEXP textTinyR_sparsity_float(SEXP dataSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::sp_mat >::type data(dataSEXP);
-    sparsity_float(data);
-    return R_NilValue;
-END_RCPP
-}
-// dense_2sparse_mat
-arma::sp_mat dense_2sparse_mat(arma::mat x);
-RcppExport SEXP textTinyR_dense_2sparse_mat(SEXP xSEXP) {
+// HOG_matrix
+arma::mat HOG_matrix(arma::mat x, int height, int width, int n_divs, int n_bins, int threads);
+RcppExport SEXP OpenImageR_HOG_matrix(SEXP xSEXP, SEXP heightSEXP, SEXP widthSEXP, SEXP n_divsSEXP, SEXP n_binsSEXP, SEXP threadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(dense_2sparse_mat(x));
+    Rcpp::traits::input_parameter< int >::type height(heightSEXP);
+    Rcpp::traits::input_parameter< int >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< int >::type n_divs(n_divsSEXP);
+    Rcpp::traits::input_parameter< int >::type n_bins(n_binsSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(HOG_matrix(x, height, width, n_divs, n_bins, threads));
     return rcpp_result_gen;
 END_RCPP
 }
-// sp_sums
-arma::rowvec sp_sums(arma::sp_mat sp_data, bool rowSums);
-RcppExport SEXP textTinyR_sp_sums(SEXP sp_dataSEXP, SEXP rowSumsSEXP) {
+// HOG_array
+arma::mat HOG_array(arma::cube x, int n_divs, int n_bins, int threads);
+RcppExport SEXP OpenImageR_HOG_array(SEXP xSEXP, SEXP n_divsSEXP, SEXP n_binsSEXP, SEXP threadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::sp_mat >::type sp_data(sp_dataSEXP);
-    Rcpp::traits::input_parameter< bool >::type rowSums(rowSumsSEXP);
-    rcpp_result_gen = Rcpp::wrap(sp_sums(sp_data, rowSums));
+    Rcpp::traits::input_parameter< arma::cube >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type n_divs(n_divsSEXP);
+    Rcpp::traits::input_parameter< int >::type n_bins(n_binsSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(HOG_array(x, n_divs, n_bins, threads));
     return rcpp_result_gen;
 END_RCPP
 }
-// tf_idf_exclude
-arma::uvec tf_idf_exclude(arma::sp_mat tmp_mat, bool document_term_matrix);
-RcppExport SEXP textTinyR_tf_idf_exclude(SEXP tmp_matSEXP, SEXP document_term_matrixSEXP) {
+// round_rcpp
+float round_rcpp(float f, int decimal_places);
+RcppExport SEXP OpenImageR_round_rcpp(SEXP fSEXP, SEXP decimal_placesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::sp_mat >::type tmp_mat(tmp_matSEXP);
-    Rcpp::traits::input_parameter< bool >::type document_term_matrix(document_term_matrixSEXP);
-    rcpp_result_gen = Rcpp::wrap(tf_idf_exclude(tmp_mat, document_term_matrix));
+    Rcpp::traits::input_parameter< float >::type f(fSEXP);
+    Rcpp::traits::input_parameter< int >::type decimal_places(decimal_placesSEXP);
+    rcpp_result_gen = Rcpp::wrap(round_rcpp(f, decimal_places));
     return rcpp_result_gen;
 END_RCPP
 }
-// sp_means
-arma::rowvec sp_means(arma::sp_mat sp_data, bool rowMeans);
-RcppExport SEXP textTinyR_sp_means(SEXP sp_dataSEXP, SEXP rowMeansSEXP) {
+// binary_to_hex
+std::string binary_to_hex(arma::mat x);
+RcppExport SEXP OpenImageR_binary_to_hex(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::sp_mat >::type sp_data(sp_dataSEXP);
-    Rcpp::traits::input_parameter< bool >::type rowMeans(rowMeansSEXP);
-    rcpp_result_gen = Rcpp::wrap(sp_means(sp_data, rowMeans));
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(binary_to_hex(x));
     return rcpp_result_gen;
 END_RCPP
 }
-// save_sparse_
-void save_sparse_(arma::sp_mat x, std::string file_name);
-RcppExport SEXP textTinyR_save_sparse_(SEXP xSEXP, SEXP file_nameSEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::sp_mat >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::string >::type file_name(file_nameSEXP);
-    save_sparse_(x, file_name);
-    return R_NilValue;
-END_RCPP
-}
-// load_sparse_
-arma::sp_mat load_sparse_(std::string file_name);
-RcppExport SEXP textTinyR_load_sparse_(SEXP file_nameSEXP) {
+// levenshtein_dist
+int levenshtein_dist(std::string s, std::string t);
+RcppExport SEXP OpenImageR_levenshtein_dist(SEXP sSEXP, SEXP tSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type file_name(file_nameSEXP);
-    rcpp_result_gen = Rcpp::wrap(load_sparse_(file_name));
+    Rcpp::traits::input_parameter< std::string >::type s(sSEXP);
+    Rcpp::traits::input_parameter< std::string >::type t(tSEXP);
+    rcpp_result_gen = Rcpp::wrap(levenshtein_dist(s, t));
     return rcpp_result_gen;
 END_RCPP
 }
-// read_CHARS
-std::string read_CHARS(std::string input_file, long long characters, std::string write_2file);
-RcppExport SEXP textTinyR_read_CHARS(SEXP input_fileSEXP, SEXP charactersSEXP, SEXP write_2fileSEXP) {
+// func_dct
+arma::vec func_dct(arma::vec x);
+RcppExport SEXP OpenImageR_func_dct(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type input_file(input_fileSEXP);
-    Rcpp::traits::input_parameter< long long >::type characters(charactersSEXP);
-    Rcpp::traits::input_parameter< std::string >::type write_2file(write_2fileSEXP);
-    rcpp_result_gen = Rcpp::wrap(read_CHARS(input_file, characters, write_2file));
+    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(func_dct(x));
     return rcpp_result_gen;
 END_RCPP
 }
-// read_ROWS
-std::vector<std::string> read_ROWS(std::string input_file, std::string write_2file, char read_delimiter, long long rows);
-RcppExport SEXP textTinyR_read_ROWS(SEXP input_fileSEXP, SEXP write_2fileSEXP, SEXP read_delimiterSEXP, SEXP rowsSEXP) {
+// dct_2d
+arma::mat dct_2d(arma::mat x);
+RcppExport SEXP OpenImageR_dct_2d(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type input_file(input_fileSEXP);
-    Rcpp::traits::input_parameter< std::string >::type write_2file(write_2fileSEXP);
-    Rcpp::traits::input_parameter< char >::type read_delimiter(read_delimiterSEXP);
-    Rcpp::traits::input_parameter< long long >::type rows(rowsSEXP);
-    rcpp_result_gen = Rcpp::wrap(read_ROWS(input_file, write_2file, read_delimiter, rows));
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(dct_2d(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// phash_binary
+arma::rowvec phash_binary(arma::mat gray_image, int hash_size, int highfreq_factor, std::string resize_method);
+RcppExport SEXP OpenImageR_phash_binary(SEXP gray_imageSEXP, SEXP hash_sizeSEXP, SEXP highfreq_factorSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type gray_image(gray_imageSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< int >::type highfreq_factor(highfreq_factorSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(phash_binary(gray_image, hash_size, highfreq_factor, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// phash_string
+arma::mat phash_string(arma::mat gray_image, int hash_size, int highfreq_factor, std::string resize_method);
+RcppExport SEXP OpenImageR_phash_string(SEXP gray_imageSEXP, SEXP hash_sizeSEXP, SEXP highfreq_factorSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type gray_image(gray_imageSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< int >::type highfreq_factor(highfreq_factorSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(phash_string(gray_image, hash_size, highfreq_factor, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// average_hash_binary
+arma::rowvec average_hash_binary(arma::mat gray_image, int hash_size, std::string resize_method);
+RcppExport SEXP OpenImageR_average_hash_binary(SEXP gray_imageSEXP, SEXP hash_sizeSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type gray_image(gray_imageSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(average_hash_binary(gray_image, hash_size, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// average_hash_string
+arma::mat average_hash_string(arma::mat gray_image, int hash_size, std::string resize_method);
+RcppExport SEXP OpenImageR_average_hash_string(SEXP gray_imageSEXP, SEXP hash_sizeSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type gray_image(gray_imageSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(average_hash_string(gray_image, hash_size, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dhash_binary
+arma::rowvec dhash_binary(arma::mat gray_image, int hash_size, std::string resize_method);
+RcppExport SEXP OpenImageR_dhash_binary(SEXP gray_imageSEXP, SEXP hash_sizeSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type gray_image(gray_imageSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(dhash_binary(gray_image, hash_size, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dhash_string
+arma::mat dhash_string(arma::mat gray_image, int hash_size, std::string resize_method);
+RcppExport SEXP OpenImageR_dhash_string(SEXP gray_imageSEXP, SEXP hash_sizeSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type gray_image(gray_imageSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(dhash_string(gray_image, hash_size, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hash_image
+arma::mat hash_image(arma::mat x, int new_width, int new_height, int hash_size, int highfreq_factor, int method, int threads, std::string resize_method);
+RcppExport SEXP OpenImageR_hash_image(SEXP xSEXP, SEXP new_widthSEXP, SEXP new_heightSEXP, SEXP hash_sizeSEXP, SEXP highfreq_factorSEXP, SEXP methodSEXP, SEXP threadsSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type new_width(new_widthSEXP);
+    Rcpp::traits::input_parameter< int >::type new_height(new_heightSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< int >::type highfreq_factor(highfreq_factorSEXP);
+    Rcpp::traits::input_parameter< int >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(hash_image(x, new_width, new_height, hash_size, highfreq_factor, method, threads, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hash_image_cube
+arma::mat hash_image_cube(arma::cube x, int hash_size, int highfreq_factor, int method, int threads, std::string resize_method);
+RcppExport SEXP OpenImageR_hash_image_cube(SEXP xSEXP, SEXP hash_sizeSEXP, SEXP highfreq_factorSEXP, SEXP methodSEXP, SEXP threadsSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< int >::type highfreq_factor(highfreq_factorSEXP);
+    Rcpp::traits::input_parameter< int >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(hash_image_cube(x, hash_size, highfreq_factor, method, threads, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// list_2array_convert
+arma::cube list_2array_convert(Rcpp::List x);
+RcppExport SEXP OpenImageR_list_2array_convert(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(list_2array_convert(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hash_image_hex
+std::vector<std::string> hash_image_hex(arma::mat x, int new_width, int new_height, int hash_size, int highfreq_factor, int method, int threads, std::string resize_method);
+RcppExport SEXP OpenImageR_hash_image_hex(SEXP xSEXP, SEXP new_widthSEXP, SEXP new_heightSEXP, SEXP hash_sizeSEXP, SEXP highfreq_factorSEXP, SEXP methodSEXP, SEXP threadsSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type new_width(new_widthSEXP);
+    Rcpp::traits::input_parameter< int >::type new_height(new_heightSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< int >::type highfreq_factor(highfreq_factorSEXP);
+    Rcpp::traits::input_parameter< int >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(hash_image_hex(x, new_width, new_height, hash_size, highfreq_factor, method, threads, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hash_image_cube_hex
+std::vector<std::string> hash_image_cube_hex(arma::cube x, int hash_size, int highfreq_factor, int method, int threads, std::string resize_method);
+RcppExport SEXP OpenImageR_hash_image_cube_hex(SEXP xSEXP, SEXP hash_sizeSEXP, SEXP highfreq_factorSEXP, SEXP methodSEXP, SEXP threadsSEXP, SEXP resize_methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type hash_size(hash_sizeSEXP);
+    Rcpp::traits::input_parameter< int >::type highfreq_factor(highfreq_factorSEXP);
+    Rcpp::traits::input_parameter< int >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resize_method(resize_methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(hash_image_cube_hex(x, hash_size, highfreq_factor, method, threads, resize_method));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mod
+int mod(int a, int b);
+RcppExport SEXP OpenImageR_mod(SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type a(aSEXP);
+    Rcpp::traits::input_parameter< int >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(mod(a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// indices
+arma::mat indices(int rows, int cols);
+RcppExport SEXP OpenImageR_indices(SEXP rowsSEXP, SEXP colsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type rows(rowsSEXP);
+    Rcpp::traits::input_parameter< int >::type cols(colsSEXP);
+    rcpp_result_gen = Rcpp::wrap(indices(rows, cols));
+    return rcpp_result_gen;
+END_RCPP
+}
+// vec2mat
+arma::mat vec2mat(arma::rowvec V, int mat_rows, int mat_cols);
+RcppExport SEXP OpenImageR_vec2mat(SEXP VSEXP, SEXP mat_rowsSEXP, SEXP mat_colsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::rowvec >::type V(VSEXP);
+    Rcpp::traits::input_parameter< int >::type mat_rows(mat_rowsSEXP);
+    Rcpp::traits::input_parameter< int >::type mat_cols(mat_colsSEXP);
+    rcpp_result_gen = Rcpp::wrap(vec2mat(V, mat_rows, mat_cols));
+    return rcpp_result_gen;
+END_RCPP
+}
+// seq_rcpp
+arma::vec seq_rcpp(int x);
+RcppExport SEXP OpenImageR_seq_rcpp(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(seq_rcpp(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// resize_nearest_rcpp
+arma::mat resize_nearest_rcpp(arma::mat image, double width, double height);
+RcppExport SEXP OpenImageR_resize_nearest_rcpp(SEXP imageSEXP, SEXP widthSEXP, SEXP heightSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< double >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< double >::type height(heightSEXP);
+    rcpp_result_gen = Rcpp::wrap(resize_nearest_rcpp(image, width, height));
+    return rcpp_result_gen;
+END_RCPP
+}
+// resize_nearest_array
+arma::cube resize_nearest_array(arma::cube image, double width, double height);
+RcppExport SEXP OpenImageR_resize_nearest_array(SEXP imageSEXP, SEXP widthSEXP, SEXP heightSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< double >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< double >::type height(heightSEXP);
+    rcpp_result_gen = Rcpp::wrap(resize_nearest_array(image, width, height));
+    return rcpp_result_gen;
+END_RCPP
+}
+// indices_bilinear
+arma::mat indices_bilinear(int rows, int cols);
+RcppExport SEXP OpenImageR_indices_bilinear(SEXP rowsSEXP, SEXP colsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type rows(rowsSEXP);
+    Rcpp::traits::input_parameter< int >::type cols(colsSEXP);
+    rcpp_result_gen = Rcpp::wrap(indices_bilinear(rows, cols));
+    return rcpp_result_gen;
+END_RCPP
+}
+// meshgrid_x
+arma::mat meshgrid_x(int rows, int cols);
+RcppExport SEXP OpenImageR_meshgrid_x(SEXP rowsSEXP, SEXP colsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type rows(rowsSEXP);
+    Rcpp::traits::input_parameter< int >::type cols(colsSEXP);
+    rcpp_result_gen = Rcpp::wrap(meshgrid_x(rows, cols));
+    return rcpp_result_gen;
+END_RCPP
+}
+// meshgrid_y
+arma::mat meshgrid_y(int rows, int cols);
+RcppExport SEXP OpenImageR_meshgrid_y(SEXP rowsSEXP, SEXP colsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type rows(rowsSEXP);
+    Rcpp::traits::input_parameter< int >::type cols(colsSEXP);
+    rcpp_result_gen = Rcpp::wrap(meshgrid_y(rows, cols));
+    return rcpp_result_gen;
+END_RCPP
+}
+// replaceVal
+arma::mat replaceVal(arma::mat x, double thresh, double value, int mode);
+RcppExport SEXP OpenImageR_replaceVal(SEXP xSEXP, SEXP threshSEXP, SEXP valueSEXP, SEXP modeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type thresh(threshSEXP);
+    Rcpp::traits::input_parameter< double >::type value(valueSEXP);
+    Rcpp::traits::input_parameter< int >::type mode(modeSEXP);
+    rcpp_result_gen = Rcpp::wrap(replaceVal(x, thresh, value, mode));
+    return rcpp_result_gen;
+END_RCPP
+}
+// vec2mat_colwise
+arma::mat vec2mat_colwise(arma::rowvec VEC, int mat_rows, int mat_cols);
+RcppExport SEXP OpenImageR_vec2mat_colwise(SEXP VECSEXP, SEXP mat_rowsSEXP, SEXP mat_colsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::rowvec >::type VEC(VECSEXP);
+    Rcpp::traits::input_parameter< int >::type mat_rows(mat_rowsSEXP);
+    Rcpp::traits::input_parameter< int >::type mat_cols(mat_colsSEXP);
+    rcpp_result_gen = Rcpp::wrap(vec2mat_colwise(VEC, mat_rows, mat_cols));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Vectz
+arma::rowvec Vectz(arma::mat x);
+RcppExport SEXP OpenImageR_Vectz(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(Vectz(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// resize_bilinear_rcpp
+arma::mat resize_bilinear_rcpp(arma::mat image, double width, double height);
+RcppExport SEXP OpenImageR_resize_bilinear_rcpp(SEXP imageSEXP, SEXP widthSEXP, SEXP heightSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< double >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< double >::type height(heightSEXP);
+    rcpp_result_gen = Rcpp::wrap(resize_bilinear_rcpp(image, width, height));
+    return rcpp_result_gen;
+END_RCPP
+}
+// bilinear_array
+arma::cube bilinear_array(arma::cube image, double width, double height);
+RcppExport SEXP OpenImageR_bilinear_array(SEXP imageSEXP, SEXP widthSEXP, SEXP heightSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< double >::type width(widthSEXP);
+    Rcpp::traits::input_parameter< double >::type height(heightSEXP);
+    rcpp_result_gen = Rcpp::wrap(bilinear_array(image, width, height));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Array_range
+arma::rowvec Array_range(arma::cube x, int mode);
+RcppExport SEXP OpenImageR_Array_range(SEXP xSEXP, SEXP modeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type mode(modeSEXP);
+    rcpp_result_gen = Rcpp::wrap(Array_range(x, mode));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Normalize_array
+arma::cube Normalize_array(arma::cube x);
+RcppExport SEXP OpenImageR_Normalize_array(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(Normalize_array(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Normalize_matrix
+arma::mat Normalize_matrix(arma::mat x);
+RcppExport SEXP OpenImageR_Normalize_matrix(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(Normalize_matrix(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rotate_rcpp
+arma::mat rotate_rcpp(arma::mat image, int angle);
+RcppExport SEXP OpenImageR_rotate_rcpp(SEXP imageSEXP, SEXP angleSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< int >::type angle(angleSEXP);
+    rcpp_result_gen = Rcpp::wrap(rotate_rcpp(image, angle));
+    return rcpp_result_gen;
+END_RCPP
+}
+// seq_rcpp_range
+arma::uvec seq_rcpp_range(int start, int end);
+RcppExport SEXP OpenImageR_seq_rcpp_range(SEXP startSEXP, SEXP endSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type start(startSEXP);
+    Rcpp::traits::input_parameter< int >::type end(endSEXP);
+    rcpp_result_gen = Rcpp::wrap(seq_rcpp_range(start, end));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rotate_nearest_bilinear
+arma::mat rotate_nearest_bilinear(arma::mat image, double angle, std::string method, std::string mode, int threads);
+RcppExport SEXP OpenImageR_rotate_nearest_bilinear(SEXP imageSEXP, SEXP angleSEXP, SEXP methodSEXP, SEXP modeSEXP, SEXP threadsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< double >::type angle(angleSEXP);
+    Rcpp::traits::input_parameter< std::string >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< std::string >::type mode(modeSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(rotate_nearest_bilinear(image, angle, method, mode, threads));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rotate_nearest_bilinear_array_same
+arma::cube rotate_nearest_bilinear_array_same(arma::cube src, double angle, std::string method, int threads);
+RcppExport SEXP OpenImageR_rotate_nearest_bilinear_array_same(SEXP srcSEXP, SEXP angleSEXP, SEXP methodSEXP, SEXP threadsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type src(srcSEXP);
+    Rcpp::traits::input_parameter< double >::type angle(angleSEXP);
+    Rcpp::traits::input_parameter< std::string >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(rotate_nearest_bilinear_array_same(src, angle, method, threads));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rotate_nearest_bilinear_array_full
+arma::cube rotate_nearest_bilinear_array_full(arma::cube src, double angle, std::string method, int threads);
+RcppExport SEXP OpenImageR_rotate_nearest_bilinear_array_full(SEXP srcSEXP, SEXP angleSEXP, SEXP methodSEXP, SEXP threadsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type src(srcSEXP);
+    Rcpp::traits::input_parameter< double >::type angle(angleSEXP);
+    Rcpp::traits::input_parameter< std::string >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(rotate_nearest_bilinear_array_full(src, angle, method, threads));
+    return rcpp_result_gen;
+END_RCPP
+}
+// conv2d
+arma::mat conv2d(arma::mat image, arma::mat kernel, std::string mode);
+RcppExport SEXP OpenImageR_conv2d(SEXP imageSEXP, SEXP kernelSEXP, SEXP modeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type kernel(kernelSEXP);
+    Rcpp::traits::input_parameter< std::string >::type mode(modeSEXP);
+    rcpp_result_gen = Rcpp::wrap(conv2d(image, kernel, mode));
+    return rcpp_result_gen;
+END_RCPP
+}
+// conv3d
+arma::cube conv3d(arma::cube image, arma::mat kernel, std::string mode);
+RcppExport SEXP OpenImageR_conv3d(SEXP imageSEXP, SEXP kernelSEXP, SEXP modeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type kernel(kernelSEXP);
+    Rcpp::traits::input_parameter< std::string >::type mode(modeSEXP);
+    rcpp_result_gen = Rcpp::wrap(conv3d(image, kernel, mode));
+    return rcpp_result_gen;
+END_RCPP
+}
+// svd_arma_econ
+arma::mat svd_arma_econ(arma::mat m);
+RcppExport SEXP OpenImageR_svd_arma_econ(SEXP mSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type m(mSEXP);
+    rcpp_result_gen = Rcpp::wrap(svd_arma_econ(m));
+    return rcpp_result_gen;
+END_RCPP
+}
+// removeMean
+arma::mat removeMean(arma::mat data);
+RcppExport SEXP OpenImageR_removeMean(SEXP dataSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type data(dataSEXP);
+    rcpp_result_gen = Rcpp::wrap(removeMean(data));
+    return rcpp_result_gen;
+END_RCPP
+}
+// zca_whitening
+arma::mat zca_whitening(arma::mat data, int k, double epsilon);
+RcppExport SEXP OpenImageR_zca_whitening(SEXP dataSEXP, SEXP kSEXP, SEXP epsilonSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    rcpp_result_gen = Rcpp::wrap(zca_whitening(data, k, epsilon));
+    return rcpp_result_gen;
+END_RCPP
+}
+// zca_whiten_cube
+arma::cube zca_whiten_cube(arma::cube src, int k, double epsilon);
+RcppExport SEXP OpenImageR_zca_whiten_cube(SEXP srcSEXP, SEXP kSEXP, SEXP epsilonSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type src(srcSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    rcpp_result_gen = Rcpp::wrap(zca_whiten_cube(src, k, epsilon));
+    return rcpp_result_gen;
+END_RCPP
+}
+// im_flip
+arma::mat im_flip(arma::mat x, int mode);
+RcppExport SEXP OpenImageR_im_flip(SEXP xSEXP, SEXP modeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type mode(modeSEXP);
+    rcpp_result_gen = Rcpp::wrap(im_flip(x, mode));
+    return rcpp_result_gen;
+END_RCPP
+}
+// im_flip_cube
+arma::cube im_flip_cube(arma::cube src, int mode);
+RcppExport SEXP OpenImageR_im_flip_cube(SEXP srcSEXP, SEXP modeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type src(srcSEXP);
+    Rcpp::traits::input_parameter< int >::type mode(modeSEXP);
+    rcpp_result_gen = Rcpp::wrap(im_flip_cube(src, mode));
+    return rcpp_result_gen;
+END_RCPP
+}
+// translation_mat
+arma::mat translation_mat(arma::mat& image, int shift_rows, int shift_cols);
+RcppExport SEXP OpenImageR_translation_mat(SEXP imageSEXP, SEXP shift_rowsSEXP, SEXP shift_colsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< int >::type shift_rows(shift_rowsSEXP);
+    Rcpp::traits::input_parameter< int >::type shift_cols(shift_colsSEXP);
+    rcpp_result_gen = Rcpp::wrap(translation_mat(image, shift_rows, shift_cols));
+    return rcpp_result_gen;
+END_RCPP
+}
+// augment_transf
+arma::mat augment_transf(arma::mat& image, std::string flip_mode, arma::uvec crop_height, arma::uvec crop_width, double resiz_width, double resiz_height, std::string resiz_method, double shift_rows, double shift_cols, double rotate_angle, std::string rotate_method, int zca_comps, double zca_epsilon, double image_thresh);
+RcppExport SEXP OpenImageR_augment_transf(SEXP imageSEXP, SEXP flip_modeSEXP, SEXP crop_heightSEXP, SEXP crop_widthSEXP, SEXP resiz_widthSEXP, SEXP resiz_heightSEXP, SEXP resiz_methodSEXP, SEXP shift_rowsSEXP, SEXP shift_colsSEXP, SEXP rotate_angleSEXP, SEXP rotate_methodSEXP, SEXP zca_compsSEXP, SEXP zca_epsilonSEXP, SEXP image_threshSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< std::string >::type flip_mode(flip_modeSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type crop_height(crop_heightSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type crop_width(crop_widthSEXP);
+    Rcpp::traits::input_parameter< double >::type resiz_width(resiz_widthSEXP);
+    Rcpp::traits::input_parameter< double >::type resiz_height(resiz_heightSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resiz_method(resiz_methodSEXP);
+    Rcpp::traits::input_parameter< double >::type shift_rows(shift_rowsSEXP);
+    Rcpp::traits::input_parameter< double >::type shift_cols(shift_colsSEXP);
+    Rcpp::traits::input_parameter< double >::type rotate_angle(rotate_angleSEXP);
+    Rcpp::traits::input_parameter< std::string >::type rotate_method(rotate_methodSEXP);
+    Rcpp::traits::input_parameter< int >::type zca_comps(zca_compsSEXP);
+    Rcpp::traits::input_parameter< double >::type zca_epsilon(zca_epsilonSEXP);
+    Rcpp::traits::input_parameter< double >::type image_thresh(image_threshSEXP);
+    rcpp_result_gen = Rcpp::wrap(augment_transf(image, flip_mode, crop_height, crop_width, resiz_width, resiz_height, resiz_method, shift_rows, shift_cols, rotate_angle, rotate_method, zca_comps, zca_epsilon, image_thresh));
+    return rcpp_result_gen;
+END_RCPP
+}
+// augment_transf_array
+arma::cube augment_transf_array(arma::cube& image, std::string flip_mode, arma::uvec crop_height, arma::uvec crop_width, double resiz_width, double resiz_height, std::string resiz_method, double shift_rows, double shift_cols, double rotate_angle, std::string rotate_method, int zca_comps, double zca_epsilon, double image_thresh, int threads);
+RcppExport SEXP OpenImageR_augment_transf_array(SEXP imageSEXP, SEXP flip_modeSEXP, SEXP crop_heightSEXP, SEXP crop_widthSEXP, SEXP resiz_widthSEXP, SEXP resiz_heightSEXP, SEXP resiz_methodSEXP, SEXP shift_rowsSEXP, SEXP shift_colsSEXP, SEXP rotate_angleSEXP, SEXP rotate_methodSEXP, SEXP zca_compsSEXP, SEXP zca_epsilonSEXP, SEXP image_threshSEXP, SEXP threadsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube& >::type image(imageSEXP);
+    Rcpp::traits::input_parameter< std::string >::type flip_mode(flip_modeSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type crop_height(crop_heightSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type crop_width(crop_widthSEXP);
+    Rcpp::traits::input_parameter< double >::type resiz_width(resiz_widthSEXP);
+    Rcpp::traits::input_parameter< double >::type resiz_height(resiz_heightSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resiz_method(resiz_methodSEXP);
+    Rcpp::traits::input_parameter< double >::type shift_rows(shift_rowsSEXP);
+    Rcpp::traits::input_parameter< double >::type shift_cols(shift_colsSEXP);
+    Rcpp::traits::input_parameter< double >::type rotate_angle(rotate_angleSEXP);
+    Rcpp::traits::input_parameter< std::string >::type rotate_method(rotate_methodSEXP);
+    Rcpp::traits::input_parameter< int >::type zca_comps(zca_compsSEXP);
+    Rcpp::traits::input_parameter< double >::type zca_epsilon(zca_epsilonSEXP);
+    Rcpp::traits::input_parameter< double >::type image_thresh(image_threshSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(augment_transf_array(image, flip_mode, crop_height, crop_width, resiz_width, resiz_height, resiz_method, shift_rows, shift_cols, rotate_angle, rotate_method, zca_comps, zca_epsilon, image_thresh, threads));
+    return rcpp_result_gen;
+END_RCPP
+}
+// augment_array_list
+Rcpp::List augment_array_list(Rcpp::List x, std::string flip_mode, arma::uvec crop_height, arma::uvec crop_width, double resiz_width, double resiz_height, std::string resiz_method, double shift_rows, double shift_cols, double rotate_angle, std::string rotate_method, int zca_comps, double zca_epsilon, double image_thresh);
+RcppExport SEXP OpenImageR_augment_array_list(SEXP xSEXP, SEXP flip_modeSEXP, SEXP crop_heightSEXP, SEXP crop_widthSEXP, SEXP resiz_widthSEXP, SEXP resiz_heightSEXP, SEXP resiz_methodSEXP, SEXP shift_rowsSEXP, SEXP shift_colsSEXP, SEXP rotate_angleSEXP, SEXP rotate_methodSEXP, SEXP zca_compsSEXP, SEXP zca_epsilonSEXP, SEXP image_threshSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::string >::type flip_mode(flip_modeSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type crop_height(crop_heightSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type crop_width(crop_widthSEXP);
+    Rcpp::traits::input_parameter< double >::type resiz_width(resiz_widthSEXP);
+    Rcpp::traits::input_parameter< double >::type resiz_height(resiz_heightSEXP);
+    Rcpp::traits::input_parameter< std::string >::type resiz_method(resiz_methodSEXP);
+    Rcpp::traits::input_parameter< double >::type shift_rows(shift_rowsSEXP);
+    Rcpp::traits::input_parameter< double >::type shift_cols(shift_colsSEXP);
+    Rcpp::traits::input_parameter< double >::type rotate_angle(rotate_angleSEXP);
+    Rcpp::traits::input_parameter< std::string >::type rotate_method(rotate_methodSEXP);
+    Rcpp::traits::input_parameter< int >::type zca_comps(zca_compsSEXP);
+    Rcpp::traits::input_parameter< double >::type zca_epsilon(zca_epsilonSEXP);
+    Rcpp::traits::input_parameter< double >::type image_thresh(image_threshSEXP);
+    rcpp_result_gen = Rcpp::wrap(augment_array_list(x, flip_mode, crop_height, crop_width, resiz_width, resiz_height, resiz_method, shift_rows, shift_cols, rotate_angle, rotate_method, zca_comps, zca_epsilon, image_thresh));
+    return rcpp_result_gen;
+END_RCPP
+}
+// MinMaxArray
+Rcpp::List MinMaxArray(arma::cube x);
+RcppExport SEXP OpenImageR_MinMaxArray(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::cube >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(MinMaxArray(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// MinMaxMatrix
+Rcpp::List MinMaxMatrix(arma::mat x);
+RcppExport SEXP OpenImageR_MinMaxMatrix(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(MinMaxMatrix(x));
     return rcpp_result_gen;
 END_RCPP
 }
