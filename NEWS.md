@@ -1,11 +1,12 @@
 
 ## textTinyR 1.0.5
 
-* I removed the *ngram_sequential* and *ngram_overlap* stemmers from the *sparse_term_matrix* and *tokenize_transform_vec_docs* functions. I overlooked the fact that the n-gram stemming is based on the whole corpus and not on each vector of the document(s), which is the case for the *sparse_term_matrix* and *tokenize_transform_vec_docs* functions. 
-* I added a *zzz.R* file with a *packageStartupMessage* to inform the users about the previous change in n-gram stemming.
-* I also updated the package documentation and Vignette.
-* I modified the *secondary_n_grams* of the *tokenization.h* source file due to a bug.
-* I've used the *enc2utf8* function) to encode (to utf-8) the terms of the sparse matrix.
+I removed the *ngram_sequential* and *ngram_overlap* stemmers from the *sparse_term_matrix* and *tokenize_transform_vec_docs* functions. I overlooked the fact that the n-gram stemming is based on the whole corpus and not on
+each vector of the document(s), which is the case for the *sparse_term_matrix* and *tokenize_transform_vec_docs* functions. 
+I added a *zzz.R* file with a *packageStartupMessage* to inform the users about the previous change in n-gram stemming.
+I also updated the package documentation and Vignette.
+I modified the *secondary_n_grams* of the *tokenization.h* source file due to a bug.
+I've used the *enc2utf8* function) to encode (utf-8) the terms of the sparse matrix.
 
 
 ## textTinyR 1.0.4

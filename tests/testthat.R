@@ -1,4 +1,4 @@
 library(testthat)
-library(OpenImageR)
+library(textTinyR)
 
-test_check("OpenImageR")
+test_check("textTinyR")

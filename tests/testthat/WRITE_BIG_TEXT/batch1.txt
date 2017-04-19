@@ -1,0 +1,28 @@
+<MultiMessage>
+<Message structID="1710" msgID="0" length="50">
+<structure type="AppHeader">
+</structure>
+</Message>
+<Message structID="27057" msgID="27266" length="315">
+<structure type="Container">
+<productID value="166"/>
+<publishTo value="xyz"/>
+<templateID value="97845"/>
+<sendingTime value="1421320622367060444"/>
+<message value="092374NMKLA90U345N09832LJKN0A9845JHKLASDF09U8426LJAKLJDGF09845U6KLJSDGP89U45LJSDFP9GU4569078LJK"/>
+</structure>
+</Message>
+</MultiMessage>
+<MultiMessage>
+<Message structID="1710" msgID="0" length="50">
+<structure type="AppHeader">
+</structure>
+</Message>
+<Message structID="27057" msgID="27266" length="315">
+<structure type="Container">
+<productID value="166"/>
+<publishTo value="xyz"/>
+<templateID value="97845"/>
+<sendingTime value="1421320622367060444"/>
+<message value="092374NMKLA90U345N09832LJKN0A9845JHKLASDF09U8426LJAKLJDGF09845U6KLJSDGP89U45LJSDFP9GU4569078LJK"/>
+</structure>
