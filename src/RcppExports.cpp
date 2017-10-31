@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // Path_2vector
 std::vector<std::string> Path_2vector(std::string path_2folder, std::string path_2file);
-RcppExport SEXP textTinyR_Path_2vector(SEXP path_2folderSEXP, SEXP path_2fileSEXP) {
+RcppExport SEXP _textTinyR_Path_2vector(SEXP path_2folderSEXP, SEXP path_2fileSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -20,7 +20,7 @@ END_RCPP
 }
 // Frequency_distribution
 std::unordered_map<std::string, int> Frequency_distribution(std::vector<std::string>& x, std::string path_2folder, std::string path_2file, char file_delimiter);
-RcppExport SEXP textTinyR_Frequency_distribution(SEXP xSEXP, SEXP path_2folderSEXP, SEXP path_2fileSEXP, SEXP file_delimiterSEXP) {
+RcppExport SEXP _textTinyR_Frequency_distribution(SEXP xSEXP, SEXP path_2folderSEXP, SEXP path_2fileSEXP, SEXP file_delimiterSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -34,7 +34,7 @@ END_RCPP
 }
 // Count_characters
 std::unordered_map<int, std::vector<std::string>> Count_characters(std::vector<std::string> x, std::string path_2folder, std::string path_2file, char file_delimiter);
-RcppExport SEXP textTinyR_Count_characters(SEXP xSEXP, SEXP path_2folderSEXP, SEXP path_2fileSEXP, SEXP file_delimiterSEXP) {
+RcppExport SEXP _textTinyR_Count_characters(SEXP xSEXP, SEXP path_2folderSEXP, SEXP path_2fileSEXP, SEXP file_delimiterSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -48,7 +48,7 @@ END_RCPP
 }
 // Collocations_ngrams
 std::unordered_map<std::string, std::unordered_map<std::string, int> > Collocations_ngrams(std::vector<std::string> x, std::string path_2folder, std::string path_2file, char file_delimiter, std::string n_gram_delimiter);
-RcppExport SEXP textTinyR_Collocations_ngrams(SEXP xSEXP, SEXP path_2folderSEXP, SEXP path_2fileSEXP, SEXP file_delimiterSEXP, SEXP n_gram_delimiterSEXP) {
+RcppExport SEXP _textTinyR_Collocations_ngrams(SEXP xSEXP, SEXP path_2folderSEXP, SEXP path_2fileSEXP, SEXP file_delimiterSEXP, SEXP n_gram_delimiterSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -63,7 +63,7 @@ END_RCPP
 }
 // Dice_similarity
 double Dice_similarity(std::string x, std::string y, int n_grams);
-RcppExport SEXP textTinyR_Dice_similarity(SEXP xSEXP, SEXP ySEXP, SEXP n_gramsSEXP) {
+RcppExport SEXP _textTinyR_Dice_similarity(SEXP xSEXP, SEXP ySEXP, SEXP n_gramsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -76,7 +76,7 @@ END_RCPP
 }
 // Levenshtein_dist
 double Levenshtein_dist(std::string& s, std::string& t);
-RcppExport SEXP textTinyR_Levenshtein_dist(SEXP sSEXP, SEXP tSEXP) {
+RcppExport SEXP _textTinyR_Levenshtein_dist(SEXP sSEXP, SEXP tSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -88,7 +88,7 @@ END_RCPP
 }
 // Cosine_dist
 double Cosine_dist(std::string& x, std::string& y, std::string split_separator);
-RcppExport SEXP textTinyR_Cosine_dist(SEXP xSEXP, SEXP ySEXP, SEXP split_separatorSEXP) {
+RcppExport SEXP _textTinyR_Cosine_dist(SEXP xSEXP, SEXP ySEXP, SEXP split_separatorSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -101,7 +101,7 @@ END_RCPP
 }
 // Dissimilarity_mat
 arma::mat Dissimilarity_mat(std::vector<std::string> words, int dice_n_gram, std::string method, std::string split_separator, double dice_thresh, bool upper, bool diagonal, int threads);
-RcppExport SEXP textTinyR_Dissimilarity_mat(SEXP wordsSEXP, SEXP dice_n_gramSEXP, SEXP methodSEXP, SEXP split_separatorSEXP, SEXP dice_threshSEXP, SEXP upperSEXP, SEXP diagonalSEXP, SEXP threadsSEXP) {
+RcppExport SEXP _textTinyR_Dissimilarity_mat(SEXP wordsSEXP, SEXP dice_n_gramSEXP, SEXP methodSEXP, SEXP split_separatorSEXP, SEXP dice_threshSEXP, SEXP upperSEXP, SEXP diagonalSEXP, SEXP threadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -119,7 +119,7 @@ END_RCPP
 }
 // Look_up_tbl
 std::unordered_map<std::string, std::vector<std::string>> Look_up_tbl(std::vector<std::string> VEC, int n_grams);
-RcppExport SEXP textTinyR_Look_up_tbl(SEXP VECSEXP, SEXP n_gramsSEXP) {
+RcppExport SEXP _textTinyR_Look_up_tbl(SEXP VECSEXP, SEXP n_gramsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -131,7 +131,7 @@ END_RCPP
 }
 // res_token
 std::vector<std::string> res_token(std::string x, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, bool FLAG_path, char read_file_delimiter, int max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, std::string concat_delimiter, std::string path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, bool save_2single_file, std::string path_extend, std::string vocabulary_path);
-RcppExport SEXP textTinyR_res_token(SEXP xSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP FLAG_pathSEXP, SEXP read_file_delimiterSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP path_2fileSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP save_2single_fileSEXP, SEXP path_extendSEXP, SEXP vocabulary_pathSEXP) {
+RcppExport SEXP _textTinyR_res_token(SEXP xSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP FLAG_pathSEXP, SEXP read_file_delimiterSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP path_2fileSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP save_2single_fileSEXP, SEXP path_extendSEXP, SEXP vocabulary_pathSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -175,17 +175,17 @@ BEGIN_RCPP
 END_RCPP
 }
 // res_token_vector
-std::vector<std::string> res_token_vector(std::vector<std::string>& VEC, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, int max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, std::string concat_delimiter, std::string path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, std::string vocabulary_path);
-RcppExport SEXP textTinyR_res_token_vector(SEXP VECSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP path_2fileSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP vocabulary_pathSEXP) {
+std::vector<std::string> res_token_vector(std::vector<std::string>& VEC, std::vector<std::string>& language, std::string& language_spec, std::string& LOCALE_UTF, int max_num_char, std::string& remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string& cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string& stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string& n_gram_delimiter, std::string& concat_delimiter, std::string& path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, std::string& vocabulary_path);
+RcppExport SEXP _textTinyR_res_token_vector(SEXP VECSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP path_2fileSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP vocabulary_pathSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::vector<std::string>& >::type VEC(VECSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type language(languageSEXP);
-    Rcpp::traits::input_parameter< std::string >::type language_spec(language_specSEXP);
-    Rcpp::traits::input_parameter< std::string >::type LOCALE_UTF(LOCALE_UTFSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type language(languageSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type language_spec(language_specSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type LOCALE_UTF(LOCALE_UTFSEXP);
     Rcpp::traits::input_parameter< int >::type max_num_char(max_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type remove_char(remove_charSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type remove_char(remove_charSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_to_lower(cpp_to_lowerSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_to_upper(cpp_to_upperSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_remove_punctuation(cpp_remove_punctuationSEXP);
@@ -193,40 +193,40 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type cpp_remove_numbers(cpp_remove_numbersSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_trim_token(cpp_trim_tokenSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_tokenization_function(cpp_tokenization_functionSEXP);
-    Rcpp::traits::input_parameter< std::string >::type cpp_string_separator(cpp_string_separatorSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type cpp_string_separator(cpp_string_separatorSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_remove_stopwords(cpp_remove_stopwordsSEXP);
     Rcpp::traits::input_parameter< int >::type min_num_char(min_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type stemmer(stemmerSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type stemmer(stemmerSEXP);
     Rcpp::traits::input_parameter< int >::type min_n_gram(min_n_gramSEXP);
     Rcpp::traits::input_parameter< int >::type max_n_gram(max_n_gramSEXP);
     Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
     Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type concat_delimiter(concat_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2file(path_2fileSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type n_gram_delimiter(n_gram_delimiterSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type concat_delimiter(concat_delimiterSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type path_2file(path_2fileSEXP);
     Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
     Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
     Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
     Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
     Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    Rcpp::traits::input_parameter< std::string >::type vocabulary_path(vocabulary_pathSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type vocabulary_path(vocabulary_pathSEXP);
     rcpp_result_gen = Rcpp::wrap(res_token_vector(VEC, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, vocabulary_path));
     return rcpp_result_gen;
 END_RCPP
 }
 // res_token_list
-std::vector<std::vector<std::string> > res_token_list(std::vector<std::string>& VEC, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, int max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, std::string concat_delimiter, std::string path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, std::string vocabulary_path);
-RcppExport SEXP textTinyR_res_token_list(SEXP VECSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP path_2fileSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP vocabulary_pathSEXP) {
+std::vector<std::vector<std::string> > res_token_list(std::vector<std::string>& VEC, std::vector<std::string>& language, std::string& language_spec, std::string& LOCALE_UTF, int max_num_char, std::string& remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string& cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string& stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string& n_gram_delimiter, std::string& concat_delimiter, std::string& path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, std::string& vocabulary_path);
+RcppExport SEXP _textTinyR_res_token_list(SEXP VECSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP path_2fileSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP vocabulary_pathSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::vector<std::string>& >::type VEC(VECSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type language(languageSEXP);
-    Rcpp::traits::input_parameter< std::string >::type language_spec(language_specSEXP);
-    Rcpp::traits::input_parameter< std::string >::type LOCALE_UTF(LOCALE_UTFSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type language(languageSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type language_spec(language_specSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type LOCALE_UTF(LOCALE_UTFSEXP);
     Rcpp::traits::input_parameter< int >::type max_num_char(max_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type remove_char(remove_charSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type remove_char(remove_charSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_to_lower(cpp_to_lowerSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_to_upper(cpp_to_upperSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_remove_punctuation(cpp_remove_punctuationSEXP);
@@ -234,31 +234,31 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type cpp_remove_numbers(cpp_remove_numbersSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_trim_token(cpp_trim_tokenSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_tokenization_function(cpp_tokenization_functionSEXP);
-    Rcpp::traits::input_parameter< std::string >::type cpp_string_separator(cpp_string_separatorSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type cpp_string_separator(cpp_string_separatorSEXP);
     Rcpp::traits::input_parameter< bool >::type cpp_remove_stopwords(cpp_remove_stopwordsSEXP);
     Rcpp::traits::input_parameter< int >::type min_num_char(min_num_charSEXP);
-    Rcpp::traits::input_parameter< std::string >::type stemmer(stemmerSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type stemmer(stemmerSEXP);
     Rcpp::traits::input_parameter< int >::type min_n_gram(min_n_gramSEXP);
     Rcpp::traits::input_parameter< int >::type max_n_gram(max_n_gramSEXP);
     Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
     Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type concat_delimiter(concat_delimiterSEXP);
-    Rcpp::traits::input_parameter< std::string >::type path_2file(path_2fileSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type n_gram_delimiter(n_gram_delimiterSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type concat_delimiter(concat_delimiterSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type path_2file(path_2fileSEXP);
     Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
     Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
     Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
     Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
     Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    Rcpp::traits::input_parameter< std::string >::type vocabulary_path(vocabulary_pathSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type vocabulary_path(vocabulary_pathSEXP);
     rcpp_result_gen = Rcpp::wrap(res_token_list(VEC, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, vocabulary_path));
     return rcpp_result_gen;
 END_RCPP
 }
 // big_splitter_bytes
 void big_splitter_bytes(std::string input_path, int batches, std::string end_query, std::string OUTPUT_PATH, bool trimmed_line, bool verbose);
-RcppExport SEXP textTinyR_big_splitter_bytes(SEXP input_pathSEXP, SEXP batchesSEXP, SEXP end_querySEXP, SEXP OUTPUT_PATHSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
+RcppExport SEXP _textTinyR_big_splitter_bytes(SEXP input_pathSEXP, SEXP batchesSEXP, SEXP end_querySEXP, SEXP OUTPUT_PATHSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type input_path(input_pathSEXP);
@@ -273,7 +273,7 @@ END_RCPP
 }
 // big_parser
 void big_parser(std::string input_path_folder, std::string start_query, std::string end_query, std::string output_path_folder, int min_lines, bool trimmed_line, bool verbose);
-RcppExport SEXP textTinyR_big_parser(SEXP input_path_folderSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP output_path_folderSEXP, SEXP min_linesSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
+RcppExport SEXP _textTinyR_big_parser(SEXP input_path_folderSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP output_path_folderSEXP, SEXP min_linesSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type input_path_folder(input_path_folderSEXP);
@@ -289,7 +289,7 @@ END_RCPP
 }
 // file_parser
 void file_parser(std::string input_path_file, std::string start_query, std::string end_query, std::string output_path_file, int min_lines, bool trimmed_line, bool verbose);
-RcppExport SEXP textTinyR_file_parser(SEXP input_path_fileSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP output_path_fileSEXP, SEXP min_linesSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
+RcppExport SEXP _textTinyR_file_parser(SEXP input_path_fileSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP output_path_fileSEXP, SEXP min_linesSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type input_path_file(input_path_fileSEXP);
@@ -305,7 +305,7 @@ END_RCPP
 }
 // convert_bytes
 double convert_bytes(std::string input_path_file, std::string unit);
-RcppExport SEXP textTinyR_convert_bytes(SEXP input_path_fileSEXP, SEXP unitSEXP) {
+RcppExport SEXP _textTinyR_convert_bytes(SEXP input_path_fileSEXP, SEXP unitSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -317,7 +317,7 @@ END_RCPP
 }
 // big_tokenize
 void big_tokenize(std::string input_path_folder, std::string output_path_folder, int batches, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, char read_file_delimiter, int max_num_char, int increment_batch_no, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, std::string concat_delimiter, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool save_2single_file, std::string vocabulary_folder, bool verbose);
-RcppExport SEXP textTinyR_big_tokenize(SEXP input_path_folderSEXP, SEXP output_path_folderSEXP, SEXP batchesSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP read_file_delimiterSEXP, SEXP max_num_charSEXP, SEXP increment_batch_noSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP save_2single_fileSEXP, SEXP vocabulary_folderSEXP, SEXP verboseSEXP) {
+RcppExport SEXP _textTinyR_big_tokenize(SEXP input_path_folderSEXP, SEXP output_path_folderSEXP, SEXP batchesSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP read_file_delimiterSEXP, SEXP max_num_charSEXP, SEXP increment_batch_noSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP concat_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP save_2single_fileSEXP, SEXP vocabulary_folderSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type input_path_folder(input_path_folderSEXP);
@@ -361,7 +361,7 @@ END_RCPP
 }
 // vocabulary_counts_big_tokenize
 void vocabulary_counts_big_tokenize(std::string input_path_folder, std::string output_path_file, int max_num_chars, bool verbose);
-RcppExport SEXP textTinyR_vocabulary_counts_big_tokenize(SEXP input_path_folderSEXP, SEXP output_path_fileSEXP, SEXP max_num_charsSEXP, SEXP verboseSEXP) {
+RcppExport SEXP _textTinyR_vocabulary_counts_big_tokenize(SEXP input_path_folderSEXP, SEXP output_path_fileSEXP, SEXP max_num_charsSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type input_path_folder(input_path_folderSEXP);
@@ -373,8 +373,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // vocabulary_counts
-void vocabulary_counts(std::string input_path_file, std::string start_query, std::string end_query, std::vector<std::string> language, std::string output_path_file, int min_lines, bool trimmed_line, bool query_transform, std::string language_spec, std::string LOCALE_UTF, long long max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose);
-RcppExport SEXP textTinyR_vocabulary_counts(SEXP input_path_fileSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP languageSEXP, SEXP output_path_fileSEXP, SEXP min_linesSEXP, SEXP trimmed_lineSEXP, SEXP query_transformSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
+void vocabulary_counts(std::string input_path_file, std::string start_query, std::string end_query, std::vector<std::string> language, std::string output_path_file, int min_lines, bool trimmed_line, bool query_transform, std::string language_spec, std::string LOCALE_UTF, long long max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, int threads, bool verbose);
+RcppExport SEXP _textTinyR_vocabulary_counts(SEXP input_path_fileSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP languageSEXP, SEXP output_path_fileSEXP, SEXP min_linesSEXP, SEXP trimmed_lineSEXP, SEXP query_transformSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type input_path_file(input_path_fileSEXP);
@@ -405,19 +405,15 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type skip_n_gram(skip_n_gramSEXP);
     Rcpp::traits::input_parameter< int >::type skip_distance(skip_distanceSEXP);
     Rcpp::traits::input_parameter< std::string >::type n_gram_delimiter(n_gram_delimiterSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_ngram(stemmer_ngramSEXP);
-    Rcpp::traits::input_parameter< double >::type stemmer_gamma(stemmer_gammaSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_truncate(stemmer_truncateSEXP);
-    Rcpp::traits::input_parameter< int >::type stemmer_batches(stemmer_batchesSEXP);
     Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    vocabulary_counts(input_path_file, start_query, end_query, language, output_path_file, min_lines, trimmed_line, query_transform, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose);
+    vocabulary_counts(input_path_file, start_query, end_query, language, output_path_file, min_lines, trimmed_line, query_transform, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, threads, verbose);
     return R_NilValue;
 END_RCPP
 }
 // batch_2file
 void batch_2file(std::string INPUT_FILE, std::string OUTPUT_PATH, int batches, char read_file_delimiter, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, int max_num_char, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, std::string concat_delimiter, std::string vocabulary_path, bool verbose);
-RcppExport SEXP textTinyR_batch_2file(SEXP INPUT_FILESEXP, SEXP OUTPUT_PATHSEXP, SEXP batchesSEXP, SEXP read_file_delimiterSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP concat_delimiterSEXP, SEXP vocabulary_pathSEXP, SEXP verboseSEXP) {
+RcppExport SEXP _textTinyR_batch_2file(SEXP INPUT_FILESEXP, SEXP OUTPUT_PATHSEXP, SEXP batchesSEXP, SEXP read_file_delimiterSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP concat_delimiterSEXP, SEXP vocabulary_pathSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type INPUT_FILE(INPUT_FILESEXP);
@@ -459,7 +455,7 @@ END_RCPP
 }
 // res_term_matrix
 Rcpp::List res_term_matrix(std::vector<std::string> vector_corpus, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, long long max_num_char, bool document_term_matrix, std::string path_2documents_file, bool sort_columns, std::string remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function, std::string cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string n_gram_delimiter, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose, long long print_every_rows, std::string normalize_tf, bool tf_idf);
-RcppExport SEXP textTinyR_res_term_matrix(SEXP vector_corpusSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP document_term_matrixSEXP, SEXP path_2documents_fileSEXP, SEXP sort_columnsSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP print_every_rowsSEXP, SEXP normalize_tfSEXP, SEXP tf_idfSEXP) {
+RcppExport SEXP _textTinyR_res_term_matrix(SEXP vector_corpusSEXP, SEXP languageSEXP, SEXP language_specSEXP, SEXP LOCALE_UTFSEXP, SEXP max_num_charSEXP, SEXP document_term_matrixSEXP, SEXP path_2documents_fileSEXP, SEXP sort_columnsSEXP, SEXP remove_charSEXP, SEXP cpp_to_lowerSEXP, SEXP cpp_to_upperSEXP, SEXP cpp_remove_punctuationSEXP, SEXP remove_punctuation_vectorSEXP, SEXP cpp_remove_numbersSEXP, SEXP cpp_trim_tokenSEXP, SEXP cpp_tokenization_functionSEXP, SEXP cpp_string_separatorSEXP, SEXP cpp_remove_stopwordsSEXP, SEXP min_num_charSEXP, SEXP stemmerSEXP, SEXP min_n_gramSEXP, SEXP max_n_gramSEXP, SEXP skip_n_gramSEXP, SEXP skip_distanceSEXP, SEXP n_gram_delimiterSEXP, SEXP stemmer_ngramSEXP, SEXP stemmer_gammaSEXP, SEXP stemmer_truncateSEXP, SEXP stemmer_batchesSEXP, SEXP threadsSEXP, SEXP verboseSEXP, SEXP print_every_rowsSEXP, SEXP normalize_tfSEXP, SEXP tf_idfSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -503,7 +499,7 @@ END_RCPP
 }
 // Adj_Sparsity
 Rcpp::List Adj_Sparsity(arma::rowvec column_indices, arma::rowvec row_indices, arma::vec docs_counts, std::vector<std::string> Terms, double sparsity_thresh);
-RcppExport SEXP textTinyR_Adj_Sparsity(SEXP column_indicesSEXP, SEXP row_indicesSEXP, SEXP docs_countsSEXP, SEXP TermsSEXP, SEXP sparsity_threshSEXP) {
+RcppExport SEXP _textTinyR_Adj_Sparsity(SEXP column_indicesSEXP, SEXP row_indicesSEXP, SEXP docs_countsSEXP, SEXP TermsSEXP, SEXP sparsity_threshSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -517,8 +513,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // Associations_Cpp
-Rcpp::List Associations_Cpp(arma::rowvec column_indices_, arma::rowvec row_indices_, arma::vec docs_counts_, long long target_size, std::vector<std::string> Terms, std::vector<int> mult_target_var, long long keepTerms, long long target_var, std::string normalize_TF, bool tf_IDF, int threads, bool verbose);
-RcppExport SEXP textTinyR_Associations_Cpp(SEXP column_indices_SEXP, SEXP row_indices_SEXP, SEXP docs_counts_SEXP, SEXP target_sizeSEXP, SEXP TermsSEXP, SEXP mult_target_varSEXP, SEXP keepTermsSEXP, SEXP target_varSEXP, SEXP normalize_TFSEXP, SEXP tf_IDFSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
+Rcpp::List Associations_Cpp(arma::rowvec column_indices_, arma::rowvec row_indices_, arma::vec docs_counts_, long long target_size, std::vector<std::string> Terms, std::vector<int> mult_target_var, long long keepTerms, long long target_var, std::string normalize_TF, bool tf_IDF, bool verbose);
+RcppExport SEXP _textTinyR_Associations_Cpp(SEXP column_indices_SEXP, SEXP row_indices_SEXP, SEXP docs_counts_SEXP, SEXP target_sizeSEXP, SEXP TermsSEXP, SEXP mult_target_varSEXP, SEXP keepTermsSEXP, SEXP target_varSEXP, SEXP normalize_TFSEXP, SEXP tf_IDFSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -532,15 +528,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< long long >::type target_var(target_varSEXP);
     Rcpp::traits::input_parameter< std::string >::type normalize_TF(normalize_TFSEXP);
     Rcpp::traits::input_parameter< bool >::type tf_IDF(tf_IDFSEXP);
-    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(Associations_Cpp(column_indices_, row_indices_, docs_counts_, target_size, Terms, mult_target_var, keepTerms, target_var, normalize_TF, tf_IDF, threads, verbose));
+    rcpp_result_gen = Rcpp::wrap(Associations_Cpp(column_indices_, row_indices_, docs_counts_, target_size, Terms, mult_target_var, keepTerms, target_var, normalize_TF, tf_IDF, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
 // Most_Freq_Terms
 Rcpp::List Most_Freq_Terms(arma::sp_mat sparse_data, std::vector<std::string> Terms, long long keepTerms, bool flag_dtm, int threads, bool verbose);
-RcppExport SEXP textTinyR_Most_Freq_Terms(SEXP sparse_dataSEXP, SEXP TermsSEXP, SEXP keepTermsSEXP, SEXP flag_dtmSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
+RcppExport SEXP _textTinyR_Most_Freq_Terms(SEXP sparse_dataSEXP, SEXP TermsSEXP, SEXP keepTermsSEXP, SEXP flag_dtmSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -556,7 +551,7 @@ END_RCPP
 }
 // sparsity_float
 void sparsity_float(arma::sp_mat data);
-RcppExport SEXP textTinyR_sparsity_float(SEXP dataSEXP) {
+RcppExport SEXP _textTinyR_sparsity_float(SEXP dataSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< arma::sp_mat >::type data(dataSEXP);
@@ -566,7 +561,7 @@ END_RCPP
 }
 // dense_2sparse_mat
 arma::sp_mat dense_2sparse_mat(arma::mat x);
-RcppExport SEXP textTinyR_dense_2sparse_mat(SEXP xSEXP) {
+RcppExport SEXP _textTinyR_dense_2sparse_mat(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -577,7 +572,7 @@ END_RCPP
 }
 // sp_sums
 arma::rowvec sp_sums(arma::sp_mat sp_data, bool rowSums);
-RcppExport SEXP textTinyR_sp_sums(SEXP sp_dataSEXP, SEXP rowSumsSEXP) {
+RcppExport SEXP _textTinyR_sp_sums(SEXP sp_dataSEXP, SEXP rowSumsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -589,7 +584,7 @@ END_RCPP
 }
 // tf_idf_exclude
 arma::uvec tf_idf_exclude(arma::sp_mat tmp_mat, bool document_term_matrix);
-RcppExport SEXP textTinyR_tf_idf_exclude(SEXP tmp_matSEXP, SEXP document_term_matrixSEXP) {
+RcppExport SEXP _textTinyR_tf_idf_exclude(SEXP tmp_matSEXP, SEXP document_term_matrixSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -601,7 +596,7 @@ END_RCPP
 }
 // sp_means
 arma::rowvec sp_means(arma::sp_mat sp_data, bool rowMeans);
-RcppExport SEXP textTinyR_sp_means(SEXP sp_dataSEXP, SEXP rowMeansSEXP) {
+RcppExport SEXP _textTinyR_sp_means(SEXP sp_dataSEXP, SEXP rowMeansSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -613,7 +608,7 @@ END_RCPP
 }
 // save_sparse_
 void save_sparse_(arma::sp_mat x, std::string file_name);
-RcppExport SEXP textTinyR_save_sparse_(SEXP xSEXP, SEXP file_nameSEXP) {
+RcppExport SEXP _textTinyR_save_sparse_(SEXP xSEXP, SEXP file_nameSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< arma::sp_mat >::type x(xSEXP);
@@ -624,7 +619,7 @@ END_RCPP
 }
 // load_sparse_
 arma::sp_mat load_sparse_(std::string file_name);
-RcppExport SEXP textTinyR_load_sparse_(SEXP file_nameSEXP) {
+RcppExport SEXP _textTinyR_load_sparse_(SEXP file_nameSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -635,7 +630,7 @@ END_RCPP
 }
 // read_CHARS
 std::string read_CHARS(std::string input_file, long long characters, std::string write_2file);
-RcppExport SEXP textTinyR_read_CHARS(SEXP input_fileSEXP, SEXP charactersSEXP, SEXP write_2fileSEXP) {
+RcppExport SEXP _textTinyR_read_CHARS(SEXP input_fileSEXP, SEXP charactersSEXP, SEXP write_2fileSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -648,7 +643,7 @@ END_RCPP
 }
 // read_ROWS
 std::vector<std::string> read_ROWS(std::string input_file, std::string write_2file, char read_delimiter, long long rows);
-RcppExport SEXP textTinyR_read_ROWS(SEXP input_fileSEXP, SEXP write_2fileSEXP, SEXP read_delimiterSEXP, SEXP rowsSEXP) {
+RcppExport SEXP _textTinyR_read_ROWS(SEXP input_fileSEXP, SEXP write_2fileSEXP, SEXP read_delimiterSEXP, SEXP rowsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;

@@ -136,6 +136,7 @@ The \emph{ngram_sequential} or \emph{ngram_overlap} stemming method applies to e
  \item{\code{vocabulary_accumulator(input_path_folder = NULL, vocabulary_path_file = NULL, max_num_chars = 100)}}{}
  }
 }
+
 \examples{
 
 library(textTinyR)
@@ -200,4 +201,3 @@ library(textTinyR)
 #                           max_num_chars = 50)
 }
 \keyword{datasets}
-

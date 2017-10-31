@@ -23,4 +23,3 @@ tmp = matrix(sample(0:1, 100, replace = TRUE), 10, 10)
 
 sp_mat = dense_2sparse(tmp)
 }
-

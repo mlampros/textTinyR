@@ -9,7 +9,7 @@
  *
  * @Notes: tokenization and transformation of text files in batches
  *
- * @last_modified: December 2016
+ * @last_modified: October 2017
  *
  **/
 
@@ -180,7 +180,7 @@ class BATCH_TOKEN {
           }
         }
 
-        t.TOKENIZER(cpp_string_separator, remove_punctuation_vector, threads);
+        t.TOKENIZER(cpp_string_separator, remove_punctuation_vector);
       }
 
       if (cpp_remove_stopwords) {

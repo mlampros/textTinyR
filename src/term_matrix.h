@@ -10,7 +10,7 @@
  *
  * @Notes: document-term-matrix or term-document-matrix in sparse format
  *
- * @last_modified: January 2017
+ * @last_modified: October 2017
  *
  **/
 
@@ -704,22 +704,33 @@ class term_matrix {
 
       arma::vec tfidf_docs(docs_words.size());
 
+      unsigned long long j;
+      
       #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
+      #pragma omp parallel for schedule(static) shared(docs_words, sort_columns, column_indices_docs, unique_words_sorted, unique_words, tf_idf, tfidf_docs, docs_counts_idf, count, unique_words_copy) private(j)
       #endif
-      for (unsigned long long j = 0; j < docs_words.size(); j++) {
+      for (j = 0; j < docs_words.size(); j++) {
 
         if (sort_columns) {
 
+          #ifdef _OPENMP
+          #pragma omp atomic write
+          #endif
           column_indices_docs(j) = unique_words_sorted[docs_words[j]];}
 
         else {
 
+          #ifdef _OPENMP
+          #pragma omp atomic write
+          #endif
           column_indices_docs(j) = unique_words[docs_words[j]];                                                                // match docs-words with unique words to get the column indices
         }
 
         if (tf_idf) {
 
+          #ifdef _OPENMP
+          #pragma omp atomic write
+          #endif
           tfidf_docs(j) = docs_counts_idf[j] * std::log( (count * 1.0) /  (1.0 + unique_words_copy[docs_words[j]]) );          // tf-idf : by default natural logarithm AND add 1.0 to the denominator to avoid zero division
         }
       }
@@ -956,7 +967,7 @@ class term_matrix {
 
       std::vector<long long> sps1 = arma::conv_to< std::vector<long long> >::from(sps);
 
-      std::vector<STRUCT<std::string, long long>> vec_freq = s2dv.inner_sort_func_VEC(Terms, sps1, false, false, threads);
+      std::vector<STRUCT<std::string, long long>> vec_freq = s2dv.inner_sort_func_VEC(Terms, sps1, false, false);
 
       long long kt_iter = keepTerms == 0 ? vec_freq.size() : keepTerms;
 
@@ -971,14 +982,21 @@ class term_matrix {
 
       arma::rowvec sorted_frequency(kt_iter);
 
+      long long ITER;
+      
       #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
+      #pragma omp parallel for schedule(static) shared(kt_iter, vec_freq, sorted_terms, sorted_frequency) private(ITER)
       #endif
-      for (long long ITER = 0; ITER < kt_iter; ITER++) {
+      for (ITER = 0; ITER < kt_iter; ITER++) {
 
-        sorted_terms[ITER] = vec_freq[ITER].VAR1;
+        #ifdef _OPENMP
+        #pragma omp critical
+        #endif
+        {
+          sorted_terms[ITER] = vec_freq[ITER].VAR1;
 
-        sorted_frequency(ITER) = vec_freq[ITER].VAR2;
+          sorted_frequency(ITER) = vec_freq[ITER].VAR2;
+        }
       }
 
       return(Rcpp::List::create( Rcpp::Named("term") = sorted_terms, Rcpp::Named("frequency") = sorted_frequency));

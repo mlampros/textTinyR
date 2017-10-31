@@ -41,4 +41,3 @@ library(textTinyR)
 
 #                       min_lines = 1, trimmed_line = FALSE)
 }
-

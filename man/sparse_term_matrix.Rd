@@ -87,6 +87,8 @@ Term matrices and statistics ( document-term-matrix, term-document-matrix)
 \details{
 the \emph{Term_Matrix} function takes either a character vector of strings or a text file and after tokenization and transformation returns either a document-term-matrix or a term-document-matrix
 
+the \emph{triplet_data} function returns the triplet data, which is used internally (in c++), to construct the Term Matrix. The triplet data could be usefull for secondary purposes, such as in word vector representations.
+
 the \emph{Term_Matrix_Adjust} function removes sparse terms from a sparse matrix using a sparsity threshold
 
 the \emph{term_associations} function finds the associations between the given terms (Terms argument) and all the other terms in the corpus by calculating their correlation. There is also the option to keep a specific number of terms from the output table using the \emph{keep_terms} parameter.
@@ -107,17 +109,22 @@ Stemming of the english language is done using the porter2-stemmer, for details 
 
  \item{\code{--------------}}{}
 
+ \item{\code{triplet_data()}}{}
+
+ \item{\code{--------------}}{}
+
  \item{\code{Term_Matrix_Adjust(sparsity_thresh = 1.0)}}{}
 
  \item{\code{--------------}}{}
 
- \item{\code{term_associations(Terms = NULL, keep_terms = NULL, threads = 1, verbose = FALSE)}}{}
+ \item{\code{term_associations(Terms = NULL, keep_terms = NULL, verbose = FALSE)}}{}
 
  \item{\code{--------------}}{}
 
  \item{\code{most_frequent_terms(keep_terms = NULL, threads = 1, verbose = FALSE)}}{}
  }
 }
+
 \examples{
 
 library(textTinyR)
@@ -139,6 +146,11 @@ library(textTinyR)
 
 #                stemmer = 'porter2_stemmer', threads = 1 )
 
+#---------------
+# triplet data :
+#---------------
+
+# sm$triplet_data()
 
 #-------------------------
 # removal of sparse terms:
@@ -163,4 +175,3 @@ library(textTinyR)
 # sm$most_frequent_terms(keep_terms = 10, threads = 1)
 }
 \keyword{datasets}
-

@@ -29,4 +29,3 @@ word2 = 'two_words'
 
 dts = dice_distance(word1, word2, n_grams = 2)
 }
-

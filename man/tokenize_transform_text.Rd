@@ -122,4 +122,3 @@ token_str = "CONVERT to lower, remove.. punctuation11234, trim token and split "
 
 res = tokenize_transform_text(object = token_str, to_lower = TRUE, split_string = TRUE)
 }
-

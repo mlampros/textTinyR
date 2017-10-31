@@ -38,8 +38,15 @@ yum install boost-devel
 
 <br>
 
-#### **Macintosh OSX/brew**
+#### **Macintosh OSX/brew** 
 
+<br>
+
+
+**UPDATE 25-05-2017** : The current CRAN version of the package can only be installed on Linux and Windows. If the boost locale are installed properly on your OSystem use the *devtools::install_github(repo = 'mlampros/textTinyR', clean = TRUE)* function to download the textTinyR package.
+
+
+<br>
 
 The boost library will be installed on the Macintosh OSx using the *Homebrew package manager*, 
 

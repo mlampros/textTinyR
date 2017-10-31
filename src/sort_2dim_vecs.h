@@ -10,7 +10,7 @@
  *
  * @Notes: sorting of either vectors (2-dimensional) or of an unordered-map (2-dimensional values)
  *
- * @last_modified: December 2016
+ * @last_modified: October 2017
  *
  **/
 
@@ -112,17 +112,11 @@ class SORT_2DIMENSIONAL_VEC {
     // sort vectors of any data type using a struct
     //
 
-    std::vector<STRUCT<T1, T2>> inner_sort_func_VEC(std::vector<T1> V1, std::vector<T2> V2, bool sort, bool ascend, int threads = 1) {
+    std::vector<STRUCT<T1, T2>> inner_sort_func_VEC(std::vector<T1> V1, std::vector<T2> V2, bool sort, bool ascend) {
 
-      #ifdef _OPENMP
-      omp_set_num_threads(threads);
-      #endif
 
       std::vector<STRUCT<T1, T2>> struct_result(V1.size());
 
-      #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
-      #endif
       for (unsigned int i = 0; i < V1.size(); i++) {
 
         STRUCT<T1, T2> tmp_struct;
@@ -134,7 +128,7 @@ class SORT_2DIMENSIONAL_VEC {
         struct_result[i] = tmp_struct;
       }
 
-      SORT_template<T1,T2> srt(sort, ascend);                     // composition inside class-method using class 'SORT_template' 
+      SORT_template<T1,T2> srt(sort, ascend);                     // composition inside class-method using class 'SORT_template'
 
       std::sort(struct_result.begin(), struct_result.end(), srt);
 
@@ -161,7 +155,7 @@ class SORT_2DIMENSIONAL_VEC {
         struct_result.push_back(tmp_struct);
       }
 
-      SORT_template<T1,T2> srt(sort, ascend);                     // composition inside class-method using class 'SORT_template' 
+      SORT_template<T1,T2> srt(sort, ascend);                     // composition inside class-method using class 'SORT_template'
 
       std::sort(struct_result.begin(), struct_result.end(), srt);
 

@@ -29,4 +29,3 @@ sentence2 = 'this is a similar sentence'
 
 cds = cosine_distance(sentence1, sentence2)
 }
-

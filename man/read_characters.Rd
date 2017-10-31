@@ -22,4 +22,3 @@ library(textTinyR)
 
 # txfl = read_characters(input_file = 'input.txt', characters = 100)
 }
-

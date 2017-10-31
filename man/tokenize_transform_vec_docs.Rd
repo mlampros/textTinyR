@@ -101,4 +101,3 @@ token_doc_vec = c("CONVERT to lower", "remove.. punctuation11234", "trim token a
 
 res = tokenize_transform_vec_docs(object = token_doc_vec, to_lower = TRUE, split_string = TRUE)
 }
-

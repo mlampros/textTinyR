@@ -25,4 +25,3 @@ library(textTinyR)
 
 # txfl = read_rows(input_file = 'input.txt', rows = 100)
 }
-

@@ -27,4 +27,3 @@ word2 = 'two_words'
 
 lvs = levenshtein_distance(word1, word2)
 }
-

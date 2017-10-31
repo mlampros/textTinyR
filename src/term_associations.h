@@ -10,7 +10,7 @@
  *
  * @Notes: association statistics using either a document-term-matrix or a term-document-matrix (sparse format)
  *
- * @last_modified: December 2016
+ * @last_modified: October 2017
  *
  **/
 
@@ -118,11 +118,7 @@ class associations_class {
     // associations for a single target-variable
     //
 
-    Rcpp::List correlation_assoc_single(long long target_var, long long target_size, std::vector<std::string> Terms, long long keepTerms = 0, int threads = 1) {
-
-      #ifdef _OPENMP
-      omp_set_num_threads(threads);
-      #endif
+    Rcpp::List correlation_assoc_single(long long target_var, long long target_size, std::vector<std::string> Terms, long long keepTerms = 0) {
 
       std::map<long long, std::vector<associations<T>>> copy_assoc = assoc_map_;
 
@@ -132,11 +128,11 @@ class associations_class {
 
         res_vec1(it.row_assoc) = it.count_assoc;
       }
-      
+
       if (arma::accu(res_vec1) == 0.0) {
-        
+
         Rcpp::Rcout << "" << std::endl;
-        
+
         Rcpp::Rcout << "warning: the '" << Terms[target_var - 1] << "' variable sums to zero" << std::endl;
       }
 
@@ -148,18 +144,12 @@ class associations_class {
 
       std::vector<struct_map_assoc> cor_reslt(copy_keys.size());
 
-      #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
-      #endif
       for (unsigned long long f = 0; f < copy_keys.size(); f++) {
 
         arma::rowvec res_vec2(target_size, arma::fill::zeros);
 
         std::vector<associations<T>> tmp_v_struct = copy_assoc[copy_keys[f]];
 
-        #ifdef _OPENMP
-        #pragma omp parallel for schedule(static)
-        #endif
         for (unsigned long long g = 0; g < tmp_v_struct.size(); g++) {
 
           res_vec2(tmp_v_struct[g].row_assoc) = tmp_v_struct[g].count_assoc;
@@ -189,10 +179,6 @@ class associations_class {
 
       arma::rowvec sorted_correlation(kt_iter);
 
-
-      #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
-      #endif
       for (long long ITER = 0; ITER < kt_iter; ITER++) {
 
         sorted_index[ITER] = Terms[cor_reslt[ITER].index - 1];
@@ -207,7 +193,7 @@ class associations_class {
     // associations for multiple target-variables
     //
 
-    Rcpp::List correlation_assoc_multiple(std::vector<int> targ_vars, long long target_size, std::vector<std::string> Terms, long long keepTerms = 0, int threads = 1, bool verbose = false) {
+    Rcpp::List correlation_assoc_multiple(std::vector<int> targ_vars, long long target_size, std::vector<std::string> Terms, long long keepTerms = 0, bool verbose = false) {
 
       Rcpp::List assoc_lst(targ_vars.size());
 
@@ -215,7 +201,7 @@ class associations_class {
 
         if (verbose) { Rprintf("\rtotal.number.variables.processed: %3d", count_var + 1); }
 
-        assoc_lst[count_var] = correlation_assoc_single(targ_vars[count_var], target_size, Terms, keepTerms, threads);
+        assoc_lst[count_var] = correlation_assoc_single(targ_vars[count_var], target_size, Terms, keepTerms);
       }
 
       return assoc_lst;

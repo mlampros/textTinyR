@@ -13,9 +13,7 @@ vocabulary_parser(input_path_file = NULL, start_query = NULL,
   split_separator = " \\r\\n\\t.,;:()?!//", remove_stopwords = FALSE,
   language = "english", min_num_char = 1, stemmer = NULL,
   min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0,
-  n_gram_delimiter = " ", stemmer_ngram = 4, stemmer_gamma = 0,
-  stemmer_truncate = 3, stemmer_batches = 1, threads = 1,
-  verbose = FALSE)
+  n_gram_delimiter = " ", threads = 1, verbose = FALSE)
 }
 \arguments{
 \item{input_path_file}{a character string specifying a valid path to the input file}
@@ -64,7 +62,7 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 
 \item{min_num_char}{an integer specifying the minimum number of characters to keep. If the \emph{min_num_char} is greater than 1 then character strings with more than 1 characters will be returned}
 
-\item{stemmer}{a character string specifying the stemming method. One of the following \emph{porter2_stemmer}, \emph{ngram_sequential}, \emph{ngram_overlap}}
+\item{stemmer}{a character string specifying the stemming method. Available method is the \emph{porter2_stemmer}. See details for more information.}
 
 \item{min_n_gram}{an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.}
 
@@ -75,14 +73,6 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 \item{skip_distance}{an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.}
 
 \item{n_gram_delimiter}{a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)}
-
-\item{stemmer_ngram}{a numeric value greater than 1. Applies to both \emph{ngram_sequential} and \emph{ngram_overlap} methods. In case of \emph{ngram_sequential} the first stemmer_ngram characters will be picked, whereas in the case of \emph{ngram_overlap} the overlapping stemmer_ngram characters will be build.}
-
-\item{stemmer_gamma}{a float number greater or equal to 0.0. Applies only to \emph{ngram_sequential}. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.}
-
-\item{stemmer_truncate}{a numeric value greater than 0. Applies only to \emph{ngram_sequential}. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.}
-
-\item{stemmer_batches}{a numeric value greater than 0. Applies only to \emph{ngram_sequential}. Splits the corpus into batches with the option to run the batches in multiple threads.}
 
 \item{threads}{an integer specifying the number of cores to run in parallel}
 
@@ -95,6 +85,8 @@ returns the vocabulary counts for small or medium ( xml and not only ) files
 The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the \emph{start_query} and \emph{end_query} parameters
 
 For big files the \emph{vocabulary_accumulator} method of the \emph{big_tokenize_transform} class is appropriate
+
+Stemming of the english language is done using the porter2-stemmer, for details see \url{https://github.com/smassung/porter2_stemmer}
 }
 \examples{
 
@@ -108,4 +100,3 @@ library(textTinyR)
 
 #                         to_lower = TRUE, split_string = TRUE)
 }
-

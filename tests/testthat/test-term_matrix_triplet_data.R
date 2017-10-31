@@ -21,6 +21,22 @@ docs = as.vector(read.csv(PATH, header = FALSE, stringsAsFactors = F)[, 1])
 context('term matrix class')
 
 
+
+#--------------------------------
+# triplet-data [ error handling ]
+#--------------------------------
+
+
+testthat::test_that("in case that the 'triplet_data' method is called before the 'Term_Matrix' method is run, it returns an error", {
+
+  init = sparse_term_matrix$new(vector_data = docs, file_data = NULL, document_term_matrix = TRUE)
+
+  testthat::expect_error( init$triplet_data() )
+})
+
+
+
+
 #----------------------------------
 # initialization [ error handling ]
 #----------------------------------
@@ -766,7 +782,7 @@ testthat::test_that("in case that the Term_Matrix method is not run in first pla
 
   init1 = sparse_term_matrix$new(vector_data = docs, file_data = NULL, document_term_matrix = TRUE)
 
-  testthat::expect_error( init1$term_associations(Terms = c("the"), keep_terms = 10, threads = 1, verbose = FALSE) )
+  testthat::expect_error( init1$term_associations(Terms = c("the"), keep_terms = 10, verbose = FALSE) )
 })
 
 
@@ -784,7 +800,7 @@ testthat::test_that("in case that Terms is not a character vector it returns an 
 
                          threads = 1, verbose = FALSE)
 
-  testthat::expect_error( init$term_associations(Terms = NULL, keep_terms = 10, threads = 1, verbose = FALSE) )
+  testthat::expect_error( init$term_associations(Terms = NULL, keep_terms = 10, verbose = FALSE) )
 })
 
 
@@ -803,7 +819,7 @@ testthat::test_that("in case that Terms is a character vector with length less t
 
                          threads = 1, verbose = FALSE)
 
-  testthat::expect_error( init$term_associations(Terms = character(0), keep_terms = 10, threads = 1, verbose = FALSE) )
+  testthat::expect_error( init$term_associations(Terms = character(0), keep_terms = 10, verbose = FALSE) )
 })
 
 
@@ -822,7 +838,7 @@ testthat::test_that("in case that keep_terms is not a numeric value it returns a
 
                          threads = 1, verbose = FALSE)
 
-  testthat::expect_error( init$term_associations(Terms = c("the", "and"), keep_terms = list(), threads = 1, verbose = FALSE) )
+  testthat::expect_error( init$term_associations(Terms = c("the", "and"), keep_terms = list(), verbose = FALSE) )
 })
 
 
@@ -841,26 +857,7 @@ testthat::test_that("in case that keep_terms is a numeric value less than 1 it r
 
                          threads = 1, verbose = FALSE)
 
-  testthat::expect_error( init$term_associations(Terms = c("the", "and"), keep_terms = 0, threads = 1, verbose = FALSE) )
-})
-
-
-
-testthat::test_that("in case that the threads parameter is less than 1 it returns an error", {
-
-  init = sparse_term_matrix$new(vector_data = docs, file_data = NULL, document_term_matrix = TRUE)
-
-  res = init$Term_Matrix(sort_terms = FALSE, to_lower = TRUE, to_upper = FALSE, utf_locale = "", remove_char = "", remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE,
-
-                         remove_numbers = FALSE, trim_token = FALSE, split_string = TRUE, split_separator = " \r\n\t.,;:()?!//", remove_stopwords = FALSE, language = "english",
-
-                         min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ",
-
-                         print_every_rows = 100, normalize = NULL, tf_idf = FALSE,
-
-                         threads = 1, verbose = FALSE)
-
-  testthat::expect_error( init$term_associations(Terms = c("the", "and"), keep_terms = NULL, threads = 0, verbose = FALSE) )
+  testthat::expect_error( init$term_associations(Terms = c("the", "and"), keep_terms = 0, verbose = FALSE) )
 })
 
 
@@ -879,7 +876,7 @@ testthat::test_that("in case that the verbose parameter is not a boolean it retu
 
                          threads = 1, verbose = FALSE)
 
-  testthat::expect_error( init$term_associations(Terms = c("the", "and"), keep_terms = NULL, threads = 1, verbose = 'FALSE') )
+  testthat::expect_error( init$term_associations(Terms = c("the", "and"), keep_terms = NULL, verbose = 'FALSE') )
 })
 
 
@@ -906,7 +903,7 @@ testthat::test_that("it returns the correct output in case of a single term", {
 
   target_term = "is"
 
-  single_out = init$term_associations(Terms = target_term, keep_terms = NULL, threads = 1, verbose = FALSE)
+  single_out = init$term_associations(Terms = target_term, keep_terms = NULL, verbose = FALSE)
 
   testthat::expect_true( inherits(single_out, c("data.table","data.frame")) && nrow(single_out) == ncol(res) - 1 && ncol(single_out) == 2 && sum(colnames(single_out) %in% c('term', 'correlation')) == 2 && !target_term %in% single_out$term )
 })
@@ -928,7 +925,7 @@ testthat::test_that("it returns the correct output in case of a single term ( if
 
   target_term = "is"
 
-  single_out = init$term_associations(Terms = target_term, keep_terms = NULL, threads = 1, verbose = FALSE)
+  single_out = init$term_associations(Terms = target_term, keep_terms = NULL, verbose = FALSE)
 
   testthat::expect_true( inherits(single_out, c("data.table","data.frame")) && nrow(single_out) == nrow(res) - 1 && ncol(single_out) == 2 && sum(colnames(single_out) %in% c('term', 'correlation')) == 2 && !target_term %in% single_out$term )
 })
@@ -954,7 +951,7 @@ testthat::test_that("it returns the correct output in case that the Term_Matrix_
 
   target_term = "of"
 
-  single_out = init$term_associations(Terms = target_term, keep_terms = NULL, threads = 1, verbose = FALSE)
+  single_out = init$term_associations(Terms = target_term, keep_terms = NULL, verbose = FALSE)
 
   testthat::expect_true( inherits(single_out, c("data.table","data.frame")) && nrow(single_out) == nrow(res1) - 1 && ncol(single_out) == 2 && sum(colnames(single_out) %in% c('term', 'correlation')) == 2 && !target_term %in% single_out$term )
 })
@@ -978,7 +975,7 @@ testthat::test_that("it returns the correct output in case of a multiple terms",
 
   tmp_terms = c("is", "a")
 
-  mult_out = init$term_associations(Terms =  tmp_terms, keep_terms = NULL, threads = 1, verbose = FALSE)
+  mult_out = init$term_associations(Terms =  tmp_terms, keep_terms = NULL, verbose = FALSE)
 
   testthat::expect_true( sum(unlist(lapply(1:length(mult_out), function(x) inherits(mult_out[[x]], c("data.table","data.frame")) && nrow(mult_out[[x]]) == ncol(res) - 1 && ncol(mult_out[[x]]) == 2 &&
 
@@ -1003,7 +1000,7 @@ testthat::test_that("it returns the correct output in case of a multiple terms (
 
   tmp_terms = c("is", "a")
 
-  mult_out = init$term_associations(Terms =  tmp_terms, keep_terms = NULL, threads = 1, verbose = FALSE)
+  mult_out = init$term_associations(Terms =  tmp_terms, keep_terms = NULL, verbose = FALSE)
 
   testthat::expect_true( sum(unlist(lapply(1:length(mult_out), function(x) inherits(mult_out[[x]], c("data.table","data.frame")) && nrow(mult_out[[x]]) == nrow(res) - 1 && ncol(mult_out[[x]]) == 2 &&
 

@@ -25,4 +25,3 @@ sp_mat = dense_2sparse(tmp)
 
 dbl = matrix_sparsity(sp_mat)
 }
-

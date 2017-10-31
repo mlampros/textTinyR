@@ -10,7 +10,7 @@
  *
  * @Notes: the main class for tokenization and transformation of text files
  *
- * @last_modified: March 2017
+ * @last_modified: October 2017
  *
  **/
 
@@ -351,47 +351,41 @@ class TOKEN {
     // split a string sentence using multiple separators
     //
 
-    void TOKENIZER(std::string separator = "-*", bool remove_punctuation = false, int threads = 1) {
-
-      #ifdef _OPENMP
-      omp_set_num_threads(threads);
-      #endif
-
+    void TOKENIZER(std::string separator = "-*", bool remove_punctuation = false) {
+      
       std::vector<std::string> new_vec;
-
+      
       for (unsigned int i = 0; i < v.size(); i++) {
-
+        
         std::string tmp_x = v[i];
-
+        
         std::vector<std::string> tmp_vec;
-
+        
         boost::split( tmp_vec, tmp_x, boost::is_any_of(separator), boost::token_compress_on );
-
+        
         tmp_x.shrink_to_fit();
-
+        
         if (remove_punctuation) {
-
-          #ifdef _OPENMP
-          #pragma omp parallel for schedule(static)
-          #endif
+          
           for (unsigned int i = 0; i < tmp_vec.size(); i++) {
-
+            
             tmp_vec[i].erase(std::remove_if(tmp_vec[i].begin(), tmp_vec[i].end(), &ispunct), tmp_vec[i].end());
           }
         }
-
+        
         new_vec.insert(std::end(new_vec), std::begin(tmp_vec), std::end(tmp_vec));
-
+        
         tmp_vec.shrink_to_fit();
       }
-
+      
       v.shrink_to_fit();
-
+      
       v = new_vec;
-
+      
       new_vec.shrink_to_fit();
     }
-
+    
+    
 
     // remove stopwords
 
@@ -443,12 +437,19 @@ class TOKEN {
 
       std::vector<std::string> result(insert_vals.size());              // subset [ to preserve the words order using indexing ]
 
+      unsigned int f;
+      
       #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
+      #pragma omp parallel for schedule(static) shared(insert_vals, result) private(f)
       #endif
-      for (unsigned int f = 0; f < insert_vals.size(); f++) {
+      for (f = 0; f < insert_vals.size(); f++) {
 
-        result[f] = v[insert_vals[f]];
+        #ifdef _OPENMP
+        #pragma omp critical
+        #endif
+        {
+          result[f] = v[insert_vals[f]];
+        }
       }
 
       insert_vals.shrink_to_fit();
@@ -496,12 +497,19 @@ class TOKEN {
 
       std::vector<std::string> result(insert_vals.size());
 
+      unsigned int f;
+      
       #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
+      #pragma omp parallel for schedule(static) shared(insert_vals, result) private(f)
       #endif
-      for (unsigned int f = 0; f < insert_vals.size(); f++) {
+      for (f = 0; f < insert_vals.size(); f++) {
 
-        result[f] = v[insert_vals[f]];
+        #ifdef _OPENMP
+        #pragma omp critical
+        #endif
+        {
+          result[f] = v[insert_vals[f]];
+        }
       }
 
       insert_vals.shrink_to_fit();
@@ -533,21 +541,22 @@ class TOKEN {
       omp_set_num_threads(threads);
       #endif
 
+      unsigned int i;
+      
       #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
+      #pragma omp parallel for schedule(static) private(i)
       #endif
-      for (unsigned int i = 0; i < v.size(); i++) {
-
-        v[i] = Porter2Stemmer::stem(v[i]);
-
-        // std::string tmp = Porter2Stemmer::stem(v[i]);
-        //
-        // std::cout << tmp << std::endl;
-        //
-        // v[i] = tmp;
+      for (i = 0; i < v.size(); i++) {
+        
+        std::string tmp_prt = Porter2Stemmer::stem(v[i]);
+        
+        #ifdef _OPENMP
+        #pragma omp critical
+        #endif
+        {
+          v[i] = tmp_prt;
+        }
       }
-
-      //std::cout << "----------------------" << std::endl;
     }
 
 
@@ -569,76 +578,83 @@ class TOKEN {
     }
 
 
+    // inner function for the 'secondary_n_grams' function
+    //
+    
+    std::string inner_str(int n_gram, int i, std::vector<std::string>& vec, std::string& n_gram_delimiter) {
+      
+      std::string tmp_string;
+      
+      for (int j = i; j < i + n_gram; j++) {
+        
+        if (j == i) {
+          
+          tmp_string += vec[j];}
+        
+        else {
+          
+          tmp_string += n_gram_delimiter + vec[j];
+        }
+      }
+      
+      return tmp_string;
+    }
+    
+    
+    
     // secondary function for the n-grams-function
-
-    std::vector<std::string> secondary_n_grams(std::vector<std::string> vec, int n_gram = 2, std::string n_gram_delimiter = "_", int threads = 1) {
-
+    
+    std::vector<std::string> secondary_n_grams(std::vector<std::string>& vec, std::string& n_gram_delimiter, int n_gram = 2, int threads = 1) {
+      
       #ifdef _OPENMP
       omp_set_num_threads(threads);
       #endif
-
+      
       int vec_size = vec.size() - n_gram + 1;
-
+      
       if (vec_size < 0) {
-
+        
         vec_size = 0;
       }
-
+      
       std::vector<std::string> out(vec_size);
-
+      
+      int i;
+      
       #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
+      #pragma omp parallel for schedule(static) shared(vec_size, n_gram_delimiter, vec, n_gram, out) private(i)
       #endif
-      for (int i = 0; i < vec_size; i++) {
-
-        std::string tmp_string;
-
-        for (int j = i; j < i + n_gram; j++) {
-
-          if (j == i) {
-
-            tmp_string += vec[j];}
-
-          else {
-
-            tmp_string += n_gram_delimiter + vec[j];
-          }
+      for (i = 0; i < vec_size; i++) {
+        
+        std::string tmp_in = inner_str(n_gram, i, vec, n_gram_delimiter);
+        
+        #ifdef _OPENMP
+        #pragma omp critical
+        #endif
+        {
+          out[i] = tmp_in;
         }
-
-        out[i] = tmp_string;
       }
-
+      
       return out;
     }
-
-
+    
+    
     // build n-grams using an std::vector
-
+    
     void build_n_grams(int min_n_gram = 2, int max_n_gram = 2, std::string n_gram_delimiter = "_", int threads = 1) {
-
+      
       std::vector<std::string> insert_n_grams;
-
-      // for (int num = 0; num < v.size(); num++) {
-      //
-      //   std::cout << v[num] << std::endl;
-      // }
-      // std::cout << "================================" << std::endl;
-
+      
       for (int i = min_n_gram; i < max_n_gram + 1; i++) {
-
-        std::vector<std::string> tmp_vec = secondary_n_grams(v, i, n_gram_delimiter, threads);
-
+        
+        std::vector<std::string> tmp_vec = secondary_n_grams(v, n_gram_delimiter, i, threads);
+        
         insert_n_grams.insert(std::end(insert_n_grams), std::begin(tmp_vec), std::end(tmp_vec));
       }
-
+      
       v = insert_n_grams;
-
-      // for (int num = 0; num < v.size(); num++) {
-      //
-      //   std::cout << v[num] << std::endl;
-      // }
-      // std::cout << "-----------------------------" << std::endl;
-
+      
       insert_n_grams.shrink_to_fit();
     }
 
@@ -740,7 +756,7 @@ class TOKEN {
 
         if (i == 0) {
 
-          std::vector<std::string> tmp_n_grams = secondary_n_grams(v, n_gram, n_gram_delimiter, threads);
+          std::vector<std::string> tmp_n_grams = secondary_n_grams(v, n_gram_delimiter, n_gram, threads);
 
           insert_n_grams.insert(std::end(insert_n_grams), std::begin(tmp_n_grams), std::end(tmp_n_grams));}
 

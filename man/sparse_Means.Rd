@@ -27,4 +27,3 @@ sp_mat = dense_2sparse(tmp)
 
 spsm = sparse_Means(sp_mat, rowMeans = FALSE)
 }
-

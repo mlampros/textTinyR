@@ -10,7 +10,7 @@
  *
  * @Notes: statistics for tokenized and transformed text
  *
- * @last_modified: December 2016
+ * @last_modified: October 2017
  *
  **/
 
@@ -497,11 +497,13 @@ class TOKEN_stats {
     std::vector<std::string> char_n_grams(std::string &x, int n_grams, bool return_word = false, bool add_prefix = false) {
 
       int x_size = x.size();
-      
+
       if (add_prefix) {
 
         x = "_" + x + "_";
       }
+
+      int n_size = add_prefix ? x_size - n_grams + 3 : x_size - n_grams + 1;
 
       if (n_grams >= x_size) {
 
@@ -516,8 +518,6 @@ class TOKEN_stats {
       }
 
       else {
-
-        int n_size = x_size - n_grams + 1;
 
         std::vector<std::string> out(n_size);
 
@@ -577,6 +577,34 @@ class TOKEN_stats {
     }
 
 
+    // secondary function for the 'dissimilarity_mat' method
+    //
+    
+    double inner_dissim_m(std::vector<std::string>& words, int dice_n_gram, double dice_thresh, std::string& method, std::string& split_separator, unsigned int i, unsigned int j) {
+      
+      double tmp_idx = 0.0;
+      
+      if (method == "dice") {
+        
+        tmp_idx = dice_similarity(words[i], words[j], dice_n_gram);
+        
+        if (tmp_idx >= dice_thresh) { tmp_idx = 1.0; }     // special case when method = 'dice' see : http://www.anthology.aclweb.org/P/P00/P00-1026.pdf, page 3
+      }
+      
+      if (method == "levenshtein") {
+        
+        tmp_idx = levenshtein_dist(words[i], words[j]);
+      }
+      
+      if (method == "cosine") {
+        
+        tmp_idx = cosine_dist(words[i], words[j], split_separator);
+      }
+      
+      return tmp_idx;
+    }
+    
+    
     // dissimilarity matrix using the dice-coefficient for the n-gram clustering [ set a threshold so that if a two-word's dissimilarity
     // value is greater than the threshold value, then they are (entirely) dissimilar and thus have a distance of 1.0 ]
     // The 'dice' method is appropriate for n-gram string characters, the 'levenstein' distance is appropriate for strings and the 'cosine'
@@ -586,7 +614,7 @@ class TOKEN_stats {
     // method == "cosine" calculates the dissimilarity distance for sentences (more than 1 word)
     //
 
-    arma::mat dissimilarity_mat(std::vector<std::string> &words, int dice_n_gram = 2, std::string method = "dice", std::string split_separator = " ",
+    arma::mat dissimilarity_mat(std::vector<std::string>& words, std::string& method, std::string& split_separator, int dice_n_gram = 2,
 
                                 double dice_thresh = 0.3, bool upper = true, bool diagonal = true, int threads = 1) {
 
@@ -598,41 +626,27 @@ class TOKEN_stats {
 
       mt.fill(arma::datum::nan);
 
+      unsigned int i,j;
+      
       #ifdef _OPENMP
-      #pragma omp parallel for schedule(static)
+      #pragma omp parallel for schedule(static) shared(words, split_separator, method, dice_n_gram, dice_thresh, mt, upper) private(i,j)
       #endif
-      for (unsigned int i = 0; i < words.size() - 1; i++) {
+      for (i = 0; i < words.size() - 1; i++) {
+        
+        for (j = i + 1; j < words.size(); j++) {
 
-        int k = i;
+          double tmp_idx = inner_dissim_m(words, dice_n_gram, dice_thresh, method, split_separator, i, j);
 
-        #ifdef _OPENMP
-        #pragma omp parallel for schedule(static)
-        #endif
-        for (unsigned int j = k + 1; j < words.size(); j++) {
-
-          double tmp_idx = 0.0;
-
-          if (method == "dice") {
-
-            tmp_idx = dice_similarity(words[i], words[j], dice_n_gram);
-
-            if (tmp_idx >= dice_thresh) { tmp_idx = 1.0; }     // special case when method = 'dice' see : http://www.anthology.aclweb.org/P/P00/P00-1026.pdf, page 3
-          }
-
-          if (method == "levenshtein") {
-
-            tmp_idx = levenshtein_dist(words[i], words[j]);
-          }
-
-          if (method == "cosine") {
-
-            tmp_idx = cosine_dist(words[i], words[j], split_separator);
-          }
-
+          #ifdef _OPENMP
+          #pragma omp atomic write
+          #endif
           mt(j,i) = tmp_idx;
 
           if (upper) {
 
+            #ifdef _OPENMP
+            #pragma omp atomic write
+            #endif
             mt(i,j) = tmp_idx;
           }
         }

@@ -954,16 +954,12 @@ big_tokenize_transform <- R6::R6Class("big_tokenize_transform",
 #' \emph{norwegian}, \emph{persian}, \emph{polish}, \emph{portuguese}, \emph{romanian}, \emph{russian}, \emph{slovak}, \emph{slovenian},
 #' \emph{somalia}, \emph{spanish}, \emph{swahili}, \emph{swedish}, \emph{turkish}, \emph{yoruba}, \emph{zulu}
 #' @param min_num_char an integer specifying the minimum number of characters to keep. If the \emph{min_num_char} is greater than 1 then character strings with more than 1 characters will be returned
-#' @param stemmer a character string specifying the stemming method. One of the following \emph{porter2_stemmer}, \emph{ngram_sequential}, \emph{ngram_overlap}
+#' @param stemmer a character string specifying the stemming method. Available method is the \emph{porter2_stemmer}. See details for more information.
 #' @param min_n_gram an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.
 #' @param max_n_gram an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.
 #' @param skip_n_gram an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.
 #' @param skip_distance an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.
 #' @param n_gram_delimiter a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)
-#' @param stemmer_ngram a numeric value greater than 1. Applies to both \emph{ngram_sequential} and \emph{ngram_overlap} methods. In case of \emph{ngram_sequential} the first stemmer_ngram characters will be picked, whereas in the case of \emph{ngram_overlap} the overlapping stemmer_ngram characters will be build.
-#' @param stemmer_gamma a float number greater or equal to 0.0. Applies only to \emph{ngram_sequential}. Is a threshold value, which defines how much frequency deviation of two N-grams is acceptable. It is kept either zero or to a minimum value.
-#' @param stemmer_truncate a numeric value greater than 0. Applies only to \emph{ngram_sequential}. The ngram_sequential is modified to use relative frequencies (float numbers between 0.0 and 1.0 for the ngrams of a specific word in the corpus) and the stemmer_truncate parameter controls the number of rounding digits for the ngrams of the word. The main purpose was to give the same relative frequency to words appearing approximately the same on the corpus.
-#' @param stemmer_batches a numeric value greater than 0. Applies only to \emph{ngram_sequential}. Splits the corpus into batches with the option to run the batches in multiple threads.
 #' @param threads an integer specifying the number of cores to run in parallel
 #' @param verbose either TRUE or FALSE. If TRUE then information will be printed in the console
 #' @export
@@ -972,6 +968,9 @@ big_tokenize_transform <- R6::R6Class("big_tokenize_transform",
 #' The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the \emph{start_query} and \emph{end_query} parameters
 #'
 #' For big files the \emph{vocabulary_accumulator} method of the \emph{big_tokenize_transform} class is appropriate
+#'
+#' Stemming of the english language is done using the porter2-stemmer, for details see \url{https://github.com/smassung/porter2_stemmer}
+#'
 #' @examples
 #'
 #' library(textTinyR)
@@ -991,9 +990,7 @@ vocabulary_parser = function(input_path_file = NULL, start_query = NULL, end_que
 
                              remove_numbers = FALSE, trim_token = FALSE, split_string = FALSE, split_separator = " \r\n\t.,;:()?!//", remove_stopwords = FALSE, language = "english",
 
-                             min_num_char = 1, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", stemmer_ngram = 4,
-
-                             stemmer_gamma = 0.0, stemmer_truncate = 3, stemmer_batches = 1, threads = 1, verbose = FALSE) {
+                             min_num_char = 1, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", threads = 1, verbose = FALSE) {
 
 
   try_err_file_input = inherits(tryCatch(normalizePath(input_path_file, mustWork = T), error = function(e) e), "error")
@@ -1036,16 +1033,7 @@ vocabulary_parser = function(input_path_file = NULL, start_query = NULL, end_que
   if (min_num_char >= max_num_char) stop("the max_num_char parameter should be greater than the min_num_char")
   if (max_num_char == Inf) max_num_char = 1000000000
   if (!is.null(stemmer)) {
-    if (!stemmer %in% c("porter2_stemmer", "ngram_sequential", "ngram_overlap")) stop("valid stemming methods are porter2_stemmer, ngram_sequential or ngram_overlap")
-    if (stemmer == "ngram_sequential") {
-      if (stemmer_ngram < 1) stop("the minimum value for the stemmer_ngram parameter should be 1")
-      if (stemmer_gamma < 0.0) stop("the minimum value for the stemmer_gamma parameter should be 0.0")
-      if (stemmer_truncate < 1) stop("the minimum value for the stemmer_truncate parameter should be 1")
-      if (stemmer_batches < 1) stop("the minimum value for the stemmer_batches parameter should be 1")
-    }
-    if (stemmer == "ngram_overlap") {
-      if (stemmer_ngram < 1) stop("the minimum value for the stemmer_ngram parameter should be 1")
-    }
+    if (!stemmer %in% c("porter2_stemmer")) stop("valid stemming method is porter2_stemmer")
   }
   if (min_n_gram < 1) stop("the min_n_gram parameter should be greater than 0")
   if (max_n_gram < 1) stop("the max_n_gram parameter should be greater than 0")
@@ -1107,7 +1095,7 @@ vocabulary_parser = function(input_path_file = NULL, start_query = NULL, end_que
 
                          to_lower, to_upper, remove_punctuation_string, remove_punctuation_vector, remove_numbers, trim_token, split_string, split_separator, remove_stopwords, min_num_char,
 
-                         stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose)
+                         stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, threads, verbose)
 
   gc();
 
@@ -1698,6 +1686,8 @@ cosine_distance = function(sentence1, sentence2, split_separator = " ") {
 #'
 #' the \emph{Term_Matrix} function takes either a character vector of strings or a text file and after tokenization and transformation returns either a document-term-matrix or a term-document-matrix
 #'
+#' the \emph{triplet_data} function returns the triplet data, which is used internally (in c++), to construct the Term Matrix. The triplet data could be usefull for secondary purposes, such as in word vector representations.
+#'
 #' the \emph{Term_Matrix_Adjust} function removes sparse terms from a sparse matrix using a sparsity threshold
 #'
 #' the \emph{term_associations} function finds the associations between the given terms (Terms argument) and all the other terms in the corpus by calculating their correlation. There is also the option to keep a specific number of terms from the output table using the \emph{keep_terms} parameter.
@@ -1721,11 +1711,15 @@ cosine_distance = function(sentence1, sentence2, split_separator = " ") {
 #'
 #'  \item{\code{--------------}}{}
 #'
+#'  \item{\code{triplet_data()}}{}
+#'
+#'  \item{\code{--------------}}{}
+#'
 #'  \item{\code{Term_Matrix_Adjust(sparsity_thresh = 1.0)}}{}
 #'
 #'  \item{\code{--------------}}{}
 #'
-#'  \item{\code{term_associations(Terms = NULL, keep_terms = NULL, threads = 1, verbose = FALSE)}}{}
+#'  \item{\code{term_associations(Terms = NULL, keep_terms = NULL, verbose = FALSE)}}{}
 #'
 #'  \item{\code{--------------}}{}
 #'
@@ -1756,6 +1750,11 @@ cosine_distance = function(sentence1, sentence2, split_separator = " ") {
 #'
 #' #                stemmer = 'porter2_stemmer', threads = 1 )
 #'
+#' #---------------
+#' # triplet data :
+#' #---------------
+#'
+#' # sm$triplet_data()
 #'
 #' #-------------------------
 #' # removal of sparse terms:
@@ -2012,6 +2011,24 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                     },
 
 
+                                    #-----------------------------------------------------------------------------------------------------
+                                    # returns the triplet data [ the triplet data is used internally in c++ to construct the Term Matrix ]
+                                    #-----------------------------------------------------------------------------------------------------
+
+                                    triplet_data = function() {
+
+                                      if (is.null(private$tm_column_indices) || is.null(private$tm_row_indices) || is.null(private$tm_docs_counts) || is.null(private$save_terms)) {
+
+                                        stop("before calling the 'triplet_data' method you should run the 'Term_Matrix' method", call. = F)
+                                      }
+
+                                      lst = list(COLS = private$tm_column_indices, ROWS = private$tm_row_indices,
+
+                                                 COUNTS = private$tm_docs_counts, TERMS = private$save_terms)
+
+                                      return(lst)
+                                    },
+
 
                                     #-----------------------------------------------------------------
                                     # subset the sparse matrix removing sparse terms using a threshold
@@ -2094,7 +2111,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                     # find associations between terms
                                     #---------------------------------
 
-                                    term_associations = function(Terms = NULL, keep_terms = NULL, threads = 1, verbose = FALSE) {
+                                    term_associations = function(Terms = NULL, keep_terms = NULL, verbose = FALSE) {
 
                                       if (is.null(private$tm_column_indices)) stop("first run the Term_Matrix method")
                                       if (!inherits(Terms, c('character', 'vector'))) stop("the Terms parameter should be a character vector")
@@ -2103,7 +2120,6 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                         if (!inherits(keep_terms, c('numeric', 'integer'))) stop("the keep_terms parameter should be of type numeric")
                                         if (keep_terms < 1) stop("the minimum number of terms to keep is 1")}
                                       if (is.null(keep_terms)) keep_terms = 0
-                                      if (threads < 1) stop("the number of threads should be greater or equal to 1")
                                       if (!is.logical(verbose)) stop("the verbose parameter should be either TRUE or FALSE")
 
                                       if (!private$flag_Adjust) {
@@ -2173,7 +2189,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                                                      mult_target_var = numeric(0), keepTerms = keep_terms, target_var = single_trgt_idx,
 
-                                                                     normalize_TF = private$normlz_tf, tf_IDF = private$TF_idf, threads, verbose)}
+                                                                     normalize_TF = private$normlz_tf, tf_IDF = private$TF_idf, verbose)}
 
                                       else {
 
@@ -2181,7 +2197,7 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                                                      mult_target_var = single_trgt_idx, keepTerms = keep_terms, target_var = -1,
 
-                                                                     normalize_TF = private$normlz_tf, tf_IDF = private$TF_idf, threads, verbose)
+                                                                     normalize_TF = private$normlz_tf, tf_IDF = private$TF_idf, verbose)
                                       }
 
 

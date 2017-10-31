@@ -108,6 +108,7 @@ the \emph{look_up_table} returns a look-up-list where the list-names are the n-g
  \item{\code{print_words_lookup_tbl(n_gram = NULL)}}{}
  }
 }
+
 \examples{
 
 
@@ -160,4 +161,3 @@ lut <- tk$look_up_table(n_grams = 3)
 # tk$print_words_lookup_tbl(n_gram = 'e_w')
 }
 \keyword{datasets}
-

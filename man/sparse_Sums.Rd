@@ -27,4 +27,3 @@ sp_mat = dense_2sparse(tmp)
 
 spsm = sparse_Sums(sp_mat, rowSums = FALSE)
 }
-

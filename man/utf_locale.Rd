@@ -24,4 +24,3 @@ library(textTinyR)
 
 utf_locale(language = "english")
 }
-

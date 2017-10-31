@@ -27,4 +27,3 @@ sp_mat = dense_2sparse(tmp)
 
 # save_sparse_binary(sp_mat, file_name = "save_sparse.mat")
 }
-

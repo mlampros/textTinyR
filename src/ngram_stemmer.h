@@ -10,7 +10,7 @@
  *
  * @Notes: stemming of tokenized text using the n-gram method
  *
- * @last_modified: December 2016
+ * @last_modified: October 2017
  *
  **/
 
@@ -435,12 +435,19 @@ class ngram_stemmer {
 
         std::vector<std::string> res_dat(copy_x.size());
 
+        unsigned int g;
+        
         #ifdef _OPENMP
-        #pragma omp parallel for schedule(static)
+        #pragma omp parallel for schedule(static) shared(copy_x, res_ngram, res_dat) private(g)
         #endif
-        for (unsigned int g = 0; g < copy_x.size(); g++) {
+        for (g = 0; g < copy_x.size(); g++) {
 
-          res_dat[g] = res_ngram[copy_x[g]];
+          #ifdef _OPENMP
+          #pragma omp critical
+          #endif
+          {
+            res_dat[g] = res_ngram[copy_x[g]];
+          }
         }
 
         return res_dat;
@@ -456,10 +463,12 @@ class ngram_stemmer {
 
         if (verbose && threads > 1) { Rcpp::Rcout << "batch pre-processing begins ..." << std::endl; }
 
+        unsigned int g;
+        
         #ifdef _OPENMP
-        #pragma omp parallel for schedule(static)
+        #pragma omp parallel for schedule(static) shared(btch, threads, verbose, Rcpp::Rcout, x, round_dec_places, min_n_gram, gamma, res, res_ngram) private(g)
         #endif
-        for (unsigned int g = 0; g < btch.size(); g++) {
+        for (g = 0; g < btch.size(); g++) {
 
           if (verbose && threads == 1) { Rcpp::Rcout << "batch " << g + 1 << " starts ..." << std::endl; }
 
@@ -481,19 +490,31 @@ class ngram_stemmer {
 
           std::unordered_map<std::string, std::string> tmp_batch_map = batch_map(subvector, res, gamma, min_n_gram, round_dec_places);
 
-          res_ngram.insert(tmp_batch_map.begin(), tmp_batch_map.end());
+          #ifdef _OPENMP
+          #pragma omp critical
+          #endif
+          {
+            res_ngram.insert(tmp_batch_map.begin(), tmp_batch_map.end());
+          }
         }
 
         if (verbose) { Rcpp::Rcout << "batch mapping of the corpus with the unique n-gram stems begins ..." << std::endl; }
 
         std::vector<std::string> res_dat(copy_x.size());
 
+        unsigned int f;
+        
         #ifdef _OPENMP
-        #pragma omp parallel for schedule(static)
+        #pragma omp parallel for schedule(static) shared(copy_x, res_ngram, res_dat) private(f)
         #endif
-        for (unsigned int g = 0; g < copy_x.size(); g++) {
+        for (f = 0; f < copy_x.size(); f++) {
 
-          res_dat[g] = res_ngram[copy_x[g]];
+          #ifdef _OPENMP
+          #pragma omp critical
+          #endif
+          {
+            res_dat[f] = res_ngram[copy_x[f]];
+          }
         }
 
         return res_dat;

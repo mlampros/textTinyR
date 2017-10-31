@@ -1,4 +1,3 @@
-
 # include <RcppArmadillo.h>
 // [[Rcpp::depends("RcppArmadillo")]]
 // [[Rcpp::plugins(openmp)]]
@@ -160,7 +159,7 @@ arma::mat Dissimilarity_mat(std::vector<std::string> words, int dice_n_gram = 2,
 
   TOKEN_stats tok;
 
-  return tok.dissimilarity_mat(words, dice_n_gram, method, split_separator, dice_thresh, upper, diagonal, threads);
+  return tok.dissimilarity_mat(words, method, split_separator, dice_n_gram, dice_thresh, upper, diagonal, threads);
 }
 
 
@@ -210,54 +209,57 @@ std::vector<std::string> res_token(std::string x, std::vector<std::string> langu
 }
 
 
+
+
 //--------------------------------------------------------------------------------------------
 // tokenization and transformation for a vector of documents ( a vector of character strings )
 //--------------------------------------------------------------------------------------------
 
 // [[Rcpp::export]]
-std::vector<std::string> res_token_vector(std::vector<std::string> &VEC, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, int max_num_char,
+std::vector<std::string> res_token_vector(std::vector<std::string>& VEC, std::vector<std::string>& language, std::string& language_spec, std::string& LOCALE_UTF, int max_num_char,
 
-                                                        std::string remove_char = "", bool cpp_to_lower = false, bool cpp_to_upper = false, bool cpp_remove_punctuation = false,
+                                                        std::string& remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation,
 
-                                                        bool remove_punctuation_vector = false, bool cpp_remove_numbers = false, bool cpp_trim_token = false, bool cpp_tokenization_function = false,
+                                                        bool remove_punctuation_vector, bool cpp_remove_numbers, bool cpp_trim_token, bool cpp_tokenization_function,
 
-                                                        std::string cpp_string_separator = "-*", bool cpp_remove_stopwords = false, int min_num_char = 1, std::string stemmer = "NULL", int min_n_gram = 1,
+                                                        std::string& cpp_string_separator, bool cpp_remove_stopwords, int min_num_char, std::string& stemmer, int min_n_gram,
 
-                                                        int max_n_gram = 1, int skip_n_gram = 1, int skip_distance = 0, std::string n_gram_delimiter = " ", std::string concat_delimiter = "NULL",
+                                                        int max_n_gram, int skip_n_gram, int skip_distance, std::string& n_gram_delimiter, std::string& concat_delimiter,
 
-                                                        std::string path_2file = "", int stemmer_ngram = 4, double stemmer_gamma = 0.0, int stemmer_truncate = 3, int stemmer_batches = 1, int threads = 1,
+                                                        std::string& path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads,
 
-                                                        bool verbose = false, std::string vocabulary_path = "") {
-
-
+                                                        bool verbose, std::string& vocabulary_path) {
   #ifdef _OPENMP
   omp_set_num_threads(threads);
   #endif
 
   big_files bgf;
 
-  std::vector<std::string> res_vec(VEC.size());
+  std::vector<std::string> res_vec(VEC.size());               // returns a vector of character strings
 
   bool FLAG_write_file = path_2file == "" ? false : true;
 
+  unsigned long long f;
+  
   #ifdef _OPENMP
-  #pragma omp parallel for schedule(static)
+  #pragma omp parallel for schedule(static) shared(VEC, bgf, vocabulary_path, FLAG_write_file, stemmer_batches, stemmer_truncate, stemmer_gamma, stemmer_ngram, path_2file, concat_delimiter, n_gram_delimiter, skip_distance, skip_n_gram, max_n_gram, min_n_gram, stemmer, min_num_char, cpp_remove_stopwords, cpp_string_separator, cpp_tokenization_function, cpp_trim_token, remove_punctuation_vector, cpp_remove_numbers, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, res_vec) private(f)
   #endif
-  for (unsigned long long f = 0; f < VEC.size(); f++) {
-
-    //std::cout << f << std::endl;
-
-    std::vector<std::string> tmp_vec = bgf.res_TOKEN(VEC[f], language, language_spec, LOCALE_UTF, false, '\t', max_num_char, remove_char, cpp_to_lower, cpp_to_upper,
-
-                                                     cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function,
-
-                                                     cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance,
-
-                                                     n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches,
-
-                                                     1, false, FLAG_write_file, "output_token.txt", vocabulary_path, true);
-
-    res_vec[f] = boost::algorithm::join(tmp_vec, " ");      // returns a vector of strings
+  for (f = 0; f < VEC.size(); f++) {
+    
+    std::string tmp_str = bgf.inner_res_tok_vec(f, VEC, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation,
+                                                        
+                                                remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords,
+                                                
+                                                min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram,
+                                                
+                                                stemmer_gamma, stemmer_truncate, stemmer_batches, vocabulary_path, FLAG_write_file);
+    
+    #ifdef _OPENMP
+    #pragma omp critical
+    #endif
+    {
+      res_vec[f] = tmp_str;
+    }
   }
 
   return res_vec;
@@ -269,19 +271,17 @@ std::vector<std::string> res_token_vector(std::vector<std::string> &VEC, std::ve
 //--------------------------------------------------------------------------------------------------------------------------------------
 
 // [[Rcpp::export]]
-std::vector<std::vector<std::string> > res_token_list(std::vector<std::string> &VEC, std::vector<std::string> language, std::string language_spec, std::string LOCALE_UTF, int max_num_char,
+std::vector<std::vector<std::string> > res_token_list(std::vector<std::string>& VEC, std::vector<std::string>& language, std::string& language_spec, std::string& LOCALE_UTF, int max_num_char,
 
-                                                      std::string remove_char = "", bool cpp_to_lower = false, bool cpp_to_upper = false, bool cpp_remove_punctuation = false,
+                                                      std::string& remove_char, bool cpp_to_lower, bool cpp_to_upper, bool cpp_remove_punctuation, bool remove_punctuation_vector, bool cpp_remove_numbers,
 
-                                                      bool remove_punctuation_vector = false, bool cpp_remove_numbers = false, bool cpp_trim_token = false, bool cpp_tokenization_function = false,
+                                                      bool cpp_trim_token, bool cpp_tokenization_function, std::string& cpp_string_separator, bool cpp_remove_stopwords, int min_num_char,
 
-                                                      std::string cpp_string_separator = "-*", bool cpp_remove_stopwords = false, int min_num_char = 1, std::string stemmer = "NULL", int min_n_gram = 1,
+                                                      std::string& stemmer, int min_n_gram, int max_n_gram, int skip_n_gram, int skip_distance, std::string& n_gram_delimiter, std::string& concat_delimiter,
 
-                                                      int max_n_gram = 1, int skip_n_gram = 1, int skip_distance = 0, std::string n_gram_delimiter = " ", std::string concat_delimiter = "NULL",
+                                                      std::string& path_2file, int stemmer_ngram, double stemmer_gamma, int stemmer_truncate, int stemmer_batches, int threads, bool verbose,
 
-                                                      std::string path_2file = "", int stemmer_ngram = 4, double stemmer_gamma = 0.0, int stemmer_truncate = 3, int stemmer_batches = 1, int threads = 1,
-
-                                                      bool verbose = false, std::string vocabulary_path = "") {
+                                                      std::string& vocabulary_path) {
 
   #ifdef _OPENMP
   omp_set_num_threads(threads);
@@ -289,32 +289,35 @@ std::vector<std::vector<std::string> > res_token_list(std::vector<std::string> &
 
   big_files bgf;
 
-  std::vector<std::vector<std::string> > res_vec(VEC.size());
+  std::vector<std::vector<std::string> > res_vec(VEC.size());        // returns a list of character vectors
 
   bool FLAG_write_file = path_2file == "" ? false : true;
 
+  unsigned long long f;
+
   #ifdef _OPENMP
-  #pragma omp parallel for schedule(static)
+  #pragma omp parallel for schedule(static) shared(VEC, bgf, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, res_vec, vocabulary_path, FLAG_write_file, stemmer_batches, stemmer_truncate, stemmer_gamma, stemmer_ngram, path_2file, concat_delimiter, n_gram_delimiter, skip_distance, skip_n_gram, max_n_gram, min_n_gram, stemmer, min_num_char, cpp_remove_stopwords, cpp_string_separator, cpp_tokenization_function, cpp_trim_token) private(f)
   #endif
-  for (unsigned long long f = 0; f < VEC.size(); f++) {
-
-    std::vector<std::string> tmp_vec = bgf.res_TOKEN(VEC[f], language, language_spec, LOCALE_UTF, false, '\t', max_num_char, remove_char, cpp_to_lower, cpp_to_upper,
-
-                                                     cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function,
-
-                                                     cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance,
-
-                                                     n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches,
-
-                                                     1, false, FLAG_write_file, "output_token.txt", vocabulary_path, true);
-
-    res_vec[f] = tmp_vec;                                     // returns a list of character vectors
+  for (f = 0; f < VEC.size(); f++) {
+    
+    std::vector<std::string> tmp_vec = bgf.inner_res_tok_list(f, VEC, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation,
+                          
+                                                              remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords,
+                                                              
+                                                              min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram,
+                                                              
+                                                              stemmer_gamma, stemmer_truncate, stemmer_batches, vocabulary_path, FLAG_write_file);
+    
+    #ifdef _OPENMP
+    #pragma omp critical
+    #endif
+    {
+      res_vec[f] = tmp_vec;
+    }
   }
 
   return res_vec;
 }
-
-
 
 
 // //---------------------------------------------------------------------
@@ -472,9 +475,7 @@ void vocabulary_counts(std::string input_path_file, std::string start_query, std
 
                        int min_num_char = 1, std::string stemmer = "NULL", int min_n_gram = 1, int max_n_gram = 1, int skip_n_gram = 1, int skip_distance = 0,
 
-                       std::string n_gram_delimiter = " ", int stemmer_ngram = 4, double stemmer_gamma = 0.0, int stemmer_truncate = 3, int stemmer_batches = 1,
-
-                       int threads = 1, bool verbose = false) {
+                       std::string n_gram_delimiter = " ", int threads = 1, bool verbose = false) {
 
   big_files bgf;
 
@@ -484,7 +485,7 @@ void vocabulary_counts(std::string input_path_file, std::string start_query, std
 
                                      cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance,
 
-                                     n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose);
+                                     n_gram_delimiter, threads, verbose);
 }
 
 
@@ -586,7 +587,7 @@ Rcpp::List Adj_Sparsity(arma::rowvec column_indices, arma::rowvec row_indices, a
 // [[Rcpp::export]]
 Rcpp::List Associations_Cpp(arma::rowvec column_indices_, arma::rowvec row_indices_, arma::vec docs_counts_, long long target_size, std::vector<std::string> Terms, std::vector<int> mult_target_var,
 
-                            long long keepTerms = 0, long long target_var = -1, std::string normalize_TF = "NULL", bool tf_IDF = false, int threads = 1, bool verbose = false) {
+                            long long keepTerms = 0, long long target_var = -1, std::string normalize_TF = "NULL", bool tf_IDF = false, bool verbose = false) {
 
 
   arma::wall_clock timer;
@@ -603,12 +604,12 @@ Rcpp::List Associations_Cpp(arma::rowvec column_indices_, arma::rowvec row_indic
 
     if (target_var != -1) {
 
-      tmp_rcpp = aclass.correlation_assoc_single(target_var, target_size, Terms, keepTerms, threads);
+      tmp_rcpp = aclass.correlation_assoc_single(target_var, target_size, Terms, keepTerms);
     }
 
     else {
 
-      tmp_rcpp = aclass.correlation_assoc_multiple(mult_target_var, target_size, Terms, keepTerms, threads, verbose);
+      tmp_rcpp = aclass.correlation_assoc_multiple(mult_target_var, target_size, Terms, keepTerms, verbose);
     }
 
     if (verbose) { double n = timer.toc(); Rprintf("\tminutes.to.complete: %.5f", n / 60.0); }
@@ -626,12 +627,12 @@ Rcpp::List Associations_Cpp(arma::rowvec column_indices_, arma::rowvec row_indic
 
     if (target_var != -1) {
 
-      tmp_rcpp = aclass.correlation_assoc_single(target_var, target_size, Terms, keepTerms, threads);
+      tmp_rcpp = aclass.correlation_assoc_single(target_var, target_size, Terms, keepTerms);
     }
 
     else {
 
-      tmp_rcpp = aclass.correlation_assoc_multiple(mult_target_var, target_size, Terms, keepTerms, threads, verbose);
+      tmp_rcpp = aclass.correlation_assoc_multiple(mult_target_var, target_size, Terms, keepTerms, verbose);
     }
 
     if (verbose) { double n = timer.toc(); Rprintf("\tminutes.to.complete: %.5f", n / 60.0); }
