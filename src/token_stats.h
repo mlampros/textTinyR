@@ -386,7 +386,13 @@ class TOKEN_stats {
 
           int cost = (s[i] == t[j]) ? 0 : 1;           // condition ? result_if_true : result_if_false
 
-          arma::rowvec tmp_vec = {v1[j] + 1, v0[j + 1] + 1, v0[j] + cost};
+          arma::rowvec tmp_vec(3, arma::fill::zeros);
+          
+          tmp_vec(0) = arma::as_scalar(v1[j] + 1);
+          tmp_vec(1) = arma::as_scalar(v0[j + 1] + 1);
+          tmp_vec(2) = arma::as_scalar(v0[j] + cost);
+          
+          //arma::rowvec tmp_vec = {v1[j] + 1, v0[j + 1] + 1, v0[j] + cost};
 
           v1[j + 1] = min(tmp_vec);
         }

@@ -566,6 +566,31 @@ Rcpp::List res_term_matrix(std::vector<std::string> vector_corpus, std::vector<s
 
 
 
+//---------------------------------------------------------------------------------------------------------
+// global term weights [ using the document-term-matrix with 'tf_idf = false' AND 'normalize_tf = "NULL"' ]
+//---------------------------------------------------------------------------------------------------------
+
+// [[Rcpp::export]]
+Rcpp::List idf_global_term_weights(arma::sp_mat Tmat, std::vector<std::string> Terms) {
+  
+  if (Tmat.empty()) {
+    
+    Rcpp::stop("first run the document-term-matrix method");
+  }
+  
+  term_matrix trmx;
+  
+  arma::rowvec sum_counts = trmx.Sparse_Sums(Tmat, false);
+  
+  long long num_docs = Tmat.n_rows;
+  
+  std::vector<double> idf_gtw = arma::conv_to< std::vector<double> >::from(arma::log(num_docs / (sum_counts + 1.0)));        // +1 to avoid division by zero
+  
+  return(Rcpp::List::create( Rcpp::Named("terms") = Terms, Rcpp::Named("Idf_global_term_weights") = idf_gtw));
+}
+
+
+
 //-----------------------------------------------------------------------
 // adjust the sparsity in a document-term-matrix OR term-document-matrix
 //-----------------------------------------------------------------------
@@ -873,5 +898,18 @@ std::vector<std::string> read_ROWS(std::string input_file, std::string write_2fi
   myfile.close();
 
   return VEC;
+}
+
+
+
+// function to remove duplicates
+//
+
+// [[Rcpp::export]]
+Rcpp::LogicalVector Not_Duplicated(Rcpp::CharacterVector x) {
+  
+  Rcpp::LogicalVector out = Rcpp::duplicated(x);
+  
+  return !out;
 }
 

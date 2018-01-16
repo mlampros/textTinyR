@@ -23,10 +23,12 @@ extern SEXP _textTinyR_Dice_similarity(SEXP, SEXP, SEXP);
 extern SEXP _textTinyR_Dissimilarity_mat(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _textTinyR_file_parser(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _textTinyR_Frequency_distribution(SEXP, SEXP, SEXP, SEXP);
+extern SEXP _textTinyR_idf_global_term_weights(SEXP, SEXP);
 extern SEXP _textTinyR_Levenshtein_dist(SEXP, SEXP);
 extern SEXP _textTinyR_load_sparse_(SEXP);
 extern SEXP _textTinyR_Look_up_tbl(SEXP, SEXP);
 extern SEXP _textTinyR_Most_Freq_Terms(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _textTinyR_Not_Duplicated(SEXP);
 extern SEXP _textTinyR_Path_2vector(SEXP, SEXP);
 extern SEXP _textTinyR_read_CHARS(SEXP, SEXP, SEXP);
 extern SEXP _textTinyR_read_ROWS(SEXP, SEXP, SEXP, SEXP);
@@ -58,10 +60,12 @@ static const R_CallMethodDef CallEntries[] = {
     {"_textTinyR_Dissimilarity_mat",              (DL_FUNC) &_textTinyR_Dissimilarity_mat,               8},
     {"_textTinyR_file_parser",                    (DL_FUNC) &_textTinyR_file_parser,                     7},
     {"_textTinyR_Frequency_distribution",         (DL_FUNC) &_textTinyR_Frequency_distribution,          4},
+    {"_textTinyR_idf_global_term_weights",        (DL_FUNC) &_textTinyR_idf_global_term_weights,         2},
     {"_textTinyR_Levenshtein_dist",               (DL_FUNC) &_textTinyR_Levenshtein_dist,                2},
     {"_textTinyR_load_sparse_",                   (DL_FUNC) &_textTinyR_load_sparse_,                    1},
     {"_textTinyR_Look_up_tbl",                    (DL_FUNC) &_textTinyR_Look_up_tbl,                     2},
     {"_textTinyR_Most_Freq_Terms",                (DL_FUNC) &_textTinyR_Most_Freq_Terms,                 6},
+    {"_textTinyR_Not_Duplicated",                 (DL_FUNC) &_textTinyR_Not_Duplicated,                  1},
     {"_textTinyR_Path_2vector",                   (DL_FUNC) &_textTinyR_Path_2vector,                    2},
     {"_textTinyR_read_CHARS",                     (DL_FUNC) &_textTinyR_read_CHARS,                      3},
     {"_textTinyR_read_ROWS",                      (DL_FUNC) &_textTinyR_read_ROWS,                       4},

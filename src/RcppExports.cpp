@@ -497,6 +497,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// idf_global_term_weights
+Rcpp::List idf_global_term_weights(arma::sp_mat Tmat, std::vector<std::string> Terms);
+RcppExport SEXP _textTinyR_idf_global_term_weights(SEXP TmatSEXP, SEXP TermsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::sp_mat >::type Tmat(TmatSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type Terms(TermsSEXP);
+    rcpp_result_gen = Rcpp::wrap(idf_global_term_weights(Tmat, Terms));
+    return rcpp_result_gen;
+END_RCPP
+}
 // Adj_Sparsity
 Rcpp::List Adj_Sparsity(arma::rowvec column_indices, arma::rowvec row_indices, arma::vec docs_counts, std::vector<std::string> Terms, double sparsity_thresh);
 RcppExport SEXP _textTinyR_Adj_Sparsity(SEXP column_indicesSEXP, SEXP row_indicesSEXP, SEXP docs_countsSEXP, SEXP TermsSEXP, SEXP sparsity_threshSEXP) {
@@ -652,6 +664,17 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< char >::type read_delimiter(read_delimiterSEXP);
     Rcpp::traits::input_parameter< long long >::type rows(rowsSEXP);
     rcpp_result_gen = Rcpp::wrap(read_ROWS(input_file, write_2file, read_delimiter, rows));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Not_Duplicated
+Rcpp::LogicalVector Not_Duplicated(Rcpp::CharacterVector x);
+RcppExport SEXP _textTinyR_Not_Duplicated(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(Not_Duplicated(x));
     return rcpp_result_gen;
 END_RCPP
 }

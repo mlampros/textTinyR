@@ -89,6 +89,8 @@ the \emph{Term_Matrix} function takes either a character vector of strings or a 
 
 the \emph{triplet_data} function returns the triplet data, which is used internally (in c++), to construct the Term Matrix. The triplet data could be usefull for secondary purposes, such as in word vector representations.
 
+the \emph{global_term_weights} function returns a list of length two. The first sublist includes the \emph{terms} and the second sublist the \emph{global-term-weights}. The \emph{tf_idf} parameter should be set to FALSE and the \emph{normalize} parameter to NULL. This function is normally used in conjuction with word-vector-embeddings.
+
 the \emph{Term_Matrix_Adjust} function removes sparse terms from a sparse matrix using a sparsity threshold
 
 the \emph{term_associations} function finds the associations between the given terms (Terms argument) and all the other terms in the corpus by calculating their correlation. There is also the option to keep a specific number of terms from the output table using the \emph{keep_terms} parameter.
@@ -110,6 +112,10 @@ Stemming of the english language is done using the porter2-stemmer, for details 
  \item{\code{--------------}}{}
 
  \item{\code{triplet_data()}}{}
+
+  \item{\code{--------------}}{}
+
+ \item{\code{global_term_weights()}}{}
 
  \item{\code{--------------}}{}
 
@@ -151,6 +157,14 @@ library(textTinyR)
 #---------------
 
 # sm$triplet_data()
+
+
+#----------------------
+# global-term-weights :
+#----------------------
+
+# sm$global_term_weights()
+
 
 #-------------------------
 # removal of sparse terms:

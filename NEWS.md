@@ -1,4 +1,8 @@
 
+## textTinyR 1.0.9
+
+I added the *global_term_weights()* method in the *sparse_term_matrix R6* class
+
 
 ## textTinyR 1.0.8
 
@@ -8,7 +12,7 @@ I modified the *OpenMP* clauses of the .cpp files to address the ASAN errors.
 
 ## textTinyR 1.0.7
 
-I added the triplet_data() method in the sparse_term_matrix R6 class
+I added the *triplet_data()* method in the *sparse_term_matrix R6* class
 
 
 ## textTinyR 1.0.6

@@ -36,6 +36,89 @@ testthat::test_that("in case that the 'triplet_data' method is called before the
 
 
 
+#-----------------------------
+# triplet-data [ expect TRUE ]
+#-----------------------------
+
+
+testthat::test_that("the 'triplet_data' method returns a list of length four", {
+  
+  init = sparse_term_matrix$new(vector_data = docs, file_data = NULL, document_term_matrix = TRUE)
+  
+  res = init$Term_Matrix(sort_terms = FALSE, to_lower = TRUE, to_upper = FALSE, utf_locale = "", remove_char = "", remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE,
+                                 
+                         remove_numbers = FALSE, trim_token = FALSE, split_string = TRUE, split_separator = " \r\n\t.,;:()?!//", remove_stopwords = FALSE, language = "english",
+                         
+                         min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ",
+                         
+                         print_every_rows = 100, normalize = NULL, tf_idf = FALSE,
+                         
+                         threads = 1, verbose = FALSE)
+  
+  out = init$triplet_data()
+  
+  testthat::expect_true( length(out) == 4 && inherits(out, "list") )
+})
+
+
+
+#---------------------------------------
+# global-term-weights [ error handling ]
+#---------------------------------------
+
+
+testthat::test_that("in case that the 'global_term_weights' method is called before the 'Term_Matrix' method is run, it returns an error", {
+  
+  init = sparse_term_matrix$new(vector_data = docs, file_data = NULL, document_term_matrix = TRUE)
+  
+  testthat::expect_error( init$global_term_weights() )
+})
+
+
+testthat::test_that("in case that the 'document_term_matrix' parameter is set to FALSE, it returns an error", {
+  
+  init = sparse_term_matrix$new(vector_data = docs, file_data = NULL, document_term_matrix = FALSE)
+  
+  res = init$Term_Matrix(sort_terms = FALSE, to_lower = TRUE, to_upper = FALSE, utf_locale = "", remove_char = "", remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE,
+                         
+                         remove_numbers = FALSE, trim_token = FALSE, split_string = TRUE, split_separator = " \r\n\t.,;:()?!//", remove_stopwords = FALSE, language = "english",
+                         
+                         min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ",
+                         
+                         print_every_rows = 100, normalize = NULL, tf_idf = FALSE,
+                         
+                         threads = 1, verbose = FALSE)
+  
+  testthat::expect_error( init$global_term_weights() )
+})
+
+
+#------------------------------------
+# global-term-weights [ expect TRUE ]
+#------------------------------------
+
+
+testthat::test_that("the 'global_term_weights' method returns a list of length two", {
+  
+  init = sparse_term_matrix$new(vector_data = docs, file_data = NULL, document_term_matrix = TRUE)
+  
+  res = init$Term_Matrix(sort_terms = FALSE, to_lower = TRUE, to_upper = FALSE, utf_locale = "", remove_char = "", remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE,
+                         
+                         remove_numbers = FALSE, trim_token = FALSE, split_string = TRUE, split_separator = " \r\n\t.,;:()?!//", remove_stopwords = FALSE, language = "english",
+                         
+                         min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ",
+                         
+                         print_every_rows = 100, normalize = NULL, tf_idf = FALSE,
+                         
+                         threads = 1, verbose = FALSE)
+  
+  out = init$global_term_weights()
+  
+  testthat::expect_true( length(out) == 2 && inherits(out, "list") )
+})
+
+
+
 
 #----------------------------------
 # initialization [ error handling ]

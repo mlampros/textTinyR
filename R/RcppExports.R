@@ -85,6 +85,10 @@ res_term_matrix <- function(vector_corpus, language, language_spec, LOCALE_UTF, 
     .Call(`_textTinyR_res_term_matrix`, vector_corpus, language, language_spec, LOCALE_UTF, max_num_char, document_term_matrix, path_2documents_file, sort_columns, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords, min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, stemmer_ngram, stemmer_gamma, stemmer_truncate, stemmer_batches, threads, verbose, print_every_rows, normalize_tf, tf_idf)
 }
 
+idf_global_term_weights <- function(Tmat, Terms) {
+    .Call(`_textTinyR_idf_global_term_weights`, Tmat, Terms)
+}
+
 Adj_Sparsity <- function(column_indices, row_indices, docs_counts, Terms, sparsity_thresh = 1.0) {
     .Call(`_textTinyR_Adj_Sparsity`, column_indices, row_indices, docs_counts, Terms, sparsity_thresh)
 }
@@ -131,5 +135,9 @@ read_CHARS <- function(input_file, characters = 200L, write_2file = "") {
 
 read_ROWS <- function(input_file, write_2file = "", read_delimiter = ' ', rows = 200L) {
     .Call(`_textTinyR_read_ROWS`, input_file, write_2file, read_delimiter, rows)
+}
+
+Not_Duplicated <- function(x) {
+    .Call(`_textTinyR_Not_Duplicated`, x)
 }
 
