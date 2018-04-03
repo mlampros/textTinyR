@@ -141,3 +141,111 @@ Not_Duplicated <- function(x) {
     .Call(`_textTinyR_Not_Duplicated`, x)
 }
 
+vec_parser <- function(input_path_file, start_query, end_query, output_path_file = "", trimmed_line = FALSE, verbose = FALSE) {
+    .Call(`_textTinyR_vec_parser`, input_path_file, start_query, end_query, output_path_file, trimmed_line, verbose)
+}
+
+DIST <- function(MATRIX_1st, MATRIX_2nd, method, threads, eps = 1.0e-6) {
+    .Call(`_textTinyR_DIST`, MATRIX_1st, MATRIX_2nd, method, threads, eps)
+}
+
+cosine_dist <- function(x, y, separator) {
+    .Call(`_textTinyR_cosine_dist`, x, y, separator)
+}
+
+COS <- function(TEXT_SEQ1, TEXT_SEQ2, threads, separator) {
+    .Call(`_textTinyR_COS`, TEXT_SEQ1, TEXT_SEQ2, threads, separator)
+}
+
+UNIQUE <- function(x) {
+    .Call(`_textTinyR_UNIQUE`, x)
+}
+
+INTERSECT <- function(v1, v2) {
+    .Call(`_textTinyR_INTERSECT`, v1, v2)
+}
+
+UNION <- function(v1, v2) {
+    .Call(`_textTinyR_UNION`, v1, v2)
+}
+
+JACCARD <- function(vec1, vec2) {
+    .Call(`_textTinyR_JACCARD`, vec1, vec2)
+}
+
+DICE <- function(vec1, vec2) {
+    .Call(`_textTinyR_DICE`, vec1, vec2)
+}
+
+inner_jd <- function(VEC1, VEC2, method, j) {
+    .Call(`_textTinyR_inner_jd`, VEC1, VEC2, method, j)
+}
+
+jaccard_dice <- function(VEC1, VEC2, method, threads = 1L) {
+    .Call(`_textTinyR_jaccard_dice`, VEC1, VEC2, method, threads)
+}
+
+inner_cm <- function(x, y, i) {
+    .Call(`_textTinyR_inner_cm`, x, y, i)
+}
+
+COR_MATR <- function(x, y, threads) {
+    .Call(`_textTinyR_COR_MATR`, x, y, threads)
+}
+
+keep_idxs <- function(x, exclude_idx) {
+    .Call(`_textTinyR_keep_idxs`, x, exclude_idx)
+}
+
+inner_reduce_dims <- function(x, ALL_OTHER_IDXs, i, current_col) {
+    .Call(`_textTinyR_inner_reduce_dims`, x, ALL_OTHER_IDXs, i, current_col)
+}
+
+reduce_dims_with_correlation <- function(x, y, response_lower_thresh = 0.2, predictors_upper_thresh = 0.65, threads = 1L) {
+    .Call(`_textTinyR_reduce_dims_with_correlation`, x, y, response_lower_thresh, predictors_upper_thresh, threads)
+}
+
+modulus <- function(a, b) {
+    .Call(`_textTinyR_modulus`, a, b)
+}
+
+batch_calculation <- function(nr_rows, batches) {
+    .Call(`_textTinyR_batch_calculation`, nr_rows, batches)
+}
+
+DISTINCT_WORD_INTERSECT <- function(VEC1, VEC2) {
+    .Call(`_textTinyR_DISTINCT_WORD_INTERSECT`, VEC1, VEC2)
+}
+
+NUM_LETTERS_DISTINCT <- function(VEC) {
+    .Call(`_textTinyR_NUM_LETTERS_DISTINCT`, VEC)
+}
+
+COUNTS_INTERSECT <- function(SUBL1, SUBL2, distinct = TRUE, num_letters = FALSE) {
+    .Call(`_textTinyR_COUNTS_INTERSECT`, SUBL1, SUBL2, distinct, num_letters)
+}
+
+RATIO_DISTINCT <- function(SUBL1, SUBL2, distinct = TRUE, num_letters = FALSE) {
+    .Call(`_textTinyR_RATIO_DISTINCT`, SUBL1, SUBL2, distinct, num_letters)
+}
+
+read_ROWS_wv <- function(input_file, read_delimiter = ' ') {
+    .Call(`_textTinyR_read_ROWS_wv`, input_file, read_delimiter)
+}
+
+count_rows <- function(FILE, verbose = FALSE) {
+    .Call(`_textTinyR_count_rows`, FILE, verbose)
+}
+
+reduced_word_vectors <- function(FILE, unique_tokens, vector_dimensions, print_every_rows = 10000L, verbose = FALSE, copy_data = FALSE) {
+    .Call(`_textTinyR_reduced_word_vectors`, FILE, unique_tokens, vector_dimensions, print_every_rows, verbose, copy_data)
+}
+
+word_vectors_methods <- function(rcpp_list, INPUT_list, FILE, method, unique_tokens, vector_dimensions, gtw_terms, gtw_weights, print_every_rows = 10000L, verbose = FALSE, threads = 1L, copy_data = FALSE) {
+    .Call(`_textTinyR_word_vectors_methods`, rcpp_list, INPUT_list, FILE, method, unique_tokens, vector_dimensions, gtw_terms, gtw_weights, print_every_rows, verbose, threads, copy_data)
+}
+
+append_data <- function(x, y) {
+    .Call(`_textTinyR_append_data`, x, y)
+}
+

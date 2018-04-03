@@ -4,20 +4,20 @@
 \alias{text_file_parser}
 \title{text file parser}
 \usage{
-text_file_parser(input_path_file = NULL, output_path_file = NULL,
+text_file_parser(input_path_file = NULL, output_path_file = "",
   start_query = NULL, end_query = NULL, min_lines = 1,
   trimmed_line = FALSE, verbose = FALSE)
 }
 \arguments{
-\item{input_path_file}{a character string specifying the path to the input file}
+\item{input_path_file}{either a path to an input file or a vector of character strings ( normally the latter would represent ordered lines of a text file in form of a character vector )}
 
-\item{output_path_file}{a character string specifying the path to the output file}
+\item{output_path_file}{either an empty character string ("") or a character string specifying a path to an output file}
 
-\item{start_query}{a character string. The \emph{start_query} is the first word of the subset of the data and should appear frequently at the beginning of each line in the text file.}
+\item{start_query}{a character string or a vector of character strings. The \emph{start_query} (if it's a single character string) is the first word of the subset of the data and should appear frequently at the beginning of each line in the text file.}
 
-\item{end_query}{a character string. The \emph{end_query} is the last word of the subset of the data and should appear frequently at the end of each line in the text file.}
+\item{end_query}{a character string or a vector of character strings. The \emph{end_query} (if it's a single character string) is the last word of the subset of the data and should appear frequently at the end of each line in the text file.}
 
-\item{min_lines}{a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.}
+\item{min_lines}{a numeric value specifying the minimum number of lines ( applies only if the \emph{input_path_file} is a valid path to a file) . For instance if min_lines = 2, then only subsets of text with more than 1 lines will be pre-processed.}
 
 \item{trimmed_line}{either TRUE or FALSE. If FALSE then each line of the text file will be trimmed both sides before applying the start_query and end_query}
 
@@ -27,7 +27,7 @@ text_file_parser(input_path_file = NULL, output_path_file = NULL,
 text file parser
 }
 \details{
-The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the \emph{start_query} and \emph{end_query} parameters.
+The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the \emph{start_query} and \emph{end_query} parameters ( the same applies in case of a vector of character strings)
 }
 \examples{
 

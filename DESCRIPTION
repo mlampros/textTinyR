@@ -1,25 +1,20 @@
 Package: textTinyR
 Type: Package
 Title: Text Processing for Small or Big Data Files
-Version: 1.0.9
-Date: 2018-01-16
+Version: 1.1.0
+Date: 2018-04-03
 Author: Lampros Mouselimis <mouselimislampros@gmail.com>
 Maintainer: Lampros Mouselimis <mouselimislampros@gmail.com>
 BugReports: https://github.com/mlampros/textTinyR/issues
 URL: https://github.com/mlampros/textTinyR
-Description: Processes big text data files in batches efficiently. For this purpose, it offers functions for splitting, parsing, tokenizing and creating a vocabulary. Moreover, it includes functions for building either a document-term matrix or a term-document matrix and extracting information from those (term-associations, most frequent terms). Lastly, it embodies functions for calculating token statistics (collocations, look-up tables, string dissimilarities) and functions to work with sparse matrices. The source code is based on 'C++11' and exported in R through the 'Rcpp', 'RcppArmadillo' and 'BH' packages.
+Description: It offers functions for splitting, parsing, tokenizing and creating a vocabulary for big text data files. Moreover, it includes functions for building a document-term matrix and extracting information from those (term-associations, most frequent terms). It also embodies functions for calculating token statistics (collocations, look-up tables, string dissimilarities) and functions to work with sparse matrices. Lastly, it includes functions for Word Vector Representations (i.e. 'GloVe', 'fasttext') and incorporates functions for the calculation of (pairwise) text document dissimilarities. The source code is based on 'C++11' and exported in R through the 'Rcpp', 'RcppArmadillo' and 'BH' packages.
 License: GPL-3
 Copyright: inst/COPYRIGHTS
-SystemRequirements: The package requires the following two components :
-        A C++11 compiler and on a unix OS the boost-locale headers and
-        libraries ( boost >= 1.55.0 , www.boost.org ). Debian/Ubuntu:
-        libboost-locale-dev, Fedora : yum install boost-devel, OSX/brew
-        : detailed installation instructions can be found in the README
-        file
+SystemRequirements: The package requires a C++11 compiler
 LazyData: TRUE
 Depends: R(>= 3.2.3), Matrix
-Imports: Rcpp (>= 0.12.5), R6, data.table, utils
-LinkingTo: Rcpp, RcppArmadillo (>= 0.7.5), BH
+Imports: Rcpp (>= 0.12.10), R6, data.table, utils
+LinkingTo: Rcpp, RcppArmadillo (>= 0.7.8), BH
 Suggests: testthat, covr, knitr, rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1

@@ -678,3 +678,364 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// vec_parser
+Rcpp::List vec_parser(std::vector<std::string> input_path_file, std::vector<std::string> start_query, std::vector<std::string> end_query, std::string output_path_file, bool trimmed_line, bool verbose);
+RcppExport SEXP _textTinyR_vec_parser(SEXP input_path_fileSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP output_path_fileSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type input_path_file(input_path_fileSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type start_query(start_querySEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type end_query(end_querySEXP);
+    Rcpp::traits::input_parameter< std::string >::type output_path_file(output_path_fileSEXP);
+    Rcpp::traits::input_parameter< bool >::type trimmed_line(trimmed_lineSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(vec_parser(input_path_file, start_query, end_query, output_path_file, trimmed_line, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
+// DIST
+arma::rowvec DIST(arma::mat& MATRIX_1st, arma::mat& MATRIX_2nd, std::string& method, int threads, double eps);
+RcppExport SEXP _textTinyR_DIST(SEXP MATRIX_1stSEXP, SEXP MATRIX_2ndSEXP, SEXP methodSEXP, SEXP threadsSEXP, SEXP epsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type MATRIX_1st(MATRIX_1stSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type MATRIX_2nd(MATRIX_2ndSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    Rcpp::traits::input_parameter< double >::type eps(epsSEXP);
+    rcpp_result_gen = Rcpp::wrap(DIST(MATRIX_1st, MATRIX_2nd, method, threads, eps));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cosine_dist
+double cosine_dist(std::string& x, std::string& y, std::string& separator);
+RcppExport SEXP _textTinyR_cosine_dist(SEXP xSEXP, SEXP ySEXP, SEXP separatorSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< std::string& >::type separator(separatorSEXP);
+    rcpp_result_gen = Rcpp::wrap(cosine_dist(x, y, separator));
+    return rcpp_result_gen;
+END_RCPP
+}
+// COS
+arma::rowvec COS(std::vector<std::string>& TEXT_SEQ1, std::vector<std::string>& TEXT_SEQ2, int threads, std::string& separator);
+RcppExport SEXP _textTinyR_COS(SEXP TEXT_SEQ1SEXP, SEXP TEXT_SEQ2SEXP, SEXP threadsSEXP, SEXP separatorSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type TEXT_SEQ1(TEXT_SEQ1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type TEXT_SEQ2(TEXT_SEQ2SEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    Rcpp::traits::input_parameter< std::string& >::type separator(separatorSEXP);
+    rcpp_result_gen = Rcpp::wrap(COS(TEXT_SEQ1, TEXT_SEQ2, threads, separator));
+    return rcpp_result_gen;
+END_RCPP
+}
+// UNIQUE
+std::vector<std::string> UNIQUE(std::vector<std::string> x);
+RcppExport SEXP _textTinyR_UNIQUE(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(UNIQUE(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// INTERSECT
+std::vector<std::string> INTERSECT(std::vector<std::string>& v1, std::vector<std::string>& v2);
+RcppExport SEXP _textTinyR_INTERSECT(SEXP v1SEXP, SEXP v2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type v1(v1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type v2(v2SEXP);
+    rcpp_result_gen = Rcpp::wrap(INTERSECT(v1, v2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// UNION
+std::vector<std::string> UNION(std::vector<std::string>& v1, std::vector<std::string>& v2);
+RcppExport SEXP _textTinyR_UNION(SEXP v1SEXP, SEXP v2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type v1(v1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type v2(v2SEXP);
+    rcpp_result_gen = Rcpp::wrap(UNION(v1, v2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// JACCARD
+double JACCARD(std::vector<std::string>& vec1, std::vector<std::string>& vec2);
+RcppExport SEXP _textTinyR_JACCARD(SEXP vec1SEXP, SEXP vec2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type vec1(vec1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type vec2(vec2SEXP);
+    rcpp_result_gen = Rcpp::wrap(JACCARD(vec1, vec2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// DICE
+double DICE(std::vector<std::string>& vec1, std::vector<std::string>& vec2);
+RcppExport SEXP _textTinyR_DICE(SEXP vec1SEXP, SEXP vec2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type vec1(vec1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type vec2(vec2SEXP);
+    rcpp_result_gen = Rcpp::wrap(DICE(vec1, vec2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// inner_jd
+double inner_jd(std::vector<std::vector<std::string>>& VEC1, std::vector<std::vector<std::string>>& VEC2, std::string& method, unsigned int j);
+RcppExport SEXP _textTinyR_inner_jd(SEXP VEC1SEXP, SEXP VEC2SEXP, SEXP methodSEXP, SEXP jSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::vector<std::string>>& >::type VEC1(VEC1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::vector<std::string>>& >::type VEC2(VEC2SEXP);
+    Rcpp::traits::input_parameter< std::string& >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type j(jSEXP);
+    rcpp_result_gen = Rcpp::wrap(inner_jd(VEC1, VEC2, method, j));
+    return rcpp_result_gen;
+END_RCPP
+}
+// jaccard_dice
+arma::rowvec jaccard_dice(std::vector<std::vector<std::string>>& VEC1, std::vector<std::vector<std::string>>& VEC2, std::string& method, int threads);
+RcppExport SEXP _textTinyR_jaccard_dice(SEXP VEC1SEXP, SEXP VEC2SEXP, SEXP methodSEXP, SEXP threadsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::vector<std::string>>& >::type VEC1(VEC1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::vector<std::string>>& >::type VEC2(VEC2SEXP);
+    Rcpp::traits::input_parameter< std::string& >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(jaccard_dice(VEC1, VEC2, method, threads));
+    return rcpp_result_gen;
+END_RCPP
+}
+// inner_cm
+double inner_cm(arma::mat& x, arma::rowvec& y, unsigned int i);
+RcppExport SEXP _textTinyR_inner_cm(SEXP xSEXP, SEXP ySEXP, SEXP iSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::rowvec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type i(iSEXP);
+    rcpp_result_gen = Rcpp::wrap(inner_cm(x, y, i));
+    return rcpp_result_gen;
+END_RCPP
+}
+// COR_MATR
+arma::rowvec COR_MATR(arma::mat& x, arma::rowvec& y, int threads);
+RcppExport SEXP _textTinyR_COR_MATR(SEXP xSEXP, SEXP ySEXP, SEXP threadsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::rowvec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(COR_MATR(x, y, threads));
+    return rcpp_result_gen;
+END_RCPP
+}
+// keep_idxs
+arma::rowvec keep_idxs(arma::uvec& x, unsigned int exclude_idx);
+RcppExport SEXP _textTinyR_keep_idxs(SEXP xSEXP, SEXP exclude_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::uvec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type exclude_idx(exclude_idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(keep_idxs(x, exclude_idx));
+    return rcpp_result_gen;
+END_RCPP
+}
+// inner_reduce_dims
+double inner_reduce_dims(arma::mat& x, const arma::rowvec& ALL_OTHER_IDXs, unsigned int i, arma::rowvec& current_col);
+RcppExport SEXP _textTinyR_inner_reduce_dims(SEXP xSEXP, SEXP ALL_OTHER_IDXsSEXP, SEXP iSEXP, SEXP current_colSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const arma::rowvec& >::type ALL_OTHER_IDXs(ALL_OTHER_IDXsSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type i(iSEXP);
+    Rcpp::traits::input_parameter< arma::rowvec& >::type current_col(current_colSEXP);
+    rcpp_result_gen = Rcpp::wrap(inner_reduce_dims(x, ALL_OTHER_IDXs, i, current_col));
+    return rcpp_result_gen;
+END_RCPP
+}
+// reduce_dims_with_correlation
+arma::uvec reduce_dims_with_correlation(arma::mat& x, arma::rowvec& y, double response_lower_thresh, double predictors_upper_thresh, int threads);
+RcppExport SEXP _textTinyR_reduce_dims_with_correlation(SEXP xSEXP, SEXP ySEXP, SEXP response_lower_threshSEXP, SEXP predictors_upper_threshSEXP, SEXP threadsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::rowvec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type response_lower_thresh(response_lower_threshSEXP);
+    Rcpp::traits::input_parameter< double >::type predictors_upper_thresh(predictors_upper_threshSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(reduce_dims_with_correlation(x, y, response_lower_thresh, predictors_upper_thresh, threads));
+    return rcpp_result_gen;
+END_RCPP
+}
+// modulus
+long long modulus(long long a, int b);
+RcppExport SEXP _textTinyR_modulus(SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< long long >::type a(aSEXP);
+    Rcpp::traits::input_parameter< int >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(modulus(a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// batch_calculation
+std::map<int, std::vector<long long>> batch_calculation(long long nr_rows, int batches);
+RcppExport SEXP _textTinyR_batch_calculation(SEXP nr_rowsSEXP, SEXP batchesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< long long >::type nr_rows(nr_rowsSEXP);
+    Rcpp::traits::input_parameter< int >::type batches(batchesSEXP);
+    rcpp_result_gen = Rcpp::wrap(batch_calculation(nr_rows, batches));
+    return rcpp_result_gen;
+END_RCPP
+}
+// DISTINCT_WORD_INTERSECT
+std::vector<std::string> DISTINCT_WORD_INTERSECT(std::vector<std::string> VEC1, std::vector<std::string> VEC2);
+RcppExport SEXP _textTinyR_DISTINCT_WORD_INTERSECT(SEXP VEC1SEXP, SEXP VEC2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type VEC1(VEC1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type VEC2(VEC2SEXP);
+    rcpp_result_gen = Rcpp::wrap(DISTINCT_WORD_INTERSECT(VEC1, VEC2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// NUM_LETTERS_DISTINCT
+arma::rowvec NUM_LETTERS_DISTINCT(std::vector<std::string> VEC);
+RcppExport SEXP _textTinyR_NUM_LETTERS_DISTINCT(SEXP VECSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type VEC(VECSEXP);
+    rcpp_result_gen = Rcpp::wrap(NUM_LETTERS_DISTINCT(VEC));
+    return rcpp_result_gen;
+END_RCPP
+}
+// COUNTS_INTERSECT
+arma::rowvec COUNTS_INTERSECT(std::vector<std::vector<std::string>> SUBL1, std::vector<std::vector<std::string>> SUBL2, bool distinct, bool num_letters);
+RcppExport SEXP _textTinyR_COUNTS_INTERSECT(SEXP SUBL1SEXP, SEXP SUBL2SEXP, SEXP distinctSEXP, SEXP num_lettersSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::vector<std::string>> >::type SUBL1(SUBL1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::vector<std::string>> >::type SUBL2(SUBL2SEXP);
+    Rcpp::traits::input_parameter< bool >::type distinct(distinctSEXP);
+    Rcpp::traits::input_parameter< bool >::type num_letters(num_lettersSEXP);
+    rcpp_result_gen = Rcpp::wrap(COUNTS_INTERSECT(SUBL1, SUBL2, distinct, num_letters));
+    return rcpp_result_gen;
+END_RCPP
+}
+// RATIO_DISTINCT
+arma::rowvec RATIO_DISTINCT(std::vector<std::vector<std::string>> SUBL1, std::vector<std::vector<std::string>> SUBL2, bool distinct, bool num_letters);
+RcppExport SEXP _textTinyR_RATIO_DISTINCT(SEXP SUBL1SEXP, SEXP SUBL2SEXP, SEXP distinctSEXP, SEXP num_lettersSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::vector<std::string>> >::type SUBL1(SUBL1SEXP);
+    Rcpp::traits::input_parameter< std::vector<std::vector<std::string>> >::type SUBL2(SUBL2SEXP);
+    Rcpp::traits::input_parameter< bool >::type distinct(distinctSEXP);
+    Rcpp::traits::input_parameter< bool >::type num_letters(num_lettersSEXP);
+    rcpp_result_gen = Rcpp::wrap(RATIO_DISTINCT(SUBL1, SUBL2, distinct, num_letters));
+    return rcpp_result_gen;
+END_RCPP
+}
+// read_ROWS_wv
+std::string read_ROWS_wv(std::string input_file, char read_delimiter);
+RcppExport SEXP _textTinyR_read_ROWS_wv(SEXP input_fileSEXP, SEXP read_delimiterSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type input_file(input_fileSEXP);
+    Rcpp::traits::input_parameter< char >::type read_delimiter(read_delimiterSEXP);
+    rcpp_result_gen = Rcpp::wrap(read_ROWS_wv(input_file, read_delimiter));
+    return rcpp_result_gen;
+END_RCPP
+}
+// count_rows
+long long count_rows(std::string FILE, bool verbose);
+RcppExport SEXP _textTinyR_count_rows(SEXP FILESEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type FILE(FILESEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(count_rows(FILE, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
+// reduced_word_vectors
+Rcpp::List reduced_word_vectors(std::string FILE, std::vector<std::string> unique_tokens, int vector_dimensions, int print_every_rows, bool verbose, bool copy_data);
+RcppExport SEXP _textTinyR_reduced_word_vectors(SEXP FILESEXP, SEXP unique_tokensSEXP, SEXP vector_dimensionsSEXP, SEXP print_every_rowsSEXP, SEXP verboseSEXP, SEXP copy_dataSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type FILE(FILESEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type unique_tokens(unique_tokensSEXP);
+    Rcpp::traits::input_parameter< int >::type vector_dimensions(vector_dimensionsSEXP);
+    Rcpp::traits::input_parameter< int >::type print_every_rows(print_every_rowsSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    Rcpp::traits::input_parameter< bool >::type copy_data(copy_dataSEXP);
+    rcpp_result_gen = Rcpp::wrap(reduced_word_vectors(FILE, unique_tokens, vector_dimensions, print_every_rows, verbose, copy_data));
+    return rcpp_result_gen;
+END_RCPP
+}
+// word_vectors_methods
+arma::mat word_vectors_methods(Rcpp::List rcpp_list, std::vector<std::vector<std::string> >& INPUT_list, std::string FILE, std::string method, std::vector<std::string> unique_tokens, int vector_dimensions, std::vector<std::string>& gtw_terms, std::vector<double>& gtw_weights, int print_every_rows, bool verbose, int threads, bool copy_data);
+RcppExport SEXP _textTinyR_word_vectors_methods(SEXP rcpp_listSEXP, SEXP INPUT_listSEXP, SEXP FILESEXP, SEXP methodSEXP, SEXP unique_tokensSEXP, SEXP vector_dimensionsSEXP, SEXP gtw_termsSEXP, SEXP gtw_weightsSEXP, SEXP print_every_rowsSEXP, SEXP verboseSEXP, SEXP threadsSEXP, SEXP copy_dataSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List >::type rcpp_list(rcpp_listSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::vector<std::string> >& >::type INPUT_list(INPUT_listSEXP);
+    Rcpp::traits::input_parameter< std::string >::type FILE(FILESEXP);
+    Rcpp::traits::input_parameter< std::string >::type method(methodSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type unique_tokens(unique_tokensSEXP);
+    Rcpp::traits::input_parameter< int >::type vector_dimensions(vector_dimensionsSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string>& >::type gtw_terms(gtw_termsSEXP);
+    Rcpp::traits::input_parameter< std::vector<double>& >::type gtw_weights(gtw_weightsSEXP);
+    Rcpp::traits::input_parameter< int >::type print_every_rows(print_every_rowsSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    Rcpp::traits::input_parameter< int >::type threads(threadsSEXP);
+    Rcpp::traits::input_parameter< bool >::type copy_data(copy_dataSEXP);
+    rcpp_result_gen = Rcpp::wrap(word_vectors_methods(rcpp_list, INPUT_list, FILE, method, unique_tokens, vector_dimensions, gtw_terms, gtw_weights, print_every_rows, verbose, threads, copy_data));
+    return rcpp_result_gen;
+END_RCPP
+}
+// append_data
+std::unordered_map<int, Rcpp::List > append_data(Rcpp::List x, std::vector<int> y);
+RcppExport SEXP _textTinyR_append_data(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::vector<int> >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(append_data(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}

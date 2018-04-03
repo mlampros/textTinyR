@@ -513,7 +513,7 @@ testthat::test_that("in case that the unit parameter is not valid it returns an 
 #------------------------------------
 
 
-testthat::test_that("in case that the input_path_file parameter is not a valid path to a file it returns an error", {
+testthat::test_that("in case that the input_path_file parameter is not a valid path to a file or a vector of character strings it returns an error", {
 
   testthat::expect_error( text_file_parser(input_path_file = NULL, output_path_file = NULL, start_query = NULL, end_query = NULL, min_lines = 1, trimmed_line = FALSE, verbose = FALSE) )
 })
@@ -522,12 +522,6 @@ testthat::test_that("in case that the input_path_file parameter is not a valid p
 testthat::test_that("in case that the output_path_file parameter is not a valid path to a file it returns an error", {
 
   testthat::expect_error( text_file_parser(input_path_file = PATH, output_path_file = NULL, start_query = NULL, end_query = NULL, min_lines = 1, trimmed_line = FALSE, verbose = FALSE) )
-})
-
-
-testthat::test_that("in case that the output_path_file parameter is not NULL and not a character string valid path to a file it returns an error", {
-
-  testthat::expect_error( text_file_parser(input_path_file = PATH, output_path_file = list(), start_query = NULL, end_query = NULL, min_lines = 1, trimmed_line = FALSE, verbose = FALSE) )
 })
 
 
@@ -575,6 +569,17 @@ testthat::test_that("it returns a single pre-processed file", {
   testthat::expect_true( lst == 1 )
 })
 
+
+testthat::test_that("it returns a vector of character strings", {
+  
+  input_vec = c("<start>this is the first line</start>", "this is the second line", "this is the third line", "<start>this is the fourth line</start>", "this is the fifth line")
+  
+  res = text_file_parser(input_path_file = input_vec, output_path_file = "", start_query = '<start>', end_query = '</start>', trimmed_line = FALSE, verbose = FALSE)
+  
+  expect_vec = res$text_parser[[1]]
+  
+  testthat::expect_true( length(expect_vec) == 2)
+})
 
 
 #---------------------------------

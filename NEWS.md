@@ -1,4 +1,11 @@
 
+## textTinyR 1.1.0
+
+* *boost-locale* is no longer a system requirement for the textTinyR package
+* The *text_file_parser* function can now accept besides a valid path to a file also a vector of character strings. Moreover, besides writing to a file it can also return a vector of character strings. Furthermore, the *start_query* and *end_query* parameters can take more than one query-terms as input.
+* I added utility functions for *Word Vector Representations* (i.e. *GloVe*, *fasttext*), frequently referred to as *doc2vec*, and functions for the (pairwise) calculation of text document dissimilarities.
+
+
 ## textTinyR 1.0.9
 
 I added the *global_term_weights()* method in the *sparse_term_matrix R6* class

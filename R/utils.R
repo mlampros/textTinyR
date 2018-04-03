@@ -1,5 +1,5 @@
 
-
+#------------------------------------------------------------------------------------------------------------------------------------------------------------ initial textTinyR package
 
 #' String tokenization and transformation  ( character string or path to a file )
 #'
@@ -1133,15 +1133,15 @@ bytes_converter = function(input_path_file = NULL, unit = "MB") {
 #' text file parser
 #'
 #'
-#' @param input_path_file a character string specifying the path to the input file
-#' @param output_path_file a character string specifying the path to the output file
-#' @param start_query a character string. The \emph{start_query} is the first word of the subset of the data and should appear frequently at the beginning of each line in the text file.
-#' @param end_query a character string. The \emph{end_query} is the last word of the subset of the data and should appear frequently at the end of each line in the text file.
-#' @param min_lines a numeric value specifying the minimum number of lines. For instance if min_lines = 2, then only subsets of text with more than 1 lines will be kept.
+#' @param input_path_file either a path to an input file or a vector of character strings ( normally the latter would represent ordered lines of a text file in form of a character vector )
+#' @param output_path_file either an empty character string ("") or a character string specifying a path to an output file
+#' @param start_query a character string or a vector of character strings. The \emph{start_query} (if it's a single character string) is the first word of the subset of the data and should appear frequently at the beginning of each line in the text file.
+#' @param end_query a character string or a vector of character strings. The \emph{end_query} (if it's a single character string) is the last word of the subset of the data and should appear frequently at the end of each line in the text file.
+#' @param min_lines a numeric value specifying the minimum number of lines ( applies only if the \emph{input_path_file} is a valid path to a file) . For instance if min_lines = 2, then only subsets of text with more than 1 lines will be pre-processed.
 #' @param trimmed_line either TRUE or FALSE. If FALSE then each line of the text file will be trimmed both sides before applying the start_query and end_query
 #' @param verbose either TRUE or FALSE. If TRUE then information will be printed in the console
 #' @details
-#' The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the \emph{start_query} and \emph{end_query} parameters.
+#' The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the \emph{start_query} and \emph{end_query} parameters ( the same applies in case of a vector of character strings)
 #' @export
 #' @examples
 #'
@@ -1156,22 +1156,55 @@ bytes_converter = function(input_path_file = NULL, unit = "MB") {
 #' #                       min_lines = 1, trimmed_line = FALSE)
 
 
-text_file_parser = function(input_path_file = NULL, output_path_file = NULL, start_query = NULL, end_query = NULL, min_lines = 1, trimmed_line = FALSE, verbose = FALSE) {
+text_file_parser = function(input_path_file = NULL, output_path_file = "", start_query = NULL, end_query = NULL, min_lines = 1, trimmed_line = FALSE, verbose = FALSE) {
 
+  flag_valid_path = T
+  
   try_err_file_input = inherits(tryCatch(normalizePath(input_path_file, mustWork = T), error = function(e) e), "error")
-  if (try_err_file_input) stop("the input_path_file parameter should be a non-null valid path to a file")
-  if (is.null(output_path_file)) stop("the output_path_file parameter should be a non-null valid path to a file")
-  if (!is.null(output_path_file)) {
-    if (!inherits(output_path_file, 'character')) stop("the output_path_file parameter should a character string specifying a valid path to a file")}
+  
+  if (try_err_file_input) {
+    
+    if (!inherits(input_path_file, 'character')) {
+      
+      stop("the input_path_file parameter is neither a non-null valid path to a file nor a vector of character strings")
+    }
+    
+    else {
+      
+      flag_valid_path = F
+    }
+  }
+  
+  if (!inherits(output_path_file, 'character')) stop("the output_path_file parameter should be a character string specifying a valid path to a file")
   if (!is.character(start_query)) stop("the start_query parameter should be a character string")
   if (!is.character(end_query)) stop("the end_query parameter should be a character string")
   if (min_lines < 1) stop("the min_lines parameter should a numeric value greater than 0")
   if (!is.logical(trimmed_line)) stop("the trimmed_line parameter should be either TRUE or FALSE")
   if (!is.logical(verbose)) stop("the verbose parameter should be either TRUE or FALSE")
 
-  tfp = file_parser(input_path_file, start_query, end_query, output_path_file, min_lines, trimmed_line, verbose)
-
-  return(structure(list(text_parser = paste0("the output-data is saved in : ", output_path_file)), class = "tokenization and transformation"))
+  if (flag_valid_path) {
+    
+    tfp = file_parser(input_path_file, start_query, end_query, output_path_file, min_lines, trimmed_line, verbose)
+    
+    return(structure(list(text_parser = paste0("the output-data is saved in : ", output_path_file)), class = "tokenization and transformation"))
+  }
+  
+  else {
+    
+    tfp = vec_parser(input_path_file, start_query, end_query, output_path_file, trimmed_line, verbose)
+    
+    if (output_path_file == "") {
+      
+      struct = structure(list(text_parser = tfp), class = "tokenization and transformation")
+    }
+    
+    else {
+      
+      struct = structure(list(text_parser = paste0("the output-data is saved in : ", output_path_file)), class = "tokenization and transformation")
+    }
+    
+    return(struct)
+  }
 }
 
 
@@ -2576,5 +2609,659 @@ read_rows = function(input_file = NULL, read_delimiter = "\n", rows = 100, write
 }
 
 
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------ Word-Vector-Utility functions
+
+
+
+
+#' dimensions of a word vectors file
+#'
+#' @param input_file a character string specifying a valid path to a text file
+#' @param read_delimiter a character string specifying the row delimiter of the text file
+#' @return a numeric value
+#' @export
+#' @details
+#' This function takes a valid path to a file and a file delimiter as input and estimates the dimensions of the word vectors by using the first row of the file.
+#' @examples
+#'
+#' library(textTinyR)
+#'
+#' PATH = system.file("example_files", "word_vecs.txt", package = "textTinyR")
+#'
+#' dimensions = dims_of_word_vecs(input_file = PATH)
+
+dims_of_word_vecs = function(input_file = NULL, read_delimiter = '\n') {
+  
+  try_err_file_input = inherits(tryCatch(normalizePath(input_file, mustWork = T), error = function(e) e), "error")
+  if (try_err_file_input) stop("the input_file parameter should be a non-null valid path to a file", call. = F)
+  if (!inherits(read_delimiter, 'character')) stop("the read_delimiter parameter should be a valid character string", call. = F)
+  
+  out = read_ROWS_wv(input_file, read_delimiter)
+  
+  out = strsplit(out, " ")[[1]][-1]
+  
+  return(length(out))
+}
+
+
+
+#' Dissimilarity calculation of text documents
+#'
+#' @param first_matr a numeric matrix where each row represents a text document ( has same dimensions as the \emph{second_matr} )
+#' @param second_matr a numeric matrix where each row represents a text document ( has same dimensions as the \emph{first_matr} )
+#' @param method a dissimilarity metric in form of a character string. One of \emph{euclidean}, \emph{manhattan}, \emph{chebyshev}, \emph{canberra}, \emph{braycurtis}, \emph{pearson_correlation}, \emph{cosine},
+#' \emph{simple_matching_coefficient}, \emph{hamming}, \emph{jaccard_coefficient}, \emph{Rao_coefficient}
+#' @param batches a numeric value specifying the number of batches
+#' @param threads a numeric value specifying the number of cores to run in parallel
+#' @param verbose either TRUE or FALSE. If TRUE then information will be printed in the console
+#' @return a numeric vector
+#' @export
+#' @details
+#' Row-wise dissimilarity calculation of text documents. The text document sequences should be converted to numeric matrices using for instance LSI (Latent Semantic Indexing).
+#' If the numeric matrices are too big to be pre-processed, then one should use the \emph{batches} parameter to split the data in batches before applying one of the dissimilarity metrics.
+#' For parallelization (\emph{threads}) OpenMP will be used.
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(textTinyR)
+#'
+#'
+#' # example input LSI matrices (see details section)
+#' #-------------------------------------------------
+#'
+#' set.seed(1)
+#' LSI_matrix1 = matrix(runif(10000), 100, 100)
+#'
+#' set.seed(2)
+#' LSI_matrix2 = matrix(runif(10000), 100, 100)
+#'
+#'
+#' txt_out = TEXT_DOC_DISSIM(first_matr = LSI_matrix1,
+#'
+#'                           second_matr = LSI_matrix2, 'euclidean')
+#' }
+
+
+TEXT_DOC_DISSIM = function(first_matr = NULL, second_matr = NULL, method = 'euclidean', batches = NULL, threads = 1, verbose = FALSE) {
+  
+  if (!inherits(first_matr, "matrix")) { stop("the 'first_matr' parameter should be of type matrix", call. = F) }
+  if (!inherits(second_matr, "matrix")) { stop("the 'second_matr' parameter should be of type matrix", call. = F) }
+  if (nrow(first_matr) != nrow(second_matr)) { stop("Both 'first_matr' and 'second_matr' should have the same number of rows", call. = F) }
+  if (ncol(first_matr) != ncol(second_matr)) { stop("Both 'first_matr' and 'second_matr' should have the same number of columns", call. = F) }
+  if (!inherits(method, 'character')) { stop("the 'method' parameter should be of type character", call. = F) }
+  if (!method %in% c("euclidean", "manhattan", "chebyshev", "canberra", "braycurtis", "pearson_correlation", "cosine", "simple_matching_coefficient", "hamming", "jaccard_coefficient", "Rao_coefficient")) {
+    stop('valid "method" parameter is one of "euclidean", "manhattan", "chebyshev", "canberra", "braycurtis", "pearson_correlation", "cosine", "simple_matching_coefficient", "hamming", "jaccard_coefficient", "Rao_coefficient"', call. = F)
+  }
+  if (!is.null(batches)) {
+    if (!inherits(batches, "numeric")) { stop("the 'batches' parameter should be of type numeric", call. = F) }
+  }
+  if (!inherits(threads, "numeric")) { stop("the 'threads' parameter should be of type numeric", call. = F) }
+  if (!inherits(verbose, "logical")) { stop("the 'verbose' parameter should be of type boolean", call. = F) }
+  
+  if (is.null(batches)) {
+    
+    if (verbose) { cat('\n'); cat('dissimilarity calculation starts ...', '\n') }
+    
+    res = DIST(first_matr, second_matr, method, threads, eps = 1.0e-6)}
+  
+  else {
+    
+    if (verbose) { cat('\n'); cat('batch dissimilarity calculation starts ...', '\n'); cat('\n'); }
+    
+    bts = batch_calculation(nrow(first_matr), batches = batches)
+    
+    tmp_dist_ = list()
+    
+    for (j in 1:length(bts)) {
+      
+      if (verbose) { cat('batch ', j, '\n') }
+      
+      expr = paste(bts[[j]][1], bts[[j]][2], sep = ':')
+      
+      idx = eval(parse(text = expr))
+      
+      dis_test = DIST(first_matr[idx, ], second_matr[idx, ], method, threads, eps = 1.0e-6)
+      
+      tmp_dist_[[j]] = dis_test
+    }
+    
+    res = unlist(tmp_dist_)
+  }
+  
+  return(as.vector(res))
+}
+
+
+
+#' Cosine similarity for text documents
+#'
+#' @param text_vector1 a character string vector representing text documents (it should have the same length as the text_vector2)
+#' @param text_vector2 a character string vector representing text documents (it should have the same length as the text_vector1)
+#' @param threads a numeric value specifying the number of cores to run in parallel
+#' @param separator specifies the separator used between words of each character string in the text vectors
+#' @return a numeric vector
+#' @export
+#' @details
+#' The function calculates the \emph{cosine} distance between pairs of text sequences of two character string vectors
+#' @examples
+#'
+#' library(textTinyR)
+#'
+#' vec1 = c('use this', 'function to compute the')
+#'
+#' vec2 = c('cosine distance', 'between text sequences')
+#'
+#' out = COS_TEXT(text_vector1 = vec1, text_vector2 = vec2, separator = " ")
+
+COS_TEXT = function(text_vector1 = NULL, text_vector2 = NULL, threads = 1, separator = " ") {
+  
+  if (!inherits(text_vector1, 'character')) { stop("the 'text_vector1' parameter should be of type character", call. = F) }
+  if (!inherits(text_vector2, 'character')) { stop("the 'text_vector2' parameter should be of type character", call. = F) }
+  if (length(text_vector1) != length(text_vector2)) { stop("Both 'text_vector1' and 'text_vector2' should be of same size", call. = F) }
+  if (!inherits(threads, 'numeric')) { stop("the 'threads' parameter should be of type numeric", call. = F) }
+  if (!inherits(separator, 'character')) { stop("the 'separator' parameter should be of type character", call. = F) }
+  
+  res = COS(text_vector1, text_vector2, threads, separator)
+  
+  return(as.vector(res))
+}
+
+
+
+#' Jaccard or Dice similarity for text documents
+#'
+#' @param token_list1 a list of tokenized text documents (it should have the same length as the token_list2)
+#' @param token_list2 a list of tokenized text documents (it should have the same length as the token_list1)
+#' @param method a character string specifying the similarity metric. One of 'jaccard', 'dice'
+#' @param threads a numeric value specifying the number of cores to run in parallel
+#' @return a numeric vector
+#' @export
+#' @details
+#' The function calculates either the \emph{jaccard} or the \emph{dice} distance between pairs of tokenized text of two lists
+#' @examples
+#'
+#' library(textTinyR)
+#'
+#' lst1 = list(c('use', 'this', 'function', 'to'), c('either', 'compute', 'the', 'jaccard'))
+#'
+#' lst2 = list(c('or', 'the', 'dice', 'distance'), c('for', 'two', 'same', 'sized', 'lists'))
+#'
+#' out = JACCARD_DICE(token_list1 = lst1, token_list2 = lst2, method = 'jaccard', threads = 1)
+
+JACCARD_DICE = function(token_list1 = NULL, token_list2 = NULL, method = 'jaccard', threads = 1) {
+  
+  if (!inherits(token_list1, 'list')) { stop("the 'token_list1' parameter should be of type list", call. = F) }
+  if (!inherits(token_list2, 'list')) { stop("the 'token_list2' parameter should be of type list", call. = F) }
+  if (length(token_list1) != length(token_list2)) { stop("Both 'token_list1' and 'token_list2' should be of same size", call. = F) }
+  if (!inherits(method, 'character')) { stop("the 'method' parameter should be of type character", call. = F) }
+  if (!method %in% c("jaccard", "dice")) {
+    stop('valid "method" parameter is one of "jaccard" or "dice"', call. = F)
+  }
+  if (!inherits(threads, 'numeric')) { stop("the 'threads' parameter should be of type numeric", call. = F) }
+  
+  out = jaccard_dice(token_list1, token_list2, method, threads)
+  
+  return(as.vector(out))
+}
+
+
+
+#' Conversion of text documents to word-vector-representation features ( Doc2Vec )
+#'
+#'
+#' @param token_list either NULL or a list of tokenized text documents
+#' @param word_vector_FILE a valid path to a text file, where the word-vectors are saved
+#' @param print_every_rows a numeric value greater than 1 specifying the print intervals. Frequent output in the R session can slow down the function especially in case of big files.
+#' @param verbose either TRUE or FALSE. If TRUE then information will be printed out in the R session.
+#' @param method a character string specifying the method to use. One of \emph{sum_sqrt}, \emph{min_max_norm} or \emph{idf}. See the details section for more information.
+#' @param global_term_weights either NULL or the output of the \emph{global_term_weights} method of the textTinyR package. See the details section for more information.
+#' @param threads a numeric value specifying the number of cores to run in parallel
+#' @param copy_data either TRUE or FALSE. If FALSE then a pointer will be created and no copy of the initial data takes place (memory efficient especially for big datasets). This is an alternative way to pre-process the data.
+#' @return a matrix
+#' @export
+#' @details
+#' 
+#' the \emph{pre_processed_wv} method should be used after the initialization of the \emph{Doc2Vec} class, if the \emph{copy_data} parameter is set to TRUE, in order to inspect the pre-processed word-vectors.
+#' 
+#' The \emph{global_term_weights} method is part of the \emph{sparse_term_matrix} R6 class of the \emph{textTinyR package}. One can come to the correct \emph{global_term_weights} by using the 
+#' \emph{sparse_term_matrix} class and by setting the \emph{tf_idf} parameter to FALSE and the \emph{normalize} parameter to NULL. In \emph{Doc2Vec} class, if method equals to \emph{idf} then the \emph{global_term_weights} parameter should not be equal to NULL. 
+#'
+#' Explanation of the various \emph{methods} :
+#' 
+#' \describe{
+#'  \item{sum_sqrt}{Assuming that a single sublist of the token list will be taken into consideration : the wordvectors of each word of the sublist of tokens will be accumulated to a vector equal to the length of the wordvector (INITIAL_WORD_VECTOR). Then a scalar will be computed using this INITIAL_WORD_VECTOR in the following way : the INITIAL_WORD_VECTOR will be raised to the power of 2.0, then the resulted wordvector will be summed and the square-root will be calculated. The INITIAL_WORD_VECTOR will be divided by the resulted scalar}
+#'  \item{min_max_norm}{Assuming that a single sublist of the token list will be taken into consideration : the wordvectors of each word of the sublist of tokens will be first \emph{min-max} normalized and then will be accumulated to a vector equal to the length of the initial wordvector}
+#'  \item{idf}{Assuming that a single sublist of the token list will be taken into consideration : the word-vector of each term in the sublist will be multiplied with the corresponding \emph{idf} of the \emph{global weights term}}
+#'  
+#'  There might be slight differences in the output data for each method depending on the input value of the \emph{copy_data} parameter (if it's either TRUE or FALSE).
+#' }
+#' 
+#' @docType class
+#' @importFrom R6 R6Class
+#' @section Methods:
+#'
+#' \describe{
+#'  \item{\code{Doc2Vec$new(token_list = NULL, word_vector_FILE = NULL, print_every_rows = 10000, verbose = FALSE, copy_data = FALSE)}}{}
+#'
+#'  \item{\code{--------------}}{}
+#'
+#'  \item{\code{doc2vec_methods(method = "sum_sqrt", global_term_weights = NULL, threads = 1)}}{}
+#'
+#'  \item{\code{--------------}}{}
+#'
+#'  \item{\code{pre_processed_wv()}}{}
+#'  }
+#'
+#' @usage # utl <- Doc2Vec$new(token_list = NULL, word_vector_FILE = NULL, 
+#'
+#'        #                    print_every_rows = 10000, verbose = FALSE,
+#'        
+#'        #                    copy_data = FALSE)
+#' @examples
+#'
+#' library(textTinyR)
+#'
+#' #---------------------------------
+#' # tokenized text in form of a list
+#' #---------------------------------
+#'
+#' tok_text = list(c('the', 'result', 'of'), c('doc2vec', 'are', 'vector', 'features'))
+#'
+#' #-------------------------
+#' # path to the word vectors
+#' #-------------------------
+#'
+#' PATH = system.file("example_files", "word_vecs.txt", package = "textTinyR")
+#'
+#'
+#' init = Doc2Vec$new(token_list = tok_text, word_vector_FILE = PATH)
+#' 
+#'
+#' out = init$doc2vec_methods(method = "sum_sqrt")
+
+
+Doc2Vec <- R6::R6Class("documents_to_wordvectors",
+                       
+                       lock_objects = FALSE,
+                       
+                       public = list(
+                         
+                         token_list = NULL,
+                         
+                         word_vector_FILE = NULL,
+                         
+                         print_every_rows = 50000,
+                         
+                         verbose = FALSE,
+                         
+                         copy_data = FALSE,
+                         
+                         
+                         #===============
+                         # initialization
+                         #===============
+                         
+                         initialize = function(token_list = NULL, word_vector_FILE = NULL, print_every_rows = 10000, verbose = FALSE, copy_data = FALSE) {
+                           
+                           if (!inherits(token_list, 'list')) { stop("the 'token_list' parameter should be of type list", call. = F) }
+                           if (!inherits(word_vector_FILE, 'character')) { stop("the 'word_vector_FILE' parameter should be a character string specifying a path to a file", call. = F) }
+                           if (!file.exists(word_vector_FILE)) { stop("the 'word_vector_FILE' parameter should be a valid path to a file", call. = F) }
+                           if (!inherits(verbose, 'logical')) { stop("the 'verbose' parameter should be of type boolean", call. = F) }
+                           if (!inherits(copy_data, 'logical')) { stop("the 'copy_data' parameter should be of type boolean", call. = F) }
+                           if (verbose) {
+                             if (!inherits(print_every_rows, c('numeric', 'integer'))) { stop("the 'print_every_rows' parameter should be of type numeric or integer", call. = F) }
+                           }
+                           
+                           #-----------------------
+                           # define class-variables
+                           #-----------------------
+                           
+                           self$token_list = token_list
+                           
+                           self$word_vector_FILE = word_vector_FILE
+                           
+                           self$print_every_rows = print_every_rows
+                           
+                           self$verbose = verbose
+                           
+                           self$copy_data = copy_data
+                           
+                           
+                           #----------------------------
+                           # unique tokens of input list
+                           #----------------------------
+                           
+                           private$unq_tok = unique(unlist(self$token_list, recursive = F))
+                           
+                           
+                           #-----------------------------------------------------------------------------------------
+                           # calculate the word-vector dimensions [ by default the read_delimiter parameter is ' ' ,
+                           #                                        the empty space]
+                           #-----------------------------------------------------------------------------------------
+                           
+                           tmp_wv_dims = read_ROWS_wv(self$word_vector_FILE, read_delimiter = '\n')
+                           
+                           private$inp_wv_dims = length(strsplit(tmp_wv_dims, " ")[[1]][-1])
+                           
+                           
+                           #-----------------------------------
+                           # pre-process the input-word-vectors
+                           #-----------------------------------
+                           
+                           private$pre_proc = reduced_word_vectors(self$word_vector_FILE, private$unq_tok, private$inp_wv_dims, self$print_every_rows, self$verbose, self$copy_data)
+                           
+                           
+                           #-------------------------------------------------------------------------------------------------------
+                           # raise error if "private$pre_proc" is not valid   [ otherwise it can cause segfault due to Rcpp files ]
+                           #-------------------------------------------------------------------------------------------------------
+                           
+                           if (!self$copy_data) {
+                             
+                             if (length(private$pre_proc$terms_reduced_wordvecs) == 0) { 
+                               
+                               cat("\n")
+                               stop("after pre-processing the word-vectors it appears that the terms-vector is an empty object", call. = F) }
+                           }
+                         },
+                         
+                         
+                         #============================================
+                         # returns word-vectors for one of the methods
+                         #============================================
+                         
+                         doc2vec_methods = function(method = "sum_sqrt", global_term_weights = NULL, threads = 1) {
+                           
+                           if (!method %in% c('sum_sqrt', 'min_max_norm', 'idf')) { stop("valid methods are one of 'sum_sqrt', 'min_max_norm' or 'idf'", call. = F) }
+                           if (method == "idf" && is.null(global_term_weights)) { stop("in case that the 'method' parameter is 'idf' then the 'global_term_weights' parameter should be a list", call. = F) }
+                           if (method == "idf") {
+                             if (!is.null(names(global_term_weights))) {
+                               if (!all(names(global_term_weights) %in% c('terms', 'Idf_global_term_weights'))) {
+                                 stop("the 'global_term_weights' parameter should be a valid textTinyR object. See the details section for more information", call. = F)
+                               }
+                             }
+                           }
+                           if (threads < 1) { stop("the 'threads' parameter should be greater than 1", call. = F) }
+                           
+                           if (is.null(global_term_weights)) {                # in case that method is not 'idf' then create two empty vectors to pass to the 'word_vectors_methods' function
+                             
+                             gtw_terms = character(0)
+                             
+                             gtw_weights = numeric(0)}
+                           
+                           else {
+                             
+                             gtw_terms = global_term_weights$terms
+                             
+                             gtw_weights = global_term_weights$Idf_global_term_weights
+                           }
+
+                           dat_wv = word_vectors_methods(private$pre_proc, self$token_list, self$word_vector_FILE, method, private$unq_tok, private$inp_wv_dims,
+                                                         
+                                                         gtw_terms, gtw_weights, self$print_every_rows, self$verbose, threads, self$copy_data)
+                           
+                           return(dat_wv)
+                         },
+                         
+                         
+                         #================================================================================================
+                         # return the pre-processed word-vectors in case that 'copy_data' = TRUE   [ to inspect the data ]
+                         #================================================================================================
+                         
+                         pre_processed_wv = function() {
+                           
+                           if (self$copy_data) {
+                             
+                             return(private$pre_proc)
+                           }
+                           
+                           else {
+                             
+                             cat("\n")
+                             cat("the 'pre_processed_wv()' method returns pre-processed data only if the 'copy_data' parameter is set to TRUE", "\n")
+                           }
+                         }
+                         
+                       ),
+                       
+                       private = list(
+                         
+                         pre_proc = NULL,
+                         
+                         unq_tok = NULL,
+                         
+                         inp_wv_dims = NULL)
+)
+
+
+
+
+#' Exclude highly correlated predictors
+#'
+#'
+#' @param response_vector a numeric vector (the length should be equal to the rows of the \emph{predictors_matrix} parameter)
+#' @param predictors_matrix a numeric matrix (the rows should be equal to the length of the \emph{response_vector} parameter)
+#' @param response_lower_thresh a numeric value. This parameter allows the user to keep all the predictors having a correlation with the response \emph{greater} than the \emph{response_lower_thresh} value.
+#' @param predictors_upper_thresh a numeric value. This parameter allows the user to keep all the predictors having a correlation comparing to the other predictors \emph{less} than the \emph{predictors_upper_thresh} value.
+#' @param threads a numeric value specifying the number of cores to run in parallel
+#' @param verbose either TRUE or FALSE. If TRUE then information will be printed out in the R session.
+#' @return a vector of column-indices
+#' @export
+#' @details
+#' The function works in the following way : The correlation of the predictors with the response is first calculated and the resulted correlations are sorted in decreasing order. Then iteratively predictors with correlation
+#' higher than the \emph{predictors_upper_thresh} value are removed by favoring those predictors which are more correlated with the response variable. If the \emph{response_lower_thresh} value is greater than 0.0 then only predictors 
+#' having a correlation higher than or equal to the \emph{response_lower_thresh} value will be kept, otherwise they will be excluded.
+#' This function returns the indices of the \emph{predictors} and is useful in case of multicollinearity. 
+#' @examples
+#'
+#' library(textTinyR)
+#'
+#' set.seed(1)
+#' resp = runif(100)
+#' 
+#' set.seed(2)
+#' col = runif(100)
+#' 
+#' matr = matrix(c(col, col^4, col^6, col^8, col^10), nrow = 100, ncol = 5)
+#' 
+#' out = select_predictors(resp, matr, predictors_upper_thresh = 0.75)
+
+select_predictors = function(response_vector, predictors_matrix, response_lower_thresh = 0.1, predictors_upper_thresh = 0.75, threads = 1, verbose = FALSE) {
+  
+  START = Sys.time()
+  
+  if (!inherits(response_vector, c('numeric', 'integer'))) { stop("the 'response_vector' parameter should be a numeric vector", call. = F) }
+  if (!inherits(predictors_matrix, 'matrix')) { stop("the 'predictors_matrix' parameter should be a matrix", call. = F) }
+  if (!inherits(threads, 'numeric')) { stop("the 'threads' parameter should be of type numeric", call. = F) }
+  if (!inherits(verbose, 'logical')) { stop("the 'verbose' parameter should be of type boolean", call. = F) }
+  
+  out = reduce_dims_with_correlation(predictors_matrix, response_vector, response_lower_thresh, predictors_upper_thresh, threads)
+  
+  END = Sys.time()
+  
+  if (verbose) { print(END - START) }
+  
+  return(as.vector(out))
+}
+
+
+
+#' intersection of words or letters in tokenized text
+#'
+#'
+#' @param token_list1 a list, where each sublist is a tokenized text sequence (\emph{token_list1} should be of same length with \emph{token_list2})
+#' @param token_list2 a list, where each sublist is a tokenized text sequence (\emph{token_list2} should be of same length with \emph{token_list1})
+#' @param distinct either TRUE or FALSE. If TRUE then the intersection of \emph{distinct} words (or letters) will be taken into account
+#' @param letters either TRUE or FALSE. If TRUE then the intersection of letters in the text sequences will be computed
+#' @return a numeric vector
+#' @export
+#' @details
+#' This class includes methods for text or character intersection. If both \emph{distinct} and \emph{letters} are FALSE then the simple (count or ratio) word intersection will be computed.
+#' @references
+#' https://www.kaggle.com/c/home-depot-product-search-relevance/discussion/20427 by Igor Buinyi
+#' @docType class
+#' @importFrom R6 R6Class
+#' @section Methods:
+#'
+#' \describe{
+#'  \item{\code{text_intersect$new(file_data = NULL)}}{}
+#'
+#'  \item{\code{--------------}}{}
+#'
+#'  \item{\code{count_intersect(distinct = FALSE, letters = FALSE)}}{}
+#'
+#'  \item{\code{--------------}}{}
+#'
+#'  \item{\code{ratio_intersect(distinct = FALSE, letters = FALSE)}}{}
+#'  }
+#'
+#' @usage # utl <- text_intersect$new(token_list1 = NULL, token_list2 = NULL)
+#' @examples
+#'
+#' library(textTinyR)
+#'
+#' tok1 = list(c('compare', 'this', 'text'),
+#'
+#'             c('and', 'this', 'text'))
+#'
+#' tok2 = list(c('with', 'another', 'set'),
+#'
+#'             c('of', 'text', 'documents'))
+#'
+#'
+#' init = text_intersect$new(tok1, tok2)
+#'
+#'
+#' init$count_intersect(distinct = TRUE, letters = FALSE)
+#'
+#'
+#' init$ratio_intersect(distinct = FALSE, letters = TRUE)
+
+text_intersect <- R6::R6Class("text_intersect",
+                              
+                              public = list(
+                                
+                                token_list1 = NULL,
+                                
+                                token_list2 = NULL,
+                                
+                                
+                                #----------------
+                                # initialization
+                                #----------------
+                                
+                                initialize = function(token_list1 = NULL, token_list2 = NULL) {
+                                  
+                                  self$token_list1 <- token_list1
+                                  
+                                  self$token_list2 <- token_list2
+                                  
+                                  if (!inherits(self$token_list1, 'list')) stop("the 'token_list1' parameter should be of type list", call. = F)
+                                  if (!inherits(self$token_list2, 'list')) stop("the 'token_list2' parameter should be of type list", call. = F)
+                                  if (length(self$token_list1) != length(self$token_list2)) { stop("Both 'token_list1' and 'token_list2' should be of same size", call. = F) }
+                                },
+                                
+                                
+                                #--------------------------------------------------
+                                # intersection (count) of words or letters in lists
+                                #--------------------------------------------------
+                                
+                                count_intersect = function(distinct = FALSE, letters = FALSE) {
+                                  
+                                  if (!inherits(distinct, 'logical')) stop("the 'distinct' parameter should be of type boolean", call. = F)
+                                  if (!inherits(letters, 'logical')) stop("the 'letters' parameter should be of type boolean", call. = F)
+                                  
+                                  cnt_res = COUNTS_INTERSECT(self$token_list1, self$token_list2, distinct, letters)
+                                  
+                                  return(as.vector(cnt_res))
+                                },
+                                
+                                
+                                #--------------------------------------------------
+                                # intersection (ratio) of words or letters in lists
+                                #--------------------------------------------------
+                                
+                                ratio_intersect = function(distinct = FALSE, letters = FALSE) {
+                                  
+                                  if (!inherits(distinct, 'logical')) stop("the 'distinct' parameter should be of type boolean", call. = F)
+                                  if (!inherits(letters, 'logical')) stop("the 'letters' parameter should be of type boolean", call. = F)
+                                  
+                                  rt_res = RATIO_DISTINCT(self$token_list1, self$token_list2, distinct, letters)
+                                  
+                                  return(as.vector(rt_res))
+                                }
+                              )
+)
+
+
+
+#' Number of rows of a file
+#'
+#' @param PATH a character string specifying the path to a file
+#' @param verbose either TRUE or FALSE
+#' @return a numeric value
+#' @export
+#' @details
+#' This function returns the number of rows for a file. It doesn't load the data in memory.
+#' @examples
+#'
+#' library(textTinyR)
+#' 
+#' PATH = system.file("example_files", "word_vecs.txt", package = "textTinyR")
+#'
+#' num_rows = Count_Rows(PATH)
+
+Count_Rows = function(PATH, verbose = FALSE) {
+  
+  try_err_file_input = inherits(tryCatch(normalizePath(PATH, mustWork = T), error = function(e) e), "error")
+  if (try_err_file_input) stop("the 'PATH' parameter should be a non-null valid path to a file", call. = F)
+  if (!inherits(verbose, 'logical')) { stop("the 'verbose' parameter should be of type boolean", call. = F) }
+  
+  tmp_rows = count_rows(PATH, verbose)
+  
+  return(tmp_rows)
+}
+
+
+
+#' Frequencies of an existing cluster object
+#'
+#' @param tokenized_list_text a list of tokenized text documents. This can be the result of the \emph{textTinyR::tokenize_transform_vec_docs} function with the \emph{as_token} parameter set to TRUE (the \emph{token} object of the output)
+#' @param cluster_vector a numeric vector. This can be the result of the \emph{ClusterR::KMeans_rcpp} function (the \emph{clusters} object of the output)
+#' @param verbose either TRUE or FALSE. If TRUE then information will be printed out in the R session.
+#' @return a list of data.tables
+#' @export
+#' @details
+#' This function takes a list of tokenized text and a numeric vector of clusters and returns the sorted frequency of each cluster. The length of the \emph{tokenized_list_text} object must be equal to the length of the \emph{cluster_vector} object
+#' @importFrom data.table data.table
+#' @examples
+#'
+#' library(textTinyR)
+#' 
+#' tok_lst = list(c('the', 'the', 'tokens', 'of', 'first', 'document'),
+#'                c('the', 'tokens', 'of', 'of', 'second', 'document'),
+#'                c('the', 'tokens', 'of', 'third', 'third', 'document'))
+#' 
+#' vec_clust = rep(1:6, 3)
+#' 
+#' res = cluster_frequency(tok_lst, vec_clust)
+
+cluster_frequency = function(tokenized_list_text, cluster_vector, verbose = FALSE) {
+  
+  if (!inherits(verbose, 'logical')) { stop("the 'verbose' parameter should be of type boolean", call. = F) }
+  
+  START = Sys.time()
+  
+  assign_clust = append_data(tokenized_list_text, cluster_vector)
+  
+  res_clust = lapply(assign_clust, function(i) data.table::data.table(WORDS = i$words, COUNTS = as.vector(i$counts)))
+  
+  END = Sys.time()
+  
+  if (verbose) { print(END - START) }
+  
+  return(res_clust)
+}
 
 

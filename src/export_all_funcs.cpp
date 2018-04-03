@@ -11,10 +11,10 @@
 #include <boost/range/algorithm/copy.hpp>
 #include <boost/algorithm/string.hpp>
 
-                                      // _WIN32 :  Both 32 bit and 64 bit [ http://stackoverflow.com/questions/142508/how-do-i-check-os-with-a-preprocessor-directive ]
-#ifndef _WIN32                        // the boost-locale header does not work in windows [ gcc (v. 4.6.3) in RTools (v. 3.3) is probably not built with locale support ], see http://stackoverflow.com/questions/31670839/how-do-i-read-a-windows-1252-file-using-rcpp
-  #include <boost/locale.hpp>
-#endif
+//                                       // _WIN32 :  Both 32 bit and 64 bit [ http://stackoverflow.com/questions/142508/how-do-i-check-os-with-a-preprocessor-directive ]
+// #ifndef _WIN32                        // the boost-locale header does not work in windows [ gcc (v. 4.6.3) in RTools (v. 3.3) is probably not built with locale support ], see http://stackoverflow.com/questions/31670839/how-do-i-read-a-windows-1252-file-using-rcpp
+//   #include <boost/locale.hpp>
+// #endif
 
 #include <dirent.h>
 #include <sys/types.h>
@@ -240,20 +240,20 @@ std::vector<std::string> res_token_vector(std::vector<std::string>& VEC, std::ve
   bool FLAG_write_file = path_2file == "" ? false : true;
 
   unsigned long long f;
-  
+
   #ifdef _OPENMP
   #pragma omp parallel for schedule(static) shared(VEC, bgf, vocabulary_path, FLAG_write_file, stemmer_batches, stemmer_truncate, stemmer_gamma, stemmer_ngram, path_2file, concat_delimiter, n_gram_delimiter, skip_distance, skip_n_gram, max_n_gram, min_n_gram, stemmer, min_num_char, cpp_remove_stopwords, cpp_string_separator, cpp_tokenization_function, cpp_trim_token, remove_punctuation_vector, cpp_remove_numbers, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, res_vec) private(f)
   #endif
   for (f = 0; f < VEC.size(); f++) {
-    
+
     std::string tmp_str = bgf.inner_res_tok_vec(f, VEC, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation,
-                                                        
+
                                                 remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords,
-                                                
+
                                                 min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram,
-                                                
+
                                                 stemmer_gamma, stemmer_truncate, stemmer_batches, vocabulary_path, FLAG_write_file);
-    
+
     #ifdef _OPENMP
     #pragma omp critical
     #endif
@@ -299,15 +299,15 @@ std::vector<std::vector<std::string> > res_token_list(std::vector<std::string>& 
   #pragma omp parallel for schedule(static) shared(VEC, bgf, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation, remove_punctuation_vector, cpp_remove_numbers, res_vec, vocabulary_path, FLAG_write_file, stemmer_batches, stemmer_truncate, stemmer_gamma, stemmer_ngram, path_2file, concat_delimiter, n_gram_delimiter, skip_distance, skip_n_gram, max_n_gram, min_n_gram, stemmer, min_num_char, cpp_remove_stopwords, cpp_string_separator, cpp_tokenization_function, cpp_trim_token) private(f)
   #endif
   for (f = 0; f < VEC.size(); f++) {
-    
+
     std::vector<std::string> tmp_vec = bgf.inner_res_tok_list(f, VEC, language, language_spec, LOCALE_UTF, max_num_char, remove_char, cpp_to_lower, cpp_to_upper, cpp_remove_punctuation,
-                          
+
                                                               remove_punctuation_vector, cpp_remove_numbers, cpp_trim_token, cpp_tokenization_function, cpp_string_separator, cpp_remove_stopwords,
-                                                              
+
                                                               min_num_char, stemmer, min_n_gram, max_n_gram, skip_n_gram, skip_distance, n_gram_delimiter, concat_delimiter, path_2file, stemmer_ngram,
-                                                              
+
                                                               stemmer_gamma, stemmer_truncate, stemmer_batches, vocabulary_path, FLAG_write_file);
-    
+
     #ifdef _OPENMP
     #pragma omp critical
     #endif
@@ -572,20 +572,20 @@ Rcpp::List res_term_matrix(std::vector<std::string> vector_corpus, std::vector<s
 
 // [[Rcpp::export]]
 Rcpp::List idf_global_term_weights(arma::sp_mat Tmat, std::vector<std::string> Terms) {
-  
+
   if (Tmat.empty()) {
-    
+
     Rcpp::stop("first run the document-term-matrix method");
   }
-  
+
   term_matrix trmx;
-  
+
   arma::rowvec sum_counts = trmx.Sparse_Sums(Tmat, false);
-  
+
   long long num_docs = Tmat.n_rows;
-  
+
   std::vector<double> idf_gtw = arma::conv_to< std::vector<double> >::from(arma::log(num_docs / (sum_counts + 1.0)));        // +1 to avoid division by zero
-  
+
   return(Rcpp::List::create( Rcpp::Named("terms") = Terms, Rcpp::Named("Idf_global_term_weights") = idf_gtw));
 }
 
@@ -901,15 +901,169 @@ std::vector<std::string> read_ROWS(std::string input_file, std::string write_2fi
 }
 
 
-
+//-------------------------------
 // function to remove duplicates
-//
+//-------------------------------
 
 // [[Rcpp::export]]
 Rcpp::LogicalVector Not_Duplicated(Rcpp::CharacterVector x) {
-  
+
   Rcpp::LogicalVector out = Rcpp::duplicated(x);
-  
+
   return !out;
 }
+
+
+//------------------------------------------------------------------------------------------------------------
+// alternative 'file_parser' function : 
+//                                      1. returns a vector of character strings rather than writing to a file
+//                                      2. queries for more than one terms
+//                                      3. option to read from url in R 
+//------------------------------------------------------------------------------------------------------------
+
+
+// [[Rcpp::export]]
+Rcpp::List vec_parser(std::vector<std::string> input_path_file, std::vector<std::string> start_query, 
+                      
+                      std::vector<std::string> end_query, std::string output_path_file = "", 
+                      
+                      bool trimmed_line = false, bool verbose = false) {
+  
+  arma::wall_clock timer;
+  
+  if (verbose) { timer.tic(); }
+  
+  bool flag_write = false;
+  
+  std::string line;
+  
+  Rcpp::List OUT_DAT;
+  
+  std::string END_str;
+  
+  for (unsigned int j = 0; j < start_query.size(); j++) {
+    
+    std::vector<std::string> inner_dat;
+    
+    for (unsigned int i = 0; i < input_path_file.size(); i++) {
+      
+      line = input_path_file[i];
+      
+      if (!trimmed_line) {
+        
+        boost::trim(line);
+      }
+      
+      if (start_query[j].length() <= line.length()) {
+        
+        std::string begin_str = line.substr(0, start_query[j].length());
+        
+        if (begin_str == start_query[j]) {
+          
+          flag_write = true;
+          
+          line = line.substr(start_query[j].length(), line.length());                         // exclude the 'start_query' string from the line
+        }
+      }
+      
+      std::string end_str;
+      
+      if (end_query[j].length() <= line.length()) {
+        
+        end_str = line.substr(line.length() - end_query[j].length(), line.length());          // exclude the 'end_query' string from the line
+        
+        if (end_str == end_query[j]) {
+          
+          line = line.substr(0, line.length() - end_query[j].length());
+        }
+      }
+      
+      if (flag_write) {
+        
+        inner_dat.push_back(line);
+      }
+      
+      if (end_str == end_query[j]) {
+        
+        flag_write = false;
+      }
+    }
+    
+    OUT_DAT.push_back(inner_dat);
+  }
+  
+  if (output_path_file != "") {
+    
+    if (!flag_write && (OUT_DAT.size() > 0)) {
+      
+      if (start_query.size() > 1) {
+        
+        std::string tmp_outer;
+        
+        std::vector<std::string> SIZE_vec = OUT_DAT[0];
+        
+        for (unsigned int f = 0; f < SIZE_vec.size(); f++) {
+          
+          for (unsigned int k = 0; k < OUT_DAT.size(); k++) {
+            
+            std::vector<std::string> sub_lst = OUT_DAT[k];
+            
+            if (k < start_query.size() - 1) {
+              
+              tmp_outer += sub_lst[f] + ",";
+            }
+            
+            else {
+              
+              tmp_outer += sub_lst[f] + "\n";
+            }
+          }
+        }
+        
+        END_str += tmp_outer + "\n";
+      }
+    }
+  }
+  
+  if (verbose) {                                // time for pre-processing
+    
+    Rcpp::Rcout << "" << std::endl;
+    
+    double n = timer.toc();
+    
+    Rcpp::Rcout << "It took " << n / 60.0 << " minutes to complete the preprocessing" << std::endl;
+  }
+  
+  arma::wall_clock timer1;
+  
+  if (verbose) { timer1.tic(); }               // time to save the output data
+  
+  std::string tmp_nam;
+  
+  if (output_path_file != "") {
+    
+    BATCH_TOKEN btk;
+    
+    btk.save_string(END_str, output_path_file);
+    
+    if (verbose) {
+      
+      Rcpp::Rcout << "" << std::endl;
+      
+      double n1 = timer1.toc();
+      
+      Rcpp::Rcout << "It took " << n1 / 60.0 << " minutes to save the pre-processed data" << std::endl;
+    }
+    
+    END_str.shrink_to_fit();
+  }
+  
+  else {
+    
+    return OUT_DAT;
+  }
+  
+  return 0;
+}
+
 

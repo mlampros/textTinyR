@@ -10,7 +10,7 @@
  *
  * @Notes: the main class for tokenization and transformation of text files
  *
- * @last_modified: October 2017
+ * @last_modified: April 2018
  *
  **/
 
@@ -85,33 +85,33 @@ class TOKEN {
     }
 
 
-    // secondary function in case of conversion to lower or upper case if language is not english
+    // // secondary function in case of conversion to lower or upper case if language is not english
+    // //
     //
+    // #ifndef _WIN32
+    // std::string LOCALE_FUNCTION(std::string x, bool TO_lower = false, std::string LOCALE_UTF = "") {
+    //
+    //   boost::locale::generator gen;
+    //
+    //   std::locale loc = gen(LOCALE_UTF);
+    //
+    //   std::locale::global(loc);                         // Create system default locale
+    //
+    //   //std::cout.imbue(loc);                           // gives an error when I do cran-checking due to std::cout
+    //
+    //   if (TO_lower) {
+    //
+    //     return boost::locale::to_lower(x);}             // Make it system global
+    //
+    //   else {
+    //
+    //     return boost::locale::to_upper(x);
+    //   }
+    // }
+    // #endif
 
-    #ifndef _WIN32
-    std::string LOCALE_FUNCTION(std::string x, bool TO_lower = false, std::string LOCALE_UTF = "") {
 
-      boost::locale::generator gen;
-
-      std::locale loc = gen(LOCALE_UTF);
-
-      std::locale::global(loc);                         // Create system default locale
-
-      //std::cout.imbue(loc);                           // gives an error when I do cran-checking due to std::cout
-
-      if (TO_lower) {
-
-        return boost::locale::to_lower(x);}             // Make it system global
-
-      else {
-
-        return boost::locale::to_upper(x);
-      }
-    }
-    #endif
-
-
-    // work-around for the boost-locale header in windows [ gcc (v. 4.6.3) in RTools (v. 3.3) is probably not built with locale support ]
+    // work-around for the boost-locale header on windows [ gcc (v. 4.6.3) in RTools (v. 3.3) is probably not built with locale support ]
     // see http://stackoverflow.com/questions/31670839/how-do-i-read-a-windows-1252-file-using-rcpp
     //
 
@@ -138,30 +138,30 @@ class TOKEN {
     }
 
 
-    // exceptions for specific languages ( greek, russian, bulgarian, armenian ) due to error in Macintosh OSx [ use the windows function ]
-
-    bool is_language(std::string tmp_locale) {
-
-      std::vector<std::string> trg_vec = { "el_GR", "ru_RU", "bg_BG", "Hy-AM" };
-
-      std::vector<std::string> tmp_vec;
-
-      boost::split( tmp_vec, tmp_locale, boost::is_any_of("."), boost::token_compress_on );
-
-      std::string current_lang = tmp_vec[0];
-
-      bool flg_out = false;
-
-      for (unsigned int i = 0; i < trg_vec.size(); i++) {
-
-        if (current_lang == trg_vec[i]) {
-
-          flg_out = true;
-        }
-      }
-
-      return flg_out;
-    }
+    // // exceptions for specific languages ( greek, russian, bulgarian, armenian ) due to error in Macintosh OSx [ use the windows function ]
+    //
+    // bool is_language(std::string tmp_locale) {
+    //
+    //   std::vector<std::string> trg_vec = { "el_GR", "ru_RU", "bg_BG", "Hy-AM" };
+    //
+    //   std::vector<std::string> tmp_vec;
+    //
+    //   boost::split( tmp_vec, tmp_locale, boost::is_any_of("."), boost::token_compress_on );
+    //
+    //   std::string current_lang = tmp_vec[0];
+    //
+    //   bool flg_out = false;
+    //
+    //   for (unsigned int i = 0; i < trg_vec.size(); i++) {
+    //
+    //     if (current_lang == trg_vec[i]) {
+    //
+    //       flg_out = true;
+    //     }
+    //   }
+    //
+    //   return flg_out;
+    // }
 
 
     // secondary function for the 'conv_to_lower' and 'conv_to_upper' functions
@@ -198,30 +198,32 @@ class TOKEN {
 
         else {
 
-          #ifndef _WIN32
+          tmp_v = BASE_STRING_win(tmp_v, true);                                   // in all other cases invoke the base-R function in C++
 
-            #ifdef __APPLE__
-
-              if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {
-
-                tmp_v = BASE_STRING_win(tmp_v, true);}               // exception for specific languages
-
-              else {
-
-                tmp_v = LOCALE_FUNCTION(tmp_v, true, LOCALE_UTF);
-              }
-
-            #else
-
-              tmp_v = LOCALE_FUNCTION(tmp_v, true, LOCALE_UTF);
-
-            #endif
-
-          #else
-
-            tmp_v = BASE_STRING_win(tmp_v, true);
-
-          #endif
+          // #ifndef _WIN32
+          //
+          //   #ifdef __APPLE__
+          //
+          //     if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {
+          //
+          //       tmp_v = BASE_STRING_win(tmp_v, true);}               // exception for specific languages
+          //
+          //     else {
+          //
+          //       tmp_v = LOCALE_FUNCTION(tmp_v, true, LOCALE_UTF);
+          //     }
+          //
+          //   #else
+          //
+          //     tmp_v = LOCALE_FUNCTION(tmp_v, true, LOCALE_UTF);
+          //
+          //   #endif
+          //
+          // #else
+          //
+          //   tmp_v = BASE_STRING_win(tmp_v, true);
+          //
+          // #endif
         }
 
         v[i] = tmp_v;
@@ -264,30 +266,32 @@ class TOKEN {
 
         else {
 
-          #ifndef _WIN32
+          tmp_v = BASE_STRING_win(tmp_v, false);                                   // in all other cases invoke the base-R function in C++
 
-            #ifdef __APPLE__
-
-              if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {
-
-                tmp_v = BASE_STRING_win(tmp_v, false);}               // exception for specific languages
-
-              else {
-
-                tmp_v = LOCALE_FUNCTION(tmp_v, false, LOCALE_UTF);
-              }
-
-            #else
-
-              tmp_v = LOCALE_FUNCTION(tmp_v, false, LOCALE_UTF);
-
-            #endif
-
-          #else
-
-            tmp_v = BASE_STRING_win(tmp_v, false);
-
-          #endif
+          // #ifndef _WIN32
+          //
+          //   #ifdef __APPLE__
+          //
+          //     if (LOCALE_UTF != "" && is_language(LOCALE_UTF)) {
+          //
+          //       tmp_v = BASE_STRING_win(tmp_v, false);}               // exception for specific languages
+          //
+          //     else {
+          //
+          //       tmp_v = LOCALE_FUNCTION(tmp_v, false, LOCALE_UTF);
+          //     }
+          //
+          //   #else
+          //
+          //     tmp_v = LOCALE_FUNCTION(tmp_v, false, LOCALE_UTF);
+          //
+          //   #endif
+          //
+          // #else
+          //
+          //   tmp_v = BASE_STRING_win(tmp_v, false);
+          //
+          // #endif
         }
 
         v[i] = tmp_v;
@@ -352,40 +356,40 @@ class TOKEN {
     //
 
     void TOKENIZER(std::string separator = "-*", bool remove_punctuation = false) {
-      
+
       std::vector<std::string> new_vec;
-      
+
       for (unsigned int i = 0; i < v.size(); i++) {
-        
+
         std::string tmp_x = v[i];
-        
+
         std::vector<std::string> tmp_vec;
-        
+
         boost::split( tmp_vec, tmp_x, boost::is_any_of(separator), boost::token_compress_on );
-        
+
         tmp_x.shrink_to_fit();
-        
+
         if (remove_punctuation) {
-          
+
           for (unsigned int i = 0; i < tmp_vec.size(); i++) {
-            
+
             tmp_vec[i].erase(std::remove_if(tmp_vec[i].begin(), tmp_vec[i].end(), &ispunct), tmp_vec[i].end());
           }
         }
-        
+
         new_vec.insert(std::end(new_vec), std::begin(tmp_vec), std::end(tmp_vec));
-        
+
         tmp_vec.shrink_to_fit();
       }
-      
+
       v.shrink_to_fit();
-      
+
       v = new_vec;
-      
+
       new_vec.shrink_to_fit();
     }
-    
-    
+
+
 
     // remove stopwords
 
@@ -438,7 +442,7 @@ class TOKEN {
       std::vector<std::string> result(insert_vals.size());              // subset [ to preserve the words order using indexing ]
 
       unsigned int f;
-      
+
       #ifdef _OPENMP
       #pragma omp parallel for schedule(static) shared(insert_vals, result) private(f)
       #endif
@@ -498,7 +502,7 @@ class TOKEN {
       std::vector<std::string> result(insert_vals.size());
 
       unsigned int f;
-      
+
       #ifdef _OPENMP
       #pragma omp parallel for schedule(static) shared(insert_vals, result) private(f)
       #endif
@@ -542,14 +546,14 @@ class TOKEN {
       #endif
 
       unsigned int i;
-      
+
       #ifdef _OPENMP
       #pragma omp parallel for schedule(static) private(i)
       #endif
       for (i = 0; i < v.size(); i++) {
-        
+
         std::string tmp_prt = Porter2Stemmer::stem(v[i]);
-        
+
         #ifdef _OPENMP
         #pragma omp critical
         #endif
@@ -580,54 +584,54 @@ class TOKEN {
 
     // inner function for the 'secondary_n_grams' function
     //
-    
+
     std::string inner_str(int n_gram, int i, std::vector<std::string>& vec, std::string& n_gram_delimiter) {
-      
+
       std::string tmp_string;
-      
+
       for (int j = i; j < i + n_gram; j++) {
-        
+
         if (j == i) {
-          
+
           tmp_string += vec[j];}
-        
+
         else {
-          
+
           tmp_string += n_gram_delimiter + vec[j];
         }
       }
-      
+
       return tmp_string;
     }
-    
-    
-    
+
+
+
     // secondary function for the n-grams-function
-    
+
     std::vector<std::string> secondary_n_grams(std::vector<std::string>& vec, std::string& n_gram_delimiter, int n_gram = 2, int threads = 1) {
-      
+
       #ifdef _OPENMP
       omp_set_num_threads(threads);
       #endif
-      
+
       int vec_size = vec.size() - n_gram + 1;
-      
+
       if (vec_size < 0) {
-        
+
         vec_size = 0;
       }
-      
+
       std::vector<std::string> out(vec_size);
-      
+
       int i;
-      
+
       #ifdef _OPENMP
       #pragma omp parallel for schedule(static) shared(vec_size, n_gram_delimiter, vec, n_gram, out) private(i)
       #endif
       for (i = 0; i < vec_size; i++) {
-        
+
         std::string tmp_in = inner_str(n_gram, i, vec, n_gram_delimiter);
-        
+
         #ifdef _OPENMP
         #pragma omp critical
         #endif
@@ -635,26 +639,26 @@ class TOKEN {
           out[i] = tmp_in;
         }
       }
-      
+
       return out;
     }
-    
-    
+
+
     // build n-grams using an std::vector
-    
+
     void build_n_grams(int min_n_gram = 2, int max_n_gram = 2, std::string n_gram_delimiter = "_", int threads = 1) {
-      
+
       std::vector<std::string> insert_n_grams;
-      
+
       for (int i = min_n_gram; i < max_n_gram + 1; i++) {
-        
+
         std::vector<std::string> tmp_vec = secondary_n_grams(v, n_gram_delimiter, i, threads);
-        
+
         insert_n_grams.insert(std::end(insert_n_grams), std::begin(tmp_vec), std::end(tmp_vec));
       }
-      
+
       v = insert_n_grams;
-      
+
       insert_n_grams.shrink_to_fit();
     }
 
