@@ -1024,7 +1024,10 @@ Rcpp::List vec_parser(std::vector<std::string> input_path_file, std::vector<std:
         
         flag_write = false;
         
-        ENUM_one.push_back(std::to_string(INCREMENT));
+        if (j == 0) {
+          
+          ENUM_one.push_back(std::to_string(INCREMENT));
+        }
 
         INCREMENT += 1;
       }
@@ -1047,15 +1050,15 @@ Rcpp::List vec_parser(std::vector<std::string> input_path_file, std::vector<std:
   }
 
   else {                                                                           // in case of multiple queries
-    
+
     if (!std::equal(ENUM.begin() + 1, ENUM.end(), ENUM.begin())) {                 // in case that one (or more) of the 'start_query' appear(s) more times than the other queries in the document raise error
-      
+
       Rcpp::stop("This function assumes that each query appears equal number of times in the document. Otherwise the function does not return the correct output");
     }
 
     for (unsigned int f = 0; f < OUT_DAT.size(); f++) {
 
-      std::vector<std::string> tmp_v = sublist(OUT_DAT[f], OUT_DAT.size());
+      std::vector<std::string> tmp_v = sublist(OUT_DAT[f], ENUM_one.size());
 
       tmp_OUT_DAT.push_back(tmp_v);
     }

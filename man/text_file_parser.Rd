@@ -54,7 +54,9 @@ library(textTinyR)
   
 #  tmp_dat = read.delim(con, quote = "\\"", comment.char = "", stringsAsFactors = FALSE)
   
-#  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x) trimws(tmp_dat[x, 1], which = "both")))
+#  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x) 
+
+#                    trimws(tmp_dat[x, 1], which = "both")))
   
 #  parse_data = text_file_parser(input_path_file = vec_docs,
   
