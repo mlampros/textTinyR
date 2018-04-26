@@ -1134,7 +1134,7 @@ bytes_converter = function(input_path_file = NULL, unit = "MB") {
 #'
 #'
 #' @param input_path_file either a path to an input file or a vector of character strings ( normally the latter would represent ordered lines of a text file in form of a character vector )
-#' @param output_path_file either an empty character string ("") or a character string specifying a path to an output file
+#' @param output_path_file either an empty character string ("") or a character string specifying a path to an output file ( it applies only if the \emph{input_path_file} parameter is a valid path to a file )
 #' @param start_query a character string or a vector of character strings. The \emph{start_query} (if it's a single character string) is the first word of the subset of the data and should appear frequently at the beginning of each line in the text file.
 #' @param end_query a character string or a vector of character strings. The \emph{end_query} (if it's a single character string) is the last word of the subset of the data and should appear frequently at the end of each line in the text file.
 #' @param min_lines a numeric value specifying the minimum number of lines ( applies only if the \emph{input_path_file} is a valid path to a file) . For instance if min_lines = 2, then only subsets of text with more than 1 lines will be pre-processed.
@@ -1143,17 +1143,40 @@ bytes_converter = function(input_path_file = NULL, unit = "MB") {
 #' @details
 #' The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the \emph{start_query} and \emph{end_query} parameters ( the same applies in case of a vector of character strings)
 #' @export
-#' @examples
-#'
+#' @examples 
+#' 
 #' library(textTinyR)
-#'
+#' 
+#' # In case that the 'input_path_file' is a valid path
+#' #---------------------------------------------------
+#'  
 #' # fp = text_file_parser(input_path_file = '/folder/input_data.txt',
-#'
+#' 
 #' #                       output_path_file = '/folder/output_data.txt',
-#'
+#' 
 #' #                       start_query = 'word_a', end_query = 'word_w',
-#'
+#' 
 #' #                       min_lines = 1, trimmed_line = FALSE)
+#'                      
+#'                      
+#' # In case that the 'input_path_file' is a character vector of strings
+#' #--------------------------------------------------------------------
+#' 
+#' #  PATH_url = "https://FILE.xml"
+#'   
+#' #  con = url(PATH_url, method = "libcurl")
+#'   
+#' #  tmp_dat = read.delim(con, quote = "\"", comment.char = "", stringsAsFactors = FALSE)
+#'   
+#' #  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x) trimws(tmp_dat[x, 1], which = "both")))
+#'   
+#' #  parse_data = text_file_parser(input_path_file = vec_docs,
+#'   
+#' #                                start_query = c("<query1>", "<query2>", "<query3>"),
+#'   
+#' #                                end_query = c("</query1>", "</query2>", "</query3>"), 
+#'   
+#' #                                min_lines = 1, trimmed_line = TRUE)
 
 
 text_file_parser = function(input_path_file = NULL, output_path_file = "", start_query = NULL, end_query = NULL, min_lines = 1, trimmed_line = FALSE, verbose = FALSE) {
@@ -1184,6 +1207,8 @@ text_file_parser = function(input_path_file = NULL, output_path_file = "", start
 
   if (flag_valid_path) {
     
+    if (length(start_query) > 1 || length(end_query) > 1) stop("when the 'input_path_file' parameter is a valid path to a file then the length of 'start_query' or 'end_query' parameter should be 1")
+    
     tfp = file_parser(input_path_file, start_query, end_query, output_path_file, min_lines, trimmed_line, verbose)
     
     return(structure(list(text_parser = paste0("the output-data is saved in : ", output_path_file)), class = "tokenization and transformation"))
@@ -1191,17 +1216,12 @@ text_file_parser = function(input_path_file = NULL, output_path_file = "", start
   
   else {
     
-    tfp = vec_parser(input_path_file, start_query, end_query, output_path_file, trimmed_line, verbose)
+    if (length(start_query) != length(end_query)) stop("the length of the 'start_query' and 'end_query' parameters should match")
+    if (output_path_file != "") warning("when the 'input_path_file' parameter is not a valid path to a file - but a character vector of strings - then the data will not be written to a file")
     
-    if (output_path_file == "") {
-      
-      struct = structure(list(text_parser = tfp), class = "tokenization and transformation")
-    }
+    tfp = vec_parser(input_path_file, start_query, end_query, trimmed_line, verbose)
     
-    else {
-      
-      struct = structure(list(text_parser = paste0("the output-data is saved in : ", output_path_file)), class = "tokenization and transformation")
-    }
+    struct = structure(list(text_parser = tfp), class = "tokenization and transformation")
     
     return(struct)
   }

@@ -914,20 +914,45 @@ Rcpp::LogicalVector Not_Duplicated(Rcpp::CharacterVector x) {
 }
 
 
-//------------------------------------------------------------------------------------------------------------
+// secondary function for 'vec_parser'
+//
+
+// [[Rcpp::export]]
+std::vector<std::string> sublist(Rcpp::List input, unsigned int ids) {
+  
+  std::vector<std::string> res(ids);
+  
+  for (unsigned int i = 0; i < input.size(); i++) {
+    
+    Rcpp::List tmp_lst = input[i];
+    
+    std::string tmp_str0 = tmp_lst[0];
+    
+    std::string tmp_str1 = tmp_lst[1];
+    
+    res[atof(tmp_str0.c_str())-1] += tmp_str1 + " ";
+  }
+  
+  return res;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------
 // alternative 'file_parser' function : 
-//                                      1. returns a vector of character strings rather than writing to a file
-//                                      2. queries for more than one terms
-//                                      3. option to read from url in R 
-//------------------------------------------------------------------------------------------------------------
+//                                      1. reads only from a vector of character strings [ not from a file ]
+//                                      2. returns a vector of character strings AND does not allow to write to a file
+//                                      3. queries for more than one terms
+//
+//
+// The output will be a list of lists, where each sublist will consist of : SUBLIST =  List(start_query[0], start_query[1], ..., start_query[n])
+// And the total size of the List will be : SUBLIST * number-of-times-the-start_queries-appear-in-the-document
+//----------------------------------------------------------------------------------------------------------------------------------------------
 
 
 // [[Rcpp::export]]
 Rcpp::List vec_parser(std::vector<std::string> input_path_file, std::vector<std::string> start_query, 
                       
-                      std::vector<std::string> end_query, std::string output_path_file = "", 
-                      
-                      bool trimmed_line = false, bool verbose = false) {
+                      std::vector<std::string> end_query, bool trimmed_line = false, bool verbose = false) {
   
   arma::wall_clock timer;
   
@@ -941,9 +966,15 @@ Rcpp::List vec_parser(std::vector<std::string> input_path_file, std::vector<std:
   
   std::string END_str;
   
+  std::vector<std::string> ENUM_one;
+  
+  std::vector<int> ENUM;
+
+  int INCREMENT = 1;
+  
   for (unsigned int j = 0; j < start_query.size(); j++) {
     
-    std::vector<std::string> inner_dat;
+    Rcpp::List inner_dat;
     
     for (unsigned int i = 0; i < input_path_file.size(); i++) {
       
@@ -980,90 +1011,66 @@ Rcpp::List vec_parser(std::vector<std::string> input_path_file, std::vector<std:
       
       if (flag_write) {
         
-        inner_dat.push_back(line);
+        std::vector<std::string> tmp_2vec(2);
+        
+        tmp_2vec[0] = std::to_string(INCREMENT);
+        
+        tmp_2vec[1] = line;
+        
+        inner_dat.push_back(tmp_2vec);
       }
       
       if (end_str == end_query[j]) {
         
         flag_write = false;
+        
+        ENUM_one.push_back(std::to_string(INCREMENT));
+
+        INCREMENT += 1;
       }
     }
     
     OUT_DAT.push_back(inner_dat);
+    
+    ENUM.push_back(INCREMENT - 1);
+    
+    INCREMENT = 1;
   }
   
-  if (output_path_file != "") {
+  Rcpp::List tmp_OUT_DAT;
+
+  if (OUT_DAT.size() == 1) {                                                       // in case of a single query
+
+    Rcpp::List lst_sblst = OUT_DAT[0];
+
+    tmp_OUT_DAT.push_back(sublist(lst_sblst, ENUM_one.size()));
+  }
+
+  else {                                                                           // in case of multiple queries
     
-    if (!flag_write && (OUT_DAT.size() > 0)) {
+    if (!std::equal(ENUM.begin() + 1, ENUM.end(), ENUM.begin())) {                 // in case that one (or more) of the 'start_query' appear(s) more times than the other queries in the document raise error
       
-      if (start_query.size() > 1) {
-        
-        std::string tmp_outer;
-        
-        std::vector<std::string> SIZE_vec = OUT_DAT[0];
-        
-        for (unsigned int f = 0; f < SIZE_vec.size(); f++) {
-          
-          for (unsigned int k = 0; k < OUT_DAT.size(); k++) {
-            
-            std::vector<std::string> sub_lst = OUT_DAT[k];
-            
-            if (k < start_query.size() - 1) {
-              
-              tmp_outer += sub_lst[f] + ",";
-            }
-            
-            else {
-              
-              tmp_outer += sub_lst[f] + "\n";
-            }
-          }
-        }
-        
-        END_str += tmp_outer + "\n";
-      }
+      Rcpp::stop("This function assumes that each query appears equal number of times in the document. Otherwise the function does not return the correct output");
+    }
+
+    for (unsigned int f = 0; f < OUT_DAT.size(); f++) {
+
+      std::vector<std::string> tmp_v = sublist(OUT_DAT[f], OUT_DAT.size());
+
+      tmp_OUT_DAT.push_back(tmp_v);
     }
   }
-  
-  if (verbose) {                                // time for pre-processing
-    
+
+  if (verbose) {                                                                  // time to pre-process data
+
     Rcpp::Rcout << "" << std::endl;
-    
+
     double n = timer.toc();
-    
+
     Rcpp::Rcout << "It took " << n / 60.0 << " minutes to complete the preprocessing" << std::endl;
   }
-  
-  arma::wall_clock timer1;
-  
-  if (verbose) { timer1.tic(); }               // time to save the output data
-  
-  std::string tmp_nam;
-  
-  if (output_path_file != "") {
-    
-    BATCH_TOKEN btk;
-    
-    btk.save_string(END_str, output_path_file);
-    
-    if (verbose) {
-      
-      Rcpp::Rcout << "" << std::endl;
-      
-      double n1 = timer1.toc();
-      
-      Rcpp::Rcout << "It took " << n1 / 60.0 << " minutes to save the pre-processed data" << std::endl;
-    }
-    
-    END_str.shrink_to_fit();
-  }
-  
-  else {
-    
-    return OUT_DAT;
-  }
-  
-  return 0;
+
+  return tmp_OUT_DAT;
 }
 
-
+  

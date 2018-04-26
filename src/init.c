@@ -63,10 +63,11 @@ extern SEXP _textTinyR_save_sparse_(SEXP, SEXP);
 extern SEXP _textTinyR_sparsity_float(SEXP);
 extern SEXP _textTinyR_sp_means(SEXP, SEXP);
 extern SEXP _textTinyR_sp_sums(SEXP, SEXP);
+extern SEXP _textTinyR_sublist(SEXP, SEXP);
 extern SEXP _textTinyR_tf_idf_exclude(SEXP, SEXP);
 extern SEXP _textTinyR_UNION(SEXP, SEXP);
 extern SEXP _textTinyR_UNIQUE(SEXP);
-extern SEXP _textTinyR_vec_parser(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _textTinyR_vec_parser(SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _textTinyR_vocabulary_counts(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _textTinyR_vocabulary_counts_big_tokenize(SEXP, SEXP, SEXP, SEXP);
 extern SEXP _textTinyR_word_vectors_methods(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -127,10 +128,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_textTinyR_sparsity_float",                 (DL_FUNC) &_textTinyR_sparsity_float,                  1},
     {"_textTinyR_sp_means",                       (DL_FUNC) &_textTinyR_sp_means,                        2},
     {"_textTinyR_sp_sums",                        (DL_FUNC) &_textTinyR_sp_sums,                         2},
+    {"_textTinyR_sublist",                        (DL_FUNC) &_textTinyR_sublist,                         2},
     {"_textTinyR_tf_idf_exclude",                 (DL_FUNC) &_textTinyR_tf_idf_exclude,                  2},
     {"_textTinyR_UNION",                          (DL_FUNC) &_textTinyR_UNION,                           2},
     {"_textTinyR_UNIQUE",                         (DL_FUNC) &_textTinyR_UNIQUE,                          1},
-    {"_textTinyR_vec_parser",                     (DL_FUNC) &_textTinyR_vec_parser,                      6},
+    {"_textTinyR_vec_parser",                     (DL_FUNC) &_textTinyR_vec_parser,                      5},
     {"_textTinyR_vocabulary_counts",              (DL_FUNC) &_textTinyR_vocabulary_counts,              30},
     {"_textTinyR_vocabulary_counts_big_tokenize", (DL_FUNC) &_textTinyR_vocabulary_counts_big_tokenize,  4},
     {"_textTinyR_word_vectors_methods",           (DL_FUNC) &_textTinyR_word_vectors_methods,           12},

@@ -678,19 +678,30 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// sublist
+std::vector<std::string> sublist(Rcpp::List input, unsigned int ids);
+RcppExport SEXP _textTinyR_sublist(SEXP inputSEXP, SEXP idsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List >::type input(inputSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type ids(idsSEXP);
+    rcpp_result_gen = Rcpp::wrap(sublist(input, ids));
+    return rcpp_result_gen;
+END_RCPP
+}
 // vec_parser
-Rcpp::List vec_parser(std::vector<std::string> input_path_file, std::vector<std::string> start_query, std::vector<std::string> end_query, std::string output_path_file, bool trimmed_line, bool verbose);
-RcppExport SEXP _textTinyR_vec_parser(SEXP input_path_fileSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP output_path_fileSEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
+Rcpp::List vec_parser(std::vector<std::string> input_path_file, std::vector<std::string> start_query, std::vector<std::string> end_query, bool trimmed_line, bool verbose);
+RcppExport SEXP _textTinyR_vec_parser(SEXP input_path_fileSEXP, SEXP start_querySEXP, SEXP end_querySEXP, SEXP trimmed_lineSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::vector<std::string> >::type input_path_file(input_path_fileSEXP);
     Rcpp::traits::input_parameter< std::vector<std::string> >::type start_query(start_querySEXP);
     Rcpp::traits::input_parameter< std::vector<std::string> >::type end_query(end_querySEXP);
-    Rcpp::traits::input_parameter< std::string >::type output_path_file(output_path_fileSEXP);
     Rcpp::traits::input_parameter< bool >::type trimmed_line(trimmed_lineSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(vec_parser(input_path_file, start_query, end_query, output_path_file, trimmed_line, verbose));
+    rcpp_result_gen = Rcpp::wrap(vec_parser(input_path_file, start_query, end_query, trimmed_line, verbose));
     return rcpp_result_gen;
 END_RCPP
 }

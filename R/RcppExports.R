@@ -141,8 +141,12 @@ Not_Duplicated <- function(x) {
     .Call(`_textTinyR_Not_Duplicated`, x)
 }
 
-vec_parser <- function(input_path_file, start_query, end_query, output_path_file = "", trimmed_line = FALSE, verbose = FALSE) {
-    .Call(`_textTinyR_vec_parser`, input_path_file, start_query, end_query, output_path_file, trimmed_line, verbose)
+sublist <- function(input, ids) {
+    .Call(`_textTinyR_sublist`, input, ids)
+}
+
+vec_parser <- function(input_path_file, start_query, end_query, trimmed_line = FALSE, verbose = FALSE) {
+    .Call(`_textTinyR_vec_parser`, input_path_file, start_query, end_query, trimmed_line, verbose)
 }
 
 DIST <- function(MATRIX_1st, MATRIX_2nd, method, threads, eps = 1.0e-6) {

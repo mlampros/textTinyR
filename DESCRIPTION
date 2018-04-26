@@ -1,8 +1,8 @@
 Package: textTinyR
 Type: Package
 Title: Text Processing for Small or Big Data Files
-Version: 1.1.0
-Date: 2018-04-03
+Version: 1.1.1
+Date: 2018-05-04
 Author: Lampros Mouselimis <mouselimislampros@gmail.com>
 Maintainer: Lampros Mouselimis <mouselimislampros@gmail.com>
 BugReports: https://github.com/mlampros/textTinyR/issues

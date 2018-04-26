@@ -20,11 +20,7 @@ env:
 
 
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq
   - sudo apt-get install libboost-all-dev
-  - sudo apt-get update -qq
-  - sudo apt-get install libboost-locale-dev
   - sudo apt-get update -qq
   - sudo apt-get install libarmadillo-dev libopenblas-dev libblas-dev libarpack++2-dev liblapack-dev
   - sudo apt-get install libgfortran3 gfortran

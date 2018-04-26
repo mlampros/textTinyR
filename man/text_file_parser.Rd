@@ -11,7 +11,7 @@ text_file_parser(input_path_file = NULL, output_path_file = "",
 \arguments{
 \item{input_path_file}{either a path to an input file or a vector of character strings ( normally the latter would represent ordered lines of a text file in form of a character vector )}
 
-\item{output_path_file}{either an empty character string ("") or a character string specifying a path to an output file}
+\item{output_path_file}{either an empty character string ("") or a character string specifying a path to an output file ( it applies only if the \emph{input_path_file} parameter is a valid path to a file )}
 
 \item{start_query}{a character string or a vector of character strings. The \emph{start_query} (if it's a single character string) is the first word of the subset of the data and should appear frequently at the beginning of each line in the text file.}
 
@@ -33,6 +33,9 @@ The text file should have a structure (such as an xml-structure), so that subset
 
 library(textTinyR)
 
+# In case that the 'input_path_file' is a valid path
+#---------------------------------------------------
+ 
 # fp = text_file_parser(input_path_file = '/folder/input_data.txt',
 
 #                       output_path_file = '/folder/output_data.txt',
@@ -40,4 +43,24 @@ library(textTinyR)
 #                       start_query = 'word_a', end_query = 'word_w',
 
 #                       min_lines = 1, trimmed_line = FALSE)
+                     
+                     
+# In case that the 'input_path_file' is a character vector of strings
+#--------------------------------------------------------------------
+
+#  PATH_url = "https://FILE.xml"
+  
+#  con = url(PATH_url, method = "libcurl")
+  
+#  tmp_dat = read.delim(con, quote = "\\"", comment.char = "", stringsAsFactors = FALSE)
+  
+#  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x) trimws(tmp_dat[x, 1], which = "both")))
+  
+#  parse_data = text_file_parser(input_path_file = vec_docs,
+  
+#                                start_query = c("<query1>", "<query2>", "<query3>"),
+  
+#                                end_query = c("</query1>", "</query2>", "</query3>"), 
+  
+#                                min_lines = 1, trimmed_line = TRUE)
 }
