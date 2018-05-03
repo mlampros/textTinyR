@@ -8,9 +8,12 @@ branches:
         - master
 os:
   - linux
+  #- osx
+
 
 compiler:
   - gcc
+  #- clang
 
 env:
   global:
@@ -20,6 +23,7 @@ env:
 
 
 before_install:
+  #---------------------------------------------------------------------- Installation on Linux
   - sudo apt-get install libboost-all-dev
   - sudo apt-get update -qq
   - sudo apt-get install libarmadillo-dev libopenblas-dev libblas-dev libarpack++2-dev liblapack-dev
@@ -27,6 +31,14 @@ before_install:
   - sudo ln -s /usr/lib/x86_64-linux-gnu/libgfortran.so.3 /usr/lib/libgfortran.so
   - sudo apt-get install r-base-dev
   - sudo apt-get update
+  #---------------------------------------------------------------------- Installation on Macintosh [ gives : clang: error: unsupported option '-fopenmp' ( configuration with openmp is required ) ]
+  #- brew update
+  #- brew install llvm
+  #- echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> ~/.bash_profile
+  #- echo 'export LDFLAGS = "-L/usr/local/opt/llvm/lib"' >> ~/.bash_profile
+  #- echo 'export CPPFLAGS = "-I/usr/local/opt/llvm/include"' >> ~/.bash_profile
+  #- brew install libomp
+  #---------------------------------------------------------------------- 
 
 r_packages:
   - devtools
@@ -39,15 +51,3 @@ r_packages:
   - R6
   - data.table
   - utils
-  - BH
-  - knitr
-  - rmarkdown
-  
-
-after_success:
-  - Rscript -e 'covr::codecov(line_exclusions = c("R/RcppExports.R", "src/RcppExports.cpp"), quiet = FALSE)'
-
-notifications:
-  email:
-    on_success: change
-    on_failure: change
