@@ -34,23 +34,37 @@
 
 using namespace Porter2Stemmer::internal;
 
+
+/*
+ * I - Mouselimis Lampros - modified the "Porter2Stemmer::stem()" function which was initially a 'void' function in order to return an std::string
+ * 
+ */
+
 std::string Porter2Stemmer::stem(std::string& word)
 {
     // special case short words or sentence tags
-    if (word.size() <= 2 || word == "<s>" || word == "</s>")
-        //return;
-        word = word;
+    if (word.size() <= 2 || word == "<s>" || word == "</s>") {
+      
+      //return;                  // cause the "Porter2Stemmer::stem()" function to return before reaching the end
+      return word;
+    }
 
     // max word length is 35 for English
-    if (word.size() > 35)
-        word = word.substr(0, 35);
+    if (word.size() > 35) {
+      
+      word = word.substr(0, 35);
+    }
 
-    if (word[0] == '\'')
-        word = word.substr(1, word.size() - 1);
+    if (word[0] == '\'') {
+      
+      word = word.substr(1, word.size() - 1);
+    }
 
-    if (special(word))
-        //return;
-        word = word;
+    if (special(word)) {
+      
+      //return;
+      return word;
+    }
 
     changeY(word);
     size_t startR1 = getStartR1(word);
@@ -58,11 +72,12 @@ std::string Porter2Stemmer::stem(std::string& word)
 
     step0(word);
 
-    if (step1A(word))
-    {
-        std::replace(word.begin(), word.end(), 'Y', 'y');
-        //return;
-        word = word;
+    if (step1A(word)) {
+      
+      std::replace(word.begin(), word.end(), 'Y', 'y');
+      
+      //return;
+      return word;
     }
 
     step1B(word, startR1);

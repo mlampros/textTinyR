@@ -14,37 +14,62 @@ if (.Platform$OS.type == "unix") {
 
 
 
-
 context('count-rows function')
 
 
-#============================
-# 'Count_Rows' error handling
-#============================
+# cnt_tsts = 1
 
 
-testthat::test_that("in case that the path to a file is invalid, it returns an error", {
+while(T) {
   
-  testthat::expect_error( Count_Rows(INVALID_PATH, verbose = F) )
-})
 
-
-testthat::test_that("in case that the verbose parameter is not a boolean, it returns an error", {
+  #============================
+  # 'Count_Rows' error handling
+  #============================
   
-  testthat::expect_error( Count_Rows(PATH, verbose = 'F') )
-})
-
-
-
-#=========================
-# 'Count_Rows' expect true
-#=========================
-
-
-testthat::test_that("the 'Count_Rows' function returns the correct output", {
   
-  res = Count_Rows(PATH, verbose = F)
+  testthat::test_that("in case that the path to a file is invalid, it returns an error", {
+    
+    #-------------------------------------------------------------------- debug tests
+    cat("test-count_rows.R : test id", cnt_tsts, "\n")
+    
+    cnt_tsts <<- cnt_tsts + 1
+    #-------------------------------------------------------------------- 
+    
+    testthat::expect_error( Count_Rows(INVALID_PATH, verbose = F) )
+  })
   
-  testthat::expect_true( is.numeric(res) && res > 0 )
-})
-
+  
+  testthat::test_that("in case that the verbose parameter is not a boolean, it returns an error", {
+    
+    #-------------------------------------------------------------------- debug tests
+    cat("test-count_rows.R : test id", cnt_tsts, "\n")
+    
+    cnt_tsts <<- cnt_tsts + 1
+    #-------------------------------------------------------------------- 
+    
+    testthat::expect_error( Count_Rows(PATH, verbose = 'F') )
+  })
+  
+  
+  
+  #=========================
+  # 'Count_Rows' expect true
+  #=========================
+  
+  
+  testthat::test_that("the 'Count_Rows' function returns the correct output", {
+    
+    res = Count_Rows(PATH, verbose = F)
+    
+    #-------------------------------------------------------------------- debug tests
+    cat("test-count_rows.R : test id", cnt_tsts, "\n")
+    
+    cnt_tsts <<- cnt_tsts + 1
+    #-------------------------------------------------------------------- 
+    
+    testthat::expect_true( is.numeric(res) && res > 0 )
+  })
+  
+  break    # exit loop for tests ( count iterations / tests for debugging )
+}

@@ -19,6 +19,10 @@
 #define __token_stats__
 
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
 
 class TOKEN_stats {
 

@@ -26,6 +26,10 @@
 
 //-------------------------
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
 
 // class for n-gram stemming (sequential, overlapping)
 

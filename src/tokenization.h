@@ -26,6 +26,9 @@
 
 //-------------------------
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
 
 
 // class to modify strings, string-vectors

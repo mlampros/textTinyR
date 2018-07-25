@@ -1,4 +1,10 @@
 
+## textTinyR 1.1.2
+
+* I modified the *porter2_stemmer.cpp* and especially the *Porter2Stemmer::stem()* function as it was initially incorrectly modified
+* I attempted to fix the clang-UBSAN error, however it's not reproducible with the latest install of clang==6.0, llvm==6.0 and CRAN configuration of ASAN, UBSAN. I had to comment this particular test case ( test-tokenization_transformation.R, lines 938-963 )
+
+
 ## textTinyR 1.1.1
 
 * I removed the *-lboost_system* flag from the *Makevars* file

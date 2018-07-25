@@ -29,6 +29,11 @@
 //-------------------------
 
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
+
 class term_matrix {
 
   private:
