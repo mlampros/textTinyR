@@ -4,8 +4,8 @@
 \alias{JACCARD_DICE}
 \title{Jaccard or Dice similarity for text documents}
 \usage{
-JACCARD_DICE(token_list1 = NULL, token_list2 = NULL, method = "jaccard",
-  threads = 1)
+JACCARD_DICE(token_list1 = NULL, token_list2 = NULL,
+  method = "jaccard", threads = 1)
 }
 \arguments{
 \item{token_list1}{a list of tokenized text documents (it should have the same length as the token_list2)}

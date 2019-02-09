@@ -5,9 +5,10 @@
 \title{String tokenization and transformation ( vector of documents )}
 \usage{
 tokenize_transform_vec_docs(object = NULL, as_token = FALSE,
-  to_lower = FALSE, to_upper = FALSE, utf_locale = "", remove_char = "",
-  remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE,
-  remove_numbers = FALSE, trim_token = FALSE, split_string = FALSE,
+  to_lower = FALSE, to_upper = FALSE, utf_locale = "",
+  remove_char = "", remove_punctuation_string = FALSE,
+  remove_punctuation_vector = FALSE, remove_numbers = FALSE,
+  trim_token = FALSE, split_string = FALSE,
   split_separator = " \\r\\n\\t.,;:()?!//", remove_stopwords = FALSE,
   language = "english", min_num_char = 1, max_num_char = Inf,
   stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1,

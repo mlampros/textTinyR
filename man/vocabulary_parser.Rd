@@ -12,8 +12,9 @@ vocabulary_parser(input_path_file = NULL, start_query = NULL,
   remove_numbers = FALSE, trim_token = FALSE, split_string = FALSE,
   split_separator = " \\r\\n\\t.,;:()?!//", remove_stopwords = FALSE,
   language = "english", min_num_char = 1, stemmer = NULL,
-  min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1, skip_distance = 0,
-  n_gram_delimiter = " ", threads = 1, verbose = FALSE)
+  min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1,
+  skip_distance = 0, n_gram_delimiter = " ", threads = 1,
+  verbose = FALSE)
 }
 \arguments{
 \item{input_path_file}{a character string specifying a valid path to the input file}

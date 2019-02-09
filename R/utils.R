@@ -162,6 +162,23 @@ tokenize_transform_text = function(object = NULL, batches = NULL, read_file_deli
     warning("if the 'language' parameter is not english and either a 'to_lower' or a 'to_upper' conversion takes place consider changing the 'utf_locale' parameter", call. = F)
   }
 
+  # EXCEPTION for all Operating Systems (Linux, Macintosh, Windows) in case of parallelization ( OpenMP ) when I additionally write data to file ( 'path_2folder' or 'vocabulary_path_file' ).
+  # Both Rcpp functions of 'tokenize_transform_text()' and 'tokenize_transform_vec_docs()' do have an OpenMP-critical-clause which ensures that data appended to a variable are 
+  # protected ( only one thread at a time will enter the section ). See the code lines 258 and 312 of the 'export_all_funcs.cpp' file. However, this must not apply (parallelization) when the
+  # 'path_2folder' or the 'vocabulary_path_file' are not equal to "" (empty string). Due to the fact that writing to the file takes place internally I can not enclose the 'save' functions to 
+  # an OpenMP-crtical-clause. Therefore, whenever I save to an output file set the number of threads to 1 and print out a warning so that the user knows that parallelization is disabled 
+  # [ the related issue : 'https://github.com/mlampros/textTinyR/issues/8' ]   
+  
+  if (path_2folder != "" || vocabulary_path_file != "") {
+    threads = 1
+    warning("Whenever the 'path_2folder' or/and 'vocabulary_path_file' parameter is a valid path to a folder/file then the 'threads' parameter will be set to 1 by default!", call. = F)
+  }
+  
+  # stop the function if the 'output_token_single_file.txt' file already exists because new data will be appended at the end of the file
+  if (file.exists(file.path(path_2folder, 'output_token_single_file.txt'))) {
+    stop("An 'output_token_single_file.txt' exists in your specified 'path_2folder'! New data will be appended at the end of the file increasing that way its size. Please remove the previous 'output_token_single_file.txt' before using this function.", call. = F)
+  }
+  
   if (verbose) { start = Sys.time() }
 
   if (is.logical(remove_stopwords)) {
@@ -385,6 +402,23 @@ tokenize_transform_vec_docs = function(object = NULL, as_token = FALSE, to_lower
     }
   }
 
+  # EXCEPTION for all Operating Systems (Linux, Macintosh, Windows) in case of parallelization ( OpenMP ) when I additionally write data to file ( 'path_2folder' or 'vocabulary_path_file' ).
+  # Both Rcpp functions of 'tokenize_transform_text()' and 'tokenize_transform_vec_docs()' do have an OpenMP-critical-clause which ensures that data appended to a variable are 
+  # protected ( only one thread at a time will enter the section ). See the code lines 258 and 312 of the 'export_all_funcs.cpp' file. However, this must not apply (parallelization) when the
+  # 'path_2folder' or the 'vocabulary_path_file' are not equal to "" (empty string). Due to the fact that writing to the file takes place internally I can not enclose the 'save' functions to 
+  # an OpenMP-crtical-clause. Therefore, whenever I save to an output file set the number of threads to 1 and print out a warning so that the user knows that parallelization is disabled 
+  # [ the related issue : 'https://github.com/mlampros/textTinyR/issues/8' ]   
+  
+  if (path_2folder != "" || vocabulary_path_file != "") {
+    threads = 1
+    warning("Whenever the 'path_2folder' or/and 'vocabulary_path_file' parameter is a valid path to a folder/file then the 'threads' parameter will be set to 1 by default!", call. = F)
+  }
+  
+  # stop the function if the 'output_token_single_file.txt' file already exists because new data will be appended at the end of the file
+  if (file.exists(file.path(path_2folder, 'output_token_single_file.txt'))) {
+    stop("An 'output_token_single_file.txt' exists in your specified 'path_2folder'! New data will be appended at the end of the file increasing that way its size. Please remove the previous 'output_token_single_file.txt' before using this function.", call. = F)
+  }
+  
   if (verbose) { start = Sys.time() }
 
   if (is.logical(remove_stopwords)) {

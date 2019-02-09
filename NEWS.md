@@ -1,9 +1,21 @@
 
+## textTinyR 1.1.3
+
+* Exception which applies to *tokenize_transform_text()* and *tokenize_transform_vec_docs()* functions on all Operating Systems (Linux, Macintosh, Windows) in case of parallelization ( OpenMP ) when I additionally write data to a folder or file ( 'path_2folder' or 'vocabulary_path_file' ). Both Rcpp functions of the 'tokenize_transform_text()' and 'tokenize_transform_vec_docs()' do have an OpenMP-critical-clause which ensures that data appended to a variable are protected ( only one thread at a time will enter the section ). See the code lines 258 and 312 of the 'export_all_funcs.cpp' file. However, this must not apply (parallelization) when the 'path_2folder' or the 'vocabulary_path_file' are not equal to "" (empty string). Due to the fact that writing to the file takes place internally I can not enclose the 'save' functions to an OpenMP-crtical-clause. Therefore, whenever I save to an output file set the number of threads to 1 and print out a warning so that the user knows that parallelization is disabled [ see issue : 'https://github.com/mlampros/textTinyR/issues/8' ]
+* Stop the execution of the *tokenize_transform_text()* and *tokenize_transform_vec_docs()* functions whenever the user specifies the *path_2folder* parameter (valid path to a folder) and the 'output_token_single_file.txt' file already exists ( otherwise new data will be appended at the end of the file ) [ see issue : 'https://github.com/mlampros/textTinyR/issues/8' ]
+
+
 ## textTinyR 1.1.2
 
 * I modified the *porter2_stemmer.cpp* and especially the *Porter2Stemmer::stem()* function as it was initially incorrectly modified
-* I attempted to fix the clang-UBSAN error, however it's not reproducible with the latest install of clang==6.0, llvm==6.0 and CRAN configuration of ASAN, UBSAN. I had to comment this particular test case ( test-tokenization_transformation.R, lines 938-963 )
+* I attempted to fix the clang-UBSAN error, however it's not reproducible with the latest install of clang==6.0, llvm==6.0 and CRAN configuration of ASAN, UBSAN. I had to comment this particular test case ( test-tokenization_transformation.R, lines 938-963 ). *The clang-UBSAN error was the following* : 
 
+```R
+
+test-tokenization_transformation.R : test id 329 
+/usr/local/bin/../include/c++/v1/string:2992:30: runtime error: addition of unsigned offset to 0x62500f06b1b9 overflowed to 0x62500f06b1b8 SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /usr/local/bin/../include/c++/v1/string:2992:30 in
+
+```
 
 ## textTinyR 1.1.1
 

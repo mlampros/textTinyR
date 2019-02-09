@@ -5,7 +5,8 @@
 \title{Dissimilarity calculation of text documents}
 \usage{
 TEXT_DOC_DISSIM(first_matr = NULL, second_matr = NULL,
-  method = "euclidean", batches = NULL, threads = 1, verbose = FALSE)
+  method = "euclidean", batches = NULL, threads = 1,
+  verbose = FALSE)
 }
 \arguments{
 \item{first_matr}{a numeric matrix where each row represents a text document ( has same dimensions as the \emph{second_matr} )}
