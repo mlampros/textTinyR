@@ -6,14 +6,14 @@ sudo: true
 branches:
     only:
         - master
+        
 os:
   - linux
-  - osx
 
 
 compiler:
   - gcc
-  - clang
+
 
 env:
   global:
@@ -23,27 +23,15 @@ env:
 
 
 before_install:
-  #---------------------------------------------------------------------- Linux
   
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo apt-get install libboost-all-dev; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo apt-get update -qq; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo apt-get install libarmadillo-dev libopenblas-dev libblas-dev libarpack++2-dev liblapack-dev; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo apt-get install libgfortran3 gfortran; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo ln -s /usr/lib/x86_64-linux-gnu/libgfortran.so.3 /usr/lib/libgfortran.so; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo apt-get install r-base-dev; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo apt-get update; fi
+  - sudo apt-get install libboost-all-dev
+  - sudo apt-get update -qq
+  - sudo apt-get install libarmadillo-dev libopenblas-dev libblas-dev libarpack++2-dev liblapack-dev
+  - sudo apt-get install libgfortran3 gfortran
+  - sudo ln -s /usr/lib/x86_64-linux-gnu/libgfortran.so.3 /usr/lib/libgfortran.so
+  - sudo apt-get install r-base-dev
+  - sudo apt-get update
 
-  #----------------------------------------------------------------------  Macintosh
-  
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install llvm; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir .R; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "CC=/usr/local/opt/llvm/bin/clang
-                                                    CXX=/usr/local/opt/llvm/bin/clang++
-                                                    CFLAGS=-g -O3 -Wall -pedantic -std=gnu99 -mtune=native -pipe
-                                                    CXXFLAGS=-g -O3 -Wall -pedantic -std=c++11 -mtune=native -pipe
-                                                    LDFLAGS=-L/usr/local/opt/gettext/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib
-                                                    CPPFLAGS=-I/usr/local/opt/gettext/include -I/usr/local/opt/llvm/include" >> ~/.R/Makevars; fi
 
 r_packages:
   - devtools

@@ -10,7 +10,7 @@
  *
  * @Notes: the main class for tokenization and transformation of text files
  *
- * @last_modified: April 2018
+ * @last_modified: March 2019
  *
  **/
 
@@ -391,12 +391,12 @@ class TOKEN {
 
       new_vec.shrink_to_fit();
     }
-
-
+    
+    
 
     // remove stopwords
 
-    void remove_stopwords(int threads) {
+    void remove_stopwords(int threads, bool remove_punctuation_vector) {
 
       #ifdef _OPENMP
       omp_set_num_threads(threads);
@@ -410,12 +410,19 @@ class TOKEN {
       }
 
       for (unsigned int j = 0; j < stop_words.size(); j++) {
+        
+        std::string tmp_str = stop_words[j];
+        
+        if (remove_punctuation_vector) {
+          
+          tmp_str.erase(std::remove_if(tmp_str.begin(), tmp_str.end(), &ispunct), tmp_str.end());     // remove the punctuation of the stopwords in case that the 'remove_punctuation_vector' parameter is true, in order to be consistent with the output of the tokenization [ SEE : https://github.com/mlampros/textTinyR/issues/8#issuecomment-468479476 ]
+        }
 
-        std::vector<int> tmp_word = counts[stop_words[j]];
+        std::vector<int> tmp_word = counts[tmp_str];
 
         if (!tmp_word.empty()) {
 
-          counts.erase (stop_words[j]);
+          counts.erase (tmp_str);
         }
       }
 

@@ -9,7 +9,7 @@
  *
  * @Notes: tokenization and transformation of text files in batches
  *
- * @last_modified: October 2017
+ * @last_modified: March 2019
  *
  **/
 
@@ -141,7 +141,7 @@ class BATCH_TOKEN {
         if (verbose) { Rcpp::Rcout << "conversion to upper case starts ..." << std::endl; }
 
         t.conv_to_upper(LOCALE_UTF);}
-
+      
       if (remove_char != "") {
 
         if (verbose) { Rcpp::Rcout << "the removal of specific characters starts ..." << std::endl; }
@@ -179,19 +179,19 @@ class BATCH_TOKEN {
             Rcpp::Rcout << "the split of the character string and simultaneously the removal of the punctuation in the vector starts ..." << std::endl;
           }
         }
-
+        
         t.TOKENIZER(cpp_string_separator, remove_punctuation_vector);
       }
-
+      
       if (cpp_remove_stopwords) {
-
+        
         if (verbose) { Rcpp::Rcout << "stop words of the " << language_spec << " language will be used" << std::endl; }
-
+        
         t.read_stopwords(language);
-
+        
         if (verbose) { Rcpp::Rcout << "the removal of stop-words starts ..." << std::endl; }
-
-        t.remove_stopwords(threads);}
+        
+        t.remove_stopwords(threads, remove_punctuation_vector);}
 
       if (min_num_char > 1 || max_num_char < 1000000000) {
 
