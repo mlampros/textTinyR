@@ -12,6 +12,8 @@ languages = c("afrikaans", "arabic", "armenian", "basque", "bengali", "breton",
               "slovenian", "somalia", "spanish", "swahili", "swedish", "turkish", "yoruba", "zulu")
 
 
+exception_run_test = exception_latin1_locale_debian()
+
 context('utf locale')
 
 
@@ -151,57 +153,59 @@ while(T) {
     # greek
     #--------
   
+    if (exception_run_test) {
     
-    gr_text = "Ο όρος πλανήτης είναι αρχαία, με δεσμούς με την ιστορία, την αστρολογία, την επιστήμη, τη μυθολογία και τη θρησκεία. Αρκετοί πλανήτες στο Ηλιακό Σύστημα μπορεί να δει κανείς 
-    με γυμνό μάτι. Αυτά θεωρήθηκαν από πολλούς νωρίς πολιτισμούς ως θεία, ή ως απεσταλμένοι των θεοτήτων. Όπως προηγμένες επιστημονικές γνώσεις, την ανθρώπινη αντίληψη των πλανητών άλλαξαν,
-    ενσωματώνοντας μια σειρά ετερόκλητων αντικειμένων. Το 2006, η Διεθνής Αστρονομική Ένωση (IAU) ενέκρινε επίσημα ψήφισμα που ορίζει πλανήτες εντός του ηλιακού μας συστήματος. Ο ορισμός 
-    αυτός είναι αμφιλεγόμενη, διότι αποκλείει πολλά αντικείμενα της πλανητικής μάζας με βάση το πού ή τι τροχιά. Παρά το γεγονός ότι οκτώ από τα πλανητικά σώματα ανακαλύφθηκαν πριν το 
-    1950 παραμένουν πλανήτες κάτω από το σύγχρονο ορισμό, μερικοί ουράνια σώματα, όπως Ceres, Παλλάς, Juno και Vesta (κάθε ένα αντικείμενο στο ηλιακό αστεροειδή ζώνη), και τον Πλούτωνα 
-    (το πρώτο trans-Neptunian αντικείμενο ανακαλύφθηκε), που κάποτε θεωρούνταν πλανήτες από την επιστημονική κοινότητα, δεν είναι πλέον αντιμετωπίζεται ως τέτοια. Οι πλανήτες θεωρήθηκαν
-    από τον Πτολεμαίο σε τροχιά γύρω από τη Γη σε φέροντος και επικύκλου κινήσεις. Αν και η ιδέα ότι οι πλανήτες σε τροχιά γύρω από τον Ήλιο είχε προταθεί πολλές φορές, δεν ήταν μέχρι τον 
-    17ο αιώνα ότι η άποψη αυτή υποστηρίζεται από αποδεικτικά στοιχεία από τις πρώτες τηλεσκοπικές αστρονομικές παρατηρήσεις, που εκτελούνται από Galileo Galilei. Την ίδια περίπου ώρα, με 
-    προσεκτική ανάλυση των δεδομένων προ-τηλεσκοπικό παρατήρηση που συλλέγονται από Tycho Brahe, Johannes Kepler βρέθηκε τροχιές των πλανητών δεν ήταν κυκλική αλλά ελλειπτική. Όπως παρατήρησης 
-    εργαλεία βελτιωθεί, οι αστρονόμοι είδαν ότι, όπως η Γη, οι πλανήτες περιστρέφονται γύρω από κλίση άξονες, και μερικά από κοινού χαρακτηριστικά όπως καλύμματα πάγου και εποχές. Από την αυγή
-    της διαστημικής εποχής, στενή παρακολούθηση από διαστημοσυσκευές έχει βρεθεί ότι η Γη και οι άλλοι πλανήτες έχουν κοινά χαρακτηριστικά, όπως η ηφαιστειακή δραστηριότητα, τυφώνες, τεκτονική,
-    και ακόμη και υδρολογίας. Οι πλανήτες σε γενικές γραμμές χωρίζονται σε δύο βασικές κατηγορίες: μεγάλα χαμηλής πυκνότητας γίγαντες πλανήτες, και μικρότερες βραχώδεις εξωγήινοι. Σύμφωνα με
-    τους ορισμούς IAU, υπάρχουν οκτώ πλανήτες στο Ηλιακό Σύστημα. Για την αύξηση της απόστασης από τον Ήλιο, είναι οι τέσσερις εξωγήινοι, Ερμής, Αφροδίτη, Γη και τον Άρη, τότε οι τέσσερις
-    γίγαντες πλανήτες, ο Δίας, Κρόνος, Ουρανός και Ποσειδώνας. Έξι από τα πλανήτες σε τροχιά γύρω από ένα ή περισσότερα φυσικά δορυφόρους."
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is greek, the utf_locale is el_GR.UTF_8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+      gr_text = "Ο όρος πλανήτης είναι αρχαία, με δεσμούς με την ιστορία, την αστρολογία, την επιστήμη, τη μυθολογία και τη θρησκεία. Αρκετοί πλανήτες στο Ηλιακό Σύστημα μπορεί να δει κανείς 
+      με γυμνό μάτι. Αυτά θεωρήθηκαν από πολλούς νωρίς πολιτισμούς ως θεία, ή ως απεσταλμένοι των θεοτήτων. Όπως προηγμένες επιστημονικές γνώσεις, την ανθρώπινη αντίληψη των πλανητών άλλαξαν,
+      ενσωματώνοντας μια σειρά ετερόκλητων αντικειμένων. Το 2006, η Διεθνής Αστρονομική Ένωση (IAU) ενέκρινε επίσημα ψήφισμα που ορίζει πλανήτες εντός του ηλιακού μας συστήματος. Ο ορισμός 
+      αυτός είναι αμφιλεγόμενη, διότι αποκλείει πολλά αντικείμενα της πλανητικής μάζας με βάση το πού ή τι τροχιά. Παρά το γεγονός ότι οκτώ από τα πλανητικά σώματα ανακαλύφθηκαν πριν το 
+      1950 παραμένουν πλανήτες κάτω από το σύγχρονο ορισμό, μερικοί ουράνια σώματα, όπως Ceres, Παλλάς, Juno και Vesta (κάθε ένα αντικείμενο στο ηλιακό αστεροειδή ζώνη), και τον Πλούτωνα 
+      (το πρώτο trans-Neptunian αντικείμενο ανακαλύφθηκε), που κάποτε θεωρούνταν πλανήτες από την επιστημονική κοινότητα, δεν είναι πλέον αντιμετωπίζεται ως τέτοια. Οι πλανήτες θεωρήθηκαν
+      από τον Πτολεμαίο σε τροχιά γύρω από τη Γη σε φέροντος και επικύκλου κινήσεις. Αν και η ιδέα ότι οι πλανήτες σε τροχιά γύρω από τον Ήλιο είχε προταθεί πολλές φορές, δεν ήταν μέχρι τον 
+      17ο αιώνα ότι η άποψη αυτή υποστηρίζεται από αποδεικτικά στοιχεία από τις πρώτες τηλεσκοπικές αστρονομικές παρατηρήσεις, που εκτελούνται από Galileo Galilei. Την ίδια περίπου ώρα, με 
+      προσεκτική ανάλυση των δεδομένων προ-τηλεσκοπικό παρατήρηση που συλλέγονται από Tycho Brahe, Johannes Kepler βρέθηκε τροχιές των πλανητών δεν ήταν κυκλική αλλά ελλειπτική. Όπως παρατήρησης 
+      εργαλεία βελτιωθεί, οι αστρονόμοι είδαν ότι, όπως η Γη, οι πλανήτες περιστρέφονται γύρω από κλίση άξονες, και μερικά από κοινού χαρακτηριστικά όπως καλύμματα πάγου και εποχές. Από την αυγή
+      της διαστημικής εποχής, στενή παρακολούθηση από διαστημοσυσκευές έχει βρεθεί ότι η Γη και οι άλλοι πλανήτες έχουν κοινά χαρακτηριστικά, όπως η ηφαιστειακή δραστηριότητα, τυφώνες, τεκτονική,
+      και ακόμη και υδρολογίας. Οι πλανήτες σε γενικές γραμμές χωρίζονται σε δύο βασικές κατηγορίες: μεγάλα χαμηλής πυκνότητας γίγαντες πλανήτες, και μικρότερες βραχώδεις εξωγήινοι. Σύμφωνα με
+      τους ορισμούς IAU, υπάρχουν οκτώ πλανήτες στο Ηλιακό Σύστημα. Για την αύξηση της απόστασης από τον Ήλιο, είναι οι τέσσερις εξωγήινοι, Ερμής, Αφροδίτη, Γη και τον Άρη, τότε οι τέσσερις
+      γίγαντες πλανήτες, ο Δίας, Κρόνος, Ουρανός και Ποσειδώνας. Έξι από τα πλανήτες σε τροχιά γύρω από ένα ή περισσότερα φυσικά δορυφόρους."
       
-      tmp = suppressWarnings(tokenize_transform_text(object = gr_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "el_GR.UTF_8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "greek", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = gr_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "el_GR.UTF_8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "greek", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
-      
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "ο" && tmp_stopw$token[1] == "όρος" && 
+      testthat::test_that("the function returns a vector of words if : the language is greek, the utf_locale is el_GR.UTF_8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
+        tmp = suppressWarnings(tokenize_transform_text(object = gr_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "el_GR.UTF_8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "greek", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = gr_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "el_GR.UTF_8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "greek", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "ο" && tmp_stopw$token[1] == "όρος" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     #--------
@@ -321,110 +325,114 @@ while(T) {
     # russian
     #--------
   
-    
-    rs_text = "Термин планета древней, со связями к истории, астрологии, науки, мифологии и религии. Несколько планет в Солнечной системе можно увидеть невооруженным глазом. Они были расценены многими 
-    ранними культурами, как божественным, или как посланцы богов. По мере развития научных знаний, человеческое восприятие планет изменилось, включающая ряд разрозненных объектов. В 2006 году Международный 
-    астрономический союз (IAU) официально принял резолюцию, определяющую планет в пределах Солнечной системы. Это определение является спорным, поскольку она исключает многие объекты планетарной массы, 
-    основанные на том, где и что они вращаются. Хотя восемь планетарных тел, обнаруженных до 1950 года остаются «планеты» под современное определение, некоторые небесные тела, такие как Церера, Паллада, 
-    Юнона и Веста (каждый объект в поясе астероидов солнечной) и Плутон (первая транснептунового объект обнаружен), которые были когда-то считались планеты со стороны научного сообщества, более не 
-    рассматривается как таковой. Планеты были мысли Птолемея на орбиту Земли в эпицикл движений. Хотя идея, что планеты вокруг Солнца было предложено много раз, он не был до 17-го века, что эта точка 
-    зрения была поддержана доказательствами из первых телескопических астрономических наблюдений, выполненных Галилео Галилеем. Примерно в то же время, путем тщательного анализа данных до телескопических 
-    наблюдений, собранных Тихо Браге, Иоганн Кеплер нашел орбиты планет не были круглыми, но эллиптическая. Как наблюдательные инструменты улучшились, астрономы увидели, что, как и Земля, планеты вращается 
-    вокруг осей наклона, а также некоторые общие такие признаки, как ледяных шапок и сезонов. С самого начала космической эры, тщательное наблюдение с помощью космических зондов обнаружил, что Земля и другие
-    планеты разделяют такие характеристики, как вулканизм, ураганы, тектоники и даже гидрология. Планеты, как правило, делятся на два основных типа: большой низкой плотности планет-гигантов, и небольших скалистых 
-    землянами. Под определениями IAU, есть восемь планет в Солнечной системе. В порядке возрастания расстояния от Солнца, они четыре землянами, Меркурий, Венера, Земля и Марс, то четыре планеты-гиганты, Юпитер,
-    Сатурн, Уран и Нептун. Шесть планет вращался с помощью одного или более естественных спутников."
-    
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is russian, the utf_locale is ru_RU.UTF_8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = rs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ru_RU.UTF_8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "russian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      rs_text = "Термин планета древней, со связями к истории, астрологии, науки, мифологии и религии. Несколько планет в Солнечной системе можно увидеть невооруженным глазом. Они были расценены многими 
+      ранними культурами, как божественным, или как посланцы богов. По мере развития научных знаний, человеческое восприятие планет изменилось, включающая ряд разрозненных объектов. В 2006 году Международный 
+      астрономический союз (IAU) официально принял резолюцию, определяющую планет в пределах Солнечной системы. Это определение является спорным, поскольку она исключает многие объекты планетарной массы, 
+      основанные на том, где и что они вращаются. Хотя восемь планетарных тел, обнаруженных до 1950 года остаются «планеты» под современное определение, некоторые небесные тела, такие как Церера, Паллада, 
+      Юнона и Веста (каждый объект в поясе астероидов солнечной) и Плутон (первая транснептунового объект обнаружен), которые были когда-то считались планеты со стороны научного сообщества, более не 
+      рассматривается как таковой. Планеты были мысли Птолемея на орбиту Земли в эпицикл движений. Хотя идея, что планеты вокруг Солнца было предложено много раз, он не был до 17-го века, что эта точка 
+      зрения была поддержана доказательствами из первых телескопических астрономических наблюдений, выполненных Галилео Галилеем. Примерно в то же время, путем тщательного анализа данных до телескопических 
+      наблюдений, собранных Тихо Браге, Иоганн Кеплер нашел орбиты планет не были круглыми, но эллиптическая. Как наблюдательные инструменты улучшились, астрономы увидели, что, как и Земля, планеты вращается 
+      вокруг осей наклона, а также некоторые общие такие признаки, как ледяных шапок и сезонов. С самого начала космической эры, тщательное наблюдение с помощью космических зондов обнаружил, что Земля и другие
+      планеты разделяют такие характеристики, как вулканизм, ураганы, тектоники и даже гидрология. Планеты, как правило, делятся на два основных типа: большой низкой плотности планет-гигантов, и небольших скалистых 
+      землянами. Под определениями IAU, есть восемь планет в Солнечной системе. В порядке возрастания расстояния от Солнца, они четыре землянами, Меркурий, Венера, Земля и Марс, то четыре планеты-гиганты, Юпитер,
+      Сатурн, Уран и Нептун. Шесть планет вращался с помощью одного или более естественных спутников."
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = rs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ru_RU.UTF_8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "russian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "термин" && tmp_stopw$token[1] == "термин" && 
+      
+      testthat::test_that("the function returns a vector of words if : the language is russian, the utf_locale is ru_RU.UTF_8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
+        tmp = suppressWarnings(tokenize_transform_text(object = rs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ru_RU.UTF_8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "russian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = rs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ru_RU.UTF_8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "russian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "термин" && tmp_stopw$token[1] == "термин" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     #----------
     # bulgarian
     #----------
   
-    
-    bg_text = "Терминът планетата е древен, с връзки с история, астрология, наука, митология и религия. Няколко планети в Слънчевата система може да се види с невъоръжено око. Те са били считани от много ранни култури 
-    като божествена, или като емисари на божества. Както научни знания напредна, човешкото възприятие на планетите променили, включващи редица разнородни предмети. През 2006 г., на Международния астрономически съюз (IAU)
-    официално прие резолюция, определяща планети в Слънчевата система. Това определение е спорно, защото тя изключва много обекти на планетарна маса на базата на къде или какво те орбита. Въпреки, че осем от планетарни
-    тела, открити преди 1950 остава планети в съвременната дефиниция, някои небесни тела, като Церера, Палада, Юнона и Веста (всеки един обект в Слънчевата астероидния пояс) и Плутон (първата транс-Нептун обект открил),
-    които някога са били счита планети от научната общност, вече не се разглежда като такава. Планетите били смятани от Птолемей в орбита на Земята в епицикъл движения. Въпреки, че идеята, че планетите обикалят около
-    Слънцето са били предложени много пъти, това не е до 17-ти век, че това мнение беше подкрепено с доказателства от първите телескопични астрономически наблюдения, извършени от Галилео Галилей. Горе-долу по същото 
-    време, чрез внимателен анализ на данните от наблюдение на предварително телескопични, събрани от Тихо Брахе, Йоханес Кеплер намери орбити на планетите не са кръгли, но елипсовидни. Както наблюдателни инструменти 
-    подобрени, астрономи видяха, че, подобно на Земята, планетите се въртят около наклонени оси, както и някои общи такива характеристики като ледените шапки и сезони. От зората на космическата ера, непосредствено 
-    наблюдение от космически сонди е установил, че Земята и другите планети споделят характеристики като вулканизъм, урагани, тектониката, а дори и хидрология. Планетите са обикновено се разделят на два основни вида:
-    големи ниска плътност гигантски планети, и по-малки скалисти земните. Съгласно определенията на МАС, има осем планети в Слънчевата система. С цел увеличаване на разстояние от Слънцето, те са четирите земни, 
-    Меркурий, Венера, Земята и Марс, а след това на четири гигантски планети, Юпитер, Сатурн, Уран и Нептун. Шест от планетите са в орбита от един или повече естествени спътници."
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is bulgarian, the utf_locale is bg_BG.UTF_8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = bg_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "bg_BG.UTF_8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "bulgarian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      bg_text = "Терминът планетата е древен, с връзки с история, астрология, наука, митология и религия. Няколко планети в Слънчевата система може да се види с невъоръжено око. Те са били считани от много ранни култури 
+      като божествена, или като емисари на божества. Както научни знания напредна, човешкото възприятие на планетите променили, включващи редица разнородни предмети. През 2006 г., на Международния астрономически съюз (IAU)
+      официално прие резолюция, определяща планети в Слънчевата система. Това определение е спорно, защото тя изключва много обекти на планетарна маса на базата на къде или какво те орбита. Въпреки, че осем от планетарни
+      тела, открити преди 1950 остава планети в съвременната дефиниция, някои небесни тела, като Церера, Палада, Юнона и Веста (всеки един обект в Слънчевата астероидния пояс) и Плутон (първата транс-Нептун обект открил),
+      които някога са били счита планети от научната общност, вече не се разглежда като такава. Планетите били смятани от Птолемей в орбита на Земята в епицикъл движения. Въпреки, че идеята, че планетите обикалят около
+      Слънцето са били предложени много пъти, това не е до 17-ти век, че това мнение беше подкрепено с доказателства от първите телескопични астрономически наблюдения, извършени от Галилео Галилей. Горе-долу по същото 
+      време, чрез внимателен анализ на данните от наблюдение на предварително телескопични, събрани от Тихо Брахе, Йоханес Кеплер намери орбити на планетите не са кръгли, но елипсовидни. Както наблюдателни инструменти 
+      подобрени, астрономи видяха, че, подобно на Земята, планетите се въртят около наклонени оси, както и някои общи такива характеристики като ледените шапки и сезони. От зората на космическата ера, непосредствено 
+      наблюдение от космически сонди е установил, че Земята и другите планети споделят характеристики като вулканизъм, урагани, тектониката, а дори и хидрология. Планетите са обикновено се разделят на два основни вида:
+      големи ниска плътност гигантски планети, и по-малки скалисти земните. Съгласно определенията на МАС, има осем планети в Слънчевата система. С цел увеличаване на разстояние от Слънцето, те са четирите земни, 
+      Меркурий, Венера, Земята и Марс, а след това на четири гигантски планети, Юпитер, Сатурн, Уран и Нептун. Шест от планетите са в орбита от един или повече естествени спътници."
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = bg_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "bg_BG.UTF_8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "bulgarian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "терминът" && tmp_stopw$token[1] == "терминът" && 
+      testthat::test_that("the function returns a vector of words if : the language is bulgarian, the utf_locale is bg_BG.UTF_8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
+        tmp = suppressWarnings(tokenize_transform_text(object = bg_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "bg_BG.UTF_8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "bulgarian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = bg_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "bg_BG.UTF_8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "bulgarian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "терминът" && tmp_stopw$token[1] == "терминът" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     #--------
@@ -532,45 +540,48 @@ while(T) {
     #--------
     
     
-    ar_text = "الكوكب المصطلح القديم، التي لها علاقات مع التاريخ، وعلم التنجيم، والعلوم، والأساطير، والدين. ويمكن رؤية العديد من الكواكب في النظام الشمسي بالع
-    ين المجرد"
-    
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is arabic, the utf_locale is ar_SA.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = ar_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ar_SA.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "arabic", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      ar_text = "الكوكب المصطلح القديم، التي لها علاقات مع التاريخ، وعلم التنجيم، والعلوم، والأساطير، والدين. ويمكن رؤية العديد من الكواكب في النظام الشمسي بالع
+      ين المجرد"
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = ar_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ar_SA.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "arabic", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "الكوكب" && tmp_stopw$token[1] == "الكوكب" && 
+      
+      testthat::test_that("the function returns a vector of words if : the language is arabic, the utf_locale is ar_SA.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
+        tmp = suppressWarnings(tokenize_transform_text(object = ar_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ar_SA.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "arabic", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = ar_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ar_SA.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "arabic", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "الكوكب" && tmp_stopw$token[1] == "الكوكب" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     
@@ -579,44 +590,46 @@ while(T) {
     # armenian
     #----------
   
-    
-    arm_text = "Տերմինը մոլորակը հին է, ինչպես կապերի պատմության, աստղագուշակության, գիտության, դիցաբանության եւ կրոնի: Մի քանի մոլորակները է արեգակնային համակարգի կարելի է տեսնել անզեն աչքով"
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is armenian, the utf_locale is tr_TR.UTF_8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = arm_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "Hy-AM.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "armenian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      arm_text = "Տերմինը մոլորակը հին է, ինչպես կապերի պատմության, աստղագուշակության, գիտության, դիցաբանության եւ կրոնի: Մի քանի մոլորակները է արեգակնային համակարգի կարելի է տեսնել անզեն աչքով"
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = arm_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "Hy-AM.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "armenian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "տերմինը" && tmp_stopw$token[1] == "տերմինը" && 
+      testthat::test_that("the function returns a vector of words if : the language is armenian, the utf_locale is tr_TR.UTF_8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
+        tmp = suppressWarnings(tokenize_transform_text(object = arm_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "Hy-AM.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "armenian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = arm_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "Hy-AM.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "armenian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "տերմինը" && tmp_stopw$token[1] == "տերմինը" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     #--------
@@ -671,43 +684,45 @@ while(T) {
     # bengali
     #--------
     
-    
-    bngl_text = "মেয়াদ গ্রহের প্রাচীন, ইতিহাস, জ্যোতিষশাস্ত্র, বিজ্ঞান, পুরাণ, এবং ধর্মের বন্ধন সঙ্গে. সৌরজগতের বেশ গ্রহ খালি চোখে দেখা যায়. এই অনেক তাড়াতাড়ি সংস্কৃতির ঐশ্বরিক হিসাবে, বা দেব-দেবীর প্রতিনিধিদের দ্বারা হিসাবে গণ্য করা হয়. বৈজ্ঞানিক জ্ঞান উন্নত হিসাবে, গ্রহের মানুষের উপলব্ধি পরিবর্তন, একটি একত্রিত অসম অবজেক্টের সংখ্যা. 2006 সালে, ইন্টারন্যাশনাল অ্যাস্ট্রোনমিক্যাল ইউনিয়ন (IAU) আনু"
-    
-    testthat::test_that("the function returns a vector of words if : the language is bengali, the utf_locale is bn_IN.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = bngl_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "bn_IN.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "bengali", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      bngl_text = "মেয়াদ গ্রহের প্রাচীন, ইতিহাস, জ্যোতিষশাস্ত্র, বিজ্ঞান, পুরাণ, এবং ধর্মের বন্ধন সঙ্গে. সৌরজগতের বেশ গ্রহ খালি চোখে দেখা যায়. এই অনেক তাড়াতাড়ি সংস্কৃতির ঐশ্বরিক হিসাবে, বা দেব-দেবীর প্রতিনিধিদের দ্বারা হিসাবে গণ্য করা হয়. বৈজ্ঞানিক জ্ঞান উন্নত হিসাবে, গ্রহের মানুষের উপলব্ধি পরিবর্তন, একটি একত্রিত অসম অবজেক্টের সংখ্যা. 2006 সালে, ইন্টারন্যাশনাল অ্যাস্ট্রোনমিক্যাল ইউনিয়ন (IAU) আনু"
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = bngl_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "bn_IN.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "bengali", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
-      
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "মেয়াদ" && tmp_stopw$token[1] == "মেয়াদ" && 
+      testthat::test_that("the function returns a vector of words if : the language is bengali, the utf_locale is bn_IN.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
+        tmp = suppressWarnings(tokenize_transform_text(object = bngl_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "bn_IN.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "bengali", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = bngl_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "bn_IN.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "bengali", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "মেয়াদ" && tmp_stopw$token[1] == "মেয়াদ" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     
@@ -958,44 +973,46 @@ while(T) {
     # estonian
     #--------
     
-    
-    est_text = "Mõiste planeedil on iidne, sidemed ajalugu, astroloogia, teaduse, mütoloogia ja religioon. Mitmed planeedid Päikesesüsteemi võib näha ka palja silmaga. Need peeti Paljudes varasemates kultuurides jumalik, või kui saadikud jumalused. Kuna teaduslikke teadmisi arenenud inimese taju planeedid muutunud, mis sisaldavad arvu erinevate objektide kohta. 2006. aastal Rahvusvahelise Astronoomia Liidu (IAU) ametlikult vastu resolutsiooni määratleda planeetide Päikesesüsteemi. See määratlus vastuoluline, sest see välistab palju objekte planeetide mass põhjal, kus või mida nad tiirlevad. Kuigi kaheksa planeetide organite avastas enne 1950. jäävad planeedid all tänapäeva määratlus, mõned taevakehad, nagu Ceres, Pallas, Juno ja Vesta (iga objekti Päikesesüsteemis asteroidi vöö) ja Pluto (esimene trans Neptuuni-objekti avastas), mis olid kord loetakse planeedid teadlaskonna poolt, ei ole enam vaadelda such.The planeedid arvati Ptolemaios orbiidil Maale Epitsükkel liikumisi. Kuigi idee, et planeedid orbited päike oli välja pakutud mitu korda, see oli alles 17. sajandil, et seda seisukohta toetavad tõendid esimene teleskoop astronoomilisi tähelepanekuid, läbi Galilei. Umbes samal ajal hoolika analüüsi eelnevalt teleskoop vaatlusandmeid on kogutud Tycho Brahe, Johannes Kepler leidnud planeetide orbiidid ei ole ringikujulised kuid elliptilised. Nagu vaatlusandmeid tööriistad paranenud, astronoomid näinud, et nii nagu Maal, planeedid pööratakse ümber kallutada telge, ja mõned jagatud selliseid funktsioone nagu jäämäed ja aastaaega. Kuna künnisel Space Age, järelvalve Kosmosesond leidis, et Maa ja teised planeedid jagada selliseid omadusi nagu vulkanism, orkaanid, tectonics ja isegi hydrology.Planets jagatakse tavaliselt kahte tüüpi: suured madala tihedusega hiidplaneedid ja väiksemad kivised terrestrials. alla IAU definitsioonid on kaheksa planeedid Päikesesüsteemi. Et suurendada kaugus Päikesest on need neli terrestrials, Merkuur, Veenus, Maa ja Mars, siis Nelja hiidplaneedid Jupiter, Saturn, Uraan ja Neptuun. Kuus planeedid orbited üks või mitu füüsilist satelliiti."
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is estonian, the utf_locale is et_EE.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = est_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "et_EE.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "estonian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      est_text = "Mõiste planeedil on iidne, sidemed ajalugu, astroloogia, teaduse, mütoloogia ja religioon. Mitmed planeedid Päikesesüsteemi võib näha ka palja silmaga. Need peeti Paljudes varasemates kultuurides jumalik, või kui saadikud jumalused. Kuna teaduslikke teadmisi arenenud inimese taju planeedid muutunud, mis sisaldavad arvu erinevate objektide kohta. 2006. aastal Rahvusvahelise Astronoomia Liidu (IAU) ametlikult vastu resolutsiooni määratleda planeetide Päikesesüsteemi. See määratlus vastuoluline, sest see välistab palju objekte planeetide mass põhjal, kus või mida nad tiirlevad. Kuigi kaheksa planeetide organite avastas enne 1950. jäävad planeedid all tänapäeva määratlus, mõned taevakehad, nagu Ceres, Pallas, Juno ja Vesta (iga objekti Päikesesüsteemis asteroidi vöö) ja Pluto (esimene trans Neptuuni-objekti avastas), mis olid kord loetakse planeedid teadlaskonna poolt, ei ole enam vaadelda such.The planeedid arvati Ptolemaios orbiidil Maale Epitsükkel liikumisi. Kuigi idee, et planeedid orbited päike oli välja pakutud mitu korda, see oli alles 17. sajandil, et seda seisukohta toetavad tõendid esimene teleskoop astronoomilisi tähelepanekuid, läbi Galilei. Umbes samal ajal hoolika analüüsi eelnevalt teleskoop vaatlusandmeid on kogutud Tycho Brahe, Johannes Kepler leidnud planeetide orbiidid ei ole ringikujulised kuid elliptilised. Nagu vaatlusandmeid tööriistad paranenud, astronoomid näinud, et nii nagu Maal, planeedid pööratakse ümber kallutada telge, ja mõned jagatud selliseid funktsioone nagu jäämäed ja aastaaega. Kuna künnisel Space Age, järelvalve Kosmosesond leidis, et Maa ja teised planeedid jagada selliseid omadusi nagu vulkanism, orkaanid, tectonics ja isegi hydrology.Planets jagatakse tavaliselt kahte tüüpi: suured madala tihedusega hiidplaneedid ja väiksemad kivised terrestrials. alla IAU definitsioonid on kaheksa planeedid Päikesesüsteemi. Et suurendada kaugus Päikesest on need neli terrestrials, Merkuur, Veenus, Maa ja Mars, siis Nelja hiidplaneedid Jupiter, Saturn, Uraan ja Neptuun. Kuus planeedid orbited üks või mitu füüsilist satelliiti."
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = est_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "et_EE.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "estonian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "mõiste" && tmp_stopw$token[1] == "mõiste" && 
+      testthat::test_that("the function returns a vector of words if : the language is estonian, the utf_locale is et_EE.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
+        tmp = suppressWarnings(tokenize_transform_text(object = est_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "et_EE.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "estonian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = est_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "et_EE.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "estonian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "mõiste" && tmp_stopw$token[1] == "mõiste" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     
@@ -1150,142 +1167,138 @@ while(T) {
     # hebrew
     #--------
     
-    
-    hbr_text = "כוכב לכת הטווח הוא עתיק ימים, עם קשרים להיסטוריה, אסטרולוגיה, מדע, מיתולוגיה ודת. לכמה עולמות במערכת השמש ניתן לראות בעין בלתי מזוינת. אלה נחשבו על ידי תרבויות רבות כבר אלוהי, או כשליחים של אלים. ככל שידע מדעי מתקדם, תפיסה אנושית של כוכב לכת שינה, הכוללת"
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is hebrew, the utf_locale is he_IL.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = hbr_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "he_IL.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "hebrew", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      hbr_text = "כוכב לכת הטווח הוא עתיק ימים, עם קשרים להיסטוריה, אסטרולוגיה, מדע, מיתולוגיה ודת. לכמה עולמות במערכת השמש ניתן לראות בעין בלתי מזוינת. אלה נחשבו על ידי תרבויות רבות כבר אלוהי, או כשליחים של אלים. ככל שידע מדעי מתקדם, תפיסה אנושית של כוכב לכת שינה, הכוללת"
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = hbr_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "he_IL.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "hebrew", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "כוכב" && tmp_stopw$token[1] == "כוכב" && 
+      testthat::test_that("the function returns a vector of words if : the language is hebrew, the utf_locale is he_IL.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
-    
-    
-    
-    
-    
-    
-    #--------
-    # hindi
-    #--------
-    
-    
-    hdi_text = "अवधि ग्रह प्राचीन है, इतिहास, ज्योतिष, विज्ञान, पुराण, और धर्म के संबंधों के साथ। सौर प्रणाली में कई ग्रहों नग्न आंखों से देखा जा सकता है। ये बहुत जल्दी संस्कृतियों परमात्मा के रूप में, या देवी-देवताओं के दूत के रूप में माना गया। वैज्ञानिक ज्ञान उन्नत, ग्रहों के मानव धारणा बदल गया है, एक को शामिल"
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is hindi, the utf_locale is hi_IN.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
-      
-      tmp = suppressWarnings(tokenize_transform_text(object = hdi_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "hi_IN.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "hindi", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
-      
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = hdi_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "hi_IN.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "hindi", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
-      
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "अवधि" && tmp_stopw$token[1] == "अवधि" && 
+        tmp = suppressWarnings(tokenize_transform_text(object = hbr_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "he_IL.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "hebrew", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
-    
-    
-    
-    
-    
-    
-    #--------
-    # hungarian
-    #--------
-    
-    
-    hung_text = "A kifejezés bolygó ősi, a kapcsolat a történelem, az asztrológia, a tudomány, a mitológia és a vallás. Több bolygó a Naprendszer látható szabad szemmel. Ezeket sokak korai kultúrák, mint isteni, vagy küldötteinek istenségek. A tudományos ismereteket korszerű, emberi érzékelés a bolygók változott, amely magában foglalja a több különböző tárgyakat. 2006-ban a Nemzetközi Csillagászati Unió (IAU) hivatalosan elfogadott egy állásfoglalást meghatározó bolygó a Naprendszerben. Ez a meghatározás ellentmondásos, mert kizárja sok tárgyat a bolygó tömege alapján hol, mit körül keringenek. Bár nyolc bolygó szervek felfedezték 1950 előtt marad a bolygók alatt modern definíció egyes égitesteket, mint például Ceres, Pallas, Juno és Vesta (mindegyik tárgy a napenergia aszteroida öv), és a Plútó (az első Neptunuszon túli objektumok felfedezték), amelyek egykor a bolygók a tudományos közösség, az többé már nem tekinthető such.The bolygók gondolták Ptolemaiosz pályára Föld epiciklus mozgások. Bár az ötlet, hogy a bolygók körül kering a Nap is javasoltak többször, nem volt, amíg a 17. században, hogy ezt a nézetet támasztja alá bizonyítékokkal az első teleszkópos csillagászati megfigyelések által végzett Galileo Galilei. Körülbelül ugyanabban az időben, gondos elemzés előtti teleszkópos megfigyelés által összegyűjtött adatok Tycho Brahe, Johannes Kepler talált a bolygók pályája nem kör, hanem ellipszis alakú. Ahogy megfigyelési eszközök javult, a csillagászok látták, hogy, mint a Föld, a bolygók körül forog elforgatott tengelyek, és néhány megosztott olyan funkciók, mint jégsapkák és évszakok. Mivel a hajnal a Space Age, szoros megfigyelés által űrszondák megállapította, hogy a Föld és a többi bolygó hasonló jellemzőkkel, mint mint vulkáni, hurrikánok, tektonika, és még hydrology.Planets általában két fő típusa van: a nagy kis sűrűségű óriás bolygók, és a kisebb sziklás terrestrials. Alatt IAU meghatározások, nyolc bolygó a Naprendszerben. Növekvő sorrendjében a távolság a Nap, ők a négy terrestrials, Merkúr, Vénusz, Föld, Mars és, akkor a négy óriás bolygó, a Jupiter, a Szaturnusz, az Uránusz és a Neptunusz. Hat a bolygók körül kering egy vagy több természetes műholdak."
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is hungarian, the utf_locale is hu.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
-      
-      tmp = suppressWarnings(tokenize_transform_text(object = hung_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "hu.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "hungarian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
-      
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = hung_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "hu.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "hungarian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
-      
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "a" && tmp_stopw$token[1] == "kifejezés" && 
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = hbr_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "he_IL.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "hebrew", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "כוכב" && tmp_stopw$token[1] == "כוכב" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
     
     
+    
+    
+      #--------
+      # hindi
+      #--------
+      
+      
+      hdi_text = "अवधि ग्रह प्राचीन है, इतिहास, ज्योतिष, विज्ञान, पुराण, और धर्म के संबंधों के साथ। सौर प्रणाली में कई ग्रहों नग्न आंखों से देखा जा सकता है। ये बहुत जल्दी संस्कृतियों परमात्मा के रूप में, या देवी-देवताओं के दूत के रूप में माना गया। वैज्ञानिक ज्ञान उन्नत, ग्रहों के मानव धारणा बदल गया है, एक को शामिल"
+      
+      
+      testthat::test_that("the function returns a vector of words if : the language is hindi, the utf_locale is hi_IN.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+        
+        tmp = suppressWarnings(tokenize_transform_text(object = hdi_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "hi_IN.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "hindi", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = hdi_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "hi_IN.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "hindi", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "अवधि" && tmp_stopw$token[1] == "अवधि" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+      
+      
+      
+      
+      #--------
+      # hungarian
+      #--------
+      
+      
+      hung_text = "A kifejezés bolygó ősi, a kapcsolat a történelem, az asztrológia, a tudomány, a mitológia és a vallás. Több bolygó a Naprendszer látható szabad szemmel. Ezeket sokak korai kultúrák, mint isteni, vagy küldötteinek istenségek. A tudományos ismereteket korszerű, emberi érzékelés a bolygók változott, amely magában foglalja a több különböző tárgyakat. 2006-ban a Nemzetközi Csillagászati Unió (IAU) hivatalosan elfogadott egy állásfoglalást meghatározó bolygó a Naprendszerben. Ez a meghatározás ellentmondásos, mert kizárja sok tárgyat a bolygó tömege alapján hol, mit körül keringenek. Bár nyolc bolygó szervek felfedezték 1950 előtt marad a bolygók alatt modern definíció egyes égitesteket, mint például Ceres, Pallas, Juno és Vesta (mindegyik tárgy a napenergia aszteroida öv), és a Plútó (az első Neptunuszon túli objektumok felfedezték), amelyek egykor a bolygók a tudományos közösség, az többé már nem tekinthető such.The bolygók gondolták Ptolemaiosz pályára Föld epiciklus mozgások. Bár az ötlet, hogy a bolygók körül kering a Nap is javasoltak többször, nem volt, amíg a 17. században, hogy ezt a nézetet támasztja alá bizonyítékokkal az első teleszkópos csillagászati megfigyelések által végzett Galileo Galilei. Körülbelül ugyanabban az időben, gondos elemzés előtti teleszkópos megfigyelés által összegyűjtött adatok Tycho Brahe, Johannes Kepler talált a bolygók pályája nem kör, hanem ellipszis alakú. Ahogy megfigyelési eszközök javult, a csillagászok látták, hogy, mint a Föld, a bolygók körül forog elforgatott tengelyek, és néhány megosztott olyan funkciók, mint jégsapkák és évszakok. Mivel a hajnal a Space Age, szoros megfigyelés által űrszondák megállapította, hogy a Föld és a többi bolygó hasonló jellemzőkkel, mint mint vulkáni, hurrikánok, tektonika, és még hydrology.Planets általában két fő típusa van: a nagy kis sűrűségű óriás bolygók, és a kisebb sziklás terrestrials. Alatt IAU meghatározások, nyolc bolygó a Naprendszerben. Növekvő sorrendjében a távolság a Nap, ők a négy terrestrials, Merkúr, Vénusz, Föld, Mars és, akkor a négy óriás bolygó, a Jupiter, a Szaturnusz, az Uránusz és a Neptunusz. Hat a bolygók körül kering egy vagy több természetes műholdak."
+      
+      
+      testthat::test_that("the function returns a vector of words if : the language is hungarian, the utf_locale is hu.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+        
+        tmp = suppressWarnings(tokenize_transform_text(object = hung_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "hu.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "hungarian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = hung_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "hu.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "hungarian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "a" && tmp_stopw$token[1] == "kifejezés" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     
@@ -1342,44 +1355,46 @@ while(T) {
     # irish
     #--------
     
-    
-    irs_text = "Is é an téarma phláinéid ársa, le ceangail le stair, astrology, eolaíocht, miotaseolaíocht, agus reiligiún. Is féidir roinnt pláinéid sa Chóras Gréine a bheith le feiceáil leis an tsúil naked. Bhí siad seo a mheas ag cultúir luatha go leor mar Dhiaga, nó de réir mar emissaries de deities. Mar chun cinn eolas eolaíoch, dearcadh an duine ar na pláinéid athrú, a ionchorpraíonn líon na rudaí díchosúla. Sa bhliain 2006, ghlac an Astronomical Union Idirnáisiúnta (IAU) hoifigiúil rún pláinéid shainiú laistigh de Chóras Gréine. Tá an sainmhíniú conspóideach toisc eisiann sé go leor rudaí de mhais optional bunaithe ar an áit ina nó cad bhfithis acu. Cé ocht gcinn de na comhlachtaí optional amach roimh 1950 fós pláinéid faoin sainmhíniú nua-aimseartha, roinnt comhlachtaí celestial, ar nós Ceres, Pallas, Juno agus Vesta (gach rud sa crios astaróideach gréine ar), agus Plútón (an chéad rud tras-Neptunian fuair sé amach), go raibh pláinéid ag an bpobal eolaíoch a mheas aon uair amháin, a thuilleadh féachaint air mar a bhí cheap pláinéid such.The ag Ptolemy a bhfithis na Cruinne in deferent agus epicycle tairiscintí. Cé go raibh an smaoineamh go orbited na pláinéid an Ghrian ráite go minic, ní raibh sé go dtí go bhfuair an tuairim ó fhianaise ón gcéad an 17ú haois breathnuithe réalteolaíocha teileascópacha, le comhlíonadh ag Galileo Galilei. Ag thart ar an am céanna, trí anailís chúramach ar shonraí breathnadóireachta réamh-teileascópacha bhailigh Tycho Brahe, Johannes Chinn Kepler Ní raibh orbits na pláinéid 'ciorclach ach éilipseacha. Mar feabhsaithe uirlisí breathnóireachta, chonaic réalteolaithe sin, ar nós an Domhan, na pláinéid rothlú thart aiseanna tilted, agus roinnt roinnte gnéithe ar nós caipíní oighir agus séasúir. Ós rud é an tús an Aois Spás, tá gar breathnóireacht ag tóireadóirí spás fuarthas amach go roinnt ar an Domhan agus na pláinéid eile tréithe den sórt sin mar volcanism, hurricanes, theicteonaic, agus fiú hydrology.Planets a roinnt i dhá phríomhchineál: pláinéid íseal-dlúis mór ollmhór, agus terrestrials creagach lú. faoi sainmhínithe IAU, tá ocht pláinéid sa Chóras Gréine. Chun an bhfad ó láthair méadaitheach ón nGrian, tá siad na ceithre terrestrials, Mearcair, Véineas, Domhan, agus Mars, ansin na ceithre pláinéid fathach, Iúpatar, Satarn, Úránas, agus Neiptiún. Tá sé cinn de na pláinéid atá orbited amháin nó níos mó satailítí nádúrtha."
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is irish, the utf_locale is ga_IE.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = irs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ga_IE.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "irish", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      irs_text = "Is é an téarma phláinéid ársa, le ceangail le stair, astrology, eolaíocht, miotaseolaíocht, agus reiligiún. Is féidir roinnt pláinéid sa Chóras Gréine a bheith le feiceáil leis an tsúil naked. Bhí siad seo a mheas ag cultúir luatha go leor mar Dhiaga, nó de réir mar emissaries de deities. Mar chun cinn eolas eolaíoch, dearcadh an duine ar na pláinéid athrú, a ionchorpraíonn líon na rudaí díchosúla. Sa bhliain 2006, ghlac an Astronomical Union Idirnáisiúnta (IAU) hoifigiúil rún pláinéid shainiú laistigh de Chóras Gréine. Tá an sainmhíniú conspóideach toisc eisiann sé go leor rudaí de mhais optional bunaithe ar an áit ina nó cad bhfithis acu. Cé ocht gcinn de na comhlachtaí optional amach roimh 1950 fós pláinéid faoin sainmhíniú nua-aimseartha, roinnt comhlachtaí celestial, ar nós Ceres, Pallas, Juno agus Vesta (gach rud sa crios astaróideach gréine ar), agus Plútón (an chéad rud tras-Neptunian fuair sé amach), go raibh pláinéid ag an bpobal eolaíoch a mheas aon uair amháin, a thuilleadh féachaint air mar a bhí cheap pláinéid such.The ag Ptolemy a bhfithis na Cruinne in deferent agus epicycle tairiscintí. Cé go raibh an smaoineamh go orbited na pláinéid an Ghrian ráite go minic, ní raibh sé go dtí go bhfuair an tuairim ó fhianaise ón gcéad an 17ú haois breathnuithe réalteolaíocha teileascópacha, le comhlíonadh ag Galileo Galilei. Ag thart ar an am céanna, trí anailís chúramach ar shonraí breathnadóireachta réamh-teileascópacha bhailigh Tycho Brahe, Johannes Chinn Kepler Ní raibh orbits na pláinéid 'ciorclach ach éilipseacha. Mar feabhsaithe uirlisí breathnóireachta, chonaic réalteolaithe sin, ar nós an Domhan, na pláinéid rothlú thart aiseanna tilted, agus roinnt roinnte gnéithe ar nós caipíní oighir agus séasúir. Ós rud é an tús an Aois Spás, tá gar breathnóireacht ag tóireadóirí spás fuarthas amach go roinnt ar an Domhan agus na pláinéid eile tréithe den sórt sin mar volcanism, hurricanes, theicteonaic, agus fiú hydrology.Planets a roinnt i dhá phríomhchineál: pláinéid íseal-dlúis mór ollmhór, agus terrestrials creagach lú. faoi sainmhínithe IAU, tá ocht pláinéid sa Chóras Gréine. Chun an bhfad ó láthair méadaitheach ón nGrian, tá siad na ceithre terrestrials, Mearcair, Véineas, Domhan, agus Mars, ansin na ceithre pláinéid fathach, Iúpatar, Satarn, Úránas, agus Neiptiún. Tá sé cinn de na pláinéid atá orbited amháin nó níos mó satailítí nádúrtha."
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = irs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ga_IE.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "irish", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "is" && tmp_stopw$token[1] == "téarma" && 
+      testthat::test_that("the function returns a vector of words if : the language is irish, the utf_locale is ga_IE.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
+        tmp = suppressWarnings(tokenize_transform_text(object = irs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ga_IE.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "irish", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = irs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "ga_IE.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "irish", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "is" && tmp_stopw$token[1] == "téarma" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     
@@ -1487,44 +1502,46 @@ while(T) {
     #--------
     
     
-    mrt_text = "टर्म ग्रह इतिहास, फलज्योतिष, विज्ञान, पौराणिक आणि धर्म संबंध असलेल्या, पुरातन आहे. सूर्यमाला अनेक ग्रह उघड्या डोळा पाहिले जाऊ शकते. या अनेक लवकर संस्कृती दैवी, किंवा सर्व बाजूंना अनेक देवदेवतांच्या प्रेषित म्हणून ओळखले होते. वैज्ञानिक ज्ञान प्रगत म्हणून, ग्रह मानवी समज बदलला, एक अंतर्भूत पूर्णपणे वेगळया प्रकारचा वस्तुंची संख्या. 2006 मध्ये, आंतरराष्ट्रीय खगोलीय संघटना (इ.स.) अधिकृतपणे सूर्यमाला आत ग्रह व्याख्या ठराव दत्तक घेतले. या व्याख्या आहे"
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is marathi, the utf_locale is mr_IN.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = mrt_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "mr_IN.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "marathi", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      mrt_text = "टर्म ग्रह इतिहास, फलज्योतिष, विज्ञान, पौराणिक आणि धर्म संबंध असलेल्या, पुरातन आहे. सूर्यमाला अनेक ग्रह उघड्या डोळा पाहिले जाऊ शकते. या अनेक लवकर संस्कृती दैवी, किंवा सर्व बाजूंना अनेक देवदेवतांच्या प्रेषित म्हणून ओळखले होते. वैज्ञानिक ज्ञान प्रगत म्हणून, ग्रह मानवी समज बदलला, एक अंतर्भूत पूर्णपणे वेगळया प्रकारचा वस्तुंची संख्या. 2006 मध्ये, आंतरराष्ट्रीय खगोलीय संघटना (इ.स.) अधिकृतपणे सूर्यमाला आत ग्रह व्याख्या ठराव दत्तक घेतले. या व्याख्या आहे"
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = mrt_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "mr_IN.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "marathi", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "टर्म" && tmp_stopw$token[1] == "टर्म" && 
+      testthat::test_that("the function returns a vector of words if : the language is marathi, the utf_locale is mr_IN.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
-    
+        tmp = suppressWarnings(tokenize_transform_text(object = mrt_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "mr_IN.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "marathi", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = mrt_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "mr_IN.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "marathi", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "टर्म" && tmp_stopw$token[1] == "टर्म" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     
@@ -1583,44 +1600,46 @@ while(T) {
     #--------
     
     
-    prs_text = "این سیاره مدت باستان است، با روابط به تاریخ، طالع بینی، علم، اسطوره و مذهب. چندین سیاره در منظومه شمسی را می توان با چشم غیر مسلح دیده می شود. این در بسیاری از فرهنگها در اوایل الهی، و یا به عنوان فرستادگان خدایان در نظر گرفته شد. به عنوان دانش علمی پیشرفته، درک انسان از سیارات تغییر، ترکیب"
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is persian, the utf_locale is fa_IR.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = prs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "fa_IR.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "persian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      prs_text = "این سیاره مدت باستان است، با روابط به تاریخ، طالع بینی، علم، اسطوره و مذهب. چندین سیاره در منظومه شمسی را می توان با چشم غیر مسلح دیده می شود. این در بسیاری از فرهنگها در اوایل الهی، و یا به عنوان فرستادگان خدایان در نظر گرفته شد. به عنوان دانش علمی پیشرفته، درک انسان از سیارات تغییر، ترکیب"
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = prs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "fa_IR.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "persian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "این" && tmp_stopw$token[1] == "این" && 
+      testthat::test_that("the function returns a vector of words if : the language is persian, the utf_locale is fa_IR.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
-    
+        tmp = suppressWarnings(tokenize_transform_text(object = prs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "fa_IR.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "persian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = prs_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "fa_IR.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "persian", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "این" && tmp_stopw$token[1] == "این" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     
@@ -1918,46 +1937,46 @@ while(T) {
     # spanish
     #--------
     
-    
-    spn_text = "El término planeta es antiguo, con vínculos con la historia, la astrología, la ciencia, la mitología y la religión. Varios planetas del Sistema Solar pueden ser vistos a simple vista. Estas fueron consideradas por muchas culturas tempranas como divinas, o como emisarios de deidades. A medida que avanzaba el conocimiento científico, la percepción humana de los planetas cambiaba, Número de objetos dispares. En 2006, la Unión Astronómica Internacional (IAU) adoptó oficialmente una resolución que define planetas dentro del Sistema Solar. Esta definición es Controvertido porque excluye muchos objetos de masa planetaria basados en dónde o lo que orbitan. Aunque ocho de los cuerpos planetarios descubiertos antes de 1950 siguen siendo planetas Bajo la definición moderna, algunos cuerpos celestes, como Ceres, Pallas, Juno y Vesta (cada uno un objeto en el cinturón de asteroides solares), y Plutón (el primer objeto trans-neptuniano Descubiertos), que una vez fueron considerados planetas por la comunidad científica, ya no son vistos como tales. Los planetas fueron pensados por Ptolomeo para orbitar la Tierra en deferente y epiciclo Mociones Aunque la idea de que los planetas orbitaban al Sol había sido sugerida muchas veces, no fue hasta el siglo XVII que esta opinión fue apoyada por la evidencia de la primera Observaciones telescópicas astronómicas, realizadas por Galileo Galilei. Aproximadamente al mismo tiempo, mediante el análisis cuidadoso de los datos de observación pre-telescópicos recogidos por Tycho Brahe, Johannes Kepler encontró que las órbitas de los planetas no eran circulares sino elípticas. A medida que las herramientas de observación mejoraron, los astrónomos vieron que, al igual que la Tierra, los planetas giraban alrededor de ejes inclinados, y algunos Compartieron rasgos tales como casquillos de hielo y estaciones. Desde los albores de la era espacial, la observación cercana por las sondas espaciales ha encontrado que la tierra y los otros planetas comparten características tales Como el volcanismo, los huracanes, la tectónica, e incluso la hidrología. Los planetas se dividen generalmente en dos tipos principales: grandes planetas gigantes de baja densidad y terrestrials rocosos más pequeños. Debajo IAU definiciones, hay ocho planetas en el Sistema Solar. En orden de distancia cada vez mayor desde el Sol, son los cuatro terrestres, Mercurio, Venus, Tierra y Marte, entonces Los cuatro planetas gigantes, Júpiter, Saturno, Urano y Neptuno. Seis de los planetas están orbitados por uno o más satélites naturales."
-    
-    
-    testthat::test_that("the function returns a vector of words if : the language is spanish, the utf_locale is es_ES.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
+    if (exception_run_test) {
       
-      tmp = suppressWarnings(tokenize_transform_text(object = spn_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "es_ES.UTF-8", remove_char = "",
-                                                
-                                                remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                
-                                                split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "spanish", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                
-                                                max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                
-                                                stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+      spn_text = "El término planeta es antiguo, con vínculos con la historia, la astrología, la ciencia, la mitología y la religión. Varios planetas del Sistema Solar pueden ser vistos a simple vista. Estas fueron consideradas por muchas culturas tempranas como divinas, o como emisarios de deidades. A medida que avanzaba el conocimiento científico, la percepción humana de los planetas cambiaba, Número de objetos dispares. En 2006, la Unión Astronómica Internacional (IAU) adoptó oficialmente una resolución que define planetas dentro del Sistema Solar. Esta definición es Controvertido porque excluye muchos objetos de masa planetaria basados en dónde o lo que orbitan. Aunque ocho de los cuerpos planetarios descubiertos antes de 1950 siguen siendo planetas Bajo la definición moderna, algunos cuerpos celestes, como Ceres, Pallas, Juno y Vesta (cada uno un objeto en el cinturón de asteroides solares), y Plutón (el primer objeto trans-neptuniano Descubiertos), que una vez fueron considerados planetas por la comunidad científica, ya no son vistos como tales. Los planetas fueron pensados por Ptolomeo para orbitar la Tierra en deferente y epiciclo Mociones Aunque la idea de que los planetas orbitaban al Sol había sido sugerida muchas veces, no fue hasta el siglo XVII que esta opinión fue apoyada por la evidencia de la primera Observaciones telescópicas astronómicas, realizadas por Galileo Galilei. Aproximadamente al mismo tiempo, mediante el análisis cuidadoso de los datos de observación pre-telescópicos recogidos por Tycho Brahe, Johannes Kepler encontró que las órbitas de los planetas no eran circulares sino elípticas. A medida que las herramientas de observación mejoraron, los astrónomos vieron que, al igual que la Tierra, los planetas giraban alrededor de ejes inclinados, y algunos Compartieron rasgos tales como casquillos de hielo y estaciones. Desde los albores de la era espacial, la observación cercana por las sondas espaciales ha encontrado que la tierra y los otros planetas comparten características tales Como el volcanismo, los huracanes, la tectónica, e incluso la hidrología. Los planetas se dividen generalmente en dos tipos principales: grandes planetas gigantes de baja densidad y terrestrials rocosos más pequeños. Debajo IAU definiciones, hay ocho planetas en el Sistema Solar. En orden de distancia cada vez mayor desde el Sol, son los cuatro terrestres, Mercurio, Venus, Tierra y Marte, entonces Los cuatro planetas gigantes, Júpiter, Saturno, Urano y Neptuno. Seis de los planetas están orbitados por uno o más satélites naturales."
       
-      tmp_stopw = suppressWarnings(tokenize_transform_text(object = spn_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "es_ES.UTF-8", remove_char = "",
-                                                      
-                                                      remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
-                                                      
-                                                      split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "spanish", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
-                                                      
-                                                      max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
-                                                      
-                                                      stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
       
-      res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "el" && tmp_stopw$token[1] == "término" && 
+      testthat::test_that("the function returns a vector of words if : the language is spanish, the utf_locale is es_ES.UTF-8, the string split is TRUE, the to_upper is TRUE and the remove_stopwords parameter is TRUE", {
         
-        length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
-      
-      #-------------------------------------------------------------------- debug tests
-      cat("test-utf_locale.R : test id", cnt_tsts, "\n")
-      
-      cnt_tsts <<- cnt_tsts + 1
-      #-------------------------------------------------------------------- 
-      
-      testthat::expect_true( res_tes  )
-    })
-    
-    
+        tmp = suppressWarnings(tokenize_transform_text(object = spn_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "es_ES.UTF-8", remove_char = "",
+                                                  
+                                                  remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                  
+                                                  split_separator = " \r\n\t.,;:()?!//", remove_stopwords = F, language = "spanish", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                  
+                                                  max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                  
+                                                  stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        tmp_stopw = suppressWarnings(tokenize_transform_text(object = spn_text, batches = NULL, read_file_delimiter = "\n", to_lower = T, to_upper = F, utf_locale = "es_ES.UTF-8", remove_char = "",
+                                                        
+                                                        remove_punctuation_string = FALSE, remove_punctuation_vector = TRUE, remove_numbers = FALSE, trim_token = TRUE, split_string = TRUE, 
+                                                        
+                                                        split_separator = " \r\n\t.,;:()?!//", remove_stopwords = T, language = "spanish", min_num_char = 1, max_num_char = Inf, stemmer = NULL, min_n_gram = 1,
+                                                        
+                                                        max_n_gram = 1, skip_n_gram = 1, skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL, path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0.0, 
+                                                        
+                                                        stemmer_truncate = 3, stemmer_batches = 1, threads = 1, vocabulary_path_file = NULL, verbose = FALSE))
+        
+        res_tes = names(tmp) == 'token'  && length(tmp) == 1 && is.vector(tmp$token) && length(tmp$token) > 1 && tmp$token[1] == "el" && tmp_stopw$token[1] == "término" && 
+          
+          length(tmp$token) > length(tmp_stopw$token) && is.character(tmp$token) && class(tmp) == "tokenization and transformation"
+        
+        #-------------------------------------------------------------------- debug tests
+        cat("test-utf_locale.R : test id", cnt_tsts, "\n")
+        
+        cnt_tsts <<- cnt_tsts + 1
+        #-------------------------------------------------------------------- 
+        
+        testthat::expect_true( res_tes  )
+      })
+    }
     
     
     

@@ -166,9 +166,14 @@ For simplicity, I'll use the *Reuters* data as input to the *fastTextR::skipgram
                                                    remove_stopwords = T, language = "english", 
                                                    min_num_char = 3, max_num_char = 100, 
                                                    stemmer = "porter2_stemmer", 
-                                                   path_2folder = "/path_to_your_folder/", 
-                                                   threads = 4, verbose = T)
+                                                   path_2folder = "/path_to_your_folder/",
+                                                   threads = 1,                     # whenever I save data to file set the number threads to 1
+                                                   verbose = T)
 ```
+
+<br>
+
+**UPDATE 11-04-2019**: There is an [updated version of the fastText R package](https://github.com/mlampros/fastText) which includes all the features of the ported [fasttext library](https://github.com/facebookresearch/fastText). Therefore the old **fastTextR** repository **is archived**. See also the corresponding [blog-post](http://mlampros.github.io/2019/04/11/fastText_updated_version/).
 
 <br>
 
@@ -234,7 +239,7 @@ In case that *copy_data = TRUE* then the pre-processed data can be observed befo
 
 <br>
 
-Then, I can use one of the three methods (*sum_sqrt*, *min_max_norm*, *idf*) to receive the transformed vectors. These methods are based on the following *blog-posts* (see [here](https://www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur) and [here](http://www.erogol.com/duplicate-question-detection-deep-learning/) for references), 
+Then, I can use one of the three methods (*sum_sqrt*, *min_max_norm*, *idf*) to receive the transformed vectors. These methods are based on the following *blog-posts* (see especially **<span></span>www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur** and **<span></span>www.erogol.com/duplicate-question-detection-deep-learning** ), 
 
 <br>
 
@@ -442,6 +447,6 @@ This is one of the ways that the transformed word-vectors can be used and is sol
 *References*:
 
 * https://miguelmalvarez.com/2015/03/20/classifying-reuters-21578-collection-with-python-representing-the-data/
-* https://www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur
+* <span></span>www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur
 * http://www.erogol.com/duplicate-question-detection-deep-learning/
 * https://www.tidytextmining.com/ngrams.html#visualizing-bigrams-in-other-texts
