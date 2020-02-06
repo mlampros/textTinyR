@@ -34,13 +34,17 @@ before_install:
 
 
 r_packages:
-  - devtools
-  - roxygen2
-  - testthat
+  - Matrix
   - Rcpp
   - RcppArmadillo
-  - covr
-  - Matrix
+  - BH
   - R6
   - data.table
   - utils
+  - testthat
+  - covr
+  - knitr
+  - rmarkdown
+  - devtools
+  - roxygen2
+

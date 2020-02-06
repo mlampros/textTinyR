@@ -4,18 +4,40 @@
 \alias{tokenize_transform_text}
 \title{String tokenization and transformation  ( character string or path to a file )}
 \usage{
-tokenize_transform_text(object = NULL, batches = NULL,
-  read_file_delimiter = "\\n", to_lower = FALSE, to_upper = FALSE,
-  utf_locale = "", remove_char = "",
-  remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE,
-  remove_numbers = FALSE, trim_token = FALSE, split_string = FALSE,
-  split_separator = " \\r\\n\\t.,;:()?!//", remove_stopwords = FALSE,
-  language = "english", min_num_char = 1, max_num_char = Inf,
-  stemmer = NULL, min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1,
-  skip_distance = 0, n_gram_delimiter = " ", concat_delimiter = NULL,
-  path_2folder = "", stemmer_ngram = 4, stemmer_gamma = 0,
-  stemmer_truncate = 3, stemmer_batches = 1, threads = 1,
-  vocabulary_path_file = NULL, verbose = FALSE)
+tokenize_transform_text(
+  object = NULL,
+  batches = NULL,
+  read_file_delimiter = "\\n",
+  to_lower = FALSE,
+  to_upper = FALSE,
+  utf_locale = "",
+  remove_char = "",
+  remove_punctuation_string = FALSE,
+  remove_punctuation_vector = FALSE,
+  remove_numbers = FALSE,
+  trim_token = FALSE,
+  split_string = FALSE,
+  split_separator = " \\r\\n\\t.,;:()?!//",
+  remove_stopwords = FALSE,
+  language = "english",
+  min_num_char = 1,
+  max_num_char = Inf,
+  stemmer = NULL,
+  min_n_gram = 1,
+  max_n_gram = 1,
+  skip_n_gram = 1,
+  skip_distance = 0,
+  n_gram_delimiter = " ",
+  concat_delimiter = NULL,
+  path_2folder = "",
+  stemmer_ngram = 4,
+  stemmer_gamma = 0,
+  stemmer_truncate = 3,
+  stemmer_batches = 1,
+  threads = 1,
+  vocabulary_path_file = NULL,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{object}{either a character string (text data) or a character-string-path to a file (for big .txt files it's recommended to use a path to a file).}

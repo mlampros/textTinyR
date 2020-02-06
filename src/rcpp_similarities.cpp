@@ -472,9 +472,16 @@ arma::rowvec jaccard_dice(std::vector<std::vector<std::string>>& VEC1, std::vect
 // [[Rcpp::export]]
 double inner_cm(arma::mat& x, arma::rowvec& y, unsigned int i) {
   
-  double out = arma::as_scalar(cor(arma::conv_to< arma::rowvec >::from(x.col(i)), y));
+  arma::rowvec tmp_out = arma::cor(arma::conv_to< arma::rowvec >::from(x.col(i)), y);
   
-  return out;
+  double res_out = 0.0;                        // in case that 'tmp_out' is NA or +/- Inf return a correlation of 0.0
+  
+  if (tmp_out.is_finite()) {
+    
+    res_out = arma::as_scalar(tmp_out);
+  }
+  
+  return res_out;
 }
 
 

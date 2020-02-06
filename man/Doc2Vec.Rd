@@ -4,7 +4,6 @@
 \name{Doc2Vec}
 \alias{Doc2Vec}
 \title{Conversion of text documents to word-vector-representation features ( Doc2Vec )}
-\format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 # utl <- Doc2Vec$new(token_list = NULL, word_vector_FILE = NULL, 
 
@@ -12,27 +11,12 @@
        
        #                    copy_data = FALSE)
 }
-\arguments{
-\item{token_list}{either NULL or a list of tokenized text documents}
-
-\item{word_vector_FILE}{a valid path to a text file, where the word-vectors are saved}
-
-\item{print_every_rows}{a numeric value greater than 1 specifying the print intervals. Frequent output in the R session can slow down the function especially in case of big files.}
-
-\item{verbose}{either TRUE or FALSE. If TRUE then information will be printed out in the R session.}
-
-\item{method}{a character string specifying the method to use. One of \emph{sum_sqrt}, \emph{min_max_norm} or \emph{idf}. See the details section for more information.}
-
-\item{global_term_weights}{either NULL or the output of the \emph{global_term_weights} method of the textTinyR package. See the details section for more information.}
-
-\item{threads}{a numeric value specifying the number of cores to run in parallel}
-
-\item{copy_data}{either TRUE or FALSE. If FALSE then a pointer will be created and no copy of the initial data takes place (memory efficient especially for big datasets). This is an alternative way to pre-process the data.}
-}
 \value{
 a matrix
 }
 \description{
+Conversion of text documents to word-vector-representation features ( Doc2Vec )
+
 Conversion of text documents to word-vector-representation features ( Doc2Vec )
 }
 \details{
@@ -89,4 +73,89 @@ init = Doc2Vec$new(token_list = tok_text, word_vector_FILE = PATH)
 
 out = init$doc2vec_methods(method = "sum_sqrt")
 }
-\keyword{datasets}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{Doc2Vec$new()}}
+\item \href{#method-doc2vec_methods}{\code{Doc2Vec$doc2vec_methods()}}
+\item \href{#method-pre_processed_wv}{\code{Doc2Vec$pre_processed_wv()}}
+\item \href{#method-clone}{\code{Doc2Vec$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$new(
+  token_list = NULL,
+  word_vector_FILE = NULL,
+  print_every_rows = 10000,
+  verbose = FALSE,
+  copy_data = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{token_list}}{either NULL or a list of tokenized text documents}
+
+\item{\code{word_vector_FILE}}{a valid path to a text file, where the word-vectors are saved}
+
+\item{\code{print_every_rows}}{a numeric value greater than 1 specifying the print intervals. Frequent output in the R session can slow down the function especially in case of big files.}
+
+\item{\code{verbose}}{either TRUE or FALSE. If TRUE then information will be printed out in the R session.}
+
+\item{\code{copy_data}}{either TRUE or FALSE. If FALSE then a pointer will be created and no copy of the initial data takes place (memory efficient especially for big datasets). This is an alternative way to pre-process the data.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-doc2vec_methods"></a>}}
+\subsection{Method \code{doc2vec_methods()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$doc2vec_methods(
+  method = "sum_sqrt",
+  global_term_weights = NULL,
+  threads = 1
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{method}}{a character string specifying the method to use. One of \emph{sum_sqrt}, \emph{min_max_norm} or \emph{idf}. See the details section for more information.}
+
+\item{\code{global_term_weights}}{either NULL or the output of the \emph{global_term_weights} method of the textTinyR package. See the details section for more information.}
+
+\item{\code{threads}}{a numeric value specifying the number of cores to run in parallel}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-pre_processed_wv"></a>}}
+\subsection{Method \code{pre_processed_wv()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$pre_processed_wv()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

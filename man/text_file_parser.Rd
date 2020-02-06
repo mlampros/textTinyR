@@ -4,9 +4,15 @@
 \alias{text_file_parser}
 \title{text file parser}
 \usage{
-text_file_parser(input_path_file = NULL, output_path_file = "",
-  start_query = NULL, end_query = NULL, min_lines = 1,
-  trimmed_line = FALSE, verbose = FALSE)
+text_file_parser(
+  input_path_file = NULL,
+  output_path_file = "",
+  start_query = NULL,
+  end_query = NULL,
+  min_lines = 1,
+  trimmed_line = FALSE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{input_path_file}{either a path to an input file or a vector of character strings ( normally the latter would represent ordered lines of a text file in form of a character vector )}
@@ -52,7 +58,7 @@ library(textTinyR)
   
 #  con = url(PATH_url, method = "libcurl")
   
-#  tmp_dat = read.delim(con, quote = "\\"", comment.char = "", stringsAsFactors = FALSE)
+#  tmp_dat = read.delim(con, quote = "\"", comment.char = "", stringsAsFactors = FALSE)
   
 #  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x) 
 

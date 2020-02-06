@@ -4,8 +4,12 @@
 \alias{COS_TEXT}
 \title{Cosine similarity for text documents}
 \usage{
-COS_TEXT(text_vector1 = NULL, text_vector2 = NULL, threads = 1,
-  separator = " ")
+COS_TEXT(
+  text_vector1 = NULL,
+  text_vector2 = NULL,
+  threads = 1,
+  separator = " "
+)
 }
 \arguments{
 \item{text_vector1}{a character string vector representing text documents (it should have the same length as the text_vector2)}

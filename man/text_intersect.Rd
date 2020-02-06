@@ -4,23 +4,15 @@
 \name{text_intersect}
 \alias{text_intersect}
 \title{intersection of words or letters in tokenized text}
-\format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 # utl <- text_intersect$new(token_list1 = NULL, token_list2 = NULL)
-}
-\arguments{
-\item{token_list1}{a list, where each sublist is a tokenized text sequence (\emph{token_list1} should be of same length with \emph{token_list2})}
-
-\item{token_list2}{a list, where each sublist is a tokenized text sequence (\emph{token_list2} should be of same length with \emph{token_list1})}
-
-\item{distinct}{either TRUE or FALSE. If TRUE then the intersection of \emph{distinct} words (or letters) will be taken into account}
-
-\item{letters}{either TRUE or FALSE. If TRUE then the intersection of letters in the text sequences will be computed}
 }
 \value{
 a numeric vector
 }
 \description{
+intersection of words or letters in tokenized text
+
 intersection of words or letters in tokenized text
 }
 \details{
@@ -66,4 +58,80 @@ init$ratio_intersect(distinct = FALSE, letters = TRUE)
 \references{
 https://www.kaggle.com/c/home-depot-product-search-relevance/discussion/20427 by Igor Buinyi
 }
-\keyword{datasets}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{text_intersect$new()}}
+\item \href{#method-count_intersect}{\code{text_intersect$count_intersect()}}
+\item \href{#method-ratio_intersect}{\code{text_intersect$ratio_intersect()}}
+\item \href{#method-clone}{\code{text_intersect$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{text_intersect$new(token_list1 = NULL, token_list2 = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{token_list1}}{a list, where each sublist is a tokenized text sequence (\emph{token_list1} should be of same length with \emph{token_list2})}
+
+\item{\code{token_list2}}{a list, where each sublist is a tokenized text sequence (\emph{token_list2} should be of same length with \emph{token_list1})}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-count_intersect"></a>}}
+\subsection{Method \code{count_intersect()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{text_intersect$count_intersect(distinct = FALSE, letters = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{distinct}}{either TRUE or FALSE. If TRUE then the intersection of \emph{distinct} words (or letters) will be taken into account}
+
+\item{\code{letters}}{either TRUE or FALSE. If TRUE then the intersection of letters in the text sequences will be computed}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-ratio_intersect"></a>}}
+\subsection{Method \code{ratio_intersect()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{text_intersect$ratio_intersect(distinct = FALSE, letters = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{distinct}}{either TRUE or FALSE. If TRUE then the intersection of \emph{distinct} words (or letters) will be taken into account}
+
+\item{\code{letters}}{either TRUE or FALSE. If TRUE then the intersection of letters in the text sequences will be computed}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{text_intersect$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

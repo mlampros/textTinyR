@@ -4,84 +4,14 @@
 \name{sparse_term_matrix}
 \alias{sparse_term_matrix}
 \title{Term matrices and statistics ( document-term-matrix, term-document-matrix)}
-\format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 # utl <- sparse_term_matrix$new(vector_data = NULL, file_data = NULL,
 
 #                                      document_term_matrix = TRUE)
 }
-\arguments{
-\item{vector_data}{either NULL or a character vector of documents}
-
-\item{file_data}{either NULL or a valid character path to a text file}
-
-\item{document_term_matrix}{either TRUE or FALSE. If TRUE then a document-term-matrix will be returned, otherwise a term-document-matrix}
-
-\item{sort_terms}{either TRUE or FALSE specifying if the initial terms should be sorted ( so that the output sparse matrix is sorted in alphabetical order )}
-
-\item{to_lower}{either TRUE or FALSE. If TRUE the character string will be converted to lower case}
-
-\item{remove_char}{a string specifying the specific characters that should be removed from a text file. If the \emph{remove_char} is "" then no removal of characters take place}
-
-\item{to_upper}{either TRUE or FALSE. If TRUE the character string will be converted to upper case}
-
-\item{utf_locale}{the language specific locale to use in case that either the \emph{to_lower} or the \emph{to_upper} parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the \emph{utf_locale} parameter should be \emph{'el_GR.UTF-8'} ( \emph{language_country.encoding} ). A wrong utf-locale does not raise an error, however the runtime of the function increases.}
-
-\item{remove_punctuation_string}{either TRUE or FALSE. If TRUE then the punctuation of the character string will be removed (applies before the split function)}
-
-\item{remove_punctuation_vector}{either TRUE or FALSE. If TRUE then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)}
-
-\item{remove_numbers}{either TRUE or FALSE. If TRUE then any numbers in the character string will be removed}
-
-\item{trim_token}{either TRUE or FALSE. If TRUE then the string will be trimmed (left and/or right)}
-
-\item{split_string}{either TRUE or FALSE. If TRUE then the character string will be split using the \emph{split_separator} as delimiter. The user can also specify multiple delimiters.}
-
-\item{split_separator}{a character string specifying the character delimiter(s)}
-
-\item{remove_stopwords}{either TRUE, FALSE or a character vector of user defined stop words. If TRUE then by using the \emph{language} parameter the corresponding stop words vector will be uploaded.}
-
-\item{language}{a character string which defaults to english. If the \emph{remove_stopwords} parameter is TRUE then the corresponding stop words vector will be uploaded. Available languages
-are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{bengali}, \emph{breton}, \emph{bulgarian}, \emph{catalan},
-\emph{croatian}, \emph{czech}, \emph{danish}, \emph{dutch}, \emph{english}, \emph{estonian},
-\emph{finnish}, \emph{french}, \emph{galician}, \emph{german}, \emph{greek}, \emph{hausa}, \emph{hebrew}, \emph{hindi}, \emph{hungarian},
-\emph{indonesian}, \emph{irish}, \emph{italian}, \emph{latvian}, \emph{marathi},
-\emph{norwegian}, \emph{persian}, \emph{polish}, \emph{portuguese}, \emph{romanian}, \emph{russian}, \emph{slovak}, \emph{slovenian},
-\emph{somalia}, \emph{spanish}, \emph{swahili}, \emph{swedish}, \emph{turkish}, \emph{yoruba}, \emph{zulu}}
-
-\item{min_num_char}{an integer specifying the minimum number of characters to keep. If the \emph{min_num_char} is greater than 1 then character strings with more than 1 characters will be returned}
-
-\item{max_num_char}{an integer specifying the maximum number of characters to keep. The \emph{max_num_char} should be less than or equal to \emph{Inf} (in this function the Inf value translates to a word-length of 1000000000)}
-
-\item{stemmer}{a character string specifying the stemming method. Available method is the \emph{porter2_stemmer}. See details for more information.}
-
-\item{min_n_gram}{an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.}
-
-\item{max_n_gram}{an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.}
-
-\item{skip_n_gram}{an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.}
-
-\item{skip_distance}{an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.}
-
-\item{n_gram_delimiter}{a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)}
-
-\item{print_every_rows}{a numeric value greater than 1 specifying the print intervals. Frequent output in the R session can slow down the function in case of big files.}
-
-\item{normalize}{either NULL or one of 'l1' or 'l2' normalization.}
-
-\item{tf_idf}{either TRUE or FALSE. If TRUE then the term-frequency-inverse-document-frequency will be returned}
-
-\item{threads}{an integer specifying the number of cores to run in parallel}
-
-\item{verbose}{either TRUE or FALSE. If TRUE then information will be printed out}
-
-\item{sparsity_thresh}{a float number between 0.0 and 1.0 specifying the sparsity threshold in the \emph{Term_Matrix_Adjust} function}
-
-\item{Terms}{a character vector specifying the character strings for which the associations will be calculated ( \emph{term_associations} function )}
-
-\item{keep_terms}{either NULL or a numeric value specifying the number of terms to keep ( both in \emph{term_associations} and \emph{most_frequent_terms} functions )}
-}
 \description{
+Term matrices and statistics ( document-term-matrix, term-document-matrix)
+
 Term matrices and statistics ( document-term-matrix, term-document-matrix)
 }
 \details{
@@ -188,4 +118,231 @@ library(textTinyR)
 
 # sm$most_frequent_terms(keep_terms = 10, threads = 1)
 }
-\keyword{datasets}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{sparse_term_matrix$new()}}
+\item \href{#method-Term_Matrix}{\code{sparse_term_matrix$Term_Matrix()}}
+\item \href{#method-triplet_data}{\code{sparse_term_matrix$triplet_data()}}
+\item \href{#method-global_term_weights}{\code{sparse_term_matrix$global_term_weights()}}
+\item \href{#method-Term_Matrix_Adjust}{\code{sparse_term_matrix$Term_Matrix_Adjust()}}
+\item \href{#method-term_associations}{\code{sparse_term_matrix$term_associations()}}
+\item \href{#method-most_frequent_terms}{\code{sparse_term_matrix$most_frequent_terms()}}
+\item \href{#method-clone}{\code{sparse_term_matrix$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$new(
+  vector_data = NULL,
+  file_data = NULL,
+  document_term_matrix = TRUE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{vector_data}}{either NULL or a character vector of documents}
+
+\item{\code{file_data}}{either NULL or a valid character path to a text file}
+
+\item{\code{document_term_matrix}}{either TRUE or FALSE. If TRUE then a document-term-matrix will be returned, otherwise a term-document-matrix}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Term_Matrix"></a>}}
+\subsection{Method \code{Term_Matrix()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$Term_Matrix(
+  sort_terms = FALSE,
+  to_lower = FALSE,
+  to_upper = FALSE,
+  utf_locale = "",
+  remove_char = "",
+  remove_punctuation_string = FALSE,
+  remove_punctuation_vector = FALSE,
+  remove_numbers = FALSE,
+  trim_token = FALSE,
+  split_string = FALSE,
+  split_separator = " \\r\\n\\t.,;:()?!//",
+  remove_stopwords = FALSE,
+  language = "english",
+  min_num_char = 1,
+  max_num_char = Inf,
+  stemmer = NULL,
+  min_n_gram = 1,
+  max_n_gram = 1,
+  skip_n_gram = 1,
+  skip_distance = 0,
+  n_gram_delimiter = " ",
+  print_every_rows = 1000,
+  normalize = NULL,
+  tf_idf = FALSE,
+  threads = 1,
+  verbose = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{sort_terms}}{either TRUE or FALSE specifying if the initial terms should be sorted ( so that the output sparse matrix is sorted in alphabetical order )}
+
+\item{\code{to_lower}}{either TRUE or FALSE. If TRUE the character string will be converted to lower case}
+
+\item{\code{to_upper}}{either TRUE or FALSE. If TRUE the character string will be converted to upper case}
+
+\item{\code{utf_locale}}{the language specific locale to use in case that either the \emph{to_lower} or the \emph{to_upper} parameter is TRUE and the text file language is other than english. For instance if the language of a text file is greek then the \emph{utf_locale} parameter should be \emph{'el_GR.UTF-8'} ( \emph{language_country.encoding} ). A wrong utf-locale does not raise an error, however the runtime of the function increases.}
+
+\item{\code{remove_char}}{a string specifying the specific characters that should be removed from a text file. If the \emph{remove_char} is "" then no removal of characters take place}
+
+\item{\code{remove_punctuation_string}}{either TRUE or FALSE. If TRUE then the punctuation of the character string will be removed (applies before the split function)}
+
+\item{\code{remove_punctuation_vector}}{either TRUE or FALSE. If TRUE then the punctuation of the vector of the character strings will be removed  (after the string split has taken place)}
+
+\item{\code{remove_numbers}}{either TRUE or FALSE. If TRUE then any numbers in the character string will be removed}
+
+\item{\code{trim_token}}{either TRUE or FALSE. If TRUE then the string will be trimmed (left and/or right)}
+
+\item{\code{split_string}}{either TRUE or FALSE. If TRUE then the character string will be split using the \emph{split_separator} as delimiter. The user can also specify multiple delimiters.}
+
+\item{\code{split_separator}}{a character string specifying the character delimiter(s)}
+
+\item{\code{remove_stopwords}}{either TRUE, FALSE or a character vector of user defined stop words. If TRUE then by using the \emph{language} parameter the corresponding stop words vector will be uploaded.}
+
+\item{\code{language}}{a character string which defaults to english. If the \emph{remove_stopwords} parameter is TRUE then the corresponding stop words vector will be uploaded. Available languages
+are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{bengali}, \emph{breton}, \emph{bulgarian}, \emph{catalan},
+\emph{croatian}, \emph{czech}, \emph{danish}, \emph{dutch}, \emph{english}, \emph{estonian},
+\emph{finnish}, \emph{french}, \emph{galician}, \emph{german}, \emph{greek}, \emph{hausa}, \emph{hebrew}, \emph{hindi}, \emph{hungarian},
+\emph{indonesian}, \emph{irish}, \emph{italian}, \emph{latvian}, \emph{marathi},
+\emph{norwegian}, \emph{persian}, \emph{polish}, \emph{portuguese}, \emph{romanian}, \emph{russian}, \emph{slovak}, \emph{slovenian},
+\emph{somalia}, \emph{spanish}, \emph{swahili}, \emph{swedish}, \emph{turkish}, \emph{yoruba}, \emph{zulu}}
+
+\item{\code{min_num_char}}{an integer specifying the minimum number of characters to keep. If the \emph{min_num_char} is greater than 1 then character strings with more than 1 characters will be returned}
+
+\item{\code{max_num_char}}{an integer specifying the maximum number of characters to keep. The \emph{max_num_char} should be less than or equal to \emph{Inf} (in this function the Inf value translates to a word-length of 1000000000)}
+
+\item{\code{stemmer}}{a character string specifying the stemming method. Available method is the \emph{porter2_stemmer}. See details for more information.}
+
+\item{\code{min_n_gram}}{an integer specifying the minimum number of n-grams. The minimum number of min_n_gram is 1.}
+
+\item{\code{max_n_gram}}{an integer specifying the maximum number of n-grams. The minimum number of max_n_gram is 1.}
+
+\item{\code{skip_n_gram}}{an integer specifying the number of skip-n-grams. The minimum number of skip_n_gram is 1. The skip_n_gram gives the (max.) n-grams using the \emph{skip_distance} parameter. If \emph{skip_n_gram} is greater than 1 then both \emph{min_n_gram} and \emph{max_n_gram} should be set to 1.}
+
+\item{\code{skip_distance}}{an integer specifying the skip distance between the words. The minimum value for the skip distance is 0, in which case simple n-grams will be returned.}
+
+\item{\code{n_gram_delimiter}}{a character string specifying the n-gram delimiter (applies to both n-gram and skip-n-gram cases)}
+
+\item{\code{print_every_rows}}{a numeric value greater than 1 specifying the print intervals. Frequent output in the R session can slow down the function in case of big files.}
+
+\item{\code{normalize}}{either NULL or one of 'l1' or 'l2' normalization.}
+
+\item{\code{tf_idf}}{either TRUE or FALSE. If TRUE then the term-frequency-inverse-document-frequency will be returned}
+
+\item{\code{threads}}{an integer specifying the number of cores to run in parallel}
+
+\item{\code{verbose}}{either TRUE or FALSE. If TRUE then information will be printed out}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-triplet_data"></a>}}
+\subsection{Method \code{triplet_data()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$triplet_data()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-global_term_weights"></a>}}
+\subsection{Method \code{global_term_weights()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$global_term_weights()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Term_Matrix_Adjust"></a>}}
+\subsection{Method \code{Term_Matrix_Adjust()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$Term_Matrix_Adjust(sparsity_thresh = 1)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{sparsity_thresh}}{a float number between 0.0 and 1.0 specifying the sparsity threshold in the \emph{Term_Matrix_Adjust} function}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-term_associations"></a>}}
+\subsection{Method \code{term_associations()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$term_associations(
+  Terms = NULL,
+  keep_terms = NULL,
+  verbose = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{Terms}}{a character vector specifying the character strings for which the associations will be calculated ( \emph{term_associations} function )}
+
+\item{\code{keep_terms}}{either NULL or a numeric value specifying the number of terms to keep ( both in \emph{term_associations} and \emph{most_frequent_terms} functions )}
+
+\item{\code{verbose}}{either TRUE or FALSE. If TRUE then information will be printed out}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-most_frequent_terms"></a>}}
+\subsection{Method \code{most_frequent_terms()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$most_frequent_terms(
+  keep_terms = NULL,
+  threads = 1,
+  verbose = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{keep_terms}}{either NULL or a numeric value specifying the number of terms to keep ( both in \emph{term_associations} and \emph{most_frequent_terms} functions )}
+
+\item{\code{threads}}{an integer specifying the number of cores to run in parallel}
+
+\item{\code{verbose}}{either TRUE or FALSE. If TRUE then information will be printed out}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

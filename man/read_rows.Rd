@@ -4,8 +4,12 @@
 \alias{read_rows}
 \title{read a specific number of rows from a text file}
 \usage{
-read_rows(input_file = NULL, read_delimiter = "\\n", rows = 100,
-  write_2file = "")
+read_rows(
+  input_file = NULL,
+  read_delimiter = "\\n",
+  rows = 100,
+  write_2file = ""
+)
 }
 \arguments{
 \item{input_file}{a character string specifying a valid path to a text file}

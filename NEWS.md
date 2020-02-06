@@ -1,4 +1,9 @@
 
+## textTinyR 1.1.4
+
+* I modified the *inner_cm()* function to return a correlation of 0.0 in case that the output is NA or +/- Inf
+
+
 ## textTinyR 1.1.3
 
 * Exception which applies to *tokenize_transform_text()* and *tokenize_transform_vec_docs()* functions on all Operating Systems (Linux, Macintosh, Windows) in case of parallelization ( OpenMP ) when I additionally write data to a folder or file ( 'path_2folder' or 'vocabulary_path_file' ). Both Rcpp functions of the 'tokenize_transform_text()' and 'tokenize_transform_vec_docs()' do have an OpenMP-critical-clause which ensures that data appended to a variable are protected ( only one thread at a time will enter the section ). See the code lines 258 and 312 of the 'export_all_funcs.cpp' file. However, this must not apply (parallelization) when the 'path_2folder' or the 'vocabulary_path_file' are not equal to "" (empty string). Due to the fact that writing to the file takes place internally I can not enclose the 'save' functions to an OpenMP-crtical-clause. Therefore, whenever I save to an output file set the number of threads to 1 and print out a warning so that the user knows that parallelization is disabled [ see issue : 'https://github.com/mlampros/textTinyR/issues/8' ]

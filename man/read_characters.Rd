@@ -4,8 +4,7 @@
 \alias{read_characters}
 \title{read a specific number of characters from a text file}
 \usage{
-read_characters(input_file = NULL, characters = 100,
-  write_2file = "")
+read_characters(input_file = NULL, characters = 100, write_2file = "")
 }
 \arguments{
 \item{input_file}{a character string specifying a valid path to a text file}

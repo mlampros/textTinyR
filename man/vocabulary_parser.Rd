@@ -4,17 +4,36 @@
 \alias{vocabulary_parser}
 \title{returns the vocabulary counts for small or medium ( xml and not only ) files}
 \usage{
-vocabulary_parser(input_path_file = NULL, start_query = NULL,
-  end_query = NULL, vocabulary_path_file = NULL, min_lines = 1,
-  trimmed_line = FALSE, to_lower = FALSE, to_upper = FALSE,
-  utf_locale = "", max_num_char = Inf, remove_char = "",
-  remove_punctuation_string = FALSE, remove_punctuation_vector = FALSE,
-  remove_numbers = FALSE, trim_token = FALSE, split_string = FALSE,
-  split_separator = " \\r\\n\\t.,;:()?!//", remove_stopwords = FALSE,
-  language = "english", min_num_char = 1, stemmer = NULL,
-  min_n_gram = 1, max_n_gram = 1, skip_n_gram = 1,
-  skip_distance = 0, n_gram_delimiter = " ", threads = 1,
-  verbose = FALSE)
+vocabulary_parser(
+  input_path_file = NULL,
+  start_query = NULL,
+  end_query = NULL,
+  vocabulary_path_file = NULL,
+  min_lines = 1,
+  trimmed_line = FALSE,
+  to_lower = FALSE,
+  to_upper = FALSE,
+  utf_locale = "",
+  max_num_char = Inf,
+  remove_char = "",
+  remove_punctuation_string = FALSE,
+  remove_punctuation_vector = FALSE,
+  remove_numbers = FALSE,
+  trim_token = FALSE,
+  split_string = FALSE,
+  split_separator = " \\r\\n\\t.,;:()?!//",
+  remove_stopwords = FALSE,
+  language = "english",
+  min_num_char = 1,
+  stemmer = NULL,
+  min_n_gram = 1,
+  max_n_gram = 1,
+  skip_n_gram = 1,
+  skip_distance = 0,
+  n_gram_delimiter = " ",
+  threads = 1,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{input_path_file}{a character string specifying a valid path to the input file}

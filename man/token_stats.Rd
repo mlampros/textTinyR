@@ -4,48 +4,14 @@
 \name{token_stats}
 \alias{token_stats}
 \title{token statistics}
-\format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 # utl <- token_stats$new(x_vec = NULL, path_2folder = NULL, path_2file = NULL,
 
 #                               file_delimiter = ' ', n_gram_delimiter = "_")
 }
-\arguments{
-\item{x_vec}{either NULL or a string character vector}
-
-\item{path_2folder}{either NULL or a valid path to a folder (each file in the folder should include words separated by a delimiter)}
-
-\item{path_2file}{either NULL or a valid path to a file}
-
-\item{file_delimiter}{either NULL or a character string specifying the file delimiter}
-
-\item{n_gram_delimiter}{either NULL or a character string specifying the n-gram delimiter. It is used in the \emph{collocation_words} function}
-
-\item{subset}{either NULL or a vector specifying the subset of data to keep (number of rows of the \emph{print_frequency} function)}
-
-\item{number}{a numeric value for the \emph{print_count_character} function. All words with number of characters equal to the \emph{number} parameter will be returned.}
-
-\item{word}{a character string for the \emph{print_collocations} and \emph{print_prob_next} functions}
-
-\item{dice_n_gram}{a numeric value specifying the n-gram for the dice method of the \emph{string_dissimilarity_matrix} function}
-
-\item{method}{a character string specifying the method to use in the \emph{string_dissimilarity_matrix} function. One of \emph{dice}, \emph{levenshtein} or \emph{cosine}.}
-
-\item{split_separator}{a character string specifying the string split separator if method equal \emph{cosine} in the \emph{string_dissimilarity_matrix} function. The \emph{cosine} method uses sentences, so for a sentence : "this_is_a_word_sentence" the \emph{split_separator} should be "_"}
-
-\item{dice_thresh}{a float number to use to threshold the data if method is \emph{dice} in the \emph{string_dissimilarity_matrix} function. It takes values between 0.0 and 1.0. The closer the thresh is to 0.0 the more values of the dissimilarity matrix will take the value of 1.0.}
-
-\item{upper}{either TRUE or FALSE. If TRUE then both lower and upper parts of the dissimilarity matrix of the \emph{string_dissimilarity_matrix} function will be shown. Otherwise the upper part will be filled with NA's}
-
-\item{diagonal}{either TRUE or FALSE. If TRUE then the diagonal of the dissimilarity matrix of the \emph{string_dissimilarity_matrix} function will be shown. Otherwise the diagonal will be filled with NA's}
-
-\item{threads}{a numeric value specifying the number of cores to use in parallel in the \emph{string_dissimilarity_matrix} function}
-
-\item{n_grams}{a numeric value specifying the n-grams in the \emph{look_up_table} function}
-
-\item{n_gram}{a character string specifying the n-gram to use in the \emph{print_words_lookup_tbl} function}
-}
 \description{
+token statistics
+
 token statistics
 }
 \details{
@@ -160,4 +126,208 @@ lut <- tk$look_up_table(n_grams = 3)
 
 # tk$print_words_lookup_tbl(n_gram = 'e_w')
 }
-\keyword{datasets}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{token_stats$new()}}
+\item \href{#method-path_2vector}{\code{token_stats$path_2vector()}}
+\item \href{#method-freq_distribution}{\code{token_stats$freq_distribution()}}
+\item \href{#method-print_frequency}{\code{token_stats$print_frequency()}}
+\item \href{#method-count_character}{\code{token_stats$count_character()}}
+\item \href{#method-print_count_character}{\code{token_stats$print_count_character()}}
+\item \href{#method-collocation_words}{\code{token_stats$collocation_words()}}
+\item \href{#method-print_collocations}{\code{token_stats$print_collocations()}}
+\item \href{#method-string_dissimilarity_matrix}{\code{token_stats$string_dissimilarity_matrix()}}
+\item \href{#method-look_up_table}{\code{token_stats$look_up_table()}}
+\item \href{#method-print_words_lookup_tbl}{\code{token_stats$print_words_lookup_tbl()}}
+\item \href{#method-clone}{\code{token_stats$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$new(
+  x_vec = NULL,
+  path_2folder = NULL,
+  path_2file = NULL,
+  file_delimiter = "\\n",
+  n_gram_delimiter = "_"
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{x_vec}}{either NULL or a string character vector}
+
+\item{\code{path_2folder}}{either NULL or a valid path to a folder (each file in the folder should include words separated by a delimiter)}
+
+\item{\code{path_2file}}{either NULL or a valid path to a file}
+
+\item{\code{file_delimiter}}{either NULL or a character string specifying the file delimiter}
+
+\item{\code{n_gram_delimiter}}{either NULL or a character string specifying the n-gram delimiter. It is used in the \emph{collocation_words} function}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-path_2vector"></a>}}
+\subsection{Method \code{path_2vector()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$path_2vector()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-freq_distribution"></a>}}
+\subsection{Method \code{freq_distribution()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$freq_distribution()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-print_frequency"></a>}}
+\subsection{Method \code{print_frequency()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$print_frequency(subset = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{subset}}{either NULL or a vector specifying the subset of data to keep (number of rows of the \emph{print_frequency} function)}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-count_character"></a>}}
+\subsection{Method \code{count_character()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$count_character()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-print_count_character"></a>}}
+\subsection{Method \code{print_count_character()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$print_count_character(number = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{number}}{a numeric value for the \emph{print_count_character} function. All words with number of characters equal to the \emph{number} parameter will be returned.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-collocation_words"></a>}}
+\subsection{Method \code{collocation_words()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$collocation_words()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-print_collocations"></a>}}
+\subsection{Method \code{print_collocations()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$print_collocations(word = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{word}}{a character string for the \emph{print_collocations} and \emph{print_prob_next} functions}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-string_dissimilarity_matrix"></a>}}
+\subsection{Method \code{string_dissimilarity_matrix()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$string_dissimilarity_matrix(
+  dice_n_gram = 2,
+  method = "dice",
+  split_separator = " ",
+  dice_thresh = 1,
+  upper = TRUE,
+  diagonal = TRUE,
+  threads = 1
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{dice_n_gram}}{a numeric value specifying the n-gram for the dice method of the \emph{string_dissimilarity_matrix} function}
+
+\item{\code{method}}{a character string specifying the method to use in the \emph{string_dissimilarity_matrix} function. One of \emph{dice}, \emph{levenshtein} or \emph{cosine}.}
+
+\item{\code{split_separator}}{a character string specifying the string split separator if method equal \emph{cosine} in the \emph{string_dissimilarity_matrix} function. The \emph{cosine} method uses sentences, so for a sentence : "this_is_a_word_sentence" the \emph{split_separator} should be "_"}
+
+\item{\code{dice_thresh}}{a float number to use to threshold the data if method is \emph{dice} in the \emph{string_dissimilarity_matrix} function. It takes values between 0.0 and 1.0. The closer the thresh is to 0.0 the more values of the dissimilarity matrix will take the value of 1.0.}
+
+\item{\code{upper}}{either TRUE or FALSE. If TRUE then both lower and upper parts of the dissimilarity matrix of the \emph{string_dissimilarity_matrix} function will be shown. Otherwise the upper part will be filled with NA's}
+
+\item{\code{diagonal}}{either TRUE or FALSE. If TRUE then the diagonal of the dissimilarity matrix of the \emph{string_dissimilarity_matrix} function will be shown. Otherwise the diagonal will be filled with NA's}
+
+\item{\code{threads}}{a numeric value specifying the number of cores to use in parallel in the \emph{string_dissimilarity_matrix} function}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-look_up_table"></a>}}
+\subsection{Method \code{look_up_table()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$look_up_table(n_grams = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{n_grams}}{a numeric value specifying the n-grams in the \emph{look_up_table} function}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-print_words_lookup_tbl"></a>}}
+\subsection{Method \code{print_words_lookup_tbl()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$print_words_lookup_tbl(n_gram = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{n_gram}}{a character string specifying the n-gram to use in the \emph{print_words_lookup_tbl} function}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{token_stats$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

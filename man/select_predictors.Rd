@@ -4,9 +4,14 @@
 \alias{select_predictors}
 \title{Exclude highly correlated predictors}
 \usage{
-select_predictors(response_vector, predictors_matrix,
-  response_lower_thresh = 0.1, predictors_upper_thresh = 0.75,
-  threads = 1, verbose = FALSE)
+select_predictors(
+  response_vector,
+  predictors_matrix,
+  response_lower_thresh = 0.1,
+  predictors_upper_thresh = 0.75,
+  threads = 1,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{response_vector}{a numeric vector (the length should be equal to the rows of the \emph{predictors_matrix} parameter)}
@@ -31,7 +36,9 @@ Exclude highly correlated predictors
 The function works in the following way : The correlation of the predictors with the response is first calculated and the resulted correlations are sorted in decreasing order. Then iteratively predictors with correlation
 higher than the \emph{predictors_upper_thresh} value are removed by favoring those predictors which are more correlated with the response variable. If the \emph{response_lower_thresh} value is greater than 0.0 then only predictors 
 having a correlation higher than or equal to the \emph{response_lower_thresh} value will be kept, otherwise they will be excluded.
-This function returns the indices of the \emph{predictors} and is useful in case of multicollinearity.
+This function returns the indices of the \emph{predictors} and is useful in case of multicollinearity. 
+
+If during computation the correlation between the response variable and a potential predictor is equal to NA or +/- Inf, then a correlation of 0.0 will be assigned to this particular pair.
 }
 \examples{
 
