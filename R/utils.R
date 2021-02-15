@@ -163,22 +163,22 @@ tokenize_transform_text = function(object = NULL, batches = NULL, read_file_deli
   }
 
   # EXCEPTION for all Operating Systems (Linux, Macintosh, Windows) in case of parallelization ( OpenMP ) when I additionally write data to file ( 'path_2folder' or 'vocabulary_path_file' ).
-  # Both Rcpp functions of 'tokenize_transform_text()' and 'tokenize_transform_vec_docs()' do have an OpenMP-critical-clause which ensures that data appended to a variable are 
+  # Both Rcpp functions of 'tokenize_transform_text()' and 'tokenize_transform_vec_docs()' do have an OpenMP-critical-clause which ensures that data appended to a variable are
   # protected ( only one thread at a time will enter the section ). See the code lines 258 and 312 of the 'export_all_funcs.cpp' file. However, this must not apply (parallelization) when the
-  # 'path_2folder' or the 'vocabulary_path_file' are not equal to "" (empty string). Due to the fact that writing to the file takes place internally I can not enclose the 'save' functions to 
-  # an OpenMP-crtical-clause. Therefore, whenever I save to an output file set the number of threads to 1 and print out a warning so that the user knows that parallelization is disabled 
-  # [ the related issue : 'https://github.com/mlampros/textTinyR/issues/8' ]   
-  
+  # 'path_2folder' or the 'vocabulary_path_file' are not equal to "" (empty string). Due to the fact that writing to the file takes place internally I can not enclose the 'save' functions to
+  # an OpenMP-crtical-clause. Therefore, whenever I save to an output file set the number of threads to 1 and print out a warning so that the user knows that parallelization is disabled
+  # [ the related issue : 'https://github.com/mlampros/textTinyR/issues/8' ]
+
   if (path_2folder != "" || vocabulary_path_file != "") {
     threads = 1
     warning("Whenever the 'path_2folder' or/and 'vocabulary_path_file' parameter is a valid path to a folder/file then the 'threads' parameter will be set to 1 by default!", call. = F)
   }
-  
+
   # stop the function if the 'output_token_single_file.txt' file already exists because new data will be appended at the end of the file
   if (file.exists(file.path(path_2folder, 'output_token_single_file.txt'))) {
     stop("An 'output_token_single_file.txt' exists in your specified 'path_2folder'! New data will be appended at the end of the file increasing that way its size. Please remove the previous 'output_token_single_file.txt' before using this function.", call. = F)
   }
-  
+
   if (verbose) { start = Sys.time() }
 
   if (is.logical(remove_stopwords)) {
@@ -403,22 +403,22 @@ tokenize_transform_vec_docs = function(object = NULL, as_token = FALSE, to_lower
   }
 
   # EXCEPTION for all Operating Systems (Linux, Macintosh, Windows) in case of parallelization ( OpenMP ) when I additionally write data to file ( 'path_2folder' or 'vocabulary_path_file' ).
-  # Both Rcpp functions of 'tokenize_transform_text()' and 'tokenize_transform_vec_docs()' do have an OpenMP-critical-clause which ensures that data appended to a variable are 
+  # Both Rcpp functions of 'tokenize_transform_text()' and 'tokenize_transform_vec_docs()' do have an OpenMP-critical-clause which ensures that data appended to a variable are
   # protected ( only one thread at a time will enter the section ). See the code lines 258 and 312 of the 'export_all_funcs.cpp' file. However, this must not apply (parallelization) when the
-  # 'path_2folder' or the 'vocabulary_path_file' are not equal to "" (empty string). Due to the fact that writing to the file takes place internally I can not enclose the 'save' functions to 
-  # an OpenMP-crtical-clause. Therefore, whenever I save to an output file set the number of threads to 1 and print out a warning so that the user knows that parallelization is disabled 
-  # [ the related issue : 'https://github.com/mlampros/textTinyR/issues/8' ]   
-  
+  # 'path_2folder' or the 'vocabulary_path_file' are not equal to "" (empty string). Due to the fact that writing to the file takes place internally I can not enclose the 'save' functions to
+  # an OpenMP-crtical-clause. Therefore, whenever I save to an output file set the number of threads to 1 and print out a warning so that the user knows that parallelization is disabled
+  # [ the related issue : 'https://github.com/mlampros/textTinyR/issues/8' ]
+
   if (path_2folder != "" || vocabulary_path_file != "") {
     threads = 1
     warning("Whenever the 'path_2folder' or/and 'vocabulary_path_file' parameter is a valid path to a folder/file then the 'threads' parameter will be set to 1 by default!", call. = F)
   }
-  
+
   # stop the function if the 'output_token_single_file.txt' file already exists because new data will be appended at the end of the file
   if (file.exists(file.path(path_2folder, 'output_token_single_file.txt'))) {
     stop("An 'output_token_single_file.txt' exists in your specified 'path_2folder'! New data will be appended at the end of the file increasing that way its size. Please remove the previous 'output_token_single_file.txt' before using this function.", call. = F)
   }
-  
+
   if (verbose) { start = Sys.time() }
 
   if (is.logical(remove_stopwords)) {
@@ -1177,63 +1177,63 @@ bytes_converter = function(input_path_file = NULL, unit = "MB") {
 #' @details
 #' The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the \emph{start_query} and \emph{end_query} parameters ( the same applies in case of a vector of character strings)
 #' @export
-#' @examples 
-#' 
+#' @examples
+#'
 #' library(textTinyR)
-#' 
+#'
 #' # In case that the 'input_path_file' is a valid path
 #' #---------------------------------------------------
-#'  
+#'
 #' # fp = text_file_parser(input_path_file = '/folder/input_data.txt',
-#' 
+#'
 #' #                       output_path_file = '/folder/output_data.txt',
-#' 
+#'
 #' #                       start_query = 'word_a', end_query = 'word_w',
-#' 
+#'
 #' #                       min_lines = 1, trimmed_line = FALSE)
-#'                      
-#'                      
+#'
+#'
 #' # In case that the 'input_path_file' is a character vector of strings
 #' #--------------------------------------------------------------------
-#' 
+#'
 #' #  PATH_url = "https://FILE.xml"
-#'   
+#'
 #' #  con = url(PATH_url, method = "libcurl")
-#'   
+#'
 #' #  tmp_dat = read.delim(con, quote = "\"", comment.char = "", stringsAsFactors = FALSE)
-#'   
-#' #  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x) 
-#' 
+#'
+#' #  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x)
+#'
 #' #                    trimws(tmp_dat[x, 1], which = "both")))
-#'   
+#'
 #' #  parse_data = text_file_parser(input_path_file = vec_docs,
-#'   
+#'
 #' #                                start_query = c("<query1>", "<query2>", "<query3>"),
-#'   
-#' #                                end_query = c("</query1>", "</query2>", "</query3>"), 
-#'   
+#'
+#' #                                end_query = c("</query1>", "</query2>", "</query3>"),
+#'
 #' #                                min_lines = 1, trimmed_line = TRUE)
 
 
 text_file_parser = function(input_path_file = NULL, output_path_file = "", start_query = NULL, end_query = NULL, min_lines = 1, trimmed_line = FALSE, verbose = FALSE) {
 
   flag_valid_path = T
-  
+
   try_err_file_input = inherits(tryCatch(normalizePath(input_path_file, mustWork = T), error = function(e) e), "error")
-  
+
   if (try_err_file_input) {
-    
+
     if (!inherits(input_path_file, 'character')) {
-      
+
       stop("the input_path_file parameter is neither a non-null valid path to a file nor a vector of character strings")
     }
-    
+
     else {
-      
+
       flag_valid_path = F
     }
   }
-  
+
   if (!inherits(output_path_file, 'character')) stop("the output_path_file parameter should be a character string specifying a valid path to a file")
   if (!is.character(start_query)) stop("the start_query parameter should be a character string")
   if (!is.character(end_query)) stop("the end_query parameter should be a character string")
@@ -1242,23 +1242,23 @@ text_file_parser = function(input_path_file = NULL, output_path_file = "", start
   if (!is.logical(verbose)) stop("the verbose parameter should be either TRUE or FALSE")
 
   if (flag_valid_path) {
-    
+
     if (length(start_query) > 1 || length(end_query) > 1) stop("when the 'input_path_file' parameter is a valid path to a file then the length of 'start_query' or 'end_query' parameter should be 1")
-    
+
     tfp = file_parser(input_path_file, start_query, end_query, output_path_file, min_lines, trimmed_line, verbose)
-    
+
     return(structure(list(text_parser = paste0("the output-data is saved in : ", output_path_file)), class = "tokenization and transformation"))
   }
-  
+
   else {
-    
+
     if (length(start_query) != length(end_query)) stop("the length of the 'start_query' and 'end_query' parameters should match")
     if (output_path_file != "") warning("when the 'input_path_file' parameter is not a valid path to a file - but a character vector of strings - then the data will not be written to a file")
-    
+
     tfp = vec_parser(input_path_file, start_query, end_query, trimmed_line, verbose)
-    
+
     struct = structure(list(text_parser = tfp), class = "tokenization and transformation")
-    
+
     return(struct)
   }
 }
@@ -2067,9 +2067,9 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
                                         private$save_terms = as.vector(tmp_res$terms)
 
                                         if (sum(c("", " ") %in% private$save_terms) > 0) {
-                                          
+
                                           cat("\n")
-                                          
+
                                           warning("empty character strings present in the column names they will be replaced with proper characters", call. = F)
                                         }
 
@@ -2133,45 +2133,45 @@ sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
 
                                       return(lst)
                                     },
-                                    
-                                    
+
+
                                     #---------------------------------
                                     # returns the global-term-weights
                                     #---------------------------------
-                                    
+
                                     global_term_weights = function() {
-                                      
+
                                       if (!self$document_term_matrix) {
-                                        
+
                                         stop("the 'document_term_matrix' parameter should be set to TRUE because the global-term-weights are based on a document-term-matrix", call. = F)
                                       }
-                                      
+
                                       if (is.null(private$save_terms)) {
-                                        
+
                                         stop("before calling the 'global_term_weights' method you should run the 'Term_Matrix' method", call. = F)
                                       }
-                                      
+
                                       tmp_lst = idf_global_term_weights(private$save_sparse_mat, private$save_terms)
-                                      
+
                                       # remove duplicates which might be created due to 'make.names' function in the 'Term_Matrix' method
                                       # it is possible that these duplicates might have a different idf
                                       dupl_idx = Not_Duplicated(tmp_lst$terms)
-                                      
+
                                       if (all(dupl_idx)) {
-                                        
+
                                         return(tmp_lst)}
-                                      
+
                                       else {
-                                        
+
                                         tmp_terms = tmp_lst$terms[dupl_idx]
-                                        
+
                                         tmp_gtm = tmp_lst$Idf_global_term_weights[dupl_idx]
-                                        
+
                                         return(list(terms = tmp_terms, Idf_global_term_weights = tmp_gtm))
                                       }
                                     },
-                                    
-                                    
+
+
                                     #-----------------------------------------------------------------
                                     # subset the sparse matrix removing sparse terms using a threshold
                                     #-----------------------------------------------------------------
@@ -2688,15 +2688,15 @@ read_rows = function(input_file = NULL, read_delimiter = "\n", rows = 100, write
 #' dimensions = dims_of_word_vecs(input_file = PATH)
 
 dims_of_word_vecs = function(input_file = NULL, read_delimiter = '\n') {
-  
+
   try_err_file_input = inherits(tryCatch(normalizePath(input_file, mustWork = T), error = function(e) e), "error")
   if (try_err_file_input) stop("the input_file parameter should be a non-null valid path to a file", call. = F)
   if (!inherits(read_delimiter, 'character')) stop("the read_delimiter parameter should be a valid character string", call. = F)
-  
+
   out = read_ROWS_wv(input_file, read_delimiter)
-  
+
   out = strsplit(out, " ")[[1]][-1]
-  
+
   return(length(out))
 }
 
@@ -2741,7 +2741,7 @@ dims_of_word_vecs = function(input_file = NULL, read_delimiter = '\n') {
 
 
 TEXT_DOC_DISSIM = function(first_matr = NULL, second_matr = NULL, method = 'euclidean', batches = NULL, threads = 1, verbose = FALSE) {
-  
+
   if (!inherits(first_matr, "matrix")) { stop("the 'first_matr' parameter should be of type matrix", call. = F) }
   if (!inherits(second_matr, "matrix")) { stop("the 'second_matr' parameter should be of type matrix", call. = F) }
   if (nrow(first_matr) != nrow(second_matr)) { stop("Both 'first_matr' and 'second_matr' should have the same number of rows", call. = F) }
@@ -2755,37 +2755,37 @@ TEXT_DOC_DISSIM = function(first_matr = NULL, second_matr = NULL, method = 'eucl
   }
   if (!inherits(threads, "numeric")) { stop("the 'threads' parameter should be of type numeric", call. = F) }
   if (!inherits(verbose, "logical")) { stop("the 'verbose' parameter should be of type boolean", call. = F) }
-  
+
   if (is.null(batches)) {
-    
+
     if (verbose) { cat('\n'); cat('dissimilarity calculation starts ...', '\n') }
-    
+
     res = DIST(first_matr, second_matr, method, threads, eps = 1.0e-6)}
-  
+
   else {
-    
+
     if (verbose) { cat('\n'); cat('batch dissimilarity calculation starts ...', '\n'); cat('\n'); }
-    
+
     bts = batch_calculation(nrow(first_matr), batches = batches)
-    
+
     tmp_dist_ = list()
-    
+
     for (j in 1:length(bts)) {
-      
+
       if (verbose) { cat('batch ', j, '\n') }
-      
+
       expr = paste(bts[[j]][1], bts[[j]][2], sep = ':')
-      
+
       idx = eval(parse(text = expr))
-      
+
       dis_test = DIST(first_matr[idx, ], second_matr[idx, ], method, threads, eps = 1.0e-6)
-      
+
       tmp_dist_[[j]] = dis_test
     }
-    
+
     res = unlist(tmp_dist_)
   }
-  
+
   return(as.vector(res))
 }
 
@@ -2812,15 +2812,15 @@ TEXT_DOC_DISSIM = function(first_matr = NULL, second_matr = NULL, method = 'eucl
 #' out = COS_TEXT(text_vector1 = vec1, text_vector2 = vec2, separator = " ")
 
 COS_TEXT = function(text_vector1 = NULL, text_vector2 = NULL, threads = 1, separator = " ") {
-  
+
   if (!inherits(text_vector1, 'character')) { stop("the 'text_vector1' parameter should be of type character", call. = F) }
   if (!inherits(text_vector2, 'character')) { stop("the 'text_vector2' parameter should be of type character", call. = F) }
   if (length(text_vector1) != length(text_vector2)) { stop("Both 'text_vector1' and 'text_vector2' should be of same size", call. = F) }
   if (!inherits(threads, 'numeric')) { stop("the 'threads' parameter should be of type numeric", call. = F) }
   if (!inherits(separator, 'character')) { stop("the 'separator' parameter should be of type character", call. = F) }
-  
+
   res = COS(text_vector1, text_vector2, threads, separator)
-  
+
   return(as.vector(res))
 }
 
@@ -2847,7 +2847,7 @@ COS_TEXT = function(text_vector1 = NULL, text_vector2 = NULL, threads = 1, separ
 #' out = JACCARD_DICE(token_list1 = lst1, token_list2 = lst2, method = 'jaccard', threads = 1)
 
 JACCARD_DICE = function(token_list1 = NULL, token_list2 = NULL, method = 'jaccard', threads = 1) {
-  
+
   if (!inherits(token_list1, 'list')) { stop("the 'token_list1' parameter should be of type list", call. = F) }
   if (!inherits(token_list2, 'list')) { stop("the 'token_list2' parameter should be of type list", call. = F) }
   if (length(token_list1) != length(token_list2)) { stop("Both 'token_list1' and 'token_list2' should be of same size", call. = F) }
@@ -2856,9 +2856,9 @@ JACCARD_DICE = function(token_list1 = NULL, token_list2 = NULL, method = 'jaccar
     stop('valid "method" parameter is one of "jaccard" or "dice"', call. = F)
   }
   if (!inherits(threads, 'numeric')) { stop("the 'threads' parameter should be of type numeric", call. = F) }
-  
+
   out = jaccard_dice(token_list1, token_list2, method, threads)
-  
+
   return(as.vector(out))
 }
 
@@ -2878,22 +2878,22 @@ JACCARD_DICE = function(token_list1 = NULL, token_list2 = NULL, method = 'jaccar
 #' @return a matrix
 #' @export
 #' @details
-#' 
+#'
 #' the \emph{pre_processed_wv} method should be used after the initialization of the \emph{Doc2Vec} class, if the \emph{copy_data} parameter is set to TRUE, in order to inspect the pre-processed word-vectors.
-#' 
-#' The \emph{global_term_weights} method is part of the \emph{sparse_term_matrix} R6 class of the \emph{textTinyR package}. One can come to the correct \emph{global_term_weights} by using the 
-#' \emph{sparse_term_matrix} class and by setting the \emph{tf_idf} parameter to FALSE and the \emph{normalize} parameter to NULL. In \emph{Doc2Vec} class, if method equals to \emph{idf} then the \emph{global_term_weights} parameter should not be equal to NULL. 
+#'
+#' The \emph{global_term_weights} method is part of the \emph{sparse_term_matrix} R6 class of the \emph{textTinyR package}. One can come to the correct \emph{global_term_weights} by using the
+#' \emph{sparse_term_matrix} class and by setting the \emph{tf_idf} parameter to FALSE and the \emph{normalize} parameter to NULL. In \emph{Doc2Vec} class, if method equals to \emph{idf} then the \emph{global_term_weights} parameter should not be equal to NULL.
 #'
 #' Explanation of the various \emph{methods} :
-#' 
+#'
 #' \describe{
 #'  \item{sum_sqrt}{Assuming that a single sublist of the token list will be taken into consideration : the wordvectors of each word of the sublist of tokens will be accumulated to a vector equal to the length of the wordvector (INITIAL_WORD_VECTOR). Then a scalar will be computed using this INITIAL_WORD_VECTOR in the following way : the INITIAL_WORD_VECTOR will be raised to the power of 2.0, then the resulted wordvector will be summed and the square-root will be calculated. The INITIAL_WORD_VECTOR will be divided by the resulted scalar}
 #'  \item{min_max_norm}{Assuming that a single sublist of the token list will be taken into consideration : the wordvectors of each word of the sublist of tokens will be first \emph{min-max} normalized and then will be accumulated to a vector equal to the length of the initial wordvector}
 #'  \item{idf}{Assuming that a single sublist of the token list will be taken into consideration : the word-vector of each term in the sublist will be multiplied with the corresponding \emph{idf} of the \emph{global weights term}}
-#'  
+#'
 #'  There might be slight differences in the output data for each method depending on the input value of the \emph{copy_data} parameter (if it's either TRUE or FALSE).
 #' }
-#' 
+#'
 #' @docType class
 #' @importFrom R6 R6Class
 #' @section Methods:
@@ -2910,10 +2910,10 @@ JACCARD_DICE = function(token_list1 = NULL, token_list2 = NULL, method = 'jaccar
 #'  \item{\code{pre_processed_wv()}}{}
 #'  }
 #'
-#' @usage # utl <- Doc2Vec$new(token_list = NULL, word_vector_FILE = NULL, 
+#' @usage # utl <- Doc2Vec$new(token_list = NULL, word_vector_FILE = NULL,
 #'
 #'        #                    print_every_rows = 10000, verbose = FALSE,
-#'        
+#'
 #'        #                    copy_data = FALSE)
 #' @examples
 #'
@@ -2933,34 +2933,34 @@ JACCARD_DICE = function(token_list1 = NULL, token_list2 = NULL, method = 'jaccar
 #'
 #'
 #' init = Doc2Vec$new(token_list = tok_text, word_vector_FILE = PATH)
-#' 
+#'
 #'
 #' out = init$doc2vec_methods(method = "sum_sqrt")
 
 
 Doc2Vec <- R6::R6Class("documents_to_wordvectors",
-                       
+
                        lock_objects = FALSE,
-                       
+
                        public = list(
-                         
+
                          token_list = NULL,
-                         
+
                          word_vector_FILE = NULL,
-                         
+
                          print_every_rows = 50000,
-                         
+
                          verbose = FALSE,
-                         
+
                          copy_data = FALSE,
-                         
-                         
+
+
                          #===============
                          # initialization
                          #===============
-                         
+
                          initialize = function(token_list = NULL, word_vector_FILE = NULL, print_every_rows = 10000, verbose = FALSE, copy_data = FALSE) {
-                           
+
                            if (!inherits(token_list, 'list')) { stop("the 'token_list' parameter should be of type list", call. = F) }
                            if (!inherits(word_vector_FILE, 'character')) { stop("the 'word_vector_FILE' parameter should be a character string specifying a path to a file", call. = F) }
                            if (!file.exists(word_vector_FILE)) { stop("the 'word_vector_FILE' parameter should be a valid path to a file", call. = F) }
@@ -2969,66 +2969,66 @@ Doc2Vec <- R6::R6Class("documents_to_wordvectors",
                            if (verbose) {
                              if (!inherits(print_every_rows, c('numeric', 'integer'))) { stop("the 'print_every_rows' parameter should be of type numeric or integer", call. = F) }
                            }
-                           
+
                            #-----------------------
                            # define class-variables
                            #-----------------------
-                           
+
                            self$token_list = token_list
-                           
+
                            self$word_vector_FILE = word_vector_FILE
-                           
+
                            self$print_every_rows = print_every_rows
-                           
+
                            self$verbose = verbose
-                           
+
                            self$copy_data = copy_data
-                           
-                           
+
+
                            #----------------------------
                            # unique tokens of input list
                            #----------------------------
-                           
+
                            private$unq_tok = unique(unlist(self$token_list, recursive = F))
-                           
-                           
+
+
                            #-----------------------------------------------------------------------------------------
                            # calculate the word-vector dimensions [ by default the read_delimiter parameter is ' ' ,
                            #                                        the empty space]
                            #-----------------------------------------------------------------------------------------
-                           
+
                            tmp_wv_dims = read_ROWS_wv(self$word_vector_FILE, read_delimiter = '\n')
-                           
+
                            private$inp_wv_dims = length(strsplit(tmp_wv_dims, " ")[[1]][-1])
-                           
-                           
+
+
                            #-----------------------------------
                            # pre-process the input-word-vectors
                            #-----------------------------------
-                           
+
                            private$pre_proc = reduced_word_vectors(self$word_vector_FILE, private$unq_tok, private$inp_wv_dims, self$print_every_rows, self$verbose, self$copy_data)
-                           
-                           
+
+
                            #-------------------------------------------------------------------------------------------------------
                            # raise error if "private$pre_proc" is not valid   [ otherwise it can cause segfault due to Rcpp files ]
                            #-------------------------------------------------------------------------------------------------------
-                           
+
                            if (!self$copy_data) {
-                             
-                             if (length(private$pre_proc$terms_reduced_wordvecs) == 0) { 
-                               
+
+                             if (length(private$pre_proc$terms_reduced_wordvecs) == 0) {
+
                                cat("\n")
-                               stop("after pre-processing the word-vectors it appears that the terms-vector is an empty object", call. = F) }
+                               stop("after pre-processing the word-vectors it appears that the terms-vector is an empty object", call. = F) }            # this error appears because there is no "intersection" between the input "token_list" parameter and the first term of the word vectors  [ see the Rcpp function "pre_proc_wordvec()" which performs the intersection between the 2 vectors ]
                            }
                          },
-                         
-                         
+
+
                          #============================================
                          # returns word-vectors for one of the methods
                          #============================================
-                         
+
                          doc2vec_methods = function(method = "sum_sqrt", global_term_weights = NULL, threads = 1) {
-                           
+
                            if (!method %in% c('sum_sqrt', 'min_max_norm', 'idf')) { stop("valid methods are one of 'sum_sqrt', 'min_max_norm' or 'idf'", call. = F) }
                            if (method == "idf" && is.null(global_term_weights)) { stop("in case that the 'method' parameter is 'idf' then the 'global_term_weights' parameter should be a list", call. = F) }
                            if (method == "idf") {
@@ -3039,54 +3039,54 @@ Doc2Vec <- R6::R6Class("documents_to_wordvectors",
                              }
                            }
                            if (threads < 1) { stop("the 'threads' parameter should be greater than 1", call. = F) }
-                           
+
                            if (is.null(global_term_weights)) {                # in case that method is not 'idf' then create two empty vectors to pass to the 'word_vectors_methods' function
-                             
+
                              gtw_terms = character(0)
-                             
+
                              gtw_weights = numeric(0)}
-                           
+
                            else {
-                             
+
                              gtw_terms = global_term_weights$terms
-                             
+
                              gtw_weights = global_term_weights$Idf_global_term_weights
                            }
 
                            dat_wv = word_vectors_methods(private$pre_proc, self$token_list, self$word_vector_FILE, method, private$unq_tok, private$inp_wv_dims,
-                                                         
+
                                                          gtw_terms, gtw_weights, self$print_every_rows, self$verbose, threads, self$copy_data)
-                           
+
                            return(dat_wv)
                          },
-                         
-                         
+
+
                          #================================================================================================
                          # return the pre-processed word-vectors in case that 'copy_data' = TRUE   [ to inspect the data ]
                          #================================================================================================
-                         
+
                          pre_processed_wv = function() {
-                           
+
                            if (self$copy_data) {
-                             
+
                              return(private$pre_proc)
                            }
-                           
+
                            else {
-                             
+
                              cat("\n")
                              cat("the 'pre_processed_wv()' method returns pre-processed data only if the 'copy_data' parameter is set to TRUE", "\n")
                            }
                          }
-                         
+
                        ),
-                       
+
                        private = list(
-                         
+
                          pre_proc = NULL,
-                         
+
                          unq_tok = NULL,
-                         
+
                          inp_wv_dims = NULL)
 )
 
@@ -3105,43 +3105,43 @@ Doc2Vec <- R6::R6Class("documents_to_wordvectors",
 #' @return a vector of column-indices
 #' @export
 #' @details
-#' 
+#'
 #' The function works in the following way : The correlation of the predictors with the response is first calculated and the resulted correlations are sorted in decreasing order. Then iteratively predictors with correlation
-#' higher than the \emph{predictors_upper_thresh} value are removed by favoring those predictors which are more correlated with the response variable. If the \emph{response_lower_thresh} value is greater than 0.0 then only predictors 
+#' higher than the \emph{predictors_upper_thresh} value are removed by favoring those predictors which are more correlated with the response variable. If the \emph{response_lower_thresh} value is greater than 0.0 then only predictors
 #' having a correlation higher than or equal to the \emph{response_lower_thresh} value will be kept, otherwise they will be excluded.
-#' This function returns the indices of the \emph{predictors} and is useful in case of multicollinearity. 
-#' 
+#' This function returns the indices of the \emph{predictors} and is useful in case of multicollinearity.
+#'
 #' If during computation the correlation between the response variable and a potential predictor is equal to NA or +/- Inf, then a correlation of 0.0 will be assigned to this particular pair.
-#' 
+#'
 #' @examples
 #'
 #' library(textTinyR)
 #'
 #' set.seed(1)
 #' resp = runif(100)
-#' 
+#'
 #' set.seed(2)
 #' col = runif(100)
-#' 
+#'
 #' matr = matrix(c(col, col^4, col^6, col^8, col^10), nrow = 100, ncol = 5)
-#' 
+#'
 #' out = select_predictors(resp, matr, predictors_upper_thresh = 0.75)
 
 select_predictors = function(response_vector, predictors_matrix, response_lower_thresh = 0.1, predictors_upper_thresh = 0.75, threads = 1, verbose = FALSE) {
-  
+
   START = Sys.time()
-  
+
   if (!inherits(response_vector, c('numeric', 'integer'))) { stop("the 'response_vector' parameter should be a numeric vector", call. = F) }
   if (!inherits(predictors_matrix, 'matrix')) { stop("the 'predictors_matrix' parameter should be a matrix", call. = F) }
   if (!inherits(threads, 'numeric')) { stop("the 'threads' parameter should be of type numeric", call. = F) }
   if (!inherits(verbose, 'logical')) { stop("the 'verbose' parameter should be of type boolean", call. = F) }
-  
+
   out = reduce_dims_with_correlation(predictors_matrix, response_vector, response_lower_thresh, predictors_upper_thresh, threads)
-  
+
   END = Sys.time()
-  
+
   if (verbose) { print(END - START) }
-  
+
   return(as.vector(out))
 }
 
@@ -3199,56 +3199,56 @@ select_predictors = function(response_vector, predictors_matrix, response_lower_
 #' init$ratio_intersect(distinct = FALSE, letters = TRUE)
 
 text_intersect <- R6::R6Class("text_intersect",
-                              
+
                               public = list(
-                                
+
                                 token_list1 = NULL,
-                                
+
                                 token_list2 = NULL,
-                                
-                                
+
+
                                 #----------------
                                 # initialization
                                 #----------------
-                                
+
                                 initialize = function(token_list1 = NULL, token_list2 = NULL) {
-                                  
+
                                   self$token_list1 <- token_list1
-                                  
+
                                   self$token_list2 <- token_list2
-                                  
+
                                   if (!inherits(self$token_list1, 'list')) stop("the 'token_list1' parameter should be of type list", call. = F)
                                   if (!inherits(self$token_list2, 'list')) stop("the 'token_list2' parameter should be of type list", call. = F)
                                   if (length(self$token_list1) != length(self$token_list2)) { stop("Both 'token_list1' and 'token_list2' should be of same size", call. = F) }
                                 },
-                                
-                                
+
+
                                 #--------------------------------------------------
                                 # intersection (count) of words or letters in lists
                                 #--------------------------------------------------
-                                
+
                                 count_intersect = function(distinct = FALSE, letters = FALSE) {
-                                  
+
                                   if (!inherits(distinct, 'logical')) stop("the 'distinct' parameter should be of type boolean", call. = F)
                                   if (!inherits(letters, 'logical')) stop("the 'letters' parameter should be of type boolean", call. = F)
-                                  
+
                                   cnt_res = COUNTS_INTERSECT(self$token_list1, self$token_list2, distinct, letters)
-                                  
+
                                   return(as.vector(cnt_res))
                                 },
-                                
-                                
+
+
                                 #--------------------------------------------------
                                 # intersection (ratio) of words or letters in lists
                                 #--------------------------------------------------
-                                
+
                                 ratio_intersect = function(distinct = FALSE, letters = FALSE) {
-                                  
+
                                   if (!inherits(distinct, 'logical')) stop("the 'distinct' parameter should be of type boolean", call. = F)
                                   if (!inherits(letters, 'logical')) stop("the 'letters' parameter should be of type boolean", call. = F)
-                                  
+
                                   rt_res = RATIO_DISTINCT(self$token_list1, self$token_list2, distinct, letters)
-                                  
+
                                   return(as.vector(rt_res))
                                 }
                               )
@@ -3267,19 +3267,19 @@ text_intersect <- R6::R6Class("text_intersect",
 #' @examples
 #'
 #' library(textTinyR)
-#' 
+#'
 #' PATH = system.file("example_files", "word_vecs.txt", package = "textTinyR")
 #'
 #' num_rows = Count_Rows(PATH)
 
 Count_Rows = function(PATH, verbose = FALSE) {
-  
+
   try_err_file_input = inherits(tryCatch(normalizePath(PATH, mustWork = T), error = function(e) e), "error")
   if (try_err_file_input) stop("the 'PATH' parameter should be a non-null valid path to a file", call. = F)
   if (!inherits(verbose, 'logical')) { stop("the 'verbose' parameter should be of type boolean", call. = F) }
-  
+
   tmp_rows = count_rows(PATH, verbose)
-  
+
   return(tmp_rows)
 }
 
@@ -3298,29 +3298,29 @@ Count_Rows = function(PATH, verbose = FALSE) {
 #' @examples
 #'
 #' library(textTinyR)
-#' 
+#'
 #' tok_lst = list(c('the', 'the', 'tokens', 'of', 'first', 'document'),
 #'                c('the', 'tokens', 'of', 'of', 'second', 'document'),
 #'                c('the', 'tokens', 'of', 'third', 'third', 'document'))
-#' 
+#'
 #' vec_clust = rep(1:6, 3)
-#' 
+#'
 #' res = cluster_frequency(tok_lst, vec_clust)
 
 cluster_frequency = function(tokenized_list_text, cluster_vector, verbose = FALSE) {
-  
+
   if (!inherits(verbose, 'logical')) { stop("the 'verbose' parameter should be of type boolean", call. = F) }
-  
+
   START = Sys.time()
-  
+
   assign_clust = append_data(tokenized_list_text, cluster_vector)
-  
+
   res_clust = lapply(assign_clust, function(i) data.table::data.table(WORDS = i$words, COUNTS = as.vector(i$counts)))
-  
+
   END = Sys.time()
-  
+
   if (verbose) { print(END - START) }
-  
+
   return(res_clust)
 }
 
