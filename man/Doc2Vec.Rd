@@ -5,10 +5,10 @@
 \alias{Doc2Vec}
 \title{Conversion of text documents to word-vector-representation features ( Doc2Vec )}
 \usage{
-# utl <- Doc2Vec$new(token_list = NULL, word_vector_FILE = NULL, 
+# utl <- Doc2Vec$new(token_list = NULL, word_vector_FILE = NULL,
 
        #                    print_every_rows = 10000, verbose = FALSE,
-       
+
        #                    copy_data = FALSE)
 }
 \value{
@@ -22,8 +22,8 @@ Conversion of text documents to word-vector-representation features ( Doc2Vec )
 \details{
 the \emph{pre_processed_wv} method should be used after the initialization of the \emph{Doc2Vec} class, if the \emph{copy_data} parameter is set to TRUE, in order to inspect the pre-processed word-vectors.
 
-The \emph{global_term_weights} method is part of the \emph{sparse_term_matrix} R6 class of the \emph{textTinyR package}. One can come to the correct \emph{global_term_weights} by using the 
-\emph{sparse_term_matrix} class and by setting the \emph{tf_idf} parameter to FALSE and the \emph{normalize} parameter to NULL. In \emph{Doc2Vec} class, if method equals to \emph{idf} then the \emph{global_term_weights} parameter should not be equal to NULL. 
+The \emph{global_term_weights} method is part of the \emph{sparse_term_matrix} R6 class of the \emph{textTinyR package}. One can come to the correct \emph{global_term_weights} by using the
+\emph{sparse_term_matrix} class and by setting the \emph{tf_idf} parameter to FALSE and the \emph{normalize} parameter to NULL. In \emph{Doc2Vec} class, if method equals to \emph{idf} then the \emph{global_term_weights} parameter should not be equal to NULL.
 
 Explanation of the various \emph{methods} :
 
@@ -31,7 +31,7 @@ Explanation of the various \emph{methods} :
  \item{sum_sqrt}{Assuming that a single sublist of the token list will be taken into consideration : the wordvectors of each word of the sublist of tokens will be accumulated to a vector equal to the length of the wordvector (INITIAL_WORD_VECTOR). Then a scalar will be computed using this INITIAL_WORD_VECTOR in the following way : the INITIAL_WORD_VECTOR will be raised to the power of 2.0, then the resulted wordvector will be summed and the square-root will be calculated. The INITIAL_WORD_VECTOR will be divided by the resulted scalar}
  \item{min_max_norm}{Assuming that a single sublist of the token list will be taken into consideration : the wordvectors of each word of the sublist of tokens will be first \emph{min-max} normalized and then will be accumulated to a vector equal to the length of the initial wordvector}
  \item{idf}{Assuming that a single sublist of the token list will be taken into consideration : the word-vector of each term in the sublist will be multiplied with the corresponding \emph{idf} of the \emph{global weights term}}
- 
+
  There might be slight differences in the output data for each method depending on the input value of the \emph{copy_data} parameter (if it's either TRUE or FALSE).
 }
 }
@@ -84,6 +84,7 @@ out = init$doc2vec_methods(method = "sum_sqrt")
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$new(
@@ -113,6 +114,7 @@ out = init$doc2vec_methods(method = "sum_sqrt")
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-doc2vec_methods"></a>}}
+\if{latex}{\out{\hypertarget{method-doc2vec_methods}{}}}
 \subsection{Method \code{doc2vec_methods()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$doc2vec_methods(
@@ -136,6 +138,7 @@ out = init$doc2vec_methods(method = "sum_sqrt")
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-pre_processed_wv"></a>}}
+\if{latex}{\out{\hypertarget{method-pre_processed_wv}{}}}
 \subsection{Method \code{pre_processed_wv()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$pre_processed_wv()}\if{html}{\out{</div>}}
@@ -144,6 +147,7 @@ out = init$doc2vec_methods(method = "sum_sqrt")
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

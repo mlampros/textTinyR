@@ -123,6 +123,7 @@ library(textTinyR)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$new(verbose = FALSE)}\if{html}{\out{</div>}}
@@ -138,6 +139,7 @@ library(textTinyR)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-big_text_splitter"></a>}}
+\if{latex}{\out{\hypertarget{method-big_text_splitter}{}}}
 \subsection{Method \code{big_text_splitter()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$big_text_splitter(
@@ -167,6 +169,7 @@ library(textTinyR)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-big_text_parser"></a>}}
+\if{latex}{\out{\hypertarget{method-big_text_parser}{}}}
 \subsection{Method \code{big_text_parser()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$big_text_parser(
@@ -199,6 +202,7 @@ library(textTinyR)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-big_text_tokenizer"></a>}}
+\if{latex}{\out{\hypertarget{method-big_text_tokenizer}{}}}
 \subsection{Method \code{big_text_tokenizer()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$big_text_tokenizer(
@@ -318,6 +322,7 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vocabulary_accumulator"></a>}}
+\if{latex}{\out{\hypertarget{method-vocabulary_accumulator}{}}}
 \subsection{Method \code{vocabulary_accumulator()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$vocabulary_accumulator(
@@ -341,6 +346,7 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

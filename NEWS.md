@@ -2,6 +2,7 @@
 ## textTinyR 1.1.4
 
 * I modified the *inner_cm()* function to return a correlation of 0.0 in case that the output is NA or +/- Inf
+* I've added the *CITATION* file in the *inst* directory
 
 
 ## textTinyR 1.1.3

@@ -2,9 +2,8 @@ Package: textTinyR
 Type: Package
 Title: Text Processing for Small or Big Data Files
 Version: 1.1.4
-Date: 2020-02-06
-Author: Lampros Mouselimis <mouselimislampros@gmail.com>
-Maintainer: Lampros Mouselimis <mouselimislampros@gmail.com>
+Date: 2021-05-05
+Authors@R: c( person(given = "Lampros", family = "Mouselimis", email = "mouselimislampros@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "https://orcid.org/0000-0002-8024-1546")))
 BugReports: https://github.com/mlampros/textTinyR/issues
 URL: https://github.com/mlampros/textTinyR
 Description: It offers functions for splitting, parsing, tokenizing and creating a vocabulary for big text data files. Moreover, it includes functions for building a document-term matrix and extracting information from those (term-associations, most frequent terms). It also embodies functions for calculating token statistics (collocations, look-up tables, string dissimilarities) and functions to work with sparse matrices. Lastly, it includes functions for Word Vector Representations (i.e. 'GloVe', 'fasttext') and incorporates functions for the calculation of (pairwise) text document dissimilarities. The source code is based on 'C++11' and exported in R through the 'Rcpp', 'RcppArmadillo' and 'BH' packages.
@@ -12,12 +11,11 @@ License: GPL-3
 Copyright: inst/COPYRIGHTS
 SystemRequirements: libarmadillo: apt-get install -y libarmadillo-dev (deb)
 Encoding: UTF-8
-LazyData: TRUE
 Depends: R(>= 3.2.3), Matrix
 Imports: Rcpp (>= 0.12.10), R6, data.table, utils
 LinkingTo: Rcpp, RcppArmadillo (>= 0.7.8), BH
 Suggests: testthat, covr, knitr, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 NeedsCompilation: yes
 Packaged: 2017-04-01 13:56:22 UTC; lampros

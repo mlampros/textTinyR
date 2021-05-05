@@ -123,7 +123,7 @@ It is memory efficient to give a \emph{path_2folder} in case that a big file sho
 
 The \emph{skip-grams} are a generalization of n-grams in which the components (typically words) need not to be consecutive in the text under consideration, but may leave gaps that are skipped over. They provide one way of overcoming the \emph{data sparsity problem} found with conventional n-gram analysis.
 
-Many character string pre-processing functions (such as the \emph{utf-locale} or the \emph{split-string} function ) are based on the \emph{boost} library ( \url{http://www.boost.org/} ).
+Many character string pre-processing functions (such as the \emph{utf-locale} or the \emph{split-string} function ) are based on the \emph{boost} library ( \url{https://www.boost.org/} ).
 
 Stemming of the english language is done using the porter2-stemmer, for details see \url{https://github.com/smassung/porter2_stemmer}
 

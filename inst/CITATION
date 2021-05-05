@@ -1,0 +1,30 @@
+citHeader("Please cite the package and the original software in your publications:")
+
+year <- sub("-.*", "", meta$Date)
+note <- sprintf("R package version %s", meta$Version)
+
+bibentry(
+  bibtype = "Manual",
+  title   = "{textTinyR}: Text Processing for Small or Big Data Files",
+  author  = person("Lampros", "Mouselimis"),
+  year    = year,
+  note    = note,
+  url     = "https://CRAN.R-project.org/package=textTinyR"
+)
+
+bibentry(
+  bibtype = "Manual",
+  title   = "{porter2_stemmer}: C++ version of the Porter2 English stemmer",
+  author  = person("Sean", "Massung"),
+  year    = "2012",
+  note    = "porter to stemmer C++ header file",
+  url     = "https://github.com/smassung/porter2_stemmer"
+)
+
+bibentry(
+  bibtype = "Manual",
+  title   = "The English (Porter2) stemming algorithm",
+  author  = c(as.person("Martin Porter"), as.person("Richard Boulton")),
+  year    = "2001",
+  url     = "http://snowball.tartarus.org/algorithms/english/stemmer.html"
+)
