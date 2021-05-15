@@ -188,7 +188,7 @@
 
 <span class='co'># In case that the 'input_path_file' is a valid path</span>
 <span class='co'>#---------------------------------------------------</span>
- 
+
 <span class='co'># fp = text_file_parser(input_path_file = '/folder/input_data.txt',</span>
 
 <span class='co'>#                       output_path_file = '/folder/output_data.txt',</span>
@@ -196,27 +196,27 @@
 <span class='co'>#                       start_query = 'word_a', end_query = 'word_w',</span>
 
 <span class='co'>#                       min_lines = 1, trimmed_line = FALSE)</span>
-                     
-                     
+
+
 <span class='co'># In case that the 'input_path_file' is a character vector of strings</span>
 <span class='co'>#--------------------------------------------------------------------</span>
 
 <span class='co'>#  PATH_url = "https://FILE.xml"</span>
-  
+
 <span class='co'>#  con = url(PATH_url, method = "libcurl")</span>
-  
+
 <span class='co'>#  tmp_dat = read.delim(con, quote = "\"", comment.char = "", stringsAsFactors = FALSE)</span>
-  
-<span class='co'>#  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x) </span>
+
+<span class='co'>#  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x)</span>
 
 <span class='co'>#                    trimws(tmp_dat[x, 1], which = "both")))</span>
-  
+
 <span class='co'>#  parse_data = text_file_parser(input_path_file = vec_docs,</span>
-  
+
 <span class='co'>#                                start_query = c("&lt;query1&gt;", "&lt;query2&gt;", "&lt;query3&gt;"),</span>
-  
-<span class='co'>#                                end_query = c("&lt;/query1&gt;", "&lt;/query2&gt;", "&lt;/query3&gt;"), </span>
-  
+
+<span class='co'>#                                end_query = c("&lt;/query1&gt;", "&lt;/query2&gt;", "&lt;/query3&gt;"),</span>
+
 <span class='co'>#                                min_lines = 1, trimmed_line = TRUE)</span>
 </div></pre>
   </div>

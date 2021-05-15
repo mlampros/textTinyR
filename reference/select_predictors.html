@@ -179,7 +179,7 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The function works in the following way : The correlation of the predictors with the response is first calculated and the resulted correlations are sorted in decreasing order. Then iteratively predictors with correlation
-higher than the <em>predictors_upper_thresh</em> value are removed by favoring those predictors which are more correlated with the response variable. If the <em>response_lower_thresh</em> value is greater than 0.0 then only predictors 
+higher than the <em>predictors_upper_thresh</em> value are removed by favoring those predictors which are more correlated with the response variable. If the <em>response_lower_thresh</em> value is greater than 0.0 then only predictors
 having a correlation higher than or equal to the <em>response_lower_thresh</em> value will be kept, otherwise they will be excluded.
 This function returns the indices of the <em>predictors</em> and is useful in case of multicollinearity.</p>
 <p>If during computation the correlation between the response variable and a potential predictor is equal to NA or +/- Inf, then a correlation of 0.0 will be assigned to this particular pair.</p>

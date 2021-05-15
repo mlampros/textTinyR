@@ -137,10 +137,10 @@ Conversion of text documents to word-vector-representation features ( Doc2Vec )"
 <p>Conversion of text documents to word-vector-representation features ( Doc2Vec )</p>
     </div>
 
-    <pre class="usage"><span class='co'># utl &lt;- Doc2Vec$new(token_list = NULL, word_vector_FILE = NULL, </span>
+    <pre class="usage"><span class='co'># utl &lt;- Doc2Vec$new(token_list = NULL, word_vector_FILE = NULL,</span>
 
        <span class='co'>#                    print_every_rows = 10000, verbose = FALSE,</span>
-       
+
        <span class='co'>#                    copy_data = FALSE)</span></pre>
 
 
@@ -150,14 +150,14 @@ Conversion of text documents to word-vector-representation features ( Doc2Vec )"
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>the <em>pre_processed_wv</em> method should be used after the initialization of the <em>Doc2Vec</em> class, if the <em>copy_data</em> parameter is set to TRUE, in order to inspect the pre-processed word-vectors.</p>
-<p>The <em>global_term_weights</em> method is part of the <em>sparse_term_matrix</em> R6 class of the <em>textTinyR package</em>. One can come to the correct <em>global_term_weights</em> by using the 
+<p>The <em>global_term_weights</em> method is part of the <em>sparse_term_matrix</em> R6 class of the <em>textTinyR package</em>. One can come to the correct <em>global_term_weights</em> by using the
 <em>sparse_term_matrix</em> class and by setting the <em>tf_idf</em> parameter to FALSE and the <em>normalize</em> parameter to NULL. In <em>Doc2Vec</em> class, if method equals to <em>idf</em> then the <em>global_term_weights</em> parameter should not be equal to NULL.</p>
 <p>Explanation of the various <em>methods</em> :</p>
 <dl>
  <dt>sum_sqrt</dt><dd><p>Assuming that a single sublist of the token list will be taken into consideration : the wordvectors of each word of the sublist of tokens will be accumulated to a vector equal to the length of the wordvector (INITIAL_WORD_VECTOR). Then a scalar will be computed using this INITIAL_WORD_VECTOR in the following way : the INITIAL_WORD_VECTOR will be raised to the power of 2.0, then the resulted wordvector will be summed and the square-root will be calculated. The INITIAL_WORD_VECTOR will be divided by the resulted scalar</p></dd>
  <dt>min_max_norm</dt><dd><p>Assuming that a single sublist of the token list will be taken into consideration : the wordvectors of each word of the sublist of tokens will be first <em>min-max</em> normalized and then will be accumulated to a vector equal to the length of the initial wordvector</p></dd>
  <dt>idf</dt><dd><p>Assuming that a single sublist of the token list will be taken into consideration : the word-vector of each term in the sublist will be multiplied with the corresponding <em>idf</em> of the <em>global weights term</em></p></dd>
- 
+
  There might be slight differences in the output data for each method depending on the input value of the copy_data parameter (if it's either TRUE or FALSE).
 
 </dl>
