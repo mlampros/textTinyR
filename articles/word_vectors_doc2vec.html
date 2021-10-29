@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">textTinyR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
       <h1 data-toc-skip>Word vectors - doc2vec - text clustering</h1>
                         <h4 class="author">Lampros Mouselimis</h4>
             
-            <h4 class="date">2021-09-07</h4>
+            <h4 class="date">2021-10-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mlampros/textTinyR/blob/master/vignettes/word_vectors_doc2vec.Rmd"><code>vignettes/word_vectors_doc2vec.Rmd</code></a></small>
       <div class="hidden name"><code>word_vectors_doc2vec.Rmd</code></div>
@@ -274,7 +274,11 @@
 <span class="co"># </span>
 <span class="co"># str(res_wv)</span></code></pre></div>
 <p><br></p>
-<p>Then, I can use one of the three methods (<em>sum_sqrt</em>, <em>min_max_norm</em>, <em>idf</em>) to receive the transformed vectors. These methods are based on the following <em>blog-posts</em> (see especially <strong><span></span>www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur</strong> and <strong><span></span><a href="https://erogol.com/duplicate-question-detection-deep-learning/" class="uri">https://erogol.com/duplicate-question-detection-deep-learning/</a></strong> ),</p>
+<p>Then, I can use one of the three methods (<em>sum_sqrt</em>, <em>min_max_norm</em>, <em>idf</em>) to receive the transformed vectors. These methods are based on the following <em>blog-posts</em> , see especially:</p>
+<ul>
+<li><code>www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur</code></li>
+<li><code>https://erogol.com/duplicate-question-detection-deep-learning/</code></li>
+</ul>
 <p><br></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>doc2_sum =<span class="st"> </span>init<span class="op">$</span><span class="kw">doc2vec_methods</span>(<span class="dt">method =</span> <span class="st">"sum_sqrt"</span>, <span class="dt">threads =</span> <span class="dv">6</span>)</span>
 <span id="cb9-2"><a href="#cb9-2"></a>doc2_norm =<span class="st"> </span>init<span class="op">$</span><span class="kw">doc2vec_methods</span>(<span class="dt">method =</span> <span class="st">"min_max_norm"</span>, <span class="dt">threads =</span> <span class="dv">6</span>)</span>
@@ -426,8 +430,8 @@
 <p><em>References</em>:</p>
 <ul>
 <li><a href="https://miguelmalvarez.com/2015/03/20/classifying-reuters-21578-collection-with-python-representing-the-data/" class="uri">https://miguelmalvarez.com/2015/03/20/classifying-reuters-21578-collection-with-python-representing-the-data/</a></li>
-<li>www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur</li>
-<li><a href="https://erogol.com/duplicate-question-detection-deep-learning/" class="uri">https://erogol.com/duplicate-question-detection-deep-learning/</a></li>
+<li><code>www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur</code></li>
+<li><code>https://erogol.com/duplicate-question-detection-deep-learning/</code></li>
 <li><a href="https://www.tidytextmining.com/ngrams.html#visualizing-bigrams-in-other-texts" class="uri">https://www.tidytextmining.com/ngrams.html#visualizing-bigrams-in-other-texts</a></li>
 </ul>
 </div>
