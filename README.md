@@ -135,7 +135,7 @@ to access the Rstudio console in order to give your username and password.
 
 ### **Citation:**
 
-If you use the code of this repository in your paper or research please cite both **textTinyR** and the **original software** [https://cran.r-project.org/web/packages/textTinyR/citation.html](https://cran.r-project.org/web/packages/textTinyR/citation.html):
+If you use the code of this repository in your paper or research please cite both **textTinyR** and the **original software** [https://CRAN.R-project.org/package=textTinyR/citation.html](https://CRAN.R-project.org/package=textTinyR/citation.html):
 
 <br>
 
@@ -144,7 +144,7 @@ If you use the code of this repository in your paper or research please cite bot
   title = {{textTinyR}: Text Processing for Small or Big Data Files},
   author = {Lampros Mouselimis},
   year = {2021},
-  note = {R package version 1.1.4},
+  note = {R package version 1.1.7},
   url = {https://CRAN.R-project.org/package=textTinyR},
 }
 ```

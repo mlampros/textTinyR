@@ -1,4 +1,20 @@
 
+
+## textTinyR 1.1.7
+
+* I've included a function to omit a test for the Solaris OS during checking because I can not reproduce the error with the rhub solaris patched image
+
+
+## textTinyR 1.1.6
+
+* I've included a function to omit a test for the Solaris OS during checking
+
+
+## textTinyR 1.1.5
+
+* I modified the *functionality_of_textTinyR_package.Rmd* vignette in lines 732-746 based on a notification of the [knitr package maintainer](https://github.com/yihui/knitr/issues/2057). I mistakenly had 4 chunk delimiters rather than 3.
+
+
 ## textTinyR 1.1.4
 
 * I modified the *inner_cm()* function to return a correlation of 0.0 in case that the output is NA or +/- Inf

@@ -239,7 +239,11 @@ In case that *copy_data = TRUE* then the pre-processed data can be observed befo
 
 <br>
 
-Then, I can use one of the three methods (*sum_sqrt*, *min_max_norm*, *idf*) to receive the transformed vectors. These methods are based on the following *blog-posts* (see especially **<span></span>www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur** and **<span></span>https://erogol.com/duplicate-question-detection-deep-learning/** ), 
+Then, I can use one of the three methods (*sum_sqrt*, *min_max_norm*, *idf*) to receive the transformed vectors. These methods are based on the following *blog-posts* , see especially:
+
+
+* `www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur`
+* `https://erogol.com/duplicate-question-detection-deep-learning/`
 
 <br>
 
@@ -447,6 +451,6 @@ This is one of the ways that the transformed word-vectors can be used and is sol
 *References*:
 
 * https://miguelmalvarez.com/2015/03/20/classifying-reuters-21578-collection-with-python-representing-the-data/
-* www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur
-* https://erogol.com/duplicate-question-detection-deep-learning/
+* `www.linkedin.com/pulse/duplicate-quora-question-abhishek-thakur`
+* `https://erogol.com/duplicate-question-detection-deep-learning/`
 * https://www.tidytextmining.com/ngrams.html#visualizing-bigrams-in-other-texts

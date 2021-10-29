@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // Path_2vector
 std::vector<std::string> Path_2vector(std::string path_2folder, std::string path_2file);
 RcppExport SEXP _textTinyR_Path_2vector(SEXP path_2folderSEXP, SEXP path_2fileSEXP) {

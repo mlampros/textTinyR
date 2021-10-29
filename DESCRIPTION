@@ -1,8 +1,8 @@
 Package: textTinyR
 Type: Package
 Title: Text Processing for Small or Big Data Files
-Version: 1.1.4
-Date: 2021-05-05
+Version: 1.1.7
+Date: 2021-10-29
 Authors@R: c( person(given = "Lampros", family = "Mouselimis", email = "mouselimislampros@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "https://orcid.org/0000-0002-8024-1546")))
 BugReports: https://github.com/mlampros/textTinyR/issues
 URL: https://github.com/mlampros/textTinyR
@@ -16,6 +16,6 @@ Imports: Rcpp (>= 0.12.10), R6, data.table, utils
 LinkingTo: Rcpp, RcppArmadillo (>= 0.7.8), BH
 Suggests: testthat, covr, knitr, rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 NeedsCompilation: yes
 Packaged: 2017-04-01 13:56:22 UTC; lampros
