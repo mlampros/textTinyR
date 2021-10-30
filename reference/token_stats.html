@@ -368,56 +368,56 @@ token statistics" />
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mlampros/textTinyR'>textTinyR</a></span><span class='op'>)</span>
-
-<span class='va'>expl</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'one_word_token'</span>, <span class='st'>'two_words_token'</span>, <span class='st'>'three_words_token'</span>, <span class='st'>'four_words_token'</span><span class='op'>)</span>
-
-<span class='va'>tk</span> <span class='op'>&lt;-</span> <span class='va'>token_stats</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>x_vec <span class='op'>=</span> <span class='va'>expl</span>, path_2folder <span class='op'>=</span> <span class='cn'>NULL</span>, path_2file <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-
-<span class='co'>#-------------------------</span>
-<span class='co'># frequency distribution:</span>
-<span class='co'>#-------------------------</span>
-
-<span class='va'>tk</span><span class='op'>$</span><span class='fu'>freq_distribution</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># tk$print_frequency()</span>
-
-
-<span class='co'>#------------------</span>
-<span class='co'># count characters:</span>
-<span class='co'>#------------------</span>
-
-<span class='va'>cnt</span> <span class='op'>&lt;-</span> <span class='va'>tk</span><span class='op'>$</span><span class='fu'>count_character</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># tk$print_count_character(number = 4)</span>
-
-
-<span class='co'>#----------------------</span>
-<span class='co'># collocation of words:</span>
-<span class='co'>#----------------------</span>
-
-<span class='va'>col</span> <span class='op'>&lt;-</span> <span class='va'>tk</span><span class='op'>$</span><span class='fu'>collocation_words</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># tk$print_collocations(word = 'five')</span>
-
-
-<span class='co'>#-----------------------------</span>
-<span class='co'># string dissimilarity matrix:</span>
-<span class='co'>#-----------------------------</span>
-
-<span class='va'>dism</span> <span class='op'>&lt;-</span> <span class='va'>tk</span><span class='op'>$</span><span class='fu'>string_dissimilarity_matrix</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'levenshtein'</span><span class='op'>)</span>
-
-
-<span class='co'>#---------------------</span>
-<span class='co'># build a look-up-table:</span>
-<span class='co'>#---------------------</span>
-
-<span class='va'>lut</span> <span class='op'>&lt;-</span> <span class='va'>tk</span><span class='op'>$</span><span class='fu'>look_up_table</span><span class='op'>(</span>n_grams <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-
-<span class='co'># tk$print_words_lookup_tbl(n_gram = 'e_w')</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mlampros/textTinyR'>textTinyR</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>expl</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'one_word_token'</span>, <span class='st'>'two_words_token'</span>, <span class='st'>'three_words_token'</span>, <span class='st'>'four_words_token'</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>tk</span> <span class='op'>&lt;-</span> <span class='va'>token_stats</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>x_vec <span class='op'>=</span> <span class='va'>expl</span>, path_2folder <span class='op'>=</span> <span class='cn'>NULL</span>, path_2file <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#-------------------------</span></span>
+<span class='r-in'><span class='co'># frequency distribution:</span></span>
+<span class='r-in'><span class='co'>#-------------------------</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>tk</span><span class='op'>$</span><span class='fu'>freq_distribution</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># tk$print_frequency()</span></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#------------------</span></span>
+<span class='r-in'><span class='co'># count characters:</span></span>
+<span class='r-in'><span class='co'>#------------------</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>cnt</span> <span class='op'>&lt;-</span> <span class='va'>tk</span><span class='op'>$</span><span class='fu'>count_character</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># tk$print_count_character(number = 4)</span></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#----------------------</span></span>
+<span class='r-in'><span class='co'># collocation of words:</span></span>
+<span class='r-in'><span class='co'>#----------------------</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>col</span> <span class='op'>&lt;-</span> <span class='va'>tk</span><span class='op'>$</span><span class='fu'>collocation_words</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># tk$print_collocations(word = 'five')</span></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#-----------------------------</span></span>
+<span class='r-in'><span class='co'># string dissimilarity matrix:</span></span>
+<span class='r-in'><span class='co'>#-----------------------------</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>dism</span> <span class='op'>&lt;-</span> <span class='va'>tk</span><span class='op'>$</span><span class='fu'>string_dissimilarity_matrix</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'levenshtein'</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#---------------------</span></span>
+<span class='r-in'><span class='co'># build a look-up-table:</span></span>
+<span class='r-in'><span class='co'>#---------------------</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>lut</span> <span class='op'>&lt;-</span> <span class='va'>tk</span><span class='op'>$</span><span class='fu'>look_up_table</span><span class='op'>(</span>n_grams <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># tk$print_words_lookup_tbl(n_gram = 'e_w')</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
