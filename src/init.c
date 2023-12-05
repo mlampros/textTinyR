@@ -8,69 +8,69 @@
 */
 
 /* .Call calls */
-extern SEXP _textTinyR_Adj_Sparsity(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_append_data(SEXP, SEXP);
-extern SEXP _textTinyR_Associations_Cpp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_batch_2file(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_batch_calculation(SEXP, SEXP);
-extern SEXP _textTinyR_big_parser(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_big_splitter_bytes(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_big_tokenize(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_Collocations_ngrams(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_convert_bytes(SEXP, SEXP);
-extern SEXP _textTinyR_COR_MATR(SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_COS(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_cosine_dist(SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_Cosine_dist(SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_Count_characters(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_count_rows(SEXP, SEXP);
-extern SEXP _textTinyR_COUNTS_INTERSECT(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_dense_2sparse_mat(SEXP);
-extern SEXP _textTinyR_DICE(SEXP, SEXP);
-extern SEXP _textTinyR_Dice_similarity(SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_Dissimilarity_mat(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_DIST(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_DISTINCT_WORD_INTERSECT(SEXP, SEXP);
-extern SEXP _textTinyR_file_parser(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_Frequency_distribution(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_idf_global_term_weights(SEXP, SEXP);
-extern SEXP _textTinyR_inner_cm(SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_inner_jd(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_inner_reduce_dims(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_INTERSECT(SEXP, SEXP);
-extern SEXP _textTinyR_JACCARD(SEXP, SEXP);
-extern SEXP _textTinyR_jaccard_dice(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_keep_idxs(SEXP, SEXP);
-extern SEXP _textTinyR_Levenshtein_dist(SEXP, SEXP);
-extern SEXP _textTinyR_load_sparse_(SEXP);
-extern SEXP _textTinyR_Look_up_tbl(SEXP, SEXP);
-extern SEXP _textTinyR_modulus(SEXP, SEXP);
-extern SEXP _textTinyR_Most_Freq_Terms(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_Not_Duplicated(SEXP);
-extern SEXP _textTinyR_NUM_LETTERS_DISTINCT(SEXP);
-extern SEXP _textTinyR_Path_2vector(SEXP, SEXP);
-extern SEXP _textTinyR_RATIO_DISTINCT(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_read_CHARS(SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_read_ROWS(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_read_ROWS_wv(SEXP, SEXP);
-extern SEXP _textTinyR_reduce_dims_with_correlation(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_reduced_word_vectors(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_res_term_matrix(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_res_token(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_res_token_list(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_res_token_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_save_sparse_(SEXP, SEXP);
-extern SEXP _textTinyR_sparsity_float(SEXP);
-extern SEXP _textTinyR_sp_means(SEXP, SEXP);
-extern SEXP _textTinyR_sp_sums(SEXP, SEXP);
-extern SEXP _textTinyR_sublist(SEXP, SEXP);
-extern SEXP _textTinyR_tf_idf_exclude(SEXP, SEXP);
-extern SEXP _textTinyR_UNION(SEXP, SEXP);
-extern SEXP _textTinyR_UNIQUE(SEXP);
-extern SEXP _textTinyR_vec_parser(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_vocabulary_counts(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_vocabulary_counts_big_tokenize(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _textTinyR_word_vectors_methods(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _textTinyR_Adj_Sparsity(void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_append_data(void *, void *);
+extern SEXP _textTinyR_Associations_Cpp(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_batch_2file(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_batch_calculation(void *, void *);
+extern SEXP _textTinyR_big_parser(void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_big_splitter_bytes(void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_big_tokenize(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_Collocations_ngrams(void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_convert_bytes(void *, void *);
+extern SEXP _textTinyR_COR_MATR(void *, void *, void *);
+extern SEXP _textTinyR_COS(void *, void *, void *, void *);
+extern SEXP _textTinyR_cosine_dist(void *, void *, void *);
+extern SEXP _textTinyR_Cosine_dist(void *, void *, void *);
+extern SEXP _textTinyR_Count_characters(void *, void *, void *, void *);
+extern SEXP _textTinyR_count_rows(void *, void *);
+extern SEXP _textTinyR_COUNTS_INTERSECT(void *, void *, void *, void *);
+extern SEXP _textTinyR_dense_2sparse_mat(void *);
+extern SEXP _textTinyR_DICE(void *, void *);
+extern SEXP _textTinyR_Dice_similarity(void *, void *, void *);
+extern SEXP _textTinyR_Dissimilarity_mat(void *, void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_DIST(void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_DISTINCT_WORD_INTERSECT(void *, void *);
+extern SEXP _textTinyR_file_parser(void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_Frequency_distribution(void *, void *, void *, void *);
+extern SEXP _textTinyR_idf_global_term_weights(void *, void *);
+extern SEXP _textTinyR_inner_cm(void *, void *, void *);
+extern SEXP _textTinyR_inner_jd(void *, void *, void *, void *);
+extern SEXP _textTinyR_inner_reduce_dims(void *, void *, void *, void *);
+extern SEXP _textTinyR_INTERSECT(void *, void *);
+extern SEXP _textTinyR_JACCARD(void *, void *);
+extern SEXP _textTinyR_jaccard_dice(void *, void *, void *, void *);
+extern SEXP _textTinyR_keep_idxs(void *, void *);
+extern SEXP _textTinyR_Levenshtein_dist(void *, void *);
+extern SEXP _textTinyR_load_sparse_(void *);
+extern SEXP _textTinyR_Look_up_tbl(void *, void *);
+extern SEXP _textTinyR_modulus(void *, void *);
+extern SEXP _textTinyR_Most_Freq_Terms(void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_Not_Duplicated(void *);
+extern SEXP _textTinyR_NUM_LETTERS_DISTINCT(void *);
+extern SEXP _textTinyR_Path_2vector(void *, void *);
+extern SEXP _textTinyR_RATIO_DISTINCT(void *, void *, void *, void *);
+extern SEXP _textTinyR_read_CHARS(void *, void *, void *);
+extern SEXP _textTinyR_read_ROWS(void *, void *, void *, void *);
+extern SEXP _textTinyR_read_ROWS_wv(void *, void *);
+extern SEXP _textTinyR_reduce_dims_with_correlation(void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_reduced_word_vectors(void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_res_term_matrix(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_res_token(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_res_token_list(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_res_token_vector(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_save_sparse_(void *, void *);
+extern SEXP _textTinyR_sp_means(void *, void *);
+extern SEXP _textTinyR_sp_sums(void *, void *);
+extern SEXP _textTinyR_sparsity_float(void *);
+extern SEXP _textTinyR_sublist(void *, void *);
+extern SEXP _textTinyR_tf_idf_exclude(void *, void *);
+extern SEXP _textTinyR_UNION(void *, void *);
+extern SEXP _textTinyR_UNIQUE(void *);
+extern SEXP _textTinyR_vec_parser(void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_vocabulary_counts(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
+extern SEXP _textTinyR_vocabulary_counts_big_tokenize(void *, void *, void *, void *);
+extern SEXP _textTinyR_word_vectors_methods(void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *, void *);
 
 static const R_CallMethodDef CallEntries[] = {
     {"_textTinyR_Adj_Sparsity",                   (DL_FUNC) &_textTinyR_Adj_Sparsity,                    5},
@@ -125,9 +125,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_textTinyR_res_token_list",                 (DL_FUNC) &_textTinyR_res_token_list,                 31},
     {"_textTinyR_res_token_vector",               (DL_FUNC) &_textTinyR_res_token_vector,               31},
     {"_textTinyR_save_sparse_",                   (DL_FUNC) &_textTinyR_save_sparse_,                    2},
-    {"_textTinyR_sparsity_float",                 (DL_FUNC) &_textTinyR_sparsity_float,                  1},
     {"_textTinyR_sp_means",                       (DL_FUNC) &_textTinyR_sp_means,                        2},
     {"_textTinyR_sp_sums",                        (DL_FUNC) &_textTinyR_sp_sums,                         2},
+    {"_textTinyR_sparsity_float",                 (DL_FUNC) &_textTinyR_sparsity_float,                  1},
     {"_textTinyR_sublist",                        (DL_FUNC) &_textTinyR_sublist,                         2},
     {"_textTinyR_tf_idf_exclude",                 (DL_FUNC) &_textTinyR_tf_idf_exclude,                  2},
     {"_textTinyR_UNION",                          (DL_FUNC) &_textTinyR_UNION,                           2},

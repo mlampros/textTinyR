@@ -63,77 +63,75 @@ Stemming of the english language is done using the porter2-stemmer, for details 
 
 \examples{
 
+\dontrun{
+
 library(textTinyR)
 
 
-# sm <- sparse_term_matrix$new(file_data = "/folder/my_data.txt",
-
-#                              document_term_matrix = TRUE)
+sm <- sparse_term_matrix$new(file_data = "/folder/my_data.txt",
+                              document_term_matrix = TRUE)
 
 #--------------
 # term matrix :
 #--------------
 
-# sm$Term_Matrix(sort_terms = TRUE, to_lower = TRUE,
-
-#                trim_token = TRUE, split_string = TRUE,
-
-#                remove_stopwords = TRUE, normalize = 'l1',
-
-#                stemmer = 'porter2_stemmer', threads = 1 )
+sm$Term_Matrix(sort_terms = TRUE, to_lower = TRUE,
+                trim_token = TRUE, split_string = TRUE,
+                remove_stopwords = TRUE, normalize = 'l1',
+                stemmer = 'porter2_stemmer', threads = 1 )
 
 #---------------
 # triplet data :
 #---------------
 
-# sm$triplet_data()
+sm$triplet_data()
 
 
 #----------------------
 # global-term-weights :
 #----------------------
 
-# sm$global_term_weights()
+sm$global_term_weights()
 
 
 #-------------------------
 # removal of sparse terms:
 #-------------------------
 
-# sm$Term_Matrix_Adjust(sparsity_thresh = 0.995)
+sm$Term_Matrix_Adjust(sparsity_thresh = 0.995)
 
 
 #-----------------------------------------------
 # associations between terms of a sparse matrix:
 #-----------------------------------------------
 
-
-# sm$term_associations(Terms = c("word", "sentence"), keep_terms = 10)
+sm$term_associations(Terms = c("word", "sentence"), keep_terms = 10)
 
 
 #---------------------------------------------
 # most frequent terms using the sparse matrix:
 #---------------------------------------------
 
+sm$most_frequent_terms(keep_terms = 10, threads = 1)
 
-# sm$most_frequent_terms(keep_terms = 10, threads = 1)
+}
 }
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{sparse_term_matrix$new()}}
-\item \href{#method-Term_Matrix}{\code{sparse_term_matrix$Term_Matrix()}}
-\item \href{#method-triplet_data}{\code{sparse_term_matrix$triplet_data()}}
-\item \href{#method-global_term_weights}{\code{sparse_term_matrix$global_term_weights()}}
-\item \href{#method-Term_Matrix_Adjust}{\code{sparse_term_matrix$Term_Matrix_Adjust()}}
-\item \href{#method-term_associations}{\code{sparse_term_matrix$term_associations()}}
-\item \href{#method-most_frequent_terms}{\code{sparse_term_matrix$most_frequent_terms()}}
-\item \href{#method-clone}{\code{sparse_term_matrix$clone()}}
+\item \href{#method-sparse_term_matrix-new}{\code{sparse_term_matrix$new()}}
+\item \href{#method-sparse_term_matrix-Term_Matrix}{\code{sparse_term_matrix$Term_Matrix()}}
+\item \href{#method-sparse_term_matrix-triplet_data}{\code{sparse_term_matrix$triplet_data()}}
+\item \href{#method-sparse_term_matrix-global_term_weights}{\code{sparse_term_matrix$global_term_weights()}}
+\item \href{#method-sparse_term_matrix-Term_Matrix_Adjust}{\code{sparse_term_matrix$Term_Matrix_Adjust()}}
+\item \href{#method-sparse_term_matrix-term_associations}{\code{sparse_term_matrix$term_associations()}}
+\item \href{#method-sparse_term_matrix-most_frequent_terms}{\code{sparse_term_matrix$most_frequent_terms()}}
+\item \href{#method-sparse_term_matrix-clone}{\code{sparse_term_matrix$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-sparse_term_matrix-new"></a>}}
+\if{latex}{\out{\hypertarget{method-sparse_term_matrix-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$new(
@@ -156,8 +154,8 @@ library(textTinyR)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Term_Matrix"></a>}}
-\if{latex}{\out{\hypertarget{method-Term_Matrix}{}}}
+\if{html}{\out{<a id="method-sparse_term_matrix-Term_Matrix"></a>}}
+\if{latex}{\out{\hypertarget{method-sparse_term_matrix-Term_Matrix}{}}}
 \subsection{Method \code{Term_Matrix()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$Term_Matrix(
@@ -255,8 +253,8 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-triplet_data"></a>}}
-\if{latex}{\out{\hypertarget{method-triplet_data}{}}}
+\if{html}{\out{<a id="method-sparse_term_matrix-triplet_data"></a>}}
+\if{latex}{\out{\hypertarget{method-sparse_term_matrix-triplet_data}{}}}
 \subsection{Method \code{triplet_data()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$triplet_data()}\if{html}{\out{</div>}}
@@ -264,8 +262,8 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-global_term_weights"></a>}}
-\if{latex}{\out{\hypertarget{method-global_term_weights}{}}}
+\if{html}{\out{<a id="method-sparse_term_matrix-global_term_weights"></a>}}
+\if{latex}{\out{\hypertarget{method-sparse_term_matrix-global_term_weights}{}}}
 \subsection{Method \code{global_term_weights()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$global_term_weights()}\if{html}{\out{</div>}}
@@ -273,8 +271,8 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Term_Matrix_Adjust"></a>}}
-\if{latex}{\out{\hypertarget{method-Term_Matrix_Adjust}{}}}
+\if{html}{\out{<a id="method-sparse_term_matrix-Term_Matrix_Adjust"></a>}}
+\if{latex}{\out{\hypertarget{method-sparse_term_matrix-Term_Matrix_Adjust}{}}}
 \subsection{Method \code{Term_Matrix_Adjust()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$Term_Matrix_Adjust(sparsity_thresh = 1)}\if{html}{\out{</div>}}
@@ -289,8 +287,8 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-term_associations"></a>}}
-\if{latex}{\out{\hypertarget{method-term_associations}{}}}
+\if{html}{\out{<a id="method-sparse_term_matrix-term_associations"></a>}}
+\if{latex}{\out{\hypertarget{method-sparse_term_matrix-term_associations}{}}}
 \subsection{Method \code{term_associations()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$term_associations(
@@ -313,8 +311,8 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-most_frequent_terms"></a>}}
-\if{latex}{\out{\hypertarget{method-most_frequent_terms}{}}}
+\if{html}{\out{<a id="method-sparse_term_matrix-most_frequent_terms"></a>}}
+\if{latex}{\out{\hypertarget{method-sparse_term_matrix-most_frequent_terms}{}}}
 \subsection{Method \code{most_frequent_terms()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{sparse_term_matrix$most_frequent_terms(
@@ -337,8 +335,8 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-sparse_term_matrix-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-sparse_term_matrix-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

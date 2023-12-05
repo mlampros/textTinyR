@@ -110,13 +110,13 @@ Stemming of the english language is done using the porter2-stemmer, for details 
 }
 \examples{
 
+\dontrun{
+
 library(textTinyR)
 
-# vps = vocabulary_parser(input_path_file = '/folder/input_data.txt',
-
-#                         start_query = 'start_word', end_query = 'end_word',
-
-#                         vocabulary_path_file = '/folder/vocab.txt',
-
-#                         to_lower = TRUE, split_string = TRUE)
+ vps = vocabulary_parser(input_path_file = '/folder/input_data.txt',
+                         start_query = 'start_word', end_query = 'end_word',
+                         vocabulary_path_file = '/folder/vocab.txt',
+                         to_lower = TRUE, split_string = TRUE)
+}
 }

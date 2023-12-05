@@ -453,7 +453,7 @@ class term_matrix {
 
             if (count + 1 == tmp_print_rows) {
 
-              Rprintf("\rtotal.number.lines.processed.tokenization: %3d", count + 1);
+              Rprintf("\rtotal.number.lines.processed.tokenization: %3lld", count + 1);
 
               tmp_print_rows += print_every_rows;
             }
@@ -644,7 +644,7 @@ class term_matrix {
 
             if (count + 1 == tmp_print_rows) {
 
-              Rprintf("\rtotal.number.lines.processed.tokenization: %3d", count + 1);
+              Rprintf("\rtotal.number.lines.processed.tokenization: %3lld", count + 1);
 
               tmp_print_rows += print_every_rows;
             }

@@ -49,35 +49,30 @@ The \emph{ngram_sequential} or \emph{ngram_overlap} stemming method applies to e
 
 \examples{
 
+\dontrun{
+
 library(textTinyR)
 
-
-# fs <- big_tokenize_transform$new(verbose = FALSE)
+fs <- big_tokenize_transform$new(verbose = FALSE)
 
 #---------------
 # file splitter:
 #---------------
 
-# fs$big_text_splitter(input_path_file = "input.txt",
-
-#                      output_path_folder = "/folder/output/",
-
-#                      end_query = "endword", batches = 5,
-
-#                      trimmed_line = FALSE)
+fs$big_text_splitter(input_path_file = "input.txt",
+                     output_path_folder = "/folder/output/",
+                     end_query = "endword", batches = 5,
+                     trimmed_line = FALSE)
 
 
 #-------------
 # file parser:
 #-------------
 
-# fs$big_text_parser(input_path_folder = "/folder/output/",
-
-#                    output_path_folder = "/folder/parser/",
-
-#                    start_query = "startword", end_query = "endword",
-
-#                    min_lines = 1, trimmed_line = TRUE)
+fs$big_text_parser(input_path_folder = "/folder/output/",
+                    output_path_folder = "/folder/parser/",
+                    start_query = "startword", end_query = "endword",
+                    min_lines = 1, trimmed_line = TRUE)
 
 
 #----------------
@@ -85,45 +80,39 @@ library(textTinyR)
 #----------------
 
 
-# fs$big_text_tokenizer(input_path_folder = "/folder/parser/",
-
-#                       batches = 5, split_string=TRUE,
-
-#                       to_lower = TRUE, trim_token = TRUE,
-
-#                       max_num_char = 100, remove_stopwords = TRUE,
-
-#                       stemmer = "porter2_stemmer", threads = 1,
-
-#                       path_2folder="/folder/output_token/",
-
-#                       vocabulary_path_folder="/folder/VOCAB/")
+ fs$big_text_tokenizer(input_path_folder = "/folder/parser/",
+                       batches = 5, split_string=TRUE,
+                       to_lower = TRUE, trim_token = TRUE,
+                       max_num_char = 100, remove_stopwords = TRUE,
+                       stemmer = "porter2_stemmer", threads = 1,
+                       path_2folder="/folder/output_token/",
+                       vocabulary_path_folder="/folder/VOCAB/")
 
 #-------------------
 # vocabulary counts:
 #-------------------
 
 
-# fs$vocabulary_accumulator(input_path_folder = "/folder/VOCAB/",
+fs$vocabulary_accumulator(input_path_folder = "/folder/VOCAB/",
+                           vocabulary_path_file = "/folder/vocab.txt",
+                           max_num_chars = 50)
 
-#                           vocabulary_path_file = "/folder/vocab.txt",
-
-#                           max_num_chars = 50)
+}
 }
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{big_tokenize_transform$new()}}
-\item \href{#method-big_text_splitter}{\code{big_tokenize_transform$big_text_splitter()}}
-\item \href{#method-big_text_parser}{\code{big_tokenize_transform$big_text_parser()}}
-\item \href{#method-big_text_tokenizer}{\code{big_tokenize_transform$big_text_tokenizer()}}
-\item \href{#method-vocabulary_accumulator}{\code{big_tokenize_transform$vocabulary_accumulator()}}
-\item \href{#method-clone}{\code{big_tokenize_transform$clone()}}
+\item \href{#method-big_tokenize_transform-new}{\code{big_tokenize_transform$new()}}
+\item \href{#method-big_tokenize_transform-big_text_splitter}{\code{big_tokenize_transform$big_text_splitter()}}
+\item \href{#method-big_tokenize_transform-big_text_parser}{\code{big_tokenize_transform$big_text_parser()}}
+\item \href{#method-big_tokenize_transform-big_text_tokenizer}{\code{big_tokenize_transform$big_text_tokenizer()}}
+\item \href{#method-big_tokenize_transform-vocabulary_accumulator}{\code{big_tokenize_transform$vocabulary_accumulator()}}
+\item \href{#method-big_tokenize_transform-clone}{\code{big_tokenize_transform$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-big_tokenize_transform-new"></a>}}
+\if{latex}{\out{\hypertarget{method-big_tokenize_transform-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$new(verbose = FALSE)}\if{html}{\out{</div>}}
@@ -138,8 +127,8 @@ library(textTinyR)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-big_text_splitter"></a>}}
-\if{latex}{\out{\hypertarget{method-big_text_splitter}{}}}
+\if{html}{\out{<a id="method-big_tokenize_transform-big_text_splitter"></a>}}
+\if{latex}{\out{\hypertarget{method-big_tokenize_transform-big_text_splitter}{}}}
 \subsection{Method \code{big_text_splitter()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$big_text_splitter(
@@ -168,8 +157,8 @@ library(textTinyR)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-big_text_parser"></a>}}
-\if{latex}{\out{\hypertarget{method-big_text_parser}{}}}
+\if{html}{\out{<a id="method-big_tokenize_transform-big_text_parser"></a>}}
+\if{latex}{\out{\hypertarget{method-big_tokenize_transform-big_text_parser}{}}}
 \subsection{Method \code{big_text_parser()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$big_text_parser(
@@ -201,8 +190,8 @@ library(textTinyR)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-big_text_tokenizer"></a>}}
-\if{latex}{\out{\hypertarget{method-big_text_tokenizer}{}}}
+\if{html}{\out{<a id="method-big_tokenize_transform-big_text_tokenizer"></a>}}
+\if{latex}{\out{\hypertarget{method-big_tokenize_transform-big_text_tokenizer}{}}}
 \subsection{Method \code{big_text_tokenizer()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$big_text_tokenizer(
@@ -321,8 +310,8 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-vocabulary_accumulator"></a>}}
-\if{latex}{\out{\hypertarget{method-vocabulary_accumulator}{}}}
+\if{html}{\out{<a id="method-big_tokenize_transform-vocabulary_accumulator"></a>}}
+\if{latex}{\out{\hypertarget{method-big_tokenize_transform-vocabulary_accumulator}{}}}
 \subsection{Method \code{vocabulary_accumulator()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{big_tokenize_transform$vocabulary_accumulator(
@@ -345,8 +334,8 @@ are \emph{afrikaans}, \emph{arabic}, \emph{armenian}, \emph{basque}, \emph{benga
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-big_tokenize_transform-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-big_tokenize_transform-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

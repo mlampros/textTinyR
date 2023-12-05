@@ -129,23 +129,23 @@ lut <- tk$look_up_table(n_grams = 3)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{token_stats$new()}}
-\item \href{#method-path_2vector}{\code{token_stats$path_2vector()}}
-\item \href{#method-freq_distribution}{\code{token_stats$freq_distribution()}}
-\item \href{#method-print_frequency}{\code{token_stats$print_frequency()}}
-\item \href{#method-count_character}{\code{token_stats$count_character()}}
-\item \href{#method-print_count_character}{\code{token_stats$print_count_character()}}
-\item \href{#method-collocation_words}{\code{token_stats$collocation_words()}}
-\item \href{#method-print_collocations}{\code{token_stats$print_collocations()}}
-\item \href{#method-string_dissimilarity_matrix}{\code{token_stats$string_dissimilarity_matrix()}}
-\item \href{#method-look_up_table}{\code{token_stats$look_up_table()}}
-\item \href{#method-print_words_lookup_tbl}{\code{token_stats$print_words_lookup_tbl()}}
-\item \href{#method-clone}{\code{token_stats$clone()}}
+\item \href{#method-token_stats-new}{\code{token_stats$new()}}
+\item \href{#method-token_stats-path_2vector}{\code{token_stats$path_2vector()}}
+\item \href{#method-token_stats-freq_distribution}{\code{token_stats$freq_distribution()}}
+\item \href{#method-token_stats-print_frequency}{\code{token_stats$print_frequency()}}
+\item \href{#method-token_stats-count_character}{\code{token_stats$count_character()}}
+\item \href{#method-token_stats-print_count_character}{\code{token_stats$print_count_character()}}
+\item \href{#method-token_stats-collocation_words}{\code{token_stats$collocation_words()}}
+\item \href{#method-token_stats-print_collocations}{\code{token_stats$print_collocations()}}
+\item \href{#method-token_stats-string_dissimilarity_matrix}{\code{token_stats$string_dissimilarity_matrix()}}
+\item \href{#method-token_stats-look_up_table}{\code{token_stats$look_up_table()}}
+\item \href{#method-token_stats-print_words_lookup_tbl}{\code{token_stats$print_words_lookup_tbl()}}
+\item \href{#method-token_stats-clone}{\code{token_stats$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-token_stats-new"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$new(
@@ -174,8 +174,8 @@ lut <- tk$look_up_table(n_grams = 3)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-path_2vector"></a>}}
-\if{latex}{\out{\hypertarget{method-path_2vector}{}}}
+\if{html}{\out{<a id="method-token_stats-path_2vector"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-path_2vector}{}}}
 \subsection{Method \code{path_2vector()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$path_2vector()}\if{html}{\out{</div>}}
@@ -183,8 +183,8 @@ lut <- tk$look_up_table(n_grams = 3)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-freq_distribution"></a>}}
-\if{latex}{\out{\hypertarget{method-freq_distribution}{}}}
+\if{html}{\out{<a id="method-token_stats-freq_distribution"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-freq_distribution}{}}}
 \subsection{Method \code{freq_distribution()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$freq_distribution()}\if{html}{\out{</div>}}
@@ -192,8 +192,8 @@ lut <- tk$look_up_table(n_grams = 3)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print_frequency"></a>}}
-\if{latex}{\out{\hypertarget{method-print_frequency}{}}}
+\if{html}{\out{<a id="method-token_stats-print_frequency"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-print_frequency}{}}}
 \subsection{Method \code{print_frequency()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$print_frequency(subset = NULL)}\if{html}{\out{</div>}}
@@ -208,8 +208,8 @@ lut <- tk$look_up_table(n_grams = 3)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-count_character"></a>}}
-\if{latex}{\out{\hypertarget{method-count_character}{}}}
+\if{html}{\out{<a id="method-token_stats-count_character"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-count_character}{}}}
 \subsection{Method \code{count_character()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$count_character()}\if{html}{\out{</div>}}
@@ -217,8 +217,8 @@ lut <- tk$look_up_table(n_grams = 3)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print_count_character"></a>}}
-\if{latex}{\out{\hypertarget{method-print_count_character}{}}}
+\if{html}{\out{<a id="method-token_stats-print_count_character"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-print_count_character}{}}}
 \subsection{Method \code{print_count_character()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$print_count_character(number = NULL)}\if{html}{\out{</div>}}
@@ -233,8 +233,8 @@ lut <- tk$look_up_table(n_grams = 3)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-collocation_words"></a>}}
-\if{latex}{\out{\hypertarget{method-collocation_words}{}}}
+\if{html}{\out{<a id="method-token_stats-collocation_words"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-collocation_words}{}}}
 \subsection{Method \code{collocation_words()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$collocation_words()}\if{html}{\out{</div>}}
@@ -242,8 +242,8 @@ lut <- tk$look_up_table(n_grams = 3)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print_collocations"></a>}}
-\if{latex}{\out{\hypertarget{method-print_collocations}{}}}
+\if{html}{\out{<a id="method-token_stats-print_collocations"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-print_collocations}{}}}
 \subsection{Method \code{print_collocations()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$print_collocations(word = NULL)}\if{html}{\out{</div>}}
@@ -258,8 +258,8 @@ lut <- tk$look_up_table(n_grams = 3)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-string_dissimilarity_matrix"></a>}}
-\if{latex}{\out{\hypertarget{method-string_dissimilarity_matrix}{}}}
+\if{html}{\out{<a id="method-token_stats-string_dissimilarity_matrix"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-string_dissimilarity_matrix}{}}}
 \subsection{Method \code{string_dissimilarity_matrix()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$string_dissimilarity_matrix(
@@ -294,8 +294,8 @@ lut <- tk$look_up_table(n_grams = 3)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-look_up_table"></a>}}
-\if{latex}{\out{\hypertarget{method-look_up_table}{}}}
+\if{html}{\out{<a id="method-token_stats-look_up_table"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-look_up_table}{}}}
 \subsection{Method \code{look_up_table()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$look_up_table(n_grams = NULL)}\if{html}{\out{</div>}}
@@ -310,8 +310,8 @@ lut <- tk$look_up_table(n_grams = 3)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print_words_lookup_tbl"></a>}}
-\if{latex}{\out{\hypertarget{method-print_words_lookup_tbl}{}}}
+\if{html}{\out{<a id="method-token_stats-print_words_lookup_tbl"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-print_words_lookup_tbl}{}}}
 \subsection{Method \code{print_words_lookup_tbl()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{token_stats$print_words_lookup_tbl(n_gram = NULL)}\if{html}{\out{</div>}}
@@ -326,8 +326,8 @@ lut <- tk$look_up_table(n_grams = 3)
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-token_stats-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-token_stats-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

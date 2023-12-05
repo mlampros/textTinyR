@@ -1,4 +1,14 @@
 
+## textTinyR 1.1.8
+
+* I've fixed the CRAN *warning: format specifies type 'int' but the argument has type 'long long'* in the following files & lines by replacing the `%3d` expression with `%3lld`: 
+  * ./token_big_files.h:862:60
+  * ./term_matrix.h:456:75 *and* 647:75
+  * word_vecs_pointer_embedding.cpp:333:67 *and* 240:68
+* I removed the "CXX_STD = CXX11" from the "Makevars" files, and the "[[Rcpp::plugins(cpp11)]]" from the ".cpp" files due to the following NOTE from CRAN, "NOTE Specified C++11: please drop specification unless essential" (see also: https://www.tidyverse.org/blog/2023/03/cran-checks-compiled-code/#note-regarding-systemrequirements-c11)
+* I exported the *batch_calculation()* Rcpp function and created the *batch_compute()* R function
+* I removed the `-mthreads` compilation option from the "Makevars.win" file
+
 
 ## textTinyR 1.1.7
 

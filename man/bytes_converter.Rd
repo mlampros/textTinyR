@@ -19,7 +19,11 @@ bytes converter of a text file ( KB, MB or GB )
 }
 \examples{
 
+\dontrun{
+
 library(textTinyR)
 
-# bc = bytes_converter(input_path_file = 'some_file.txt', unit = "MB")
+bc = bytes_converter(input_path_file = 'some_file.txt', unit = "MB")
+
+}
 }

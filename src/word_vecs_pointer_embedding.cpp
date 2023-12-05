@@ -1,7 +1,6 @@
 # include <RcppArmadillo.h>
 // [[Rcpp::depends("RcppArmadillo")]]
 // [[Rcpp::plugins(openmp)]]
-// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::depends(BH)]]
 
 
@@ -237,7 +236,7 @@ class PREPROCESS_WORD_VECS {
 
             if (nr_rows + 1 == tmp_print_rows) {
 
-              Rprintf("\rtotal.number.lines.processed.input: %3d", nr_rows + 1);
+              Rprintf("\rtotal.number.lines.processed.input: %3lld", nr_rows + 1);
 
               tmp_print_rows += print_every_rows;
             }
@@ -330,7 +329,7 @@ class PREPROCESS_WORD_VECS {
 
           if (sec_nr_rows + 1 == sec_tmp_print_rows) {
 
-            Rprintf("\rtotal.number.lines.processed.output: %3d", sec_nr_rows + 1);
+            Rprintf("\rtotal.number.lines.processed.output: %3lld", sec_nr_rows + 1);
 
             sec_tmp_print_rows += print_every_rows;
           }

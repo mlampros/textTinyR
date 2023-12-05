@@ -645,36 +645,31 @@ utf_locale = function(language = "english") {
 #'
 #' @usage # utl <- big_tokenize_transform$new(verbose = FALSE)
 #' @examples
+#' 
+#' \dontrun{
 #'
 #' library(textTinyR)
 #'
-#'
-#' # fs <- big_tokenize_transform$new(verbose = FALSE)
+#' fs <- big_tokenize_transform$new(verbose = FALSE)
 #'
 #' #---------------
 #' # file splitter:
 #' #---------------
 #'
-#' # fs$big_text_splitter(input_path_file = "input.txt",
-#'
-#' #                      output_path_folder = "/folder/output/",
-#'
-#' #                      end_query = "endword", batches = 5,
-#'
-#' #                      trimmed_line = FALSE)
+#' fs$big_text_splitter(input_path_file = "input.txt",
+#'                      output_path_folder = "/folder/output/",
+#'                      end_query = "endword", batches = 5,
+#'                      trimmed_line = FALSE)
 #'
 #'
 #' #-------------
 #' # file parser:
 #' #-------------
 #'
-#' # fs$big_text_parser(input_path_folder = "/folder/output/",
-#'
-#' #                    output_path_folder = "/folder/parser/",
-#'
-#' #                    start_query = "startword", end_query = "endword",
-#'
-#' #                    min_lines = 1, trimmed_line = TRUE)
+#' fs$big_text_parser(input_path_folder = "/folder/output/",
+#'                     output_path_folder = "/folder/parser/",
+#'                     start_query = "startword", end_query = "endword",
+#'                     min_lines = 1, trimmed_line = TRUE)
 #'
 #'
 #' #----------------
@@ -682,32 +677,24 @@ utf_locale = function(language = "english") {
 #' #----------------
 #'
 #'
-#' # fs$big_text_tokenizer(input_path_folder = "/folder/parser/",
-#'
-#' #                       batches = 5, split_string=TRUE,
-#'
-#' #                       to_lower = TRUE, trim_token = TRUE,
-#'
-#' #                       max_num_char = 100, remove_stopwords = TRUE,
-#'
-#' #                       stemmer = "porter2_stemmer", threads = 1,
-#'
-#' #                       path_2folder="/folder/output_token/",
-#'
-#' #                       vocabulary_path_folder="/folder/VOCAB/")
+#'  fs$big_text_tokenizer(input_path_folder = "/folder/parser/",
+#'                        batches = 5, split_string=TRUE,
+#'                        to_lower = TRUE, trim_token = TRUE,
+#'                        max_num_char = 100, remove_stopwords = TRUE,
+#'                        stemmer = "porter2_stemmer", threads = 1,
+#'                        path_2folder="/folder/output_token/",
+#'                        vocabulary_path_folder="/folder/VOCAB/")
 #'
 #' #-------------------
 #' # vocabulary counts:
 #' #-------------------
 #'
 #'
-#' # fs$vocabulary_accumulator(input_path_folder = "/folder/VOCAB/",
-#'
-#' #                           vocabulary_path_file = "/folder/vocab.txt",
-#'
-#' #                           max_num_chars = 50)
-
-
+#' fs$vocabulary_accumulator(input_path_folder = "/folder/VOCAB/",
+#'                            vocabulary_path_file = "/folder/vocab.txt",
+#'                            max_num_chars = 50)
+#' 
+#' }
 
 
 big_tokenize_transform <- R6::R6Class("big_tokenize_transform",
@@ -1006,16 +993,16 @@ big_tokenize_transform <- R6::R6Class("big_tokenize_transform",
 #' Stemming of the english language is done using the porter2-stemmer, for details see \url{https://github.com/smassung/porter2_stemmer}
 #'
 #' @examples
+#' 
+#' \dontrun{
 #'
 #' library(textTinyR)
 #'
-#' # vps = vocabulary_parser(input_path_file = '/folder/input_data.txt',
-#'
-#' #                         start_query = 'start_word', end_query = 'end_word',
-#'
-#' #                         vocabulary_path_file = '/folder/vocab.txt',
-#'
-#' #                         to_lower = TRUE, split_string = TRUE)
+#'  vps = vocabulary_parser(input_path_file = '/folder/input_data.txt',
+#'                          start_query = 'start_word', end_query = 'end_word',
+#'                          vocabulary_path_file = '/folder/vocab.txt',
+#'                          to_lower = TRUE, split_string = TRUE)
+#' }
 
 
 vocabulary_parser = function(input_path_file = NULL, start_query = NULL, end_query = NULL, vocabulary_path_file = NULL, min_lines = 1, trimmed_line = FALSE, to_lower = FALSE,
@@ -1146,10 +1133,14 @@ vocabulary_parser = function(input_path_file = NULL, start_query = NULL, end_que
 #' @return a number
 #' @export
 #' @examples
+#' 
+#' \dontrun{
 #'
 #' library(textTinyR)
 #'
-#' # bc = bytes_converter(input_path_file = 'some_file.txt', unit = "MB")
+#' bc = bytes_converter(input_path_file = 'some_file.txt', unit = "MB")
+#' 
+#' }
 
 
 bytes_converter = function(input_path_file = NULL, unit = "MB") {
@@ -1178,41 +1169,36 @@ bytes_converter = function(input_path_file = NULL, unit = "MB") {
 #' The text file should have a structure (such as an xml-structure), so that subsets can be extracted using the \emph{start_query} and \emph{end_query} parameters ( the same applies in case of a vector of character strings)
 #' @export
 #' @examples
+#' 
+#' \dontrun{
 #'
 #' library(textTinyR)
 #'
 #' # In case that the 'input_path_file' is a valid path
 #' #---------------------------------------------------
-#'
-#' # fp = text_file_parser(input_path_file = '/folder/input_data.txt',
-#'
-#' #                       output_path_file = '/folder/output_data.txt',
-#'
-#' #                       start_query = 'word_a', end_query = 'word_w',
-#'
-#' #                       min_lines = 1, trimmed_line = FALSE)
-#'
-#'
+#' 
+#' fp = text_file_parser(input_path_file = '/folder/input_data.txt',
+#'                        output_path_file = '/folder/output_data.txt',
+#'                        start_query = 'word_a', end_query = 'word_w',
+#'                        min_lines = 1, trimmed_line = FALSE)
+#' 
+#' 
 #' # In case that the 'input_path_file' is a character vector of strings
 #' #--------------------------------------------------------------------
-#'
-#' #  PATH_url = "https://FILE.xml"
-#'
-#' #  con = url(PATH_url, method = "libcurl")
-#'
-#' #  tmp_dat = read.delim(con, quote = "\"", comment.char = "", stringsAsFactors = FALSE)
-#'
-#' #  vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x)
-#'
-#' #                    trimws(tmp_dat[x, 1], which = "both")))
-#'
-#' #  parse_data = text_file_parser(input_path_file = vec_docs,
-#'
-#' #                                start_query = c("<query1>", "<query2>", "<query3>"),
-#'
-#' #                                end_query = c("</query1>", "</query2>", "</query3>"),
-#'
-#' #                                min_lines = 1, trimmed_line = TRUE)
+#' 
+#' PATH_url = "https://FILE.xml"
+#' con = url(PATH_url, method = "libcurl")
+#' tmp_dat = read.delim(con, quote = "\"", comment.char = "", stringsAsFactors = FALSE)
+#' 
+#' vec_docs = unlist(lapply(1:length(as.vector(tmp_dat[, 1])), function(x)
+#'                     trimws(tmp_dat[x, 1], which = "both")))
+#' 
+#' parse_data = text_file_parser(input_path_file = vec_docs,
+#'                                 start_query = c("<query1>", "<query2>", "<query3>"),
+#'                                 end_query = c("</query1>", "</query2>", "</query3>"),
+#'                                 min_lines = 1, trimmed_line = TRUE)
+#'                                 
+#' }
 
 
 text_file_parser = function(input_path_file = NULL, output_path_file = "", start_query = NULL, end_query = NULL, min_lines = 1, trimmed_line = FALSE, verbose = FALSE) {
@@ -1401,7 +1387,6 @@ text_file_parser = function(input_path_file = NULL, output_path_file = "", start
 #' lut <- tk$look_up_table(n_grams = 3)
 #'
 #' # tk$print_words_lookup_tbl(n_gram = 'e_w')
-
 
 
 token_stats <- R6::R6Class("token_stats",
@@ -1726,9 +1711,6 @@ cosine_distance = function(sentence1, sentence2, split_separator = " ") {
 }
 
 
-
-
-
 #' Term matrices and statistics ( document-term-matrix, term-document-matrix)
 #'
 #'
@@ -1825,62 +1807,59 @@ cosine_distance = function(sentence1, sentence2, split_separator = " ") {
 #'
 #' #                                      document_term_matrix = TRUE)
 #' @examples
+#' 
+#' \dontrun{
 #'
 #' library(textTinyR)
 #'
 #'
-#' # sm <- sparse_term_matrix$new(file_data = "/folder/my_data.txt",
-#'
-#' #                              document_term_matrix = TRUE)
-#'
+#' sm <- sparse_term_matrix$new(file_data = "/folder/my_data.txt",
+#'                               document_term_matrix = TRUE)
+#' 
 #' #--------------
 #' # term matrix :
 #' #--------------
-#'
-#' # sm$Term_Matrix(sort_terms = TRUE, to_lower = TRUE,
-#'
-#' #                trim_token = TRUE, split_string = TRUE,
-#'
-#' #                remove_stopwords = TRUE, normalize = 'l1',
-#'
-#' #                stemmer = 'porter2_stemmer', threads = 1 )
-#'
+#' 
+#' sm$Term_Matrix(sort_terms = TRUE, to_lower = TRUE,
+#'                 trim_token = TRUE, split_string = TRUE,
+#'                 remove_stopwords = TRUE, normalize = 'l1',
+#'                 stemmer = 'porter2_stemmer', threads = 1 )
+#' 
 #' #---------------
 #' # triplet data :
 #' #---------------
-#'
-#' # sm$triplet_data()
-#'
-#'
+#' 
+#' sm$triplet_data()
+#' 
+#' 
 #' #----------------------
 #' # global-term-weights :
 #' #----------------------
-#'
-#' # sm$global_term_weights()
-#'
-#'
+#' 
+#' sm$global_term_weights()
+#' 
+#' 
 #' #-------------------------
 #' # removal of sparse terms:
 #' #-------------------------
-#'
-#' # sm$Term_Matrix_Adjust(sparsity_thresh = 0.995)
-#'
-#'
+#' 
+#' sm$Term_Matrix_Adjust(sparsity_thresh = 0.995)
+#' 
+#' 
 #' #-----------------------------------------------
 #' # associations between terms of a sparse matrix:
 #' #-----------------------------------------------
-#'
-#'
-#' # sm$term_associations(Terms = c("word", "sentence"), keep_terms = 10)
-#'
-#'
+#' 
+#' sm$term_associations(Terms = c("word", "sentence"), keep_terms = 10)
+#' 
+#' 
 #' #---------------------------------------------
 #' # most frequent terms using the sparse matrix:
 #' #---------------------------------------------
-#'
-#'
-#' # sm$most_frequent_terms(keep_terms = 10, threads = 1)
-
+#' 
+#' sm$most_frequent_terms(keep_terms = 10, threads = 1)
+#' 
+#' }
 
 
 sparse_term_matrix <- R6::R6Class("sparse_term_matrix",
@@ -2509,8 +2488,6 @@ sparse_Means = function(sparse_matrix, rowMeans = FALSE) {
 }
 
 
-
-
 #' sparsity percentage of a sparse matrix
 #'
 #'
@@ -2534,7 +2511,6 @@ matrix_sparsity = function(sparse_matrix) {
 
   sparsity_float(sparse_matrix)
 }
-
 
 
 #' save a sparse matrix in binary format
@@ -2567,7 +2543,6 @@ save_sparse_binary = function(sparse_matrix, file_name = "save_sparse.mat") {
 }
 
 
-
 #' load a sparse matrix in binary format
 #'
 #'
@@ -2576,9 +2551,13 @@ save_sparse_binary = function(sparse_matrix, file_name = "save_sparse.mat") {
 #' @export
 #' @examples
 #'
+#' \dontrun{
+#'
 #' library(textTinyR)
 #'
-#' # load_sparse_binary(file_name = "save_sparse.mat")
+#' load_sparse_binary(file_name = "save_sparse.mat")
+#' 
+#' }
 
 
 load_sparse_binary = function(file_name = "save_sparse.mat") {
@@ -2591,8 +2570,6 @@ load_sparse_binary = function(file_name = "save_sparse.mat") {
 }
 
 
-
-
 #' read a specific number of characters from a text file
 #'
 #'
@@ -2601,10 +2578,14 @@ load_sparse_binary = function(file_name = "save_sparse.mat") {
 #' @param write_2file either an empty string ("") or a character string specifying a valid output file to write the subset of the input file
 #' @export
 #' @examples
+#' 
+#' \dontrun{
 #'
 #' library(textTinyR)
 #'
-#' # txfl = read_characters(input_file = 'input.txt', characters = 100)
+#' txfl = read_characters(input_file = 'input.txt', characters = 100)
+#' 
+#' }
 
 
 read_characters = function(input_file = NULL, characters = 100, write_2file = "") {
@@ -2638,10 +2619,14 @@ read_characters = function(input_file = NULL, characters = 100, write_2file = ""
 #' @param write_2file either "" or a character string specifying a valid output file to write the subset of the input file
 #' @export
 #' @examples
+#' 
+#' \dontrun{
 #'
 #' library(textTinyR)
 #'
-#' # txfl = read_rows(input_file = 'input.txt', rows = 100)
+#' txfl = read_rows(input_file = 'input.txt', rows = 100)
+#' 
+#' }
 
 
 read_rows = function(input_file = NULL, read_delimiter = "\n", rows = 100, write_2file = "") {
@@ -2665,11 +2650,7 @@ read_rows = function(input_file = NULL, read_delimiter = "\n", rows = 100, write
 }
 
 
-
 #------------------------------------------------------------------------------------------------------------------------------------------------------------ Word-Vector-Utility functions
-
-
-
 
 #' dimensions of a word vectors file
 #'
@@ -3325,3 +3306,22 @@ cluster_frequency = function(tokenized_list_text, cluster_vector, verbose = FALS
 }
 
 
+#' Compute batches
+#'
+#' @param n_rows a numeric specifying the number of rows
+#' @param n_batches a numeric specifying the number of output batches
+#' @return a list
+#' @export
+#' @examples
+#'
+#' library(textTinyR)
+#'
+#' btch = batch_compute(n_rows = 1000, n_batches = 10)
+
+
+batch_compute = function(n_rows, n_batches) {
+  if (!inherits(n_rows, c('numeric', 'integer'))) stop("the 'n_rows' parameter should be of type either numeric or integer", call. = F)
+  if (!inherits(n_batches, c('numeric', 'integer'))) stop("the 'n_batches' parameter should be of type either numeric or integer", call. = F)
+  
+  return(batch_calculation(n_rows, n_batches))
+}

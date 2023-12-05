@@ -18,7 +18,11 @@ read a specific number of characters from a text file
 }
 \examples{
 
+\dontrun{
+
 library(textTinyR)
 
-# txfl = read_characters(input_file = 'input.txt', characters = 100)
+txfl = read_characters(input_file = 'input.txt', characters = 100)
+
+}
 }

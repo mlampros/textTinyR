@@ -76,15 +76,15 @@ out = init$doc2vec_methods(method = "sum_sqrt")
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Doc2Vec$new()}}
-\item \href{#method-doc2vec_methods}{\code{Doc2Vec$doc2vec_methods()}}
-\item \href{#method-pre_processed_wv}{\code{Doc2Vec$pre_processed_wv()}}
-\item \href{#method-clone}{\code{Doc2Vec$clone()}}
+\item \href{#method-documents_to_wordvectors-new}{\code{Doc2Vec$new()}}
+\item \href{#method-documents_to_wordvectors-doc2vec_methods}{\code{Doc2Vec$doc2vec_methods()}}
+\item \href{#method-documents_to_wordvectors-pre_processed_wv}{\code{Doc2Vec$pre_processed_wv()}}
+\item \href{#method-documents_to_wordvectors-clone}{\code{Doc2Vec$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-documents_to_wordvectors-new"></a>}}
+\if{latex}{\out{\hypertarget{method-documents_to_wordvectors-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$new(
@@ -113,8 +113,8 @@ out = init$doc2vec_methods(method = "sum_sqrt")
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-doc2vec_methods"></a>}}
-\if{latex}{\out{\hypertarget{method-doc2vec_methods}{}}}
+\if{html}{\out{<a id="method-documents_to_wordvectors-doc2vec_methods"></a>}}
+\if{latex}{\out{\hypertarget{method-documents_to_wordvectors-doc2vec_methods}{}}}
 \subsection{Method \code{doc2vec_methods()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$doc2vec_methods(
@@ -137,8 +137,8 @@ out = init$doc2vec_methods(method = "sum_sqrt")
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-pre_processed_wv"></a>}}
-\if{latex}{\out{\hypertarget{method-pre_processed_wv}{}}}
+\if{html}{\out{<a id="method-documents_to_wordvectors-pre_processed_wv"></a>}}
+\if{latex}{\out{\hypertarget{method-documents_to_wordvectors-pre_processed_wv}{}}}
 \subsection{Method \code{pre_processed_wv()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Doc2Vec$pre_processed_wv()}\if{html}{\out{</div>}}
@@ -146,8 +146,8 @@ out = init$doc2vec_methods(method = "sum_sqrt")
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-documents_to_wordvectors-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-documents_to_wordvectors-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

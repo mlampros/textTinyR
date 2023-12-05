@@ -859,7 +859,7 @@ class big_files {
 
           if (verbose_print <= tmp_mem || flag_peek) {
 
-            Rprintf("\rtotal.number.lines.processed: %3d", Lines);
+            Rprintf("\rtotal.number.lines.processed: %3lld", Lines);
 
             Rprintf("\tdata.processed.approx.: %.1f %%", tmp_mem);
 

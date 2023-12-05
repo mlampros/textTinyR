@@ -61,15 +61,15 @@ https://www.kaggle.com/c/home-depot-product-search-relevance/discussion/20427 by
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{text_intersect$new()}}
-\item \href{#method-count_intersect}{\code{text_intersect$count_intersect()}}
-\item \href{#method-ratio_intersect}{\code{text_intersect$ratio_intersect()}}
-\item \href{#method-clone}{\code{text_intersect$clone()}}
+\item \href{#method-text_intersect-new}{\code{text_intersect$new()}}
+\item \href{#method-text_intersect-count_intersect}{\code{text_intersect$count_intersect()}}
+\item \href{#method-text_intersect-ratio_intersect}{\code{text_intersect$ratio_intersect()}}
+\item \href{#method-text_intersect-clone}{\code{text_intersect$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-text_intersect-new"></a>}}
+\if{latex}{\out{\hypertarget{method-text_intersect-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{text_intersect$new(token_list1 = NULL, token_list2 = NULL)}\if{html}{\out{</div>}}
@@ -86,8 +86,8 @@ https://www.kaggle.com/c/home-depot-product-search-relevance/discussion/20427 by
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-count_intersect"></a>}}
-\if{latex}{\out{\hypertarget{method-count_intersect}{}}}
+\if{html}{\out{<a id="method-text_intersect-count_intersect"></a>}}
+\if{latex}{\out{\hypertarget{method-text_intersect-count_intersect}{}}}
 \subsection{Method \code{count_intersect()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{text_intersect$count_intersect(distinct = FALSE, letters = FALSE)}\if{html}{\out{</div>}}
@@ -104,8 +104,8 @@ https://www.kaggle.com/c/home-depot-product-search-relevance/discussion/20427 by
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ratio_intersect"></a>}}
-\if{latex}{\out{\hypertarget{method-ratio_intersect}{}}}
+\if{html}{\out{<a id="method-text_intersect-ratio_intersect"></a>}}
+\if{latex}{\out{\hypertarget{method-text_intersect-ratio_intersect}{}}}
 \subsection{Method \code{ratio_intersect()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{text_intersect$ratio_intersect(distinct = FALSE, letters = FALSE)}\if{html}{\out{</div>}}
@@ -122,8 +122,8 @@ https://www.kaggle.com/c/home-depot-product-search-relevance/discussion/20427 by
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-text_intersect-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-text_intersect-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

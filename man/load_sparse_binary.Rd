@@ -17,7 +17,11 @@ load a sparse matrix in binary format
 }
 \examples{
 
+\dontrun{
+
 library(textTinyR)
 
-# load_sparse_binary(file_name = "save_sparse.mat")
+load_sparse_binary(file_name = "save_sparse.mat")
+
+}
 }

@@ -25,7 +25,11 @@ read a specific number of rows from a text file
 }
 \examples{
 
+\dontrun{
+
 library(textTinyR)
 
-# txfl = read_rows(input_file = 'input.txt', rows = 100)
+txfl = read_rows(input_file = 'input.txt', rows = 100)
+
+}
 }
